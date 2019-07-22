@@ -1,20 +1,20 @@
 //Agregando a un nuevo array elementos de otro pero sin conocer su contenido
-//arry = [0,,4,"choto",7];
-//hola = [];
-//    try {
-//        for (let i = 0; i < arry.length; i++) {
-//        if(arry[i]){
-//            throw "alto ahi indefinido;"
-//        }
-//            hola[i] = arry[i];
-//        }
-//    } catch (error) {
-//        console.log(error);
-//        return error;
-//        
-//    }
-//
-//console.log(hola);
+arry = [0,,4,"choto",7];
+hola = [];
+    try {
+        for (let i = 0; i < arry.length; i++) {
+        if(arry[i]){
+            throw "alto ahi indefinido;"
+        }
+            hola[i] = arry[i];
+        }
+    } catch (error) {
+        console.log(error);
+        return error;
+        
+    }
+
+console.log(hola);
 
 
 function JhonaSeLa(toda){
