@@ -4,9 +4,11 @@ function sumar(a,b){
 
 var primero=1;
 var segundo=2;
-var ciclo=3;
-for(var i=0;i<ciclo;i++){
+var ciclo=5;
+for(segundo;segundo<ciclo;segundo++){
     if(typeof primero === 'number'){
-        
+        if(typeof segundo === 'number'){
+            console.log(sumar(primero,segundo));
+        }
     }
 }
