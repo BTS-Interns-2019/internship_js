@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function calcularIVA (a) {
 if(typeof a == "number"){
     return "Gracias por ingresar un número";
@@ -11,3 +12,8 @@ try{
  catch(e){
      console.error(e.message)
  }
+=======
+function funcion (a) {
+    
+}
+>>>>>>> Commit con los ejercicios try-catch
