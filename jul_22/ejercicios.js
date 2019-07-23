@@ -2,10 +2,11 @@
 switch, for, while, return, finally, typeof*/
 
 
-//ejemplo con try...catch, finally, return, typeof
+//ejemplo con try...catch, for, finally, return, typeof
 var inicio = 100;
 function suma(numero)
 {
+  for(numero=0;numero>100;numero++)
   // aqui verificamos si el valor realmente es un número
   if (typeof numero != "number")
   {
@@ -15,7 +16,6 @@ function suma(numero)
   inicio += numero;
   return inicio;
 }
-
 try
 {
     suma(80);
@@ -52,24 +52,18 @@ function numeros(num) {
     console.log("Se realizó la acción") 
   }
 
-
-var frutas = ["manzanas", "uvas", "peras"]
-  function fruta(fruitname) {
-  for(fruits in frutas)  
-    if(fruitname>2)
-      {
-          throw "primer error";
-      } else if(fruitname<0)
-      {
-          throw "segundo error";
-        } else {
-            throw "Tercer error";
-        }
-}
+//ejemplo switch
 try {
-    frutas("manzana")
-} catch (excepcion) {
-
-} switch(excepcion) {
-    case "Primer error":
+  var frutas = "Manzana";
+  switch (frutas) {
+  case "Manzana":
+     console.log("Manzana :)");
+     break;
+  default:
+     console.log("Elige una fruta");
+  }
+} catch(e) {
+    console.log("Ocurrió un error : " + e);
+} finally {
+    console.log("Se realizó la acción")
 }
