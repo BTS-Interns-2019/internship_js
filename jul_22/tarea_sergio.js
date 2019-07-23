@@ -328,7 +328,7 @@ let taquitos = 0;
 do {
     taquitos++;
     
-    //console.log("sergio se come "+taquitos+" taquitos");
+    console.log("sergio se come "+taquitos+" taquitos");
     
     taquitos++;
 } while (taquitos < 99);
@@ -339,7 +339,7 @@ var jhonathanChoto = 100;
 
 do {
     jhonathanChoto--;
-    //console.log("jhonathanChoto es "+jhonathanChoto+"% menos choto");
+    console.log("jhonathanChoto es "+jhonathanChoto+"% menos choto");
     
 } while (jhonathanChoto > nivelDeChotoNormal);
 
@@ -349,7 +349,7 @@ var refresco = 1;
 var llenarRefrigerador = 15;
 do {
     llenarRefrigerador -= refresco;
-    //console.log(llenarRefrigerador);
+    console.log(llenarRefrigerador);
     
 } while (llenarRefrigerador > 3);
 
@@ -392,7 +392,7 @@ for(let j = 0; j <taquitosCarne;j++){
 //for...in 1
 let internos = ["sergio","urbanoss","nestor","luis","christian","erick","peregrino","hector","emmanuel","fanny","viri","choto","david","marlon","ricardo","migue"]
 for (let key in internos) {
-    //console.log(internos[key] +" Contratado");
+    console.log(internos[key] +" Contratado");
     
 }
 
@@ -403,7 +403,7 @@ for (let key in internos) {
         chumichanGas++;
         
     }
-    //console.log("necestitmos " +chumichanGas);
+    console.log("necestitmos " +chumichanGas);
     
 }
 
@@ -412,7 +412,7 @@ for (let key in internos) {
 for (let key in internos) {
     
     if(key == 8){
-        //console.log(internos[key]+ " Nos va a invitar ancas de rana");
+        console.log(internos[key]+ " Nos va a invitar ancas de rana");
         
     }
 }
@@ -422,7 +422,7 @@ for (let key in internos) {
 //for... of  1
 for (let iterator of internos) {
     if(iterator == "david"){
-        //console.log(iterator + " se queda sin pastel por que no ajusto");
+        console.log(iterator + " se queda sin pastel por que no ajusto");
     }
 }
 
@@ -435,7 +435,7 @@ for (let iterator of internos) {
     if(casaBts.length > 10){
         break;
     }
-    //console.log(casaBts);
+    console.log(casaBts);
     
 }
 
@@ -444,7 +444,7 @@ for (let iterator of internos) {
 for (let iterator of casaBts) {
     
     if (iterator.length < 6 ) {
-        //console.log(iterator+" contratado");
+        console.log(iterator+" contratado");
         
     }
 }
@@ -456,7 +456,7 @@ for (let iterator of casaBts) {
 let numero2 = 0;
 while (casaBts.length > 5) {
     casaBts.pop();
-    //console.log(casaBts);
+    console.log(casaBts);
     
 }
 
@@ -466,7 +466,7 @@ while (numero2 < casaBts.length) {
     casaBts[numero2] = "nose "+numero2;
     numero2++;
 }
-//console.log(casaBts);
+console.log(casaBts);
 
 // while 3
 let tareaBraulio = false
@@ -485,15 +485,15 @@ while (!tareaBraulio) {
 
 
 // PARA EJECUTAR
-//console.log(break1(info));
-//console.log(break2(info));
-//console.log(break3(99));
-//console.log(continue1(info));
-//console.log(continue2(info));
-//console.log(continue3(99));
-//console.log(try1("Se evito:  error garrafal + pantalla azul de la muerte"));
-//console.log(try2(info));
-//console.log(try3(55));
+console.log(break1(info));
+console.log(break2(info));
+console.log(break3(99));
+console.log(continue1(info));
+console.log(continue2(info));
+console.log(continue3(99));
+console.log(try1("Se evito:  error garrafal + pantalla azul de la muerte"));
+console.log(try2(info));
+console.log(try3(55));
 
 
 
