@@ -1,4 +1,4 @@
-//Agregando a un nuevo array elementos de otro pero sin conocer su contenido
+
 arry = [0,,4,"choto",7];
 hola = [];
     try {
@@ -16,6 +16,24 @@ hola = [];
 
 console.log(hola);
 
+<<<<<<< HEAD
+=======
+//2
+
+function resiveNumeros(info){
+    try {
+        if(typeof info != 'string'){
+            throw new Error ("debe ser String");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+
+}
+
+
+//3
+>>>>>>> 8f6bfd61a5682a7c678d0a2a21e38b3cb2b5f018
 
 function JhonaSeLa(toda){
             let frase = "";
