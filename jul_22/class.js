@@ -54,10 +54,18 @@ let worm = new Bug(false, "Wormy")
 
 //ex. 3
 
-let text = "lalala"
 
-switch(text){
-    case typeof === String
-    console.log("its a text")
+switch(2){
+    case 1:
+        console.log("Cerrado")
+    break;
+    case 2:
+        console.log("Abierto")
+    break;
+    case 3:
+        console.log("Cerrad")
+    break;
+    default:
+        console.log("Cerrado")
     break;
 }
