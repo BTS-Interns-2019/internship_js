@@ -11,8 +11,8 @@ the folowing methods without ussing that method
 Object.assign()
 Object.defineProperties()
 Object.entries()
-Object.freeze()
-Object.seal()
+Object.freeze() // create new freezed object
+Object.seal() // create new sealed object
 Object.fromEntries()
 Object.getOwnPropertiesDescriptors()
 Object.isFrozen()
