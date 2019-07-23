@@ -1,3 +1,4 @@
+//Codigo que funciona solo en chrome para tenr interaccion con el usuario
 try{
     var nombre = prompt("Dame tu nombre");
     alert("Hola " + nombre);
@@ -9,9 +10,13 @@ try{
         switch(t)
         {
             case "1":
-                var v = prompt("Ingresa tu edad");
-                alert("Edad añadida");
-                edad = v;    
+                var v = parseInt( prompt("Ingresa tu edad") );
+                if(!isNaN(v)){
+                    alert("Edad " + v + " añadida");
+                    edad = v;    
+                }else{
+                    throw "Caracter invalido";
+                }
                 break;
             case "2":
                 var n = prompt("Nuevo nombre");
@@ -25,10 +30,10 @@ try{
                     throw new error("Ingresarte un caracter invalido");
                 } break;
             case "3":
-                var m = prompt("Dame un nuero para mostrar su tabla de multiplicar");
-                if(typeof m == "number")
+                var m = parseInt( prompt("Dame un nuero para mostrar su tabla de multiplicar") );
+                if(!isNaN(m))
                 {
-                    var e;
+                    var e ="";
                     for(var i=1;i<=10;i++)
                     {
                         e += m + " * " + i + " = " + (m*i) + "\n"
@@ -44,7 +49,7 @@ try{
     }while(t != 4)
     
 }catch(e){
-    alert(e.message);
+    alert(e);
 }
 finally{
     alert("Gracias por su visita");
