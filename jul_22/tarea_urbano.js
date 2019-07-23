@@ -21,9 +21,7 @@ for (let j = 1; j < 100; j++) {
     break;
 
 }
-console.log("===");
 //Continue
-
 var numbers = [2, 4, 6, 8, 10];
 for (let i = 0; i < numbers.length; i++) {
     if (i == 2) {
@@ -50,7 +48,6 @@ for (let i = 0; i < numbers.length; i++) {
 
 }
 //if else
-console.log("===");
 if (Array.isArray(numbers)) {
     console.log("numbers es un arreglo")
 } else {
@@ -70,7 +67,6 @@ if (numbers[3] % 2 == 0) {
 }
 
 //switch
-console.log("===");
 for (let i = 0; i < numbers.length; i++) {
     switch (numbers[i]) {
         case 4:
@@ -123,9 +119,13 @@ switch (nombre) {
 }
 
 // try...catch
-console.log("===");
+let rotar
 try {
-    name+" Hola";
+    if (typeof (rotar=='undefine')){
+        throw "La variable esta sin definir";
+    }
+
+
 } catch (error) {
     console.log(error);
 }
@@ -136,21 +136,20 @@ try {
     } catch (error) {
         console.error("En serio!!", error.message);
         throw error;
-    } 
+    }
 } catch (error) {
     console.error("Ni el error te salio bien");
 }
-
+let valor= 9;
 try {
-    var edad= 9;
-    if (edad<18) {
-        throw new Error("No eres Mayor de edad");
+    if (valor<18) {
+        throw "No es mayor que 18";
     }
-} catch (error) {
-    console.log(error);
+} catch (Error) {
+    console.log(Error);
+
 }
 //let
-console.log("===");
 let miEdad= 18;
 let miNombre= "urbano";
 let estatura = 180;
@@ -160,7 +159,6 @@ const sexo= "Masculino";
 const pi = 3.1416;
 const color = "rojo";
 //function
-console.log("==="); 
 function sumaNumeros(a,b) {
     return a + b;
 }
@@ -194,31 +192,29 @@ do{
     }
     console.log(counter);
 }while(counter === 0);
-
+let edad=20;
 do{
-edad++    
+edad++
 }while (edad < 50)
 console.log(edad);
 //for
-console.log("===");
 
 for (let i = 10; i > 0; i--) {
     console.log(i)
-    
+
 }
 console.log("Numbers")
 for (let index = 0; index < numbers.length; index++) {
-     
+
     console.log(numbers[index]);
-    
+
 }
 
 for (let i = 0; i < numbers.length; i++) {
     console.log("2 x "+numbers[i]+" = " + numbers[i]*2);
-    
+
 }
 //for in
-console.log("===")
 
 var someGuy= {
     nombre:"Pepe",
@@ -240,25 +236,34 @@ for (let key in someGuy) {
     console.log(someGuy[key])
 }
 for (const iterator of numbers) {
-    
-    console.log(iterator+10);    
+
+    console.log(iterator+10);
 }
 
 for (const i of miNombre) {
     console.log(i);
 }
 //While
-console.log("===");
 let number = 0;
 while (number <3){
 number++
 console.log(number);
 }
-let flag= true;
-while(flag){
-    number++
-    if (number<3){
-        flag=false
-    }
-    console.log(number);
+console.log("dsdf")
+
+let num1=0;
+let num2= 2;
+while (num1<20) {
+    num1= num1+num2;
+    num2++;
+    console.log(num1);
 }
+
+function iterator(number) {
+    let conter=0;
+    while (conter<=number){
+        console.log(conter++);
+
+    }
+}
+iterator(15)
