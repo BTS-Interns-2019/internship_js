@@ -21,6 +21,6 @@ function gastosParser(obj){
     "\nfinalBalance: " + balance;
     return contenido;
 }
-console.log(gastosParser("1000 127 video 7.45 128 gasoline 16.10 129 agua 15 "));
+console.log(gastosParser("1000 127 video 7.45 128 gasoline 16.10 129 agua 15"));
 
 module.exports = gastosParser;
