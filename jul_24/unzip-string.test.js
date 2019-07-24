@@ -1,4 +1,7 @@
-const unzipString = require('./unzip-string.js');
+const requireGlob = require('require-glob');
+const modules = requireGlob.sync(['./unzip-string_*.js']);
+
+const unzipString = modules[Object.keys(modules)[0]];
 
 const cases = [
   ['3abc', 'aaabbbccc'],
