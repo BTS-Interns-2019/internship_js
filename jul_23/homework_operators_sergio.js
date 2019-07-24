@@ -20,6 +20,8 @@ for (let i = 0; i < 15; i++) {
     
     
 }    
+console.log(res);
+
 
 /* Use the Shorthand operators to return the first 15 numbers of the binary sequence **use the for statement */
 let tablaDelDos2 = [0,1];
