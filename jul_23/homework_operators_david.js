@@ -111,9 +111,13 @@ for(i = 5; i < 101; i++) {
     x = i%5;
     if(x>=2 && x<4) {
         console.log("El residuo de dividir "+i+" entre 5 es "+x);        
+<<<<<<< HEAD
     }
 <<<<<<< HEAD
 }
 =======
 }
 >>>>>>> david operators homework
+=======
+    }
+>>>>>>> david homework operators conflict
