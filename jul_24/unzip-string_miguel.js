@@ -1,3 +1,4 @@
+module.exports = inzipString;
 function unzipString(word){
     let res = "";
     let auxw = word;
