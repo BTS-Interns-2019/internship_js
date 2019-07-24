@@ -2,7 +2,7 @@
 /*Que el operado unario hace operaciones con un solo operador//*/
 
 /*Use the Shorthand operator to return the first 15 numbers of the Times Table of 2 **use the for statement //*/
-/*for(var i = 1; i<=15; i++)
+for(var i = 1; i<=15; i++)
 {
     var s=i;
     console.log(s*=2);
@@ -11,7 +11,7 @@
 
 /* Use the Shorthand operators to return the first 15 numbers of the binary sequence **use the for statement */
 var s=1;
-/*for(var i = 2; i<=30; i+2)
+for(var i = 2; i<=30; i+2)
 {
     if(s>32768)
         break;
