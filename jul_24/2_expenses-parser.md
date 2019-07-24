@@ -17,9 +17,9 @@ As a developer I want to have a function that receives a list of expenses as mul
 ## Example
 Input
 ```js
-const input = "1000.00
+const input = `1000.00
 127 Video 7.45
-128 Gasoline 16.10"
+128 Gasoline 16.10`
 ```
 
 Output
