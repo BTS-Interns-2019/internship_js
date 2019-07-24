@@ -57,10 +57,7 @@ let matrix = [
     [1,2,3,4,5,6,7,8,9],
     [1,2,3,4,5,6,7,8,9]
 ];
-/*
-for (var i = 0, j = 0; i < 9; i++, j--){
-  console.log('matrix[' + i + '][' + j + '] = ' + matrix[i][j]);
-} */
+
 
 //draw a diagonal in the matrix, use while
 var i = 0;
