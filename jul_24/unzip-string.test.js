@@ -2,8 +2,8 @@ const unzipString = require('./unzip-string.js');
 
 const cases = [
   ['3abc', 'aaabbbccc'],
-  ['8abc', 'aaaaaaaabbbbbbbbcccccccc2'],
-  ['2abc', 'aabbcc2'],
+  ['8abc', 'aaaaaaaabbbbbbbbcccccccc'],
+  ['2abc', 'aabbcc'],
   ['abcd', 'abcd'],
   ['', ''],
   ['1233abc', 'aaabbbccc'],
