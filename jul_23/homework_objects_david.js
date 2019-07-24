@@ -38,18 +38,25 @@ function entries(objeto) {
     return resultado;
 }
 
+array = entries(obj);
+console.log(array.length);
+for (i = 0; i < array.length; i++) {
+    console.log(array[i]);               
+}
+
 // // Object.fromEntries()
+// console.log('Objetc.fromEntries()');
 // console.log(Object.fromEntries(obj));
 // console.log(fromEntries(obj));
+// console.log();
 
-// function entries(objeto) {
+// function fromEntries(objeto) {
 //     array = entries(objeto);
 //     var resultado = {};
-//     for (var i in array) {
-//         for (var j in i) {
-//             resultado = ;
-//         }        
+//     for (i = 0; i < array.length; i++) {
+                   
 //     }
+
 //     return resultado;
 // }
 
