@@ -8,13 +8,13 @@ function  unzipString(str) {
             result+= y.repeat(x);
         }
     }
-    console.log(result);
+    return result;
 }
 
-unzipString('a2bc')
-unzipString('3D2a5d2f')
-unzipString('3d332f2a')
-unzipString('abcd')
-unzipString('')
+console.log(unzipString('a2bc'));
+console.log(unzipString('3D2a5d2f'));
+console.log(unzipString('3d332f2a'));
+console.log(unzipString('abcd'));
+console.log(unzipString(''));
 
-
+module.exports = unzipString;
