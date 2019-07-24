@@ -81,19 +81,12 @@ while (counter1 < 9) {
 //
 //Borrando diagonal
 for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix.length; j++) {
-       console.log( delete matrix[i][j]);
-        
-    }
-    
+    console.log( delete matrix[i][i]);  
 }
 delete 5 in matrix;
 //Revisando Matriz
 for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix.length; j++) {
-        console.log(matrix[i][j] in matrix);
-        
-    }
+    console.log(matrix[i][i] in matrix);
     
 }
 //
