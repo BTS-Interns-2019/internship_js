@@ -1,5 +1,7 @@
 //const input = "1000.00";
 function gastosParser(obj){
+    obj = obj.replace("\n", "");
+    obj = obj.replace("  ", " ");
     var div = obj.split(" ");
     var balance = div[0];
     var total = 0;
