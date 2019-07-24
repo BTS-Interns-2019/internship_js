@@ -2,11 +2,10 @@
 switch, for, while, return, finally, typeof*/
 
 
-//ejemplo con try...catch, for, finally, return, typeof
+//ejemplo con try...catch, finally, return, typeof
 var inicio = 100;
 function suma(numero)
 {
-  for(numero=0;numero>100;numero++)
   // aqui verificamos si el valor realmente es un número
   if (typeof numero != "number")
   {
