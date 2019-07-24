@@ -1,4 +1,4 @@
-# Unzip string
+# Expenses Parser
 As a developer I want to have a function that receives a list of expenses as multiline string and returns and object with the parsed data.
 
 ## Acceptance Criteria
