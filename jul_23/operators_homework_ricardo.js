@@ -75,5 +75,67 @@ for(let i =0, j =9 ; i < 10 ; i++, j--){
 ]
 */
 
+var a = 0;
+var b = 0;
+while(a < 9){
+    while(b < 9){
+        if(a != b ){
+            matrix[a][b] = 0;
+        }
+        b++;
+    }
+    a++;
+    b=0;
+}
+console.log(matrix);
 
+/* Divide 3 numbers by 0 */
+
+console.log(3/0);
+console.log(Infinity/0);
+console.log(19/0);
+
+/* use delete to remove the diagonal from the matrix */
+var a = 0;
+var b = 0;
+while(a < 9){
+    while(b < 9){
+        if(a == b ){
+            delete matrix[a][b];
+        }
+        b++;
+    }
+    a++;
+    b=0;
+}
+console.log(matrix);
+
+
+/* after delete Use in to check if the following index are present in the inner arrays */
+/* check here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Relational_operators */
+
+/* -- row 0, check index 0 */
+/* -- row 1, check index 1 */
+/* -- row 2, check index 2 */
+/* -- row 3, check index 3 */
+/* -- row 4, check index 4 */
+/* -- row 5, check index 5 */
+/* -- row 6, check index 6 */
+/* -- row 7, check index 7 */
+/* -- row 8, check index 8 */
+
+
+console.log(0 in matrix[0]);
+console.log(1 in matrix[1]);
+console.log(3 in matrix[3]);
+console.log(4 in matrix[4]);
+console.log(5 in matrix[5]);
+console.log(6 in matrix[6]);
+console.log(7 in matrix[7]);
+console.log(8 in matrix[8]);
+
+/* print all the numbers from 0 to 100 that when divided by 5 have a reminder greater or equal to 2 but lesser than 4 */
+for (let i = 0; i <= 100; i++) {
+if(i % 5 >= 2 && i % 5 <= 4) console.log(i);
+}
 
