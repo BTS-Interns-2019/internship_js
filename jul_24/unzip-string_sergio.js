@@ -1,5 +1,5 @@
 
-function UnzipString(string) {
+function unzipString(string) {
     let arr = string.split("");
     let resp = "";
     let num1 = [];
@@ -31,4 +31,4 @@ function agrega (n,l){
     return r;
 }
 
-console.log(UnzipString('3d332f2a'));
+module.exports = unzipString;
