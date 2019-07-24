@@ -1,51 +1,44 @@
-module.exports = inzipString;
+module.exports = unzipString;
+
 function unzipString(word){
     let res = "";
     let auxw = word;
+    let aux = [];
     //console.log("VALOR EN INSTANCIA "+word);
     for(let i=0;i<word.length;i++){
         //console.log("primer while");
         //console.log("word "+word);
         //console.log("aux "+auxw);
         //console.log("res "+res);
-        var c = auxw.charAt(0);
-        if((isNaN(c)==false && isNaN(auxw.charAt(1))==true)){
-            //console.log("c = "+c);
+        aux = [];
+        if(isNaN(auxw.charAt(0))==false){
             //console.log("condicion de tener un numero");
-            auxw = auxw.substring(1,auxw.length);
-            if(hayNums(auxw)==true){
-                //console.log("si existen todavia numeros");
-                res = res+auxw.charAt(0).repeat(parseInt(c));
-                auxw = auxw.substring(1,auxw.length);
-                //console.log("aux "+auxw);
-            }else{
-                //console.log("si ya no existen numeros");
-                //console.log("word "+word);
-                //console.log("aux "+auxw);
-                for(let j=0;j<auxw.length;j++){
-                    //console.log(j);
-                    //console.log("auxw["+j+"] = "+auxw.charAt(j));
-                    res = res+auxw.charAt(j).repeat(parseInt(c));
-                }
-                //console.log("res "+res);
-                break;
-            }
-        }else if(isNaN(c)==false && isNaN(auxw.charAt(1))==false){
-            //console.log("si no es numero");
+            let c=auxw.charAt(0);
+            //console.log("c = "+c);
             auxw=auxw.substring(1,auxw.length);
+            //console.log("aux "+auxw);
+            if(isNaN(auxw.charAt(0))==false){
+                //console.log("lo ignora");
+            }else{
+                //console.log("lo toma");
+                for(let v=0;v<auxw.length;v++){
+                    //console.log("aux "+aux[v]);
+                    //console.log("v "+v);
+                    if(isNaN(auxw.charAt(v))==false)break;
+                    aux.push(auxw.charAt(v));
+                }
+                for(let j in aux){
+                    res = res+aux[j].repeat(parseInt(c));
+                }
+                auxw=auxw.substring(aux.length,auxw.length);
+            }
         }else{
-            res=res+c;
+            //console.log("si no es numero");
+            res=res+auxw.charAt(0);
             auxw=auxw.substring(1,auxw.length);
         }
-        //console.log("i "+i);
     }
     return res;
-}
-function hayNums(word){
-    for(let i=0;i<word.length;i++){
-        if(isNaN(word.charAt(i))==false)return true;
-    }
-    return false;
 }
 
 console.log(unzipString('a2bc'));
@@ -53,3 +46,4 @@ console.log(unzipString('3D2a5d2f'));
 console.log(unzipString('3d332f2a'));
 console.log(unzipString('abcd'));
 console.log(unzipString(''));
+console.log(unzipString('22abc1d'));//aabbccd
