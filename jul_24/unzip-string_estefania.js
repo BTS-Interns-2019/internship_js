@@ -2,7 +2,7 @@ function  unzipString(str) {
     var result = ""
     var x = 1;
      for(let y of str){
-        if(y === /^[0-9]+$/){
+        if(y > 0 && y <9){
             x = y;
         }else{
             result+= y.repeat(x);
