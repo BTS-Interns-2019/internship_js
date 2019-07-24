@@ -1,10 +1,7 @@
-# Exercises 23 jul
-
 Number and String
 
-create a file named `tarea_<nombre>.js` in your own branch using.
+create a file named tarea_<nombre>.js in your own branch using.
 
-```
 
 // Number
 
@@ -156,6 +153,3 @@ create a file named `tarea_<nombre>.js` in your own branch using.
 
 
 /* give me 3 example using all the String functions above over the same String*/
-
-
-```
