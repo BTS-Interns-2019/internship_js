@@ -18,6 +18,6 @@
   "homepage": "https://github.com/BTS-Interns-2019/internship_js#readme",
   "dependencies": {
     "jest": "^24.8.0",
-    "jest-html-reporter": "^2.5.0",
+    "jest-html-reporter": "^2.5.0"
   }
 }
