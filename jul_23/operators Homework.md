@@ -7,10 +7,21 @@ you know `homework_<NAME>.js`
 ```js
 
 /* Silly but describe the difference between operator and an unary operator add an example of it */
+// Un operador es cuando se valuan dos o más valors y operador unuario solamente es un valor.
+// operator 5 <= 10 // true
+// unary operator 6 ++ // 7
 
 // Assignment operators
+// a = b // b
+// 5 += 5 // 10
+// 5 -= 3 // 2
+// 5 *= 3 // 15
+// 5 /= 3 // 1.66666
 
 /* Use the Shorthand operator to return the first 15 numbers of the Times Table of 2 **use the for statement */
+for(var i = 0; i < 15; i++){
+    log
+}
 
 
 /* Use the Shorthand operators to return the first 15 numbers of the binary sequence **use the for statement */
@@ -34,7 +45,15 @@ you know `homework_<NAME>.js`
 // Comparison operators
 
 /* list all the js falsy values */
-
+// NaN
+// false
+// 0
+// ''
+// ""
+// ``
+// undefined
+// null
+// []
 /* Draw a diagonal in the matrix use while and the comparison operators */
 /* Initial */ let matrix = [
     [1,2,3,4,5,6,7,8,9],
