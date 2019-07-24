@@ -1,15 +1,15 @@
-//const input = "1000.00 127 Video 7.45 128 Gasoline 16.10";
+//input = "1000.00 127 Video 7.45 128 Gasoline 16.10";
 //console.log(expensesParser(input));
 
 function expensesParser(input) {
     array = input.split(' ');
-    if (array.length == 0) {
-
+    if (array.length == 1) {
+        console.log('BLANK LINE');
     } else {
         n = (array.length-1)/3;
 
         var output = new Object();
-        output.initialBalance = array[0];
+        output.initialBalance = Number(array[0]);
         output.expenses = [];
 
         let tE = 0;
