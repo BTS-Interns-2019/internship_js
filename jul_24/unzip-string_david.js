@@ -1,4 +1,4 @@
-zip = 'a2bc';
+zip = '';
 // function unzipString(zip) {
     
 //     return unzip
@@ -16,7 +16,7 @@ if (array.length == 0) {
                     break;
                 } else {
                     n = Number(array[i]);
-                    unzip += array[j].repeat(n)
+                    unzip += array[j].repeat(n);
                 }            
             }
         } else {
