@@ -100,8 +100,7 @@ var a = 0;
 var b = 0;
 while(a < 9){
     while(b < 9){
-        if(a == b ){
-            delete matrix[a][b];
+        
         }
         b++;
     }
