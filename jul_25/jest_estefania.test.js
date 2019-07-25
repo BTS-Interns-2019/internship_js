@@ -30,27 +30,26 @@
 const averageSpeed = require('./functions_ex_estefania.js');
 let prueba = averageSpeed()
 
-test('Average ', function(){
+test('Average of 100', function(){
     expect(prueba(100)).toBe(100);
 });
 
-test('Average ', function(){
+test('Average of 50', function(){
     expect(prueba(50)).toBe(75);
 });
 
-test('Average ', function(){
+test('Average of 75 ', function(){
     expect(prueba(75)).toBe(75);
 });
 
-test('Average ', function(){
+test('Average of 63', function(){
     expect(prueba(63)).toBe(72);
 });
 
-
-test('Average ', function(){
+test('Average of 70', function(){
     expect(prueba(70)).toBe(71.6);
 });
 
-test('Average ', function(){
+test('Average of 80', function(){
     expect(prueba(80)).toBe(73);
 });
