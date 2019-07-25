@@ -84,5 +84,8 @@ function averageSpeed() {
 
 let average = averageSpeed();
 console.log(average(100));
-console.log(average(50))
-console.log(average(75))
+console.log(average(50));
+console.log(average(75));
+
+
+module.exports = averageSpeed;
