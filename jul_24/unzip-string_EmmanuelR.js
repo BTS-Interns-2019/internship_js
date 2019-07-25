@@ -1,24 +1,17 @@
 function unzipString(cadena){
     let cadena2="";
+    let numero=1;
     if (cadena=="")return "";
-    if(!parseInt(cadena.charAt(0)))cadena2+=cadena.charAt(0);
-    for (let i = 1; i < cadena.length; i++) {
-        const element = cadena.charAt(i);
-        const elementAnterior = cadena.charAt(i-1);
-        if(!parseInt(element)){ //si actual no es un  número
-            if(parseInt(elementAnterior)){ //si el anterior era número y el actual letra
-                for(let j=0; j<parseInt(elementAnterior); j++){
-                    cadena2+=element;
-                }
-            }else{ //si el anterior era letra y este tambien
-                cadena2+=element;
-            }
-        }
-        
+    for (let i = 0; i < cadena.length; i++) {
+        const caracter=cadena.charAt(i);
+        if (!parseInt(caracter)){
+            for (let j = 0; j < numero; j++) {
+                cadena2+=cadena.charAt(i);
+            }            
+        }else numero=parseInt(caracter);
     }
     return cadena2;
 }
-
-console.log(unzipString("3D2a5d2f"));
+//console.log(unzipString("abcd"));
 
 module.exports = unzipString;
