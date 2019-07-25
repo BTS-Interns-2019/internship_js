@@ -77,5 +77,7 @@ let promedio=averageSpeedPadre()//te permite ejecutar todo lo que esta en funcio
 
 console.log(promedio(100))
 console.log(promedio(50))
-console.log(promedio(75))
+console.log(promedio(60))
+
     
+module.exports=averageSpeedPadre;
