@@ -61,8 +61,8 @@ esa funcion regresa la velocidad promedio
 cada vez que mande llamr la funcion hija debe tomar el paramtro de la velocidad y calcular la nueva velocidad promedio
 */
 function averageSpeedPadre(){//defines la function padre
-    let contador=0; 
-    let sumVelocidad=0;
+    let contador=0; //recibe los elementos
+    let sumVelocidad=0;//suma el valor 
 
     return function averageSpeedHija(velocidad){// define la funcion hija 
         contador ++; 
@@ -73,7 +73,7 @@ function averageSpeedPadre(){//defines la function padre
 
 }
   
-let promedio=averageSpeedPadre()
+let promedio=averageSpeedPadre()//te permite ejecutar todo lo que esta en funcion padre
 
 console.log(promedio(100))
 console.log(promedio(50))
