@@ -38,7 +38,7 @@ function rename(obj, newVal){
 rename(elCholo, "Silvestre Ramiro Sanchez")
 
 function reDirect(obj, newVal){
-    obj.direccion
+    obj.direccion = newVal
 }
 reDirect(elCholo, "Chapalita #999")
 
