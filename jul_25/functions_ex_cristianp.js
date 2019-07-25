@@ -53,18 +53,15 @@ esa funcion regresa la velocidad promedio:
 cada vez que mande llamar la funcion hija debe tomar el parametro de la
 velocidad y calcular la nueva velocidad promedio//*/
 
-function averageSpeed(vel){
-    var velocidad = 0;
-    a=funcionHija(vel);
-    function funcionHija(vel){
-        if(velocidad == 0){
-            velocidad = vel;
-        }else{
-            velocidad = ((velocidad + vel)/2);
-        }
-        return velocidad;
+function averageSpeed(velo){
+    var e = 0;
+    var total= 0;
+    var f = function funcionHija(velo){
+        total += velo;
+        e++;
+        return total/e;
     }
-    return a;
+    return f;
 }
 console.log(averageSpeed(100));
 console.log(averageSpeed(50));
