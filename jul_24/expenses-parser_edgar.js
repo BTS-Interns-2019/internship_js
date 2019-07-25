@@ -32,7 +32,7 @@ function expensesParser (inp){
       expenses1.id = parseInt(lal.slice(4,5));
       expenses1.description = lal.slice(5,6).toString();
       expenses1.cost = parseFloat(lal.slice(6,7));
-      expenses1.balance = parseFloat(lal.slice(0,1)) - parseFloat(lal.slice(6,7));
+      expenses1.balance = parseFloat(lal.slice(0,1)) - parseFloat(lal.slice(6,7)) - parseFloat(lal.slice(3,4));
 
       var Output = [];
       Output.push (obj);
