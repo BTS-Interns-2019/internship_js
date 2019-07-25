@@ -58,14 +58,17 @@ function fraseFavorita(obj, val){
 //-----------------------------------
 function averageSpeed(data){
     var i = 0;
-    var b = function hija(prom){
-                data += prom
+    var total = 0;
+    var a = function hija(data){
+                total += data;
                 i++;
-            return data/i;
+            return total/i;
    } 
-   return b
+   return a
 }
-let average = averageSpeed(0);
+let average = averageSpeed();
 console.log(average(100)); // 100
 console.log(average(50)); // 75
 console.log(average(75)); // 75
+console.log(average(100)); // 81.25
+
