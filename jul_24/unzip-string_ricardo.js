@@ -1,9 +1,10 @@
 index = 0;
 numero = 1;
-unziped = "";
+
 //var arreglo = "2e2a";
 
 function unzipString(str){
+    unziped = "";
     while(index < str.length){
         if(!isNaN(str[index])){
             //console.log("Numero");
@@ -19,4 +20,7 @@ function unzipString(str){
 }
 return unziped;
 }
-console.log(unzipString("221a2b"));
+console.log(unzipString("22a2b"));
+
+unzipString("22a2b");
+
