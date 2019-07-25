@@ -4,30 +4,31 @@ function expensesParser(input) {
     
     input = input.split(" ");
     let unidades = 0;
-    let initialBalance = input[0];
+    let initialBalance = parseInt(input[0]);
     console.log(initialBalance);
     let totalExpense = 0;
-    let idYeso = {id:0,description:"nada",cost:2,balance:2};
+    // let idYeso = {id:0,description:"nada",cost:2,balance:2};
     var objetoRes = {initialBalance:initialBalance,expenses:[],totalExpense:0,averageExpense:0.000,finalBalance:initialBalance};
     
     
     
     let pos = 0;
     for (let i = 1; i < input.length; i++) {
+        let idYeso = {id:0,description:"nada",cost:2,balance:2};
         
             //console.log("aqui");
             for (key in idYeso) {
-                if( key === "id" ){idYeso[key] = input[1+pos];}
+                if( key === "id" ){idYeso[key] = parseInt(input[1+pos]);}
                 if( key === "description" ){idYeso[key] = input[2+pos];}
                 if( key === "cost" ){
-                    idYeso[key] = input[3+pos];
+                    idYeso[key] = parseInt(input[3+pos]);
                     
                     totalExpense += parseFloat(input[3+pos]);
                     
                     console.log(totalExpense);
                     
                 }
-                if( key === "balance" ){idYeso[key] = (objetoRes["finalBalance"]-=input[3+pos]).toFixed(2)}
+                if( key === "balance" ){idYeso[key] = objetoRes["finalBalance"]-= parseInt(input[3+pos])}
                 //console.log(key);
                 //console.log(idYeso[key]);   
                 totalExpense = parseFloat(totalExpense);
