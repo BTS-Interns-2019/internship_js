@@ -1,4 +1,7 @@
 function expensesParser(input) {
+    input = input.replace("\n","");
+    console.log(input);
+    
     input = input.split(" ");
     let unidades = 0;
     let initialBalance = input[0];
@@ -50,7 +53,7 @@ function expensesParser(input) {
     
 }
 
-console.log(expensesParser("1000.00 \n127 Video 7.45 128 \nGasoline 16.10"));
+console.log(expensesParser("1000.00 127 Video 7.45 128 Gasoline 16.10"));
 module.exports = expensesParser;
 
 // {
