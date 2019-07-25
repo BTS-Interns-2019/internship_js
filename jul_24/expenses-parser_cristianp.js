@@ -1,5 +1,5 @@
 //const input = "1000.00";
-function gastosParser(obj){
+function expensesParser(obj){
     obj = obj.replace("\n", "");
     obj = obj.replace("  ", " ");
     var div = obj.split(" ");
