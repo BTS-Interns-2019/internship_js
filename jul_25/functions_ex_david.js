@@ -1,7 +1,6 @@
 // var myFunc;
 
 // num = 0;
-
 // if (num === 0) {
 //   myFunc = function(theObject) {
 //     theObject.make = 'Toyota';
