@@ -7,10 +7,9 @@ function unzipString(data){
                 res += data[i+1].repeat(data[i]);                    
             }
         }
-        if(isNaN(data[i])){
-            res += data[i];
-        }
     }
     return res;
 }
+console.log(unzipString("2a3v5bl"));
+
 module.exports = unzipString;    
