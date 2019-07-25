@@ -51,3 +51,5 @@ function expensesParser (inp){
 
 const input = "1000.00\n 127 video 7.45\n 128 Gasoline 16.10"
 expensesParser (input);
+
+module.exports = expensesParser;
