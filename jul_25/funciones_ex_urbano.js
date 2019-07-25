@@ -36,7 +36,7 @@ function age(obj, val){
         obj.edad= val
     }
 }
-let comidas=["Tacos","Hamburguesas","Pizza","Sopes"]
+let comidasF=["Tacos","Hamburguesas","Pizza","Sopes"]
 function comidas(obj, vals){
     obj.comida= vals;
 }
@@ -45,3 +45,38 @@ function frase(obj,val){
     obj.fraseFavorita=val;
 }
 console.log(persona);
+//Ejercicio Contador de velocidad promerdio
+//averageSpeed function
+//Regresar una funcion ´funcionhija´
+//Recibe un solo parametro numerico, que es la velocidad
+//Esa funcion regresa la velocidad promedio;
+//Cada vez que mande llamar a la funcion hija debe tomar el parametro velocidad y calcular
+//la velocidad promedio
+
+function averageSpeed() {
+    let counter=0;
+    let store=0;
+    // funcionHija(velocidad);
+
+    let hija;
+    hija= function funcionHija(vel) {
+       // let  counter=0;
+        counter++;
+        store+= vel;
+        // param+=vel
+        // console.log("vel",vel);
+        // console.log("Stre",store);
+        console.log(counter);
+        return (store/counter);
+    };
+    return hija;
+}
+let speed = averageSpeed();
+let speed2 = averageSpeed();
+
+
+console.log(speed(100));
+console.log(speed(50));
+console.log('-',speed2(100));
+console.log('-',speed2(50));
+// console.log(averageSpeed(50));
