@@ -1,4 +1,4 @@
-/*var persona = { nombre:"",
+var persona = { nombre:"",
 direccion:"",
 numero: 0,
 ocupacion:"",
@@ -49,7 +49,7 @@ function hurra (){
     return "hurray";
 }
 
-console.log (JSON.stringify(persona, null, 2); */
+console.log (JSON.stringify(persona, null, 2)); 
 
 //crear contador de velocidad promedio
 /*function name "averagespee"
