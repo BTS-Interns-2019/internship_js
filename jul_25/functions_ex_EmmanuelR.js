@@ -53,6 +53,12 @@ function averageSpeed(){
 }
 
 let average = averageSpeed();
-average(100);
-average(50);
-average(75);
+// console.log(average(100));
+// console.log(average(50));
+// console.log(average(75));
+// console.log(average(10));
+// console.log(average(200));
+// console.log(average(750));
+
+
+module.exports = averageSpeed;
