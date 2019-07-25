@@ -18,7 +18,12 @@ function direccion (obj, val){
 
 numero  (persona, num = 1234567890);
 function numero (obj, val){
-    obj.direccion = val;
+    obj.numero = val;
+}
+
+ocupacion (persona, ocup ="tripulante de esta nave llamada vida");
+function ocupacion (obj, val){
+    obj.ocupacion = val;
 }
 
 edad (persona, años = 20);
