@@ -16,16 +16,11 @@ function printArray(array) {
     }
 }
 
-console.log(printArray());
+console.log(printArray([25,56,78]));
 
 /////
 function question(respuesta) {
-    console.log(respuesta);
-
-    if (typeof(respuesta) !="string"){
-        throw new Error({message:"Escribe solo un parametro"});
-    }else{
-        console.log("2+2= 4, Si o No");
+    console.log("2+2= 4, Si o No");
 
         switch (respuesta) {
             case "Si":
@@ -39,6 +34,7 @@ function question(respuesta) {
                 console.log("Esas opciones no estan hijo!!");
                 break;
         }
+<<<<<<< HEAD
     }
 }
 
@@ -70,3 +66,12 @@ try {
 
 
 
+=======
+}
+
+try {
+    console.log(question(si,no));
+} catch (error) {
+    console.log("Solo un parametro por favor")
+}
+>>>>>>> Commit de Actividad 2
