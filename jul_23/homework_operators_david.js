@@ -112,6 +112,7 @@ for(i = 5; i < 101; i++) {
     if(x>=2 && x<4) {
         console.log("El residuo de dividir "+i+" entre 5 es "+x);        
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
 <<<<<<< HEAD
 }
@@ -121,3 +122,6 @@ for(i = 5; i < 101; i++) {
 =======
     }
 >>>>>>> david homework operators conflict
+=======
+    }
+>>>>>>> 840d7d3df05c3105bff5d379ac85ed60c34381f1
