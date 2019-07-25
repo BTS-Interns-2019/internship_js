@@ -1,0 +1,65 @@
+// objeto persona con propiedades
+// nombre
+// direccion
+// numero
+// ocupacion
+// edad
+// comida favorita -- Array
+// fraseFavorita
+let persona = {
+    "nombre":"",
+    "direccion":"",
+    "numero":null,
+    "ocupacion":"",
+    "edad":null,
+    "comida_favorita":[],
+    "frase_favorita":""
+}
+function setNombre(objeto,valor){
+    objeto.nombre=valor;
+}
+function setDireccion(objeto,valor){
+    objeto.direccion=valor;
+}
+function setNumero(objeto,valor){
+    objeto.numero=valor;
+}
+function setOcupacion(objeto,valor){
+    objeto.ocupacion=valor;
+}
+function setEdad(objeto,valor){
+    if(valor>18){
+        function mayor(){
+            return "hurray";
+        }
+        objeto.edad=mayor;
+    }else{
+    objeto.edad=valor;
+}
+}
+function setComidaFavorita(objeto,valor){
+    objeto.comida_favorita=valor;
+}
+function setFraseFavorita(objeto,valor){
+    objeto.frase_favorita=valor;
+}
+
+setNombre(persona,"Paco");
+setComidaFavorita(persona, ["tacos","lonces"]);
+setDireccion(persona,"Enrique Segoviano");
+setEdad(persona,22);
+setFraseFavorita(persona,"No porque lo perfecto sea inalcanzable, dejara de ser el ideal");
+setNumero(persona,13);
+setOcupacion(persona,"si");
+console.log(persona);
+console.log(persona.edad());
+
+
+// funciones llenando cada campo.
+// reciben 2 parametros (objeto, valor)
+// cada funcion solo puede llenar una propiedad con el valor que se pasa
+// si edad es mayor a 18, asigna una funcion a esa propiedad que retorne "hurray"
+
+
+
+// expected: 7 funciones que llenan solo un campo de el objeto en parametro
