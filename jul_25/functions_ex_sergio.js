@@ -52,7 +52,7 @@ function averageSpeed(params) {
 }
 
 let average = averageSpeed();
-console.log(average(100));
+console.log(hija(100));
 console.log(average(50));
 console.log(average(75));
 console.log(average(100));
