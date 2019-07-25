@@ -37,3 +37,18 @@ favoriteFood(person, ['Pizza', 'Sandwich', 'Sushi']);
 favoritePhrase(person, 'A man must stand erect, not be erected by others');
 
 console.log(person);
+
+function averageSpeed() {
+    let counter = 0;
+    let speedSum = 0;
+    return function funcionHija(speed) {
+        counter++;
+        speedSum += speed;
+        return speedSum / counter;
+    }
+}
+
+let average = averageSpeed();
+console.log(average(100)); // 100
+console.log(average(50)); // 75
+console.log(average(75)); // 75
