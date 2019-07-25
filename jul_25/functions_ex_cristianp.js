@@ -52,8 +52,9 @@ que es la velocidad...
 esa funcion regresa la velocidad promedio:
 cada vez que mande llamar la funcion hija debe tomar el parametro de la
 velocidad y calcular la nueva velocidad promedio//*/
-var velocidad = 0;
+
 function averageSpeed(vel){
+    var velocidad = 0;
     a=funcionHija(vel);
     function funcionHija(vel){
         if(velocidad == 0){
