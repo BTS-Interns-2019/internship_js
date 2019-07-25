@@ -1,13 +1,16 @@
+zip = '1233abc';
+//zip = '22abc1d';
 //zip = 'a2bc';
 //zip = '3D2a5d2f';
 //zip = '3d332f2a';
+//zip = 'abcd';
 //zip = '';
-//console.log(unzipString(zip));
+console.log(unzipString(zip));
 
 function unzipString(zip) {
     x = zip.split('');
     if (x.length==0) {
-        unzip = "''";
+        unzip = "";
     } else {
         unzip = '';
         y = false;
@@ -39,11 +42,8 @@ function unzipString(zip) {
             } else if (!Number(x[i])) {
                 unzip += x[i];             
             } else if (Number(x[i+1])) {
-                unzip += x[i]
                 continue;       
             }
-
-            
         }
     }
    
