@@ -3,22 +3,22 @@ function expensesParser (inp){
       lol=aux.join();
       lal=lol.split(" ");
       var obj = {};
-      Object.defineProperty(obj, 'initialBalance', {value: 0, writable: true});
-      Object.defineProperty(obj, 'totalexpenses', {value: 0, writable: true});
-      Object.defineProperty(obj, 'averageExpense', {value:0, writable: true} );
-      Object.defineProperty(obj,'finalBalance', {value:0, writable: true});  
+      Object.defineProperty(obj, 'initialBalance', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(obj, 'totalexpenses', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(obj, 'averageExpense', {value:0, writable: true, enumerable: true} );
+      Object.defineProperty(obj,'finalBalance', {value:0, writable: true, enumerable: true});  
       
       var expenses = {};
-      Object.defineProperty(expenses, 'id', {value: 0, writable: true});
-      Object.defineProperty(expenses, 'description', {value: 0, writable: true});
-      Object.defineProperty(expenses, 'cost', {value: 0, writable: true});
-      Object.defineProperty(expenses, 'balance', {value: 0, writable: true});
+      Object.defineProperty(expenses, 'id', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(expenses, 'description', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(expenses, 'cost', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(expenses, 'balance', {value: 0, writable: true, enumerable: true});
 
       var expenses1 = {};
-      Object.defineProperty(expenses1, 'id', {value: 0, writable: true});
-      Object.defineProperty(expenses1, 'description', {value: 0, writable: true});
-      Object.defineProperty(expenses1, 'cost', {value: 0, writable: true});
-      Object.defineProperty(expenses1, 'balance', {value: 0, writable: true});
+      Object.defineProperty(expenses1, 'id', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(expenses1, 'description', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(expenses1, 'cost', {value: 0, writable: true, enumerable: true});
+      Object.defineProperty(expenses1, 'balance', {value: 0, writable: true, enumerable: true});
 
       obj.initialBalance = parseInt(lal.slice(0,1));
       obj.totalexpenses =  parseFloat(lal.slice(3,4)) + parseFloat(lal.slice(6,7));
@@ -47,9 +47,8 @@ function expensesParser (inp){
         return Output;
     }
     
-
+module.exports = expensesParser;
 
 const input = "1000.00\n 127 video 7.45\n 128 Gasoline 16.10"
 expensesParser (input);
 
-module.exports = expensesParser;
