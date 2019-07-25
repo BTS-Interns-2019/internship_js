@@ -1,3 +1,5 @@
+/* ejercicio funcionando, se deja comenta para que funcione el jest test 
+de la funcion averagespeed.
 var persona = { nombre:"",
 direccion:"",
 numero: 0,
@@ -50,7 +52,7 @@ function hurra (){
 }
 
 console.log (JSON.stringify(persona, null, 2)); 
-
+*/
 //crear contador de velocidad promedio
 /*function name "averagespee"
  *regresa una funcion que recibe un solo parametro numerico, que es la velocidad
@@ -75,3 +77,5 @@ function averagespeed (){
     }
     return vel;
 }
+
+module.exports = averagespeed;
