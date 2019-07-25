@@ -18,22 +18,27 @@ Examples
 ''         >> ''*/
 
 function unzipString(word){
-    let result ='';
-    wordNew = word.split("");
+    let resultado ='';
+    wordNew = 0;
+    word.split("");
     
-      for(let i = 0; i < wordNew.length; i++){  
+      for(let i = 0; i < wordNew.length; i++){ 
           if(!isNaN(wordNew[i])){
-              if(isNaN(wordNew[i+i])===!isNaN(wordNew[i])){
-                  result += wordNew[i+i].repeat(wordNew[i]);                 
+              if(isNaN(wordNew[i+1])===!isNaN(wordNew[i])){
+                  resultado += wordNew[i+1].repeat(wordNew[i]);                 
               }
-          }
-          if(isNaN(wordNew[i])){
-              result += wordNew[i];
+          }else{
+              (isNaN(wordNew[i]))
+              resultado += wordNew[i];
           }
       }
-      return result;
+      return resultado;
   }
-  unzipString('a2bc')
+  unzipString('3D2a5d2f')
+  //unzipString('a2bc')
+  //unzipString('3D2a5d2f') 
+  //unzipString('3d332f2a')
+  //unzipString('abcd') 
+  
 
   module.exports = unzipString
-
