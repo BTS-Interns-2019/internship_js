@@ -31,5 +31,4 @@ function expensesParser(data){
     obj.finalBalance = resta;
     return obj;
 }
-const input = "1000.00 127 Video \n7.45 128 Gasoline 16.10"
-console.log(expensesParser(input));
+module.exports = expensesParser;
