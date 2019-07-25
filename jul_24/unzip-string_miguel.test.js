@@ -1,5 +1,6 @@
 const unzipString = require('./unzip-string_miguel.js');
 
+//PRUEBAS
 test("Prueba c2a5f2b",function(){
     expect(unzipString('c2a5f2b')).toBe('caafffffbb');
 })
