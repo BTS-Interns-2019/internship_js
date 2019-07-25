@@ -44,7 +44,6 @@ function edad(persona, valor) {
     } else {
         persona.edad = valor;   
     }
-
 }
 
 function comidafavorita(persona, valor) {
@@ -55,4 +54,22 @@ function fraseFavorita(persona, valor) {
     persona.fraseFavorita = "Hey you";
 }
 
-console.log(persona);
+function averageSpeed() {
+    i = -1;
+    total = [];
+    suma = 0;
+    return function funcionHija(velocidad) {
+        i++;
+        total.push(velocidad);
+        suma += total[i];
+        V = suma/total.length;
+        return V
+    }
+}
+
+let average = averageSpeed();
+
+console.log(average(100));
+console.log(average(50));
+console.log(average(75));
+
