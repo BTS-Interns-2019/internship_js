@@ -1,14 +1,14 @@
 //const input = "1000.00";
 function expensesParser(obj){
-    obj = obj.replace("\n", "");
-    obj = obj.replace("  ", " ");
-    obj = obj.split(" ") 
-    var div = (obj.length-1) / 3;  
+    data = data.replace("\n", "");
+    data = data.replace("  ", " ");
+    data = data.split(" ") 
+    var div = (data.length-1) / 3;  
     var obj = new Object;
-    obj.initialBalance = obj[0];
+    obj.initialBalance = data[0];
     var arr = [];
-    var resta = obj[0]
-    for(let i = 0; i < obj.length-1; i++){
+    var resta = data[0]
+    for(let i = 0; i < data.length-1; i++){
         for(let x = 0; x < div; x ++){
             var ob = {
                 id: "",
@@ -18,17 +18,17 @@ function expensesParser(obj){
             if(i == 0){
                 i++;
             }
-            ob.id = obj[i], i++;
-            ob.description = obj[i], i++;
-            ob.cost = obj[i];
-            resta -= obj[i];
+            ob.id = data[i], i++;
+            ob.description = data[i], i++;
+            ob.cost = data[i];
+            resta -= data[i];
             ob.balance = resta, i++;
             arr.push(ob)
         }
     }
     obj.expenses = arr;
-    obj.totalExpense = obj[0] - resta;
-    obj.averageExpense = (obj[0] - resta) / div;
+    obj.totalExpense = data[0] - resta;
+    obj.averageExpense = (data[0] - resta) / div;
     obj.finalBalance = resta;
     return obj;
 }
