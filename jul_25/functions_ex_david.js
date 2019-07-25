@@ -12,8 +12,6 @@
 // myFunc(obj);
 // console.log(obj);
 
-// si edad es mayor a 18, asigna una funcion a esa propiedad que retorne "hurray"
-
 var persona  = new Object();
 
 nombre(persona,"David Silva");
@@ -42,7 +40,7 @@ function ocupacion(persona, valor) {
 
 function edad(persona, valor) {
     if (valor > 18) {
-        x = function () {return "hurray"};
+        var x = function () {return "hurray"};
         persona.edad = x();
     } else {
         persona.edad = valor;   
