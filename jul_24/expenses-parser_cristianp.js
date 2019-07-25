@@ -2,26 +2,35 @@
 function expensesParser(obj){
     obj = obj.replace("\n", "");
     obj = obj.replace("  ", " ");
-    var div = obj.split(" ");
-    var balance = div[0];
-    var total = 0;
-    var conteo = 0;
-    var contenido = "initialBalance: " + balance + ",\nexpenses: [";
-    for(var i = 1; i< div.length;i++){
-        contenido += "\n{id: " + div[i] + ",\ndescription: '" +
-        div[i+1] + "',\ncost: " + div[i+2] + ",\nbalance: " + (balance-(div[i+2]) ) + "}";
-        balance-=div[i+2];
-        total +=parseFloat(div[i+2]);
-        conteo++;
-        i++;
-        i++;
-        //console.log(div[i], div[i+1], div[i+2], i);
-        //continue;
+    obj = obj.split(" ") 
+    var div = (obj.length-1) / 3;  
+    var obj = new Object;
+    obj.initialBalance = obj[0];
+    var arr = [];
+    var resta = obj[0]
+    for(let i = 0; i < obj.length-1; i++){
+        for(let x = 0; x < div; x ++){
+            var ob = {
+                id: "",
+                description: "", 
+                balance: "",
+            }; 
+            if(i == 0){
+                i++;
+            }
+            ob.id = obj[i], i++;
+            ob.description = obj[i], i++;
+            ob.cost = obj[i];
+            resta -= obj[i];
+            ob.balance = resta, i++;
+            arr.push(ob)
+        }
     }
-    contenido += "\n], \ntotalExpence: " + total + 
-    "\naverageExpence: " + (total/conteo) + 
-    "\nfinalBalance: " + balance;
-    return contenido;
+    obj.expenses = arr;
+    obj.totalExpense = obj[0] - resta;
+    obj.averageExpense = (obj[0] - resta) / div;
+    obj.finalBalance = resta;
+    return obj;
 }
 console.log(gastosParser("1000 127 video 7.45 128 gasoline 16.10 129 agua 15"));
 
