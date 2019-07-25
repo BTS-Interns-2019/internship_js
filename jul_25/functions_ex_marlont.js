@@ -31,3 +31,28 @@ function addEdad(obj, valor){
       return obj.edad = valor;
     }
 }
+
+// Crear un contador de velocidad promedio
+// Nombre de la funcion padre averageSpeed
+// Regresa una funcion funcionHija que recibe un solo parametro numerico, que es la velocidad
+//   Esa funcion regresa la velocidad promedio
+//   Cada vez que se mande llamar la funcion hija debe tomar el parametro de la velocidad y calcular
+//   la nueva velocidad.
+
+var velocidades = [];
+function averageSpeed(velocidad){
+  function funcionHija(velocidad){
+    var sumaVelocidades = 0;
+    var velocidadPromedio = 0;
+
+    velocidades.push(velocidad);
+    console.log(velocidades);
+    for(var i=0; i<velocidades.length; i++){
+      sumaVelocidades = sumaVelocidades + velocidades[i];
+    }
+    velocidadPromedio = sumaVelocidades / velocidades.length;
+    return velocidadPromedio;
+  }
+  return funcionHija(velocidad);
+}
+
