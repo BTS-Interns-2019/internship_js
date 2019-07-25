@@ -37,4 +37,21 @@ function fraseFavorita(personaObj,frase){
     
 }
   
-console.log(personaObj);
+// console.log(personaObj);
+
+/// SECCION BRAULIO
+
+function averageSpeed(params) {
+    let vel = params;
+    let f = function hija (vel){ 
+        let conta = 0;
+        conta++; 
+        return vel/conta; };
+        let conta = 0;
+    return f;
+}
+
+let average = averageSpeed();
+//console.log(average(100));
+//console.log(average(75));
+//console.log(average(50));
