@@ -52,3 +52,30 @@ fraseFavorita(persona,'Si crees en ti puedes hacerlo' )
 edad(persona, 24)
 
 console.log(persona)
+
+
+/*#Crea un contador de velocidad
+nombre de la funcion padre averageSpeed
+regresa una funcion funcion hija que recibe un solo parametro numerico, que es la velocidad
+esa funcion regresa la velocidad promedio
+cada vez que mande llamr la funcion hija debe tomar el paramtro de la velocidad y calcular la nueva velocidad promedio
+*/
+function averageSpeedPadre(){//defines la function padre
+    let contador=0; 
+    let sumVelocidad=0;
+
+    return function averageSpeedHija(velocidad){// define la funcion hija 
+        contador ++; 
+        sumVelocidad +=velocidad; //hace la suma de la velocidad ingresada
+       return sumVelocidad/contador; //regresa  la suma de la velocidad entre los datos recorridos
+
+}
+
+}
+  
+let promedio=averageSpeedPadre()
+
+console.log(promedio(100))
+console.log(promedio(50))
+console.log(promedio(75))
+    
