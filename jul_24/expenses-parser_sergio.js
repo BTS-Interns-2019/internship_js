@@ -1,10 +1,11 @@
 function expensesParser(input) {
     input = input.split(" ");
+    let unidades = 0;
     let initialBalance = input[0];
     console.log(initialBalance);
     let totalExpense = 0;
     let idYeso = {id:0,description:"nada",cost:2,balance:2};
-    var objetoRes = {initialBalance:initialBalance,expenses:[],totalExpense:totalExpense,averageExpense:0.000,finalBalance:initialBalance};
+    var objetoRes = {initialBalance:initialBalance,expenses:[],totalExpense:0,averageExpense:0.000,finalBalance:initialBalance};
     
     
     
@@ -17,24 +18,28 @@ function expensesParser(input) {
                 if( key === "description" ){idYeso[key] = input[2+pos];}
                 if( key === "cost" ){
                     idYeso[key] = input[3+pos];
-                    console.log(totalExpense);
                     
-                    totalExpense += input[3+pos];
+                    totalExpense += parseFloat(input[3+pos]);
+                    
                     console.log(totalExpense);
                     
                 }
                 if( key === "balance" ){idYeso[key] = (objetoRes["finalBalance"]-=input[3+pos]).toFixed(2)}
                 //console.log(key);
                 //console.log(idYeso[key]);   
-                totalExpense = parseInt(totalExpense);
+                totalExpense = parseFloat(totalExpense);
             }
             pos+=3;
             i+=3;
         
-        console.log(idYeso);
-        console.log(objetoRes);
         objetoRes["expenses"].push(idYeso);
-        objetoRes["totalExpense"].push(totalExpense)
+        unidades++;
+        console.log(totalExpense);
+        objetoRes["totalExpense"] = totalExpense;
+        objetoRes["averageExpense"] = totalExpense / unidades
+        console.log(objetoRes);
+        
+        
         
         
     }
@@ -45,7 +50,7 @@ function expensesParser(input) {
     
 }
 
-console.log(expensesParser("1000.00 127 Video 7.45 128 Gasoline 16.10"));
+console.log(expensesParser("1000.00 \n127 Video 7.45 128 \nGasoline 16.10"));
 
 // {
 //     initialBalance: 1000.00,
