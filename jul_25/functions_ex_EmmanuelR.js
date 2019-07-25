@@ -42,3 +42,17 @@ llenadoEdad (persona,33);
 llenadoComidaFavorita (persona,["tacos","tacos de pastor","tacos de canasta","tacos de azada"]);
 llenadoFraseFavorita (persona,"Caleeee");
 
+function averageSpeed(){
+    iteraciones=0;
+    total=0
+    return function funcionHija(velocidad){
+        iteraciones++;
+        total+=velocidad;
+        return total/iteraciones;
+    }
+}
+
+let average = averageSpeed();
+average(100);
+average(50);
+average(75);
