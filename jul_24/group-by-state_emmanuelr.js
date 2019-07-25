@@ -1,12 +1,9 @@
 function groupByState(input){
-    const estados=[[false, 'kL', 'King\'s Landing'],[false, 'WF',  'Winter Felt'],[false, 'BR','Braavos'],[false, 'HG','Highgarden'],[false, 'II','Iron Islands']];
+    const estados=[[ 'kL', 'King\'s Landing'],['WF',  'Winter Felt'],['BR','Braavos'],['HG','Highgarden'],['II','Iron Islands']];
     input=input.split("\n");
     input=input.filter(Boolean);
-    const salida={};
-    input.forEach(element => {
-        element=element.split(", ");
-        salida['KL'].people='holis';
-    });           
+    
+
 }
 const input = `John Snow, 341 Kings Road, KL
 Arya Stark, 22 No Where St, WF

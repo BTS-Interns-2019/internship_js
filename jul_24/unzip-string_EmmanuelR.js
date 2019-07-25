@@ -12,6 +12,6 @@ function unzipString(cadena){
     }
     return cadena2;
 }
-//console.log(unzipString("abcd"));
+-//console.log(unzipString("abcd"));--
 
 module.exports = unzipString;
