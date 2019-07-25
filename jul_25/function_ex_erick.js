@@ -56,10 +56,11 @@ newJob(elCholo, "Ingenieria en aeronautica")
 
 function newAge(obj, newVal){
     obj.edad = +newVal
+    // let hurray = obj.edad >= 18 ? (function(){ return "Hurray!!"})() 
+    
     if(obj.edad >= 18){
         (function(){ return "Hurray!!!!!" })()
     }
-    
 }
 newAge(elCholo, 35)
 
@@ -78,3 +79,37 @@ fraseFavo(elCholo, "On ne sait jamais!")
 
 console.log("---------- El nuevo hombre ----------------------------")
 console.log(elCholo)
+
+//# crea un contador de velocidad promedio.
+
+/**   Nombre de la funcion "averageSpeed"
+ *    regresa una funcion que recibe un solo parametro numerico, que es la velocidad
+ *    esa funcion regresa la velocidad promedio.
+ *    cada vez que mande llamar la funcion hija debe tomar el parametro de la velocidad y calcular la nueva
+ *    velocidad promedio
+ */
+
+// `let average = averageSpeed()
+// average(100); //100
+// average(50); // 75
+//average(75); //75
+//`
+
+
+function averageSpeed(vel){
+    let i = 0
+    let prom = promedio
+    let res = 0
+      function promedio(speed){
+        i++
+        res += speed
+        return res/i
+      }
+    return prom
+  }
+  
+  let average = averageSpeed()
+  
+  console.log(average(100))
+  console.log(average(50))
+  console.log(average(75))
