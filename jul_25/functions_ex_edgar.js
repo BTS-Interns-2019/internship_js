@@ -1,4 +1,4 @@
-var persona = { nombre:"",
+/*var persona = { nombre:"",
 direccion:"",
 numero: 0,
 ocupacion:"",
@@ -49,5 +49,29 @@ function hurra (){
     return "hurray";
 }
 
-console.log (JSON.stringify(persona, null, 2));
+console.log (JSON.stringify(persona, null, 2); */
 
+//crear contador de velocidad promedio
+/*function name "averagespee"
+ *regresa una funcion que recibe un solo parametro numerico, que es la velocidad
+ *esa funcion regresa la velocidad promedio
+ *cada vez que mande a llamar la funcion hija tomar el parametro de la velocidad y calcular 
+ la nueva velocidad promedio*/
+ 
+ ////
+
+ let average = averagespeed ();
+ console.log (average (100));
+ console.log (average (50));
+ console.log (average (75));
+
+function averagespeed (){
+    let vel = average;
+    let prom = 0;
+    let i = 0;
+    function average (sp){
+        i ++;
+        return (prom += sp)  / i;
+    }
+    return vel;
+}
