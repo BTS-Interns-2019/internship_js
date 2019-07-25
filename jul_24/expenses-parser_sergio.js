@@ -51,6 +51,7 @@ function expensesParser(input) {
 }
 
 console.log(expensesParser("1000.00 \n127 Video 7.45 128 \nGasoline 16.10"));
+module.exports = expensesParser;
 
 // {
 //     initialBalance: 1000.00,
