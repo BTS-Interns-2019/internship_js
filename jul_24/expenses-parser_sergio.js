@@ -41,7 +41,7 @@ function expensesParser(input) {
 
     
     //console.log(objetoRes);
-    
+    return objetoRes; 
     
 }
 
