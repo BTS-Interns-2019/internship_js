@@ -11,10 +11,11 @@ function  unzipString(str) {
     return result;
 }
 
-console.log(unzipString('a2bc'));
-console.log(unzipString('3D2a5d2f'));
-console.log(unzipString('3d332f2a'));
-console.log(unzipString('abcd'));
-console.log(unzipString(''));
+// console.log(unzipString('a2bc'));
+// console.log(unzipString('3D2a5d2f'));
+// console.log(unzipString('3d332f2a'));
+// console.log(unzipString('abcd'));
+// console.log(unzipString(''));
+
 
 module.exports = unzipString;
