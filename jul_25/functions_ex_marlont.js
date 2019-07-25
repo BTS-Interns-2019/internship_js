@@ -26,7 +26,7 @@ function addFraseFavorita(obj, valor){
 
 function addEdad(obj, valor){
     if(valor > 18){
-      return obj.edad = void function mayor(){return "hurray";};
+      return obj.edad = function(){return "hurray";};
     } else {
       return obj.edad = valor;
     }
