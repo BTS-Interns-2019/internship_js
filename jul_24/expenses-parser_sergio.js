@@ -1,5 +1,5 @@
 function expensesParser(input) {
-    input = input.replace("\n","");
+    input = input.replace(/\n/g," ");
     console.log(input);
     
     input = input.split(" ");
@@ -53,7 +53,9 @@ function expensesParser(input) {
     
 }
 
-console.log(expensesParser("1000.00 127 Video 7.45 128 Gasoline 16.10"));
+console.log(expensesParser(`1000.00
+127 Video 7.45
+128 Gasoline 16.10`));
 module.exports = expensesParser;
 
 // {
