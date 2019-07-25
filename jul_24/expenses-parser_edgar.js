@@ -21,18 +21,18 @@ function expensesParser (inp){
       Object.defineProperty(expenses1, 'balance', {value: 0, writable: true, enumerable: true});
 
       obj.initialBalance = parseInt(lal.slice(0,1));
-      obj.totalexpenses =  parseFloat(lal.slice(3,4)) + parseFloat(lal.slice(6,7));
-      obj.averageExpense = (parseFloat(lal.slice(3,4)) + parseFloat(lal.slice(6,7)))/2;
-      obj.finalBalance = parseFloat(lal.slice(0,1)) - parseFloat(lal.slice (3,4)) - parseFloat(lal.slice(6,7));
+      obj.totalexpenses =  parseFloat(lal.slice(3,4),2) + parseFloat(lal.slice(6,7),2);
+      obj.averageExpense = (parseFloat(lal.slice(3,4),2) + parseFloat(lal.slice(6,7)),2)/2;
+      obj.finalBalance = parseFloat(lal.slice(0,1),2) - parseFloat(lal.slice (3,4),2) - parseFloat(lal.slice(6,7),2);
       expenses.id = parseInt(lal.slice(1,2));
       expenses.description = lal.slice(2,3).toString();
-      expenses.cost = parseFloat(lal.slice(3,4)); 
-      expenses.balance = parseFloat(lal.slice(0,1)) - parseFloat(lal.slice(3,4));
+      expenses.cost = parseFloat(lal.slice(3,4),2); 
+      expenses.balance = parseFloat(lal.slice(0,1),2) - parseFloat(lal.slice(3,4),2);
 
       expenses1.id = parseInt(lal.slice(4,5));
       expenses1.description = lal.slice(5,6).toString();
-      expenses1.cost = parseFloat(lal.slice(6,7));
-      expenses1.balance = parseFloat(lal.slice(0,1)) - parseFloat(lal.slice(6,7)) - parseFloat(lal.slice(3,4));
+      expenses1.cost = parseFloat(lal.slice(6,7),2);
+      expenses1.balance = parseFloat(lal.slice(0,1),2) - parseFloat(lal.slice(6,7),2) - parseFloat(lal.slice(3,4),2);
 
       var Output = [];
       Output.push (obj);
@@ -49,6 +49,7 @@ function expensesParser (inp){
     
 module.exports = expensesParser;
 
-const input = "1000.00\n 127 video 7.45\n 128 Gasoline 16.10"
+const input = "1000.00\n 127 video 7.45\n 128 Gasoline 26.10"
 expensesParser (input);
+
 
