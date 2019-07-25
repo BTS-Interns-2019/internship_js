@@ -42,16 +42,17 @@ function fraseFavorita(personaObj,frase){
 /// SECCION BRAULIO
 
 function averageSpeed(params) {
-    let vel = params;
+    let total = 0;
     let f = function hija (vel){ 
-        let conta = 0;
         conta++; 
-        return vel/conta; };
-        let conta = 0;
+        total+=vel;
+        return (total)/conta; };
+    let conta = 0;
     return f;
 }
 
 let average = averageSpeed();
-//console.log(average(100));
-//console.log(average(75));
-//console.log(average(50));
+console.log(average(100));
+console.log(average(50));
+console.log(average(75));
+console.log(average(100));
