@@ -8,7 +8,7 @@ if(num == 0){
 console.log(num);
 console.log(num());
 //------------------------
-# functions
+//# functions
 // objeto persona con propiedades
 // nombre
 // direccion
@@ -55,3 +55,17 @@ function comidaFavorita(obj, val){
 function fraseFavorita(obj, val){
     return obj.fraseFavorita = val;
 }
+//-----------------------------------
+function averageSpeed(data){
+    var i = 0;
+    var b = function hija(prom){
+                data += prom
+                i++;
+            return data/i;
+   } 
+   return b
+}
+let average = averageSpeed(0);
+console.log(average(100)); // 100
+console.log(average(50)); // 75
+console.log(average(75)); // 75
