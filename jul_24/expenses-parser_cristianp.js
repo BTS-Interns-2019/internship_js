@@ -1,15 +1,15 @@
 //const input = "1000.00";
-function expensesParser(obj){
-    data = data.replace("\n", "");
-    data = data.replace("  ", " ");
-    data = data.split(" ") 
-    var div = (data.length-1) / 3;  
-    var obj = new Object;
-    obj.initialBalance = data[0];
+function gastosParser(dato){
+    dato = dato.replace("\n", "");
+    dato = dato.replace("  ", " ");
+    dato = dato.split(" ") 
+    var dividido = (dato.length-1) / 3;  
+    var objeto = new Object;
+    objeto.initialBalance = dato[0];
     var arr = [];
-    var resta = data[0]
-    for(let i = 0; i < data.length-1; i++){
-        for(let x = 0; x < div; x ++){
+    var res = dato[0]
+    for(let i = 0; i < dato.length-1; i++){
+        for(let x = 0; x < dividido; x ++){
             var ob = {
                 id: "",
                 description: "", 
@@ -18,19 +18,19 @@ function expensesParser(obj){
             if(i == 0){
                 i++;
             }
-            ob.id = data[i], i++;
-            ob.description = data[i], i++;
-            ob.cost = data[i];
-            resta -= data[i];
-            ob.balance = resta, i++;
+            ob.id = dato[i], i++;
+            ob.description = dato[i], i++;
+            ob.cost = dato[i];
+            res -= dato[i];
+            ob.balance = res, i++;
             arr.push(ob)
         }
     }
-    obj.expenses = arr;
-    obj.totalExpense = data[0] - resta;
-    obj.averageExpense = (data[0] - resta) / div;
-    obj.finalBalance = resta;
-    return obj;
+    objeto.expenses = arr;
+    objeto.totalExpense = dato[0] - res;
+    objeto.averageExpense = (dato[0] - res) / dividido;
+    objeto.finalBalance = res;
+    return objeto;
 }
 console.log(gastosParser("1000 127 video 7.45 128 gasoline 16.10 129 agua 15"));
 
