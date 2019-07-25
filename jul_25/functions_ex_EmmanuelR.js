@@ -43,8 +43,8 @@ llenadoComidaFavorita (persona,["tacos","tacos de pastor","tacos de canasta","ta
 llenadoFraseFavorita (persona,"Caleeee");
 
 function averageSpeed(){
-    iteraciones=0;
-    total=0
+    let iteraciones=0;
+    let total=0
     return function funcionHija(velocidad){
         iteraciones++;
         total+=velocidad;
