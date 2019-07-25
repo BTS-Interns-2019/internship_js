@@ -5,6 +5,8 @@ if(num == 0){
 }
 console.log(func);
 */
+
+
 var objeto;
 
 var persona = {
@@ -59,3 +61,23 @@ favoriteFrase(persona, "Ajalas bistec");
 
 console.log(persona);
 
+
+
+
+    
+
+function averageSpeed(){
+    let promedio = 0;
+    let ite = 0;
+
+        return function funcionHija(numero){
+            ite++;
+            promedio+=numero; 
+            return promedio / ite;
+        }
+}
+
+let average = averageSpeed();
+console.log(average(100));
+console.log(average(50));
+console.log(average(75));
