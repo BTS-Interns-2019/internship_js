@@ -72,3 +72,5 @@ console.log(average(50)); // 75
 console.log(average(75)); // 75
 console.log(average(100)); // 81.25
 
+module.exports = averageSpeed;
+
