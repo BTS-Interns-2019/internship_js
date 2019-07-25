@@ -21,14 +21,14 @@ function expensesParser(input) {
                 if( key === "id" ){idYeso[key] = parseInt(input[1+pos]);}
                 if( key === "description" ){idYeso[key] = input[2+pos];}
                 if( key === "cost" ){
-                    idYeso[key] = parseInt(input[3+pos]);
+                    idYeso[key] = parseFloat(input[3+pos]);
                     
                     totalExpense += parseFloat(input[3+pos]);
                     
                     console.log(totalExpense);
                     
                 }
-                if( key === "balance" ){idYeso[key] = objetoRes["finalBalance"]-= parseInt(input[3+pos])}
+                if( key === "balance" ){idYeso[key] = objetoRes["finalBalance"]-= parseFloat(input[3+pos])}
                 //console.log(key);
                 //console.log(idYeso[key]);   
                 totalExpense = parseFloat(totalExpense);
