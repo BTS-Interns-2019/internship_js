@@ -41,7 +41,13 @@ function ocupacion(persona, valor) {
 }
 
 function edad(persona, valor) {
-    persona.edad = 26;
+    if (valor > 18) {
+        x = function () {return "hurray"};
+        persona.edad = x();
+    } else {
+        persona.edad = valor;   
+    }
+
 }
 
 function comidafavorita(persona, valor) {
@@ -51,12 +57,5 @@ function comidafavorita(persona, valor) {
 function fraseFavorita(persona, valor) {
     persona.fraseFavorita = "Hey you";
 }
-
-// function Hurray(persona){
-//     if (persona.edad > 18) {
-//         return "hurray"
-//     }
-// }
-// var hurray = Hurray(persona);
 
 console.log(persona);
