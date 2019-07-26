@@ -20,7 +20,7 @@ function expensesParser(input){
     const totalGastos=totalInicial-total;
     const promedio=totalGastos/input.length;
     
-    const salida={"initialBalance ": 1000.00,
+    const salida={"initialBalance": 1000.00,
         "expenses" : gastos,
         "totalExpense" : totalGastos,
         "averageExpense" : promedio,
@@ -29,7 +29,8 @@ function expensesParser(input){
 
     return salida;
 }
-//const input = '1000.00\n127 Video 7.45\n\n\n128 Gasoline 16.10';
+//const input = '900.00\n1 video 99.99\n2 tachas 3.00\n3 perico 500.00\n';
+//console.log(input);
 
 
 module.exports = expensesParser;
