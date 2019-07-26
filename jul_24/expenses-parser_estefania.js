@@ -1,8 +1,11 @@
-var input = '1000.00 127 Video 7.45 128 Gasoline 16.10'
+var input = `1000.00
+127 Video 7.45
+128 Gasoline 16.10`
 
 function expensesParser(input){
-    var arr = input.split(" ");
-    console.log(arr)
+    var sinSaltos= input.replace(/\n/g, " ")
+    var arr = sinSaltos.split(" ");
+    //console.log(arr)
     var obj = new Object()
     if (arr.length == 0) {
         return "No hay datos"
@@ -13,7 +16,6 @@ function expensesParser(input){
         let resta = Number(arr[0])
         for (i=0; i<(arr.length-1)/3; i++) {
             obj.expenses[i] = new Object()
-            console.log(i)
             for(x=1; x < 5; x++) {
                
                 switch (x) {
@@ -43,9 +45,9 @@ function expensesParser(input){
         obj.averageExpenses = (Number(arr[3]) +  Number(arr[6])) /2;
         obj.finalBalance = resta
         console.log(obj)
-        
+        return obj
     }
-
+    
 }
 
 expensesParser(input)
