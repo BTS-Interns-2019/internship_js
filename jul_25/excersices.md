@@ -10,8 +10,6 @@
 // comida favorita -- Array
 // fraseFavorita
 
-
-
 // funciones llenando cada campo.
 // reciben 2 parametros (objeto, valor)
 // cada funcion solo puede llenar una propiedad con el valor que se pasa
