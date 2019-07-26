@@ -35,6 +35,6 @@ obj={
 }
 function rec(obj){
     console.log(obj.name);
-    if(obj.children!=0)obj.children.forEach(hijo => {rec(hijo)});
+    if(Array.isArray(obj.children))obj.children.forEach(hijo => {rec(hijo)});
 }
 rec(obj);
