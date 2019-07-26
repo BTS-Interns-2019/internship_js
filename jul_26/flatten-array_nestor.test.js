@@ -1,11 +1,13 @@
+var res = [];    
 function flattenArray(data){
-    var res = [];    
     // console.log(data.length == 0 && typeof data == "object");
     if(data.length == 0 && typeof data == "object"){
         return data
     }else {
         for(var x of data){
-            if(typeof x == "object"){
+           
+            
+            if(Array.isArray(x) ){
                 flattenArray(x);
             }else {
                 res.push(x);
@@ -16,7 +18,9 @@ function flattenArray(data){
     
 }
 
+// var foo = {a: 32, b: 21}
+// console.log(foo.length);
 
 // console.log(flattenArray([]));
-console.log(flattenArray([1, 2,["a", "b", "c"], 3, 4]));
+console.log(flattenArray([1, 2,["a", "b", {foo: "sergio"}, "c"], 3, 4]));
 // console.log(flattenArray([1, 2,[{foo: "bar"}, ["b"]], 3, 4]));
