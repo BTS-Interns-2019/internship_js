@@ -1,0 +1,24 @@
+{
+  "name": "internship_js",
+  "version": "1.0.0",
+  "description": "internship exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BTS-Interns-2019/internship_js.git"
+  },
+  "author": "bts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BTS-Interns-2019/internship_js/issues"
+  },
+  "homepage": "https://github.com/BTS-Interns-2019/internship_js#readme",
+  "dependencies": {
+    "jest": "^24.8.0",
+    "jest-html-reporter": "^2.5.0",
+    "require-glob": "^3.2.0"
+  }
+}
