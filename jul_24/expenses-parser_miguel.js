@@ -52,7 +52,7 @@ function expensesParser(word){
     }
     return res;
 }
-
+/*
 const input = `1000.00
 127 Video 7.45
 128 Gasoline 16.10`
@@ -63,7 +63,7 @@ const blanc = `1000.00
 128 Gasoline 16.10`
 ;
 console.log(expensesParser(input));
-console.log(expensesParser(blanc));
+console.log(expensesParser(blanc));*/
 //First balance: 992.55
 //Second balance: 976.44999999
 /*Despues de los corchetes
