@@ -1,4 +1,14 @@
 function expensesParser(input){
+  input = input.replace("\n\n\n\n\n\n\n\n\n\n", "\n");
+  input = input.replace("\n\n\n\n\n\n\n\n\n", "\n");
+  input = input.replace("\n\n\n\n\n\n\n\n", "\n");
+  input = input.replace("\n\n\n\n\n\n\n", "\n");
+  input = input.replace("\n\n\n\n\n\n", "\n");
+  input = input.replace("\n\n\n\n\n", "\n");
+  input = input.replace("\n\n\n\n", "\n");
+  input = input.replace("\n\n\n", "\n");
+  input = input.replace("\n\n", "\n");
+
   var result = new Object();
   var lines = input.split("\n");
   var initialBalance = {'initialBalance':lines[0]};
@@ -9,23 +19,26 @@ function expensesParser(input){
   
   var expenses = [];
   var exp_uni = [];
-
+  var contador = 0;
   for(var i=1; i<lines.length; i++){
     exp_uni = lines[i].split(" ");
     
-    finalBalance = finalBalance - parseFloat(exp_uni[2]);
-    totalExpense = totalExpense + parseFloat(exp_uni[2]);
-    
-    objId = {'id':exp_uni[0]};
-    objDes = {'description':exp_uni[1]};
-    objCost = {'cost':parseFloat(exp_uni[2])};
-    objBalance = {'balance':finalBalance};
+    if(!(isNaN(parseFloat(exp_uni[2])))){
+      contador ++;
+      finalBalance = finalBalance - parseFloat(exp_uni[2]);
+      totalExpense = totalExpense + parseFloat(exp_uni[2]);
+      
+      objId = {'id':exp_uni[0]};
+      objDes = {'description':exp_uni[1]};
+      objCost = {'cost':parseFloat(exp_uni[2])};
+      objBalance = {'balance':finalBalance};
 
-    objExp = Object.assign({}, objId, objDes, objCost, objBalance);
-    expenses.push(objExp);
+      objExp = Object.assign({}, objId, objDes, objCost, objBalance);
+      expenses.push(objExp);
+    }
   }
 
-  averageExpense = totalExpense / (lines.length-1);
+  averageExpense = totalExpense / contador;
   var expensObj = {'expenses':expenses};
   
   var totalExObj = {'totalExpense':totalExpense};
