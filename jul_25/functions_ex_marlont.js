@@ -39,20 +39,24 @@ function addEdad(obj, valor){
 //   Cada vez que se mande llamar la funcion hija debe tomar el parametro de la velocidad y calcular
 //   la nueva velocidad.
 
-var velocidades = [];
+var contador = 0;
+var sumaVelocidades = 0;
+var velocidadPromedio = 0;
+
 function averageSpeed(velocidad){
   function funcionHija(velocidad){
-    var sumaVelocidades = 0;
-    var velocidadPromedio = 0;
-
-    velocidades.push(velocidad);
-    console.log(velocidades);
-    for(var i=0; i<velocidades.length; i++){
-      sumaVelocidades = sumaVelocidades + velocidades[i];
+    if(isNaN(velocidad)){
+      return velocidadPromedio;
+    } else {
+      contador ++;
+      sumaVelocidades = sumaVelocidades + velocidad;
+      velocidadPromedio = sumaVelocidades / contador;
+      return velocidadPromedio;
     }
-    velocidadPromedio = sumaVelocidades / velocidades.length;
-    return velocidadPromedio;
   }
   return funcionHija(velocidad);
 }
+
+module.exports = averageSpeed;
+
 
