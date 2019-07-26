@@ -17,28 +17,32 @@ Examples
 'abcd'     >> 'abcd'
 ''         >> ''*/
 
-function unzipString(word){
-    let resultado ='';
-    //let wordNew =0;
-    wordNew=word.split("");
-    
-      for(let i = 0; i < wordNew.length; i++){ 
-          if(!isNaN(wordNew[i])){
-              if(isNaN(wordNew[i+1])===!isNaN(wordNew[i])){
-                  resultado += wordNew[i+1].repeat(wordNew[i]);                 
-              }
-          }else{
-              (isNaN(wordNew[i]))
-              resultado += wordNew[i];console.log(resultado)
-          }
-      }
-      return resultado;
+  unzipString('a2bc')
+  unzipString('3D2a5d2f') 
+  unzipString('3d332f2a')
+  unzipString('abcd')
+
+  function unzipString(word){
+    let position=0;
+     let resultado ='';
+     let num=1;
+ 
+           while(position<word.length){
+           if(!isNaN(word[position])){
+              num = word[position];
+   
+               }else {
+                  for(let i = 0; i <num; i++){
+             
+               resultado += word[position];
+               }
+           }
+           position++
   }
-  console.log(unzipString('3D2a5d2f'))
-  //unzipString('a2bc')
-  //unzipString('3D2a5d2f') 
-  //unzipString('3d332f2a')
-  //unzipString('abcd') 
+         return resultado; 
+     
+    }
+   
   
 
   module.exports = unzipString
