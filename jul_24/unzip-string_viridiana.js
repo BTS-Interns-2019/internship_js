@@ -19,8 +19,8 @@ Examples
 
 function unzipString(word){
     let resultado ='';
-    wordNew = 0;
-    word.split("");
+    //let wordNew =0;
+    wordNew=word.split("");
     
       for(let i = 0; i < wordNew.length; i++){ 
           if(!isNaN(wordNew[i])){
@@ -29,12 +29,12 @@ function unzipString(word){
               }
           }else{
               (isNaN(wordNew[i]))
-              resultado += wordNew[i];
+              resultado += wordNew[i];console.log(resultado)
           }
       }
       return resultado;
   }
-  unzipString('3D2a5d2f')
+  console.log(unzipString('3D2a5d2f'))
   //unzipString('a2bc')
   //unzipString('3D2a5d2f') 
   //unzipString('3d332f2a')
