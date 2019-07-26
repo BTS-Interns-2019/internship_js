@@ -1,11 +1,11 @@
 function expensesParser(input) {
+    if( input.length < 4){ return false}
+    if( typeof inpunt == 'string'){ return true}
     input = input.replace(/\n/g," ");
-    console.log(input);
     
     input = input.split(" ");
     let unidades = 0;
     let initialBalance = parseInt(input[0]);
-    console.log(initialBalance);
     let totalExpense = 0;
     // let idYeso = {id:0,description:"nada",cost:2,balance:2};
     var objetoRes = {initialBalance:initialBalance,expenses:[],totalExpense:0,averageExpense:0.000,finalBalance:initialBalance};
@@ -23,10 +23,7 @@ function expensesParser(input) {
                 if( key === "cost" ){
                     idYeso[key] = parseFloat(input[3+pos]);
                     
-                    totalExpense += parseFloat(input[3+pos]);
-                    
-                    console.log(totalExpense);
-                    
+                    totalExpense += parseFloat(input[3+pos]);                   
                 }
                 if( key === "balance" ){idYeso[key] = objetoRes["finalBalance"]-= parseFloat(input[3+pos])}
                 //console.log(key);
@@ -38,10 +35,9 @@ function expensesParser(input) {
         
         objetoRes["expenses"].push(idYeso);
         unidades++;
-        console.log(totalExpense);
         objetoRes["totalExpense"] = totalExpense;
         objetoRes["averageExpense"] = totalExpense / unidades
-        console.log(objetoRes);
+       
         
         
         
@@ -79,3 +75,4 @@ module.exports = expensesParser;
 //     averageExpense: 11.775,
 //     finalBalance: 976.45
 //   }
+module.exports = expensesParser;
