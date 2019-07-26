@@ -1,37 +1,51 @@
 //const input = "1000.00";
-function gastosParser(dato){
-    dato = dato.replace("\n", "");
+function expensesParser(dato){
+    dato = dato.replace(/\n/g, " ");
     dato = dato.replace("  ", " ");
-    dato = dato.split(" ") 
-    var dividido = (dato.length-1) / 3;  
+    dato = dato.split(" ");
+    arreglo = dato.filter(Boolean);
+    //console.log(arreglo);
+    var dividido = (arreglo.length-1) / 3;  
     var objeto = new Object;
-    objeto.initialBalance = dato[0];
+    objeto.initialBalance = +arreglo[0];
     var arr = [];
-    var res = dato[0]
-    for(let i = 0; i < dato.length-1; i++){
+    var res = +arreglo[0];
+    for(let i = 0; i < arreglo.length; i++){
         for(let x = 0; x < dividido; x ++){
             var ob = {
-                id: "",
+                id: null,
                 description: "", 
-                balance: "",
+                balance: null,
             }; 
             if(i == 0){
                 i++;
             }
-            ob.id = dato[i], i++;
-            ob.description = dato[i], i++;
-            ob.cost = dato[i];
-            res -= dato[i];
-            ob.balance = res, i++;
+            ob.id = +arreglo[i];
+            i++;
+            ob.description = arreglo[i];
+            i++;
+            ob.cost = +arreglo[i];
+            res -= +arreglo[i];
+            ob.balance = res;
+            i++;
             arr.push(ob)
         }
     }
     objeto.expenses = arr;
-    objeto.totalExpense = dato[0] - res;
-    objeto.averageExpense = (dato[0] - res) / dividido;
+    objeto.totalExpense = +(+arreglo[0] - res).toFixed(2);
+    objeto.averageExpense = +((+arreglo[0] - res) / dividido).toFixed(3);
     objeto.finalBalance = res;
     return objeto;
 }
-console.log(gastosParser("1000 127 video 7.45 128 gasoline 16.10 129 agua 15"));
+/*console.log(expensesParser(`1000.00
+127 Video 7.45
+128 Gasoline 16.10`));//*/
 
-module.exports = gastosParser;
+
+/*console.log(expensesParser(`1000.00
+
+127 Video 7.45
+
+128 Gasoline 16.10`));//*/
+
+module.exports = expensesParser;
