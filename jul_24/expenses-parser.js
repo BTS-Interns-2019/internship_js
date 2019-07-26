@@ -8,30 +8,30 @@ function expensesParser(lista){
         }
     }
  let output = {};
- let balance = split[0];
+ let balance = parseFloat(split[0]);
  output.initialBalance = balance;
  let expenses = [];
  let totalExpense =0;
- let avarageExpense=0;
+ let averageExpense=0;
  for(let i=1;i<split.length;i+=3){
   let expense = {};
-  expense.id = split[i];
+  expense.id = parseInt(split[i]);
   expense.description = split[i+1];
   let costo = split[i+2];
-  expense.cost = costo;
+  expense.cost = parseFloat(costo);
   balance-=costo;
   totalExpense+=parseFloat(costo);
-  expense.balance = balance;
+  expense.balance = parseFloat(balance.toFixed(2));
   expenses[expenses.length] = expense; 
  }
  output.expenses = expenses;
- output.finalBalance = balance;
- output.totalExpense = totalExpense;
+ output.finalBalance = parseFloat(balance.toFixed(2));
+ output.totalExpense = parseFloat(totalExpense);
  let nexpenses = expenses.length;
  if(nexpenses>0){
-     avarageExpense = totalExpense/nexpenses;
+     averageExpense = totalExpense/nexpenses;
  }
- output.avarageExpense = avarageExpense;
+ output.averageExpense = parseFloat(averageExpense);
  return output;
 }
 
