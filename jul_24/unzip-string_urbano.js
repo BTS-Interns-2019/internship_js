@@ -1,24 +1,23 @@
 function unzipString(str) {
     str.split("");
-    let counter= 0;
-    let letras;
-    
+    let counter= 1;
+    let response= "";
     for (let i = 0; i < str.length; i++) {
-        if(parseInt(str[i]) !== NaN){
-            counter=str[i]
-            for (let j = 0; j < counter; j++) {
-                if(parseInt(str[i]) !== NaN){
-                    console.log(str[i+1])
-                }else if(parseInt(str[i+1]) !== NaN){
-                    counter= str[i];
-                }
-                
-            }
-        }
-        
+
+
+       if (!isNaN(parseInt(str[i]))){
+           counter= str[i];
+           // console.log(counter)
+       }else {
+           for (let j = 0; j <counter ; j++) {
+               response += str[i];
+               // console.log(response);
+           }
+       }
     }
+    return response;
 }
-unzipString("3D2a25d2f");
+// console.log(unzipString("3d332f2a"));
 
 module.exports = unzipString;
 
