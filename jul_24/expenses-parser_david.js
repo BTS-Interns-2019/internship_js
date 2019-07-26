@@ -1,14 +1,15 @@
-//input = "1000.00 127 Video 7.45 128 Gasoline 16.10";
-//console.log(expensesParser(input));
+input = "1000.00 127 Video 7.45 128 Gasoline 16.10";
+//input = "";
+console.log(expensesParser(input));
 
 function expensesParser(input) {
     array = input.split(' ');
+    var output = new Object();
     if (array.length == 1) {
         console.log('BLANK LINE');
+        outuput = "";
     } else {
         n = (array.length-1)/3;
-
-        var output = new Object();
         output.initialBalance = Number(array[0]);
         output.expenses = [];
 
@@ -18,7 +19,7 @@ function expensesParser(input) {
         }
         output.totalExpense = tE;
         output.averageExpense = tE/n;
-        output.finalBalance = array[0]-tE;
+        output.finalBalance = Number(array[0])-tE;
 
         k = 1;
         iB = Number(array[0]);
@@ -27,7 +28,7 @@ function expensesParser(input) {
             for (j =1; j < 5; j++) {
                 switch (j) {
                     case 1:
-                        output.expenses[i].id = array[k]; 
+                        output.expenses[i].id = Number(array[k]); 
                         k++;
                         break;
 
