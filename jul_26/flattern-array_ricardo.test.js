@@ -3,11 +3,11 @@ function flattenArray(arr){
 
     try {
         if(Array.isArray(arr)){
-        resultado(arr);
-        return arreglo;
+            arreglo = resultado(arr);
+            return arreglo;
         }else throw new Error(message = "Debes enviar un arreglo");
     } catch (error) {
-    console.log(error.message);
+        console.log(error.message);
     }
 
     
@@ -28,11 +28,20 @@ function flattenArray(arr){
             }
         }
         return arreglo;
-
     }
-
-
 }
-console.log(flattenArray(["hola", 2, ["Hola ", "Adios "],"b", {foo : "bar"}]));
-console.log(flattenArray(["adios", 32, ["Hello ", "bye "],"bool", {bar : "foo"}, true]));
-console.log("hola");
+// console.log(flattenArray(["hola", 2, ["Hola ", "Adios "],"b", {foo : "bar"}]));
+// console.log(flattenArray(["adios", 32, ["Hello ", "bye "],"bool", {bar : "foo"}, true]));
+// console.log(flattenArray("hola"));
+
+
+//Tests
+test('Test 1', function(){
+    expect(flattenArray(["hola", 2, ["Hola ", "Adios "],"b", {foo : "bar"}])).toBe([ 'hola', 2, 'Hola ', 'Adios ', 'b', { foo: 'bar' } ]);
+})
+
+
+test('Test 1', function(){
+    expect(flattenArray(["adios", 32, ["Hello ", "bye "],"bool", {bar : "foo"}, true])).toBe([ 'adios', 32, 'Hello ', 'bye ', 'bool', { bar: 'foo' }, true ]);
+})
+
