@@ -24,7 +24,7 @@ return unziped;
 }
 console.log(unzipString("22ab2c"));
 console.log(unzipString("22ab2c"));
-console.log(unzipString("22ab2c"));
+console.log(unzipString(" "));
 
 
 module.exports = unzipString;
