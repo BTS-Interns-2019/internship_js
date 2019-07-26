@@ -9,6 +9,9 @@ function flattenArray(arr){
   const res = []
   let pass = arr
   function foo(){
+    if(!Array.isArray(pass)){
+      throw "This is not Array"
+    }
     console.log(res)
       for(let i of pass){
         if(Array.isArray(i)){
