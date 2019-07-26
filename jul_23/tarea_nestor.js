@@ -15,7 +15,7 @@ Es el maximo valor numerico en javascript
 
 // MIN_VALUE
 /* describe what it is? */
-Es el minnimo valor numerico en javascript
+Es el minimo valor numerico en javascript
 
 // NaN
 /* describe what it is? */

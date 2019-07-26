@@ -1,14 +1,26 @@
 const unzipString = require("./unzip-string_nestor");
 
-test('323oj43ac', function(){
-    expect(unzipString('323oj43ac')).toBe('ooojjjaaaccc');
+test('1233abc', function(){
+    expect(unzipString('1233abc')).toBe('aaabbbccc');
 });
-test('3233cdf4m4', function(){
-    expect(unzipString('3233cdf4m4')).toBe('cccdddfffmmmm');
+test('3abc', function(){
+    expect(unzipString('3abc')).toBe('aaabbbccc');
 });
-test(' ', function(){
-    expect(unzipString(' ')).toBe(' ');
+test('8abc', function(){
+    expect(unzipString('8abc')).toBe('aaaaaaaabbbbbbbbcccccccc');
 });
-test('abcde3', function(){
-    expect(unzipString('abcde3')).toBe('abcde');
+test('2abc', function(){
+    expect(unzipString('2abc')).toBe('aabbcc');
+});
+test('abcd', function(){
+    expect(unzipString('abcd')).toBe('abcd');
+});
+test('', function(){
+    expect(unzipString('')).toBe('');
+});
+test('1233abc', function(){
+    expect(unzipString('1233abc')).toBe('aaabbbccc');
+});
+test('22abc1d', function(){
+    expect(unzipString('22abc1d')).toBe('aabbccd');
 });
