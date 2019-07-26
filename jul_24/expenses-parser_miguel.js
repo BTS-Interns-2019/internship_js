@@ -25,12 +25,18 @@ function expensesParser(word){
     }
     //console.log("valor = "+valor);
     valores = valor.split("^");
+    let costos = 0;
+    let bal = parseFloat(balance);
     for(let i = 0; i<valores.length;i++){
         let elementos = valores[i].split(" ");
         let id = elementos[0];
+        let idn = parseInt(id);
         let descripcion = elementos[1];
         let costo = elementos[2];
-        temp[i]="{\nid: "+id+"\ndescription: "+descripcion+"\ncost: "+costo+"\n}"
+        let cost = parseFloat(costo)
+        costos = costos + cost;
+        bal = bal - cost;
+        temp[i]="{\nid: "+idn+",\ndescription: "+descripcion+",\ncost: "+cost+",\nbalance: "+bal+"\n}"
     }
     res="{\ninitialBalance: "+balance+",\nexpenses:[\n";
     for(let j = 0; j<temp.length; j++){
@@ -42,6 +48,7 @@ function expensesParser(word){
         }
     }
     res=res+"],\n";
+    res=res+"totalExpense: "+costos+",\naverageExpense: "+costos/2+",\nfinalBalance: "+bal+"\n";
     res=res+"}";
     return res;
 }
@@ -50,3 +57,9 @@ const input = `1000.00
 127 Video 7.45
 128 Gasoline 16.10`
 console.log(expensesParser(input));
+//First balance: 992.55
+//Second balance: 976.44999999
+/*Despues de los corchetes
+    totalExpense: 23.55, Suma de costos
+    averageExpense: 11.775, Promedio de costo
+    finalBalance:  976.44999999*/
