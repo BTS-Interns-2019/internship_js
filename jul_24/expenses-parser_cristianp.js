@@ -3,6 +3,7 @@ function expensesParser(dato){
     dato = dato.replace(/\n/g, " ");
     dato = dato.replace("  ", " ");
     dato = dato.split(" ");
+    console.log(dato);
     arreglo = dato.filter(Boolean);
     //console.log(arreglo);
     var dividido = (arreglo.length-1) / 3;  
@@ -42,7 +43,7 @@ function expensesParser(dato){
 128 Gasoline 16.10`));//*/
 
 
-/*console.log(expensesParser(`1000.00
+console.log(expensesParser(`1000.00
 
 127 Video 7.45
 
