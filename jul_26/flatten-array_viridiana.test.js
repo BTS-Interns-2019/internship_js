@@ -8,8 +8,7 @@ If the function argument is not array throw an exception*/
 
 function flattenArray(array) {
    
-    var newArray = [],
-        i;
+    var newArray = []
     for (i = 0; i < arguments.length; i++) {
         if (arguments[i] instanceof Array) {
             newArray = newArray.concat(flattenArray.apply(null, arguments[i]));
