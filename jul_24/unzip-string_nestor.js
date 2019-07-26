@@ -1,21 +1,24 @@
 function unzipString(data){
     data = data.split("");
     var res ='';
+    loop:
     for (let i = 0; i < data.length; i++) {
-        if(isNaN(data[i])){
-
+        if(!isNaN(data[i])){
+            var sum = 0;
+            for(var x = i+1; x < data.length; x++){
+                if(!isNaN(data[i]) == isNaN(data[x]) && typeof data[x] == "string"){
+                    res += data[x].repeat(data[i]);
+                    sum++;
+                }else if(!isNaN(data[i]) == !isNaN(data[x])){
+                    i += sum;
+                    continue loop;
+                }
+            }
+            i += sum;
+        }else{
+            res += data[i];
         }
-        
     }
     return res;
 }
-console.log(unzipString("1233abc")); // aaabbbccc
-✕ console.log(unzipString("3abc")) //=> aaabbbccc (5ms)
-  ✕ console.log(unzipString("8abc")) // => aaaaaaaabbbbbbbbcccccccc
-  ✕ console.log(unzipString("2abc")) //=> aabbcc (1ms)
-  ✕ console.log(unzipString("abcd")) //=> abcd
-  ✓ console.log(unzipString(""))
-  ✕ console.log(unzipString("1233abc")) // => aaabbbccc
-  ✕ console.log(unzipString("22abc1d")) // => aabbccd (1ms)
-
-module.exports = unzipString;    
+module.exports = unzipString;
