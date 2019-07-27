@@ -1,30 +1,41 @@
 function flattenArray(array) {
     let container = [];
+    let store;
+    let bar;
     try {
-        for (k in array) {
-            if (Array.isArray(array[k])) {
+        if (Array.isArray(array)) {
+            for (let i = 0; i < array.length; i++) {
+                if (Array.isArray(array[i])) {
+                    bar= flattenArray(array[i]);
+                    
+                    for (const iterator of bar) {
+                        container.push(iterator);
+                        console.log(iterator);
+                    }
+                }else{
+                    if (array[i]=== {}) {
+                        container[i]== array[i]
+                    }else{
+                        container.push(array[i]);
+                    }
+                    console.log(container);
+                    
+                }
                 
-                flattenArray(array[k])
-                
-                console.log(container);
-            } else {
-                
-                container.push(array[k]);
-                // flattenArray(array[k]);
-               
-                console.log("con",container);
             }
-            
-            console.log(container);
+        } else {
+            throw new Error("Solo arreglos");
+
         }
     } catch (error) {
         console.log(error)
     }
+    return container;
     // console.log("Cont",container);
 }
 
 
 
-let exampleArray = [2, 3, 8, [50, 10], 6];
+let exampleArray = [2, 3, 8, {a:50, b:10}, 6];
 let bar = "dsa";
 console.log(flattenArray(exampleArray));
