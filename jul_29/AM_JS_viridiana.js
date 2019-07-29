@@ -22,14 +22,18 @@ function eureka(arr, string) {
 //   **Hint:** the original arrays must not be modified
 
 function laFilaDeLasTortillas(array1, array2){
-let newArray=[];
-for(let i=0; i<array1.length; i++){
-    newArray=array1+array2;
-    console.log(newArray)
-
-}
-
-laFilaDeLasTortillas([1, 2, 3], [4, 5, 6]);
+    let newArray=[];
+    for(let value of array1){
+      newArray[newArray.length]=value
+    }
+    for(let value1 of array2){
+      newArray[newArray.length]=value1
+    }
+      return newArray;
+    }
+    
+    
+    laFilaDeLasTortillas([1, 2, 3], [4, 5, 6])
 
 
 // 3. Write a function `ontas` that takes an array and a string as arguments and returns the
