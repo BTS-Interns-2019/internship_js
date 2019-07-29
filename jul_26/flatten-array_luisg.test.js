@@ -1,6 +1,6 @@
 function flattenArray(array) {
     if (!Array.isArray(array)) {
-        throw "NoArrayException: " + array + " No es un arreglo"
+        throw new Error("NoArrayException: " + array + " No es un arreglo")
     } else {
         let res = [];
         for (let p of array) {
@@ -31,6 +31,10 @@ test('Prueba 3', function () {
 
 test('Prueba 4', function () {
     expect(flattenArray([])).toStrictEqual([]);
+})
+
+test('Prueba 5', function () {
+    expect(flattenArray(0)).toStrictEqual("NoArrayException: " + 0 + " No es un arreglo");
 })
 
 
