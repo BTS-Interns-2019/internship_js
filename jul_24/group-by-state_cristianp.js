@@ -24,15 +24,25 @@ function groupByState(line){
             state: sta
         }
         var antes = Object.getOwnPropertyNames(todo);
-        if(antes.indexOf())
+        if(antes.indexOf(sta)==-1){
+            var ne ={};
+            ne.code = sta;
+            var nombre = estado(sta);
+            ne.name = nombre;
+            ne.people=[];
+            ne.people[0]=persona;
+            todo[sta]=ne;
+        }else{
+            todo[sta].people.push(persona);
+        }
         i+=6;
-        console.log("ciclado");
+        //console.log("ciclado");
     }
     //primero 2 nombre
     //3ro direccion
     //5 estado
-
-    console.log(line);
+    //console.log(line);
+    return todo;
 }
 
 function estado(abrev){
@@ -62,6 +72,6 @@ function estado(abrev){
     }
 }
 
-groupByState(`John Snow, 341 Kings Road, KL
+console.log(groupByState(`John Snow, 341 Kings Road, KL
 Arya Stark, 22 No Where St, WF
-Jaime Lannister, 73 1st Street, KL`);
+Jaime Lannister, 73 1st Street, KL`));
