@@ -93,7 +93,7 @@ function joinMe(array, string) {
 
 // 5. Write a function `slicesOfBread` that takes an array and 2 numbers as an argument and returns
 //   an array with the elements between the 2 numbers
-// slicesOfBread([1, 3, 2, 3], 1, 3);  // [3, 2]
+// slicesOfBread([1, 3, 2, 3], 1, 3);  // [3, 2] // >1, <=3
 
 array = [1,3,2,3];
 console.log(slicesOfBread(array,1,3));
