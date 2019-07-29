@@ -1,9 +1,20 @@
-input = "1000.00 127 Video 7.45 128 Gasoline 16.10";
-//input = "";
+input = `1000.00
+127 Video 7.45
+128 Gasoline 16.10`
+
+// input = `1000.00
+
+// 127 Video 7.45
+
+// 128 Gasoline 16.10
+// `
+
 console.log(expensesParser(input));
 
 function expensesParser(input) {
-    array = input.split(' ');
+    input = input.replace(/\n\n/g, " ");
+    input = input.replace(/\n/g, " ");
+    array = input.split(' '); 
     var output = new Object();
     if (array.length == 1) {
         console.log('BLANK LINE');
@@ -19,8 +30,7 @@ function expensesParser(input) {
         }
         output.totalExpense = tE;
         output.averageExpense = tE/n;
-        output.finalBalance = Number(array[0])-tE;
-
+        
         k = 1;
         iB = Number(array[0]);
         for (i = 0; i < n; i++) {
@@ -44,9 +54,10 @@ function expensesParser(input) {
 
                     case 4:
                         iB = iB - Number(array[k-1]);
-                        output.expenses[i].balance = Number(iB.toFixed(2));
+                        output.expenses[i].balance = iB;
                         break;
                 }        
+                output.finalBalance = iB;
             }
         }
     }

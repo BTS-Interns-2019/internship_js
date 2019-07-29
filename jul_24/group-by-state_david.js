@@ -7,9 +7,11 @@ Jaime Lannister, 73 1st Street, KL`
 
 a = [];
 b = input.split(/\n/);
+//console.log(b);
 for (i = 0; i < b.length; i++) {
     a[i] = b[i].split(',');   
 }
+console.log(a);
 
 name = [];
 address = [];
@@ -31,4 +33,4 @@ for (i = 0; i < state.length; i++) {
 console.log(output);
 
 // }
-localStorage//module.exports = groupByState;
+//module.exports = groupByState;

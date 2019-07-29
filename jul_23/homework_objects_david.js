@@ -38,11 +38,11 @@ function entries(objeto) {
     return resultado;
 }
 
-array = entries(obj);
-console.log(array.length);
-for (i = 0; i < array.length; i++) {
-    console.log(array[i]);               
-}
+// array = entries(obj);
+// console.log(array.length);
+// for (i = 0; i < array.length; i++) {
+//     console.log(array[i]);               
+// }
 
 // // Object.fromEntries()
 // console.log('Objetc.fromEntries()');

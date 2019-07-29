@@ -44,7 +44,6 @@ console.log(Number.MIN_SAFE_INTEGER);
 console.log(Number.MAX_SAFE_INTEGER);
 
 // parseFloat()
-/* do a description and gime me 3 examples of its ussage */
 // The parseFloat() function parses an argument and returns a floating point number.
 console.log(parseFloat(3.14));
 console.log(parseFloat('3.14'));
@@ -53,7 +52,6 @@ console.log(parseFloat('0.0314E+2'));
 console.log();
 
 // parseInt()
-/* do a description and gime me 3 examples of its ussage */
 // The parseInt() function parses a string argument and returns an integer of the specified radix.
 console.log(parseInt('0xF', 16));
 console.log(parseInt('F', 16));
@@ -61,7 +59,6 @@ console.log(parseInt('17', 8));
 console.log();
 
 // isFinite()
-/* do a description and gime me 3 examples of its ussage */
 // The global isFinite() function determines whether the passed value is a finite number. If  needed, the parameter is first converted to a number.
 console.log(isFinite(0));
 console.log(isFinite(-Infinity));
@@ -69,7 +66,6 @@ console.log(Number.isFinite(NaN));
 console.log();
 
 // isInteger()
-/* do a description and gime me 3 examples of its ussage */
 // The Number.isInteger() method determines whether the passed value is an integer.
 console.log(Number.isInteger(5.0));
 console.log(Number.isInteger(Math.PI));
@@ -77,7 +73,6 @@ console.log(Number.isInteger('10'));
 console.log();
 
 // isNaN()
-/* do a description and gime me 3 examples of its ussage */
 // The isNaN() function determines whether a value is NaN or not.
 console.log(isNaN(NaN));
 console.log(isNaN(undefined));
@@ -85,7 +80,6 @@ console.log(isNaN('37.37'));
 console.log();
 
 // isSafeInteger()
-/* do a description and gime me 3 examples of its ussage */
 // The Number.isSafeInteger() method determines whether the provided value is a number that is a safe integer.
 console.log(Number.isSafeInteger(3));
 console.log(Number.isSafeInteger(3.0));
@@ -93,7 +87,6 @@ console.log(Number.isSafeInteger(Math.pow(2, 53)));
 console.log();
 
 // toExponential()
-/* do a description and gime me 3 examples of its ussage */
 // The toExponential() method returns a string representing the Number object in exponential notation.
 console.log(Number(77.1234).toExponential());
 console.log(Number(77.1234).toExponential(2));
@@ -101,7 +94,6 @@ console.log(7 .toExponential(4));
 console.log();
 
 // toFixed()
-/* do a description and gime me 3 examples of its ussage */
 // The toFixed() method formats a number using fixed-point notation.
 console.log((1.23e+20).toFixed(6));
 console.log((1.23e-10).toFixed(2));
@@ -109,7 +101,6 @@ console.log(-2.34.toFixed());
 console.log();
 
 // toPrecision()
-/* write a description and gime me 3 examples of its ussage */
 // The toPrecision() method returns a string representing the Number object to the specified precision.
 console.log((1.23e+20).toPrecision(6));
 console.log((1.23e-10).toPrecision(2));
@@ -120,7 +111,6 @@ console.log();
 // String
 
 // fromCharCode()
-/* give me an example that does an action a string */
 // The static String.fromCharCode() method returns a string created from the specified sequence of UTF-16 code units.
 console.log(String.fromCharCode(65, 66, 67));
 console.log(String.fromCharCode(0x2014));
@@ -128,7 +118,6 @@ console.log(String.fromCharCode(0x12014));
 console.log();
 
 // fromCodePoint()
-/* give me an example that does an action a string */
 // The static String.fromCodePoint() method returns a string created by using the specified sequence of code points.
 console.log(String.fromCodePoint(42));
 console.log(String.fromCodePoint(65, 90));
@@ -136,7 +125,6 @@ console.log(String.fromCodePoint(0x2F804));
 console.log();
 
 // charAt()
-/* give me an example that does an action a string */
 // The String object's charAt() method returns a new string consisting of the single UTF-16 code unit located at the specified offset into the string.
 console.log('Brave new world'.charAt(0));
 console.log('Brave new world'.charAt(1));
@@ -144,7 +132,6 @@ console.log('Brave new world'.charAt(999));
 console.log();
 
 // charCodeAt()
-/* give me an example that does an action a string */
 // The charCodeAt() method returns an integer between 0 and 65535 representing the UTF-16 code unit at the given index.
 console.log('Brave new world'.charCodeAt(0));
 console.log('Brave new world'.charCodeAt(1));
@@ -152,7 +139,6 @@ console.log('Brave new world'.charCodeAt(999));
 console.log();
 
 // codePointAt()
-/* give me an example that does an action a string */
 // The codePointAt() method returns a non-negative integer that is the Unicode code point value.
 console.log('Brave new world'.codePointAt(0));
 console.log('Brave new world'.codePointAt(1));
@@ -160,27 +146,23 @@ console.log('Brave new world'.codePointAt(999));
 console.log();
 
 // concat()
-/* give me an example that does an action a string */
 //The concat() method concatenates the string arguments to the calling string and returns a new string.
 console.log('Hello'.concat(' ', 'World'));
 console.log();
 
 // endsWith()
-/* give me an example that does an action a string */
 // The endsWith() method determines whether a string ends with the characters of a specified string, returning true or false as appropriate.
 console.log('Hello'.endsWith('lo', 5));
 console.log('Hello'.endsWith('lo', 4));
 console.log();
 
 // includes()
-/* give me an example that does an action a string */
 //The includes() method determines whether one string may be found within another string, returning true or false as appropriate.
 console.log('Blue Whale'.includes('Blue'));
 console.log('Blue Whale'.includes('blue'));
 console.log();
 
 // indexOf()
-/* give me an example that does an action a string */
 // The indexOf() method returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex.
 console.log('Blue Whale'.indexOf('Whale', 0));
 console.log('Blue Whale'.indexOf('Whale', 5));
@@ -188,7 +170,6 @@ console.log('Blue Whale'.indexOf('Whale', 6));
 console.log();
 
 // lastIndexOf()
-/* give me an example that does an action a string */
 // ☺The lastIndexOf() method returns the index within the calling String object of the last occurrence of the specified value, searching backwards from fromIndex.
 
 console.log('canal'.lastIndexOf('a'));
@@ -197,7 +178,6 @@ console.log('canal'.lastIndexOf('a', 0));
 console.log();
 
 // localeCompare()
-/* give me an example that does an action a string */
 //The localeCompare() method returns a number indicating whether a reference string comes before or after or is the same as the given string in sort order.
 console.log('a'.localeCompare('a'));
 console.log('a'.localeCompare('b'));
@@ -205,13 +185,11 @@ console.log('b'.localeCompare('a'));
 console.log();
 
 // normalize()
-/* give me an example that does an action a string */
 // The normalize() method returns the Unicode Normalization Form of a given string (if the value isn't a string, it will be converted to one first).
 console.log('Hello World'.normalize());
 console.log();
 
 // padEnd()
-/* give me an example that does an action a string */
 // The padEnd() method pads the current string with a given string (repeated, if needed) so that the resulting string reaches a given length. The padding is applied from the end of the current string.
 console.log('abc'.padEnd(10));
 console.log('abc'.padEnd(10, "foo"));
@@ -219,7 +197,6 @@ console.log('abc'.padEnd(6, "123456"));
 console.log();
 
 // padStart()
-/* give me an example that does an action a string */
 // The padStart() method pads the current string with another string (multiple times, if needed) until the resulting string reaches the given length. The padding is applied from the start of the current string.
 console.log('abc'.padStart(10));
 console.log('abc'.padStart(10, "foo"));
@@ -227,27 +204,23 @@ console.log('abc'.padStart(6,"123465"));
 console.log();
 
 // repeat()
-/* give me an example that does an action a string */
-//
+
 console.log('Hello World'.repeat(2));
 console.log();
 
 
 // replace()
-/* give me an example that does an action a string */
 // The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match. If pattern is a string, only the first occurrence will be replaced.
 console.log('Hello World'.replace(/world/i, 'David'));
 console.log();
 
 // search()
-/* give me an example that does an action a string */
 // The search() method executes a search for a match between a regular expression and this String object.
 console.log("hey JudE".search(/[A-Z]/g));
 console.log("hey JudE".search(/[.]/g));
 console.log();
 
 // slice()
-/* give me an example that does an action a string */
 // The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
 console.log('The morning is upon us.'.slice(12));
 console.log('The morning is upon us.'.slice(1, 8));
@@ -255,71 +228,60 @@ console.log('The morning is upon us.'.slice(4, -2));
 console.log();
 
 // split()
-/* give me an example that does an action a string */
 // The split() method splits a String object into an array of strings by separating the string into substrings, using a specified separator string to determine where to make each split.
 console.log('David Martin Silva Cruz'.split(' '));
 console.log('David Martin Silva Cruz'.split());
 console.log();
 
 // startsWith()
-/* give me an example that does an action a string */
 // The startsWith() method determines whether a string begins with the characters of a specified string, returning true or false as appropriate.
 console.log('Saturday night plans'.startsWith('Sat'));
 console.log('Saturday night plans'.startsWith('Sat', 3));
 console.log();
 
 // substring()
-/* give me an example that does an action a string */
 // The substring() method returns the part of the string between the start and end indexes, or to the end of the string.
 console.log('Mozilla'.substring(2));
 console.log('Mozilla'.substring(1, 3));
 console.log();
 
 // toLocaleLowerCase()
-/* give me an example that does an action a string */
 // The toLocaleLowerCase() method returns the calling string value converted to lower case, according to any locale-specific case mappings.
 console.log('ALPHABET'.toLocaleLowerCase());
 console.log();
 
 // toLocaleUpperCase()
-/* give me an example that does an action a string */
 // The toLocaleUpperCase() method returns the calling string value converted to upper case, according to any locale-specific case mappings.
 console.log('alphabet'.toLocaleUpperCase());
 console.log();
 
 // toLowerCase()
-/* give me an example that does an action a string */
 // The toLowerCase() method returns the calling string value converted to lower case.
 console.log('ALPHABET'.toLowerCase());
 console.log();
 
 // toString()
-/* give me an example that does an action a string */
 // The toString() method returns a string representing the specified object.
 x = new String('Hello World');
 console.log(x.toString());
 console.log();
 
 // toUpperCase()
-/* give me an example that does an action a string */
 // The toUpperCase() method returns the calling string value converted to uppercase (the value will be converted to a string if it isn't one).
 console.log('alphabet'.toUpperCase());
 console.log();
 
 // trim()
-/* give me an example that does an action a string */
 // The trim() method removes whitespace from both ends of a string. Whitespace in this context is all the whitespace characters (space, tab, no-break space, etc.) and all the line terminator characters.
 console.log('   foo  '.trim());
 console.log();
 
 // trimEnd()
-/* give me an example that does an action a string */
 // The trimEnd() method removes whitespace from the end of a string. trimRight() is an alias of this method.
 console.log('   foo  '.trimEnd());
 console.log();
 
 // trimStart()
-/* give me an example that does an action a string */
 // The trimStart() method removes whitespace from the beginning of a string. trimLeft() is an alias of this method.
 console.log('   foo  '.trimStart());
 console.log();
