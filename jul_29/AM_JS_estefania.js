@@ -60,23 +60,25 @@ console.log(ontasAhora([1, 3, 2, 3], '3'));
 function joinMe(arr, str) {
     arr2= ''
     for(i=0; i< arr.length; i++){
-        switch(str) {
-        case '-':
-           arr2= [...arr];
-           i++
-        break;
+       arr2 += i
+       if(i!=arr.length-1){
+        arr2+=str;
         }
     }
     return arr2
 }
+
 console.log(joinMe([1, 3, 2, 3], '-'));
 
 
 // 5. Write a function `slicesOfBread` that takes an array and 2 numbers as an argument and returns
 //   an array with the elements between the 2 numbers
-function slicesOfBread(arr, numbers) {
-
+function slicesOfBread(arr, number1, number2) {  
+    let arr2 = [];
+    for(i = number1;i < number2; i++){
+        arr2[arr2.length] = arr[i];
+    }
+    return arr2;
 }
-
-// slicesOfBread([1, 3, 2, 3], 1, 3);  // [3, 2]
+console.log(slicesOfBread([1, 3, 2, 3], 1, 3));  // [3, 2]
 
