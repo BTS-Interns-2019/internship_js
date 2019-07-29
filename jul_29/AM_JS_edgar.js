@@ -57,7 +57,7 @@ function joinMe (arr, cad){
    if (i < arr.length - 1){
         arra += arr [i];
         arra += cad;
-     } else if (arr[i] == arr.length){
+     } else if (i == arr.length - 1){
         arra += arr[i];
     } 
     }
