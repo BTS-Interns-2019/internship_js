@@ -1,6 +1,6 @@
 const { forEach, map, filter, reduce, reduceRight } = require('./am_iterators_hector');
 
-const testArray = [1, 2, 3, 4 ,5];
+const testArray = [1, 2, 3, 4, 5];
 
 // forEach
 test(`Returning each item in test array with forEach`, () => {
