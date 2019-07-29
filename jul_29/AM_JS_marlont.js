@@ -7,13 +7,15 @@
 
 function eureka(array, str){
   var result = false;
-
-  for(var i=0; i<array.length; i++){
-    if(str == array[i]){
-      result = true;
-    }
+  if(typeof str != 'undefined'){
+    for(var i=0; i<array.length; i++){
+        if(str == array[i]){
+          result = true;
+        }
+      }
+  } else {
+      console.error('ERROR: The second argument is undefined');
   }
-
   return result;
 }
 
@@ -24,18 +26,21 @@ function eureka(array, str){
 // laFilaDeLasTortillas([1, 2, 3], [4, 5, 6]);
 
 function laFilaDeLasTortillas(array1, array2){
-  var longitudTotal = array1.length + array2.length;
-  var result = new Array(longitudTotal);
-  var indiceActual = 0;
-
-  for(var i=0; i<array1.length; i++){
-    result[indiceActual] = array1[i];
-    indiceActual ++;
-  }
-
-  for(var i=0; i<array2.length; i++){
-    result[indiceActual] = array2[i];
-    indiceActual ++;
+  var result = [];
+  if(typeof array1 != 'undefined' && typeof array2 != 'undefined'){
+    for(var i=0; i<array1.length; i++){
+        if(typeof array1[i] != 'undefined'){
+          result[result.length] = array1[i];
+        }
+      }
+    
+      for(var i=0; i<array2.length; i++){
+        if(typeof array2[i] != 'undefined'){
+          result[result.length] = array2[i];
+        }
+      }
+  } else {
+      console.error("ERROR: Second Argument or both arguments are undefined");
   }
 
   return result;
@@ -48,12 +53,17 @@ function laFilaDeLasTortillas(array1, array2){
 
 function ontas(array, str){
   var result = -1;
-  for(var i=0; i<array.length; i++){
-    if(str == array[i]){
-      result = i;
-      return result;
+  if(typeof str != 'undefined'){
+    for(var i=0; i<array.length; i++){
+      if(str == array[i]){
+        result = i;
+        return result;
+      }
     }
+  } else {
+      console.error("ERROR: str is undefined");
   }
+  
   return result;
 }
 
@@ -64,11 +74,15 @@ function ontas(array, str){
 
 function ontasAhora(array, str){
     var result = -1;
-    for(var i=array.length-1; i>=0; i--){
-      if(str == array[i]){
-        result = i;
-        return result;
+    if(typeof str != 'undefined'){
+      for(var i=array.length-1; i>=0; i--){
+        if(str == array[i]){
+          result = i;
+          return result;
+        }
       }
+    } else {
+      console.error("ERROR: str is undefined");
     }
     return result;
   }
@@ -82,10 +96,12 @@ function joinMe(array, str){
   var result = "";
 
   for(var i=0; i<array.length; i++){
-    result += array[i];
+    if(typeof array[i] != 'undefined'){
+      result += array[i];
 
-    if(i < array.length-1){
-      result += str;
+      if(i < array.length-1){
+        result += str;
+      }
     }
   }
 
@@ -98,15 +114,23 @@ function joinMe(array, str){
 // slicesOfBread([1, 3, 2, 3], 1, 3);  // [3, 2]
 
 function slicesOfBread(array, start, end){
+  if(typeof start == 'undefined'){
+    console.error("ERROR: start is undefined");
+  }
+
+  if(typeof end == 'undefined'){
+    console.error("ERROR: end is undefined");
+  }
+
   if(end > array.length){
     end = array.length;
   }
-  var result = new Array(end-start);
-  var indiceActual = 0;
+  var result = [];
 
   for(var i=start; i<end; i++){
-    result[indiceActual] = array[i];
-    indiceActual++;
+    if(typeof array[i] != 'undefined'){
+      result[result.length] = array[i];
+    }
   }
 
   return result;
