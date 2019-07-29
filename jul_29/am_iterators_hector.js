@@ -45,15 +45,6 @@ function reduceRight(callback, arr, init) {
   return result;
 }
 
-// const arr = [1, 2, 3];
-// forEach((elem, index, a) => {
-//   console.log(elem, index, a);
-// }, arr);
-// console.log(map((elem, index) => elem * index, arr));
-// console.log(filter((elem, index) => elem > index, arr));
-// console.log(reduce((acc, cur) => acc + cur, arr));
-// console.log(reduceRight((acc, cur) => acc - cur, arr));
-
 module.exports = {
   forEach,
   map,
