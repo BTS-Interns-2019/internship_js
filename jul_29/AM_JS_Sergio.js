@@ -1,9 +1,10 @@
 function eureka(arry,n) {
     let verdad = false;
     for (let i = 0; i < arry.length; i++) {
+        if(arry1[i] !== undefined){
         if(arry[i] == n){verdad = true;}
-        
-    }
+        }
+
     return verdad;
 }
 
