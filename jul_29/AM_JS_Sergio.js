@@ -1,11 +1,14 @@
 function eureka(arry,n) {
     let verdad = false;
     for (let i = 0; i < arry.length; i++) {
-        if(arry1[i] !== undefined){
-        if(arry[i] == n){verdad = true;}
+        if(arry[i] !== undefined){
+        if(arry[i] == n){
+            verdad = true;
+        }
         }
 
     return verdad;
+}
 }
 
 console.log(eureka([1, 2, 3], "2"));
@@ -33,7 +36,9 @@ console.log(laFilaDeLasTortillas([1, 2, 3], [4, , 6]));
 function ontas(arry, pos) {
     let noEncontrado = -1;
     for (let l = 0; l < arry.length; l++) {
-       if(arry[l] == pos){return pos = l}
+       if(arry[l] == pos){
+           return pos = l
+        }
         
     }
     return noEncontrado;
@@ -43,7 +48,9 @@ console.log(ontas([1, 3, 2, 3], '3'));
 function ontasAhora(arry, pos) {
     let noEncontrado = -1;
     for (let l = arry.length; l > 0; l--) {
-       if(arry[l] == pos){return pos = l}
+       if(arry[l] == pos){
+           return pos = l
+        }
         
     }
     return noEncontrado;
@@ -56,7 +63,9 @@ function joinMe(arry,string) {
     let res = "";
     for (let i = 0; i < arry.length; i++) {
         res+= arry[i];
-        if(i<arry.length-1){res+=string}
+        if(i<arry.length-1){
+            res+=string
+        }
         
     }
     
