@@ -9,23 +9,22 @@ function groupByState(line){
     line = line.replace(/,/g, " ");
     line = line.split(" ");
     line = line.filter(Boolean);
-    obj = new Object;
+    todo = {};
     for(i=0;i<line.length;i++){
         var x = line[5];
         var e = estado(line[5]);
-        /*var ob = x: {
-            code: line[5]
-            people:[
-            {
-                name: line[0] + " " + line[1],
-                address: line[2] + " " + line[3] + " " + line[4],
-                state: line[5]
-            }]
-        };//*/
-        /*ob.name = line[0] + " " + line[1];
-        ob.address= line[2] + " " + line[3] + " " + line[4];
-        ob.state = line[5];//*/
-
+        obj = new Object;
+        
+        var nombre = line[0] + " " + line[1];
+        var dir= line[2] + " " + line[3] + " " + line[4];
+        var sta = line[5];//*/
+        var persona = {
+            name: nombre,
+            address: dir,
+            state: sta
+        }
+        var antes = Object.getOwnPropertyNames(todo);
+        if(antes.indexOf())
         i+=6;
         console.log("ciclado");
     }
