@@ -57,11 +57,7 @@ console.log(ontasAhora([1, 3, 2, 3], '3'));
 function joinMe(arr, str) {
   let resultStr = '';
   for (let i = 0; i < arr.length; i++) {
-    if ((i + 1) == arr.length) {
-      resultStr += arr[i];
-    } else {
-      resultStr += `${arr[i]}${str}`;
-    }
+    resultStr += (i + 1) == arr.length ? arr[i] : `${arr[i]}${str}`;
   }
   return resultStr;
 }
