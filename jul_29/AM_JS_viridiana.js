@@ -79,7 +79,6 @@ function ontasAhora(arr, string) {
 // joinMe([1, 3, 2, 3], '-');
 
 
-
 // 5. Write a function `slicesOfBread` that takes an array and 2 numbers as an argument and returns
 //   an array with the elements between the 2 numbers
 
