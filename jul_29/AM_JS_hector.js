@@ -18,13 +18,15 @@ function laFilaDeLasTortillas(...arr) {
   let resultArr = [];
   for (let subArr of arr) {
     for (let elem of subArr) {
-      resultArr[resultArr.length] = elem;
+      if (typeof elem !== 'undefined' && elem !== null) {
+        resultArr[resultArr.length] = elem;
+      }
     }
   }
   return resultArr;
 }
 
-console.log(laFilaDeLasTortillas([1, 2, 3], [4, 5, 6]));
+console.log(laFilaDeLasTortillas([1, 2, 3, , null], [4, 5, 6]));
 
 // 3. Write a function `ontas` that takes an array and a string as arguments and returns the
 //   *first* index of the element if the element was found, if not then return -1
@@ -57,24 +59,26 @@ console.log(ontasAhora([1, 3, 2, 3], '3'));
 function joinMe(arr, str) {
   let resultStr = '';
   for (let i = 0; i < arr.length; i++) {
-    resultStr += (i + 1) == arr.length ? arr[i] : `${arr[i]}${str}`;
+    if (typeof arr[i] !== 'undefined' && arr[i] !== null) {
+      resultStr += (i + 1) == arr.length ? arr[i] : `${arr[i]}${str}`;
+    }
   }
   return resultStr;
 }
 
-console.log(joinMe([1, 3, 2, 3], '-'));
+console.log(joinMe([1, 3, null, 2, , 3], '-'));
 
 // 5. Write a function `slicesOfBread` that takes an array and 2 numbers as an argument and returns
 //   an array with the elements between the 2 numbers
 function slicesOfBread(arr, num1, num2) {
   const resultArr = [];
   for (let i = 0; i < arr.length; i++) {
-    if (i > ontas(arr, num1) && i < ontasAhora(arr, num2)) {
+    if (i > ontas(arr, num1) && i < ontasAhora(arr, num2) && (typeof arr[i] !== 'undefined' && arr[i] !== null)) {
       resultArr[resultArr.length] = arr[i];
     }
   }
   return resultArr;
 }
 
-console.log(slicesOfBread([1, 3, 2, 3], 1, 3));  // [3, 2]
+console.log(slicesOfBread([1, 3, 2, null, 3], 1, 3));  // [3, 2]
 
