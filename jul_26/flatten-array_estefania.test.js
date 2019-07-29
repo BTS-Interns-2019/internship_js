@@ -6,17 +6,14 @@
 // it should be able to do the abive at any deph
 // if the function argument is not an array 'throw' an exception
 
-var array = [1, 2, 3, 4, 5];
-
-
-
 var datos = [1, 2, ['a', 'b'], 3, 4]
 var result= []
 function flattenArray(arr) {
     for(i=0; i<arguments.length; i++){
         if (arguments[i] instanceof Array){
         } else {
-            result.push(arguments[i])
+            result.push(i)
+            return result
         }
     }
 }
