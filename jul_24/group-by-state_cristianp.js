@@ -9,31 +9,40 @@ function groupByState(line){
     line = line.replace(/,/g, " ");
     line = line.split(" ");
     line = line.filter(Boolean);
-    obj = new Object;
+    todo = {};
     for(i=0;i<line.length;i++){
         var x = line[5];
         var e = estado(line[5]);
-        /*var ob = x: {
-            code: line[5]
-            people:[
-            {
-                name: line[0] + " " + line[1],
-                address: line[2] + " " + line[3] + " " + line[4],
-                state: line[5]
-            }]
-        };//*/
-        /*ob.name = line[0] + " " + line[1];
-        ob.address= line[2] + " " + line[3] + " " + line[4];
-        ob.state = line[5];//*/
-
+        obj = new Object;
+        
+        var nombre = line[0] + " " + line[1];
+        var dir= line[2] + " " + line[3] + " " + line[4];
+        var sta = line[5];//*/
+        var persona = {
+            name: nombre,
+            address: dir,
+            state: sta
+        }
+        var antes = Object.getOwnPropertyNames(todo);
+        if(antes.indexOf(sta)==-1){
+            var ne ={};
+            ne.code = sta;
+            var nombre = estado(sta);
+            ne.name = nombre;
+            ne.people=[];
+            ne.people[0]=persona;
+            todo[sta]=ne;
+        }else{
+            todo[sta].people.push(persona);
+        }
         i+=6;
-        console.log("ciclado");
+        //console.log("ciclado");
     }
     //primero 2 nombre
     //3ro direccion
     //5 estado
-
-    console.log(line);
+    //console.log(line);
+    return todo;
 }
 
 function estado(abrev){
@@ -63,6 +72,6 @@ function estado(abrev){
     }
 }
 
-groupByState(`John Snow, 341 Kings Road, KL
+console.log(groupByState(`John Snow, 341 Kings Road, KL
 Arya Stark, 22 No Where St, WF
-Jaime Lannister, 73 1st Street, KL`);
+Jaime Lannister, 73 1st Street, KL`));
