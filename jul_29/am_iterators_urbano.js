@@ -11,7 +11,6 @@ function forEach(callback, array) {
 
 }
 
-module.exports = forEach;
 
 // console.log(forEach((i) => {  console.log(i+="-") }, arry));
 
@@ -25,7 +24,6 @@ function map(callback, array) {
     return newArray;
 }
 
-module.exports = map;
 console.log(map((i) => {
     return i.toUpperCase()
 }, arry))
@@ -42,7 +40,6 @@ function filter(callback, array) {
     return newArray
 }
 
-module.exports = filter;
 
 console.log(filter((i) => {
     if (i) {
@@ -66,7 +63,6 @@ function reduce(callback, array, initial) {
     return ac;
 }
 
-module.exports = reduce;
 console.log(reduce(((acumulate, c) => {
     return acumulate + c
 }), arr2, 0));
@@ -87,9 +83,15 @@ function reduceRight(callback, array, initial) {
     return ac;
 }
 
-module.exports = reduceRight;
 
 console.log(reduceRight(((a, c) => {
     return (a + c)
 }), arr, "2"));
 
+module.exports = {
+    forEach,
+    map,
+    filter,
+    reduce,
+    reduceRight
+};
