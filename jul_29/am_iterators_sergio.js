@@ -1,6 +1,6 @@
 let arry = ["Sergio","Rabanito","Urbanus","Pere","Powers","Marlon"];
 
-////  FOR EACH
+// FOR EACH
 function forEach(f,arry) {
     let res = "+";
     for (let i of arry) {
@@ -13,6 +13,7 @@ function forEach(f,arry) {
 }
 
 console.log(forEach(function(uno,dos) {
+    console.log(typeof uno);
     return uno + dos;
 },arry));
 
@@ -55,4 +56,9 @@ function reduce(f,arry) {
 console.log(reduce(function (vAnt,vAct,i,names) {let res = "";for (i = 0; i < names.length; i++) {vAnt = names[i-1];vAct = names[i]; i = i;console.log(vAnt);
  res += vAct;}return res;  },arry));
 
+ module.exports = forEach;
+ module.exports = map;
+ module.exports = filter;
+ module.exports = reduce;
+ //module.exports =
 
