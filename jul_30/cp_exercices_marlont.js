@@ -23,24 +23,28 @@ function onlyEven(array){
 }
 
 function google(str){
-  /*switch(str){
+  switch(str){
       case 'find' : {
           return {
               name: 'find',
-              description: '',
-              params:
+              description: 'Returns the value of the first element in the array that satisfies the provided testing function.\nOtherwise undefined is returned.',
+              params:[
+              {name:'callback', description: }
+              ]
           }
       }
-  }*/
+  }
 }
 
 function evenNumbers(array){
   var ind = [];
-  var it = array.entries();
-  for(var i=0; i<array.length; i++){
-    var actual = it.next().value;
-    if(actual[1]%2 === 0){
-      ind.push(actual[0]);
+  if(typeof array != 'undefined'){
+    var it = array.entries();
+    for(var i=0; i<array.length; i++){
+      var actual = it.next().value;
+      if(actual[1]%2 === 0){
+        ind.push(actual[0]);
+      }
     }
   }
 return ind;

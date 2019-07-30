@@ -42,6 +42,27 @@ test('Undefined Input', function(){
 
 //google() Function
 
+//evenNumbers() Function
+test('All the numbers are even', function(){
+    expect(evenNumbers([2,4,6,8])).toBe([0,1,2,3]);
+})
+
+test('Even and Odd Numbers', function(){
+    expect(evenNumbers([2,4,5,6,7,8])).toBe([0,1,3,5]);
+})
+
+test('All the numbers are odd', function(){
+    expect(evenNumbers([1,3,5,7])).toBe([]);
+})
+
+test('Empty Array', function(){
+    expect(evenNumbers([])).toBe([]);
+})
+
+test('Undefined Input', function(){
+    expect(evenNumbers()).toBe([]);
+})
+
 /////////////////////////////////////
 const {
     login, onlyEven, google, evenNumbers
