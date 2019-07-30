@@ -20,14 +20,11 @@ function map(array, callback){
 function filter(array, callback){
   var result = [];
   for(var i=0; i<array.length; i++){
-    console.log(result + "Antes");
     var res = callback(array[i]);
     console.log(res);
     if(!!res == true){
-      console.log("Si entra");
       result.push(array[i]);
     }
-    console.log(result + "Despues");
   }
   return result;
 }
