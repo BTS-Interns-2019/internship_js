@@ -21,7 +21,7 @@ test('Undefined Input', function(){
 
 //onlyEven() Function
 test('Even Numbers', function(){
-    expect(onlyEven([2,4,6,8])).toBe([2,4,6,8]);
+    expect(onlyEven([2,4,6,8])).toStrictEqual([2,4,6,8]);
 })
 
 test('Odd Number', function(){
@@ -29,7 +29,7 @@ test('Odd Number', function(){
 })
 
 test('Input String', function(){
-    expect(onlyEven([2,'4',6,8])).toBe(false);
+    expect(onlyEven([2,'hi',6,8])).toBe(false);
 })
 
 test('Empty Array', function(){

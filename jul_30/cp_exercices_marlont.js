@@ -23,7 +23,7 @@ function onlyEven(array){
 }
 
 function google(str){
-  switch(str){
+  /*switch(str){
       case 'find' : {
           return {
               name: 'find',
@@ -31,7 +31,7 @@ function google(str){
               params:
           }
       }
-  }
+  }*/
 }
 
 function evenNumbers(array){
