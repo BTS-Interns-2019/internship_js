@@ -3,7 +3,7 @@ const {
     google,
     numbers
 
-} = require ('./cp_exercices_viridiana')
+} = require ('./cp_exercices_viridiana.js')
 
 //-----------Login 
 TextDecoderStream('El resultado de la prueba es:',()=>{
