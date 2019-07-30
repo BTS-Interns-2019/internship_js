@@ -22,6 +22,7 @@ function filter(callBack, arreglo){
 }
 let arr=[2,2,3,4,5,6];
 console.log(filter(x => x>3, arr));
+console.log(arr.filter(x=>x>3));
 
 function reduce(callBack, arreglo, inicial){
     if (typeof(inicial)=='undefined') inicial=arreglo[0];
