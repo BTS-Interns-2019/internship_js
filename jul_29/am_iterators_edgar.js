@@ -46,6 +46,8 @@ console.log(filters([2,11,2,21,2,98], 2));
 
 //module.exports = filters;
 
+module.exports = filters;
+
 function reduces (cad, acu){
     for (i = 0; i < cad.length; i++){
             acu = acu + cad[i];

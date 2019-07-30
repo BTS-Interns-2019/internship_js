@@ -1,7 +1,7 @@
 //tests foreach function
 
 test ('6 argumentos', () => {
-    expect (foreach([10, 11, 23, 21, 56, 98])).toEqual([10,11,23,21,56,98])
+    expect (foreach([10,11,23,21,56,98])).toEqual([10,11,23,21,56,98])
 })
 
 test ('4 argumentos', () => {
@@ -9,7 +9,7 @@ test ('4 argumentos', () => {
 })
 
 test ('3 argumentos', () => {
-    expect (foreach(["hjj", "cmn", "jdf"])).toEqual(["hjj","cmn","jdf"])
+    expect (foreach(["hjj", "cmn", "jdf"])).toEqual(["hjj", "cmn", "jdf"])
 })
 
 
@@ -34,7 +34,7 @@ test ('3 argumentos', () => {
 //test for filters
 
 test ('6 argumentos', () => {
-    expect (filters([2,11,2,21,2,98], 2)).toEqual([])
+    expect (filters([2,11,2,21,2,98], 2)).toEqual([12,13,25,23,58,100])
 })
 
 test ('4  argumentos', () => {
