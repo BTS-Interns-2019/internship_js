@@ -53,3 +53,8 @@ test('Probando 5 entradas: 100 + 50 + 150 + 100 + 200', function(){
 ////////////////////////////////////////////////////////////////////////
 
 const averageSpeed = require('./functions_ex_marlont');
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master

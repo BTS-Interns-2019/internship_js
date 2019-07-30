@@ -58,5 +58,8 @@ function averageSpeed(velocidad){
 }
 
 module.exports = averageSpeed;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
