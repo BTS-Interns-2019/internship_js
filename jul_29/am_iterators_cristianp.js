@@ -8,7 +8,7 @@ function reduce(callback, array)
 }
 const array1 = [1, 2, 3, 4];
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-console.log(reduce( function(accumulator, currentValue) {return accumulator + currentValue}, 123, 0) );
+console.log(reduce( function(accumulator) {return accumulator + currentValue}, array1) );
 
 
 //map
