@@ -1,5 +1,10 @@
 let charCounter = require('./am_iterators_homework_ricardom.js');
 
+
+
+console.log(charCounter("Hola"));
+
+
 test('test "Hola mundo" ', () => {
     expect(charCounter("Hola mundo")).toBe({ a: 1, d: 1, h: 1, l: 1, m: 1, n: 1, o: 2, u: 1 });
 })
