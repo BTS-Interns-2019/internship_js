@@ -56,9 +56,6 @@ function reduce(f,arry) {
 console.log(reduce(function (vAnt,vAct,i,names) {let res = "";for (i = 0; i < names.length; i++) {vAnt = names[i-1];vAct = names[i]; i = i;console.log(vAnt);
  res += vAct;}return res;  },arry));
 
- module.exports = forEach;
- module.exports = map;
- module.exports = filter;
- module.exports = reduce;
+ module.exports = {forEach,map,filter,reduce};
  //module.exports =
 
