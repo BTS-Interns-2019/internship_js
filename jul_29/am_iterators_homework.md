@@ -1,6 +1,8 @@
 # Array Iterator Methods Homework
 
-* file name `am_iterators_homerowk_<name>.js` for function definition
+* file name `am_iterators_homerowk_<name>.js` for function definition.
+
+* function name `charCounter`.
 
 * Create a function that receives 1 string as parameter and returns an object indicating how many times a letter was used.
 * Each key of the object will be a used letter in lowercase
