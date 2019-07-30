@@ -38,6 +38,6 @@ testF=[ //mensaje, callBack, arreglo, respuesta
 ]
 for (const i in testF) {
     test(testF[i][0],function(){
-        expect(map(testF[i][1],testF[i][2])).toEqual(testF[i][3])
+        expect(filter(testF[i][1],testF[i][2])).toEqual(testF[i][3])
     })    
 }
