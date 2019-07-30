@@ -20,14 +20,17 @@ login('Lola', 'diciembre1994') //true
 
 //* Given an array, returns an array with *even* elements if all are *even* or false if at least one is odd
   
-let arr=[2,4,6,8]
+let arr=[2,4,6,1]
 
 function onlyEven(arr){ 
-    let newArray=[];
-     arr.every((valor, index, arr)=>{if(valor%2===0){newArray.push(valor)}else{
-        
-     }}) 
-      return newArray;
+    
+    const result= arr.every((valor, index, arr)=>(valor%2===0))
+    if(result){
+        return arr;
+    }else{
+       return false
+    }
+    
         
 }
 
