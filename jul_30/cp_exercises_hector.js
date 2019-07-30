@@ -85,6 +85,7 @@ function whereAreThey(numbers) {
 
   for (let i = 0; i < evenNumbers.length; i++) {
     resultArray.push(numbers.findIndex(num => num % 2 === 0));
+    // following line modifies the array in that index to make it 1 (an odd number), so it doesn't get detected by findIndex again
     numbers[resultArray[i]] = 1;
   }
 
