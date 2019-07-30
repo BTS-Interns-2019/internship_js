@@ -3,12 +3,13 @@
 * file name `am_iterators_homerowk_<name>.js` for function definition
 
 * Create a function that receives 1 string as parameter and returns an object indicating how many times a letter was used.
+* Each key of the object will be a used letter in lowercase
 * Any character that is not a letter must be ignored
 * for, while, do...while loops are forbidden
 
 ## Example I/O
 ```
-"hi every body!" => {
+"Hi Every body!" => {
   h: 1,
   i: 1,
   e: 2,
