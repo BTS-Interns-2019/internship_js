@@ -80,15 +80,14 @@ function google(str) {
 }
 
 function whereAreThey(numbers) {
-  numbers = numbers.map(num => Number.parseInt(num));
-  const evenNumbers = numbers.filter(num => num % 2 === 0);
+  const evenNumbers = numbers.map(num => Number.parseInt(num)).filter(num => num % 2 === 0);
   const resultArray = [];
 
   for (let i = 0; i < evenNumbers.length; i++) {
     resultArray.push(numbers.findIndex(num => num % 2 === 0));
     numbers[resultArray[i]] = 1;
   }
-  
+
   return resultArray;
 }
 
