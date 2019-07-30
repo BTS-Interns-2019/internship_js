@@ -34,7 +34,7 @@ function onlyEven(arry) {
 
 }
 
-console.log(onlyEven([2,4,6,8,12,13]));
+//console.log(onlyEven([2,4,6,8,12,13]));
 
 function google(string) {
     let obj1 = [ {
@@ -102,6 +102,6 @@ function google(string) {
 
 
 
-console.log(google('find'));
+//console.log(google('find'));
 
 module.exports = {login,onlyEven,google};
