@@ -45,7 +45,7 @@ console.log(onlyEven(arrNumbers))
 function google(str) {
     let dbMethods = [
         {
-            name: "find",
+            name:"find",
             description: "This method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned",
             params: [{
                 callback: {
@@ -55,16 +55,12 @@ function google(str) {
                 },
                 thisArg: "Optional object to use as this when executing callback."
             }],
-            returning: 'The value of the first element in the array that satisfies the provided testing function. Otherwise, undefined is returned.';
+            returning: 'The value of the first element in the array that satisfies the provided testing function. Otherwise, undefined is returned.'
 },
     {
         name: "findIndex",
-            description
-    :
-        "The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.",
-            params
-    :
-        [
+            description:"The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.",
+            params: [
             {
                 callback: {
                     element: "The current element being processed in the array.",
@@ -74,19 +70,13 @@ function google(str) {
                 thisArg: "Optional object to use as this when executing callback."
             }
         ],
-            returning
-    :
-        'The index of the first element in the array that passes the test. Otherwise, -1';
+            returning: 'The index of the first element in the array that passes the test. Otherwise, -1'
     }
 ,
     {
         name: "every",
-            description
-    :
-        "The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value. ",
-            params
-    :
-        [
+            description:"The every() method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value. ",
+            params: [
             {
                 callback: {
                     element: "The current element being processed in the array.",
@@ -97,19 +87,13 @@ function google(str) {
                 thisArg: "(optional) A value to use as this when executing callback."
             }
         ],
-            returning
-    :
-        'true if the callback function returns a truthy value for every array element. Otherwise, false.';
+            returning: 'true if the callback function returns a truthy value for every array element. Otherwise, false.'
     }
 ,
     {
         name: "some",
-            description
-    :
-        "The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.",
-            params
-    :
-        [
+            description: "The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.",
+            params: [
             {
                 callback: {
                     element: "The current element being processed in the array.",
@@ -119,68 +103,49 @@ function google(str) {
                 thisArg: "A value to use as this when executing callback."
             }
         ],
-            returning
-    :
-        '';
+            returning:'true if the callback function returns a truthy value for at least one element in the array. Otherwise, false.'
     }
 ,
-    {
-        name: "",
-            description
-    :
-        "",
-            params
-    :
-        [],
-            returning
-    :
-        'true if the callback function returns a truthy value for at least one element in the array. Otherwise, false.';
-    }
-,
+    // {
+    //     name: "",
+    //         description
+    // :
+    //     "",
+    //         params
+    // :
+    //     [],
+    //         returning
+    // :
+    //     ''
+    // }
     {
         name: "values",
-            description
-    :
-        "The values() method returns a new Array Iterator object that contains the values for each index in the array.",
-            params
-    :
-        [],
-            returning
-    :
-        'A new Array iterator object.';
-    }
-,
+            description: "The values() method returns a new Array Iterator object that contains the values for each index in the array.",
+            params: [],
+            returning: 'A new Array iterator object.'
+    },
     {
         name: "entries",
-            description
-    :
-        "The entries() method returns a new Array Iterator object that contains the key/value pairs for each index in the array.",
-            params
-    :
-        [],
-            returning
-    :
-        'A new Array iterator object.';
-    }
-,
+            description:"The entries() method returns a new Array Iterator object that contains the key/value pairs for each index in the array.",
+            params: [],
+            returning: 'A new Array iterator object.'
+    },
     {
         name:"keys",
-            description
-    :
-        "The keys() method returns a new Array Iterator object that contains the keys for each index in the array.",
-            params
-    :
-        [],
-            returning
-    :
-        'A new Array iterator object.'
+            description: "The keys() method returns a new Array Iterator object that contains the keys for each index in the array.",
+            params: [],
+            returning: 'A new Array iterator object.'
     }
-]
-    ;
-    
-    dbMethods.find((methods)=>{methods.name==str})
+];
+    let result;
 
+    result=dbMethods.find((methods,i,arr)=>{if (methods.name===str){ return methods}  })
+    if (result){
+        return result
+    }else {
+        return "No se encontro el metodo buscado";
+    }
 }
-console.log(google("some"))
+console.log(google("entries"))
 
 module.exports = {login, onlyEven, google};
