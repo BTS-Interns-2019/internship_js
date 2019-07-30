@@ -8,17 +8,17 @@ function forEach(funcion, arr) {
     }
 }
    
-console.log(forEach(funcion, [1,2,3,4,5]))
+//console.log(forEach(funcion, [1,2,3,4,5]))
 
-function funcion(cv, index, arr) {
-    return cv + 1;
-}
+// function funcion(cv, index, arr) {
+//     return cv + 1;
+// }
 
-console.log("*****Método forEach*****")
-var arr = [1,2,3,4,5]
-console.log(arr.forEach(function(n) {
-    return n + 1;
-}))
+// console.log("*****Método forEach*****")
+// var arr = [1,2,3,4,5]
+// console.log(arr.forEach(function(n) {
+//     return n + 1;
+// }))
 
 
 //MAP
@@ -33,16 +33,16 @@ function map(arr, funcion) {
     return arr2;
   }
 
-console.log(map([1,2,3,4,5], function(n, index, arr) {
-    return n + 1;
-})); 
+// console.log(map([1,2,3,4,5], function(n, index, arr) {
+//     return n + 1;
+// })); 
 
-console.log("*****Método map*****")
-var arr = [1,2,3,4,5]
-var funcion = function(n) {
-    return n + 1;
-  }
-console.log(arr.map(funcion))
+// console.log("*****Método map*****")
+// var arr = [1,2,3,4,5]
+// var funcion2 = function(n) {
+//     return n + 1;
+//   }
+// console.log(arr.map(funcion2))
 
 
 //FILTER
@@ -52,7 +52,7 @@ var arr2 = [];
     for (i = 0; i < arr.length; i++) {
         cv = arr[i];
         index = i;
-     if (funcion(cv, index, arr)==true) {
+     if (funcion(cv, index, arr)) {
         arr2.push(cv)         
      };
     }
@@ -65,10 +65,10 @@ console.log(filter([-1, 0, 1, 2, 3, 4, 5, 6, 7], function(n) {
 
 console.log("*****Método filter*****")
   var arr = [-1, 0, 1, 2, 3, 4, 5, 6, 7]
-  var funcion = function(n) {
+  var funcion3 = function(n) {
     return n > 3;
   }
-  console.log(arr.filter(funcion))
+  console.log(arr.filter(funcion3))
 
   console.log("*****Función reduce*****")
   //REDUCE
@@ -104,5 +104,5 @@ module.exports={
     map,
     filter,
     reduce,
-    reduceRight
+    // reduceRight
   };
