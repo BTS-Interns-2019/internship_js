@@ -29,7 +29,7 @@ function google(str){
               name: 'find',
               description: 'Returns the value of the first element in the array that satisfies the provided testing function.\nOtherwise undefined is returned.',
               params:[
-              {name:'callback', description: }
+              //{name:'callback', description: }
               ]
           }
       }
