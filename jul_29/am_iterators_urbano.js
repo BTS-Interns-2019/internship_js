@@ -1,7 +1,7 @@
 let arr = [2, 4, 6, 8];
-let arry = ["sergio","rabanito","urbanus","pere","powers","marlon"]
-let arrFalsy=[false,null,0,true,1,"hola"]
-let arr2=[1,2,3,4];
+let arry = ["sergio", "rabanito", "urbanus", "pere", "powers", "marlon"]
+let arrFalsy = [false, null, 0, true, 1, "hola"]
+let arr2 = [1, 2, 3, 4];
 
 
 function forEach(callback, array) {
@@ -9,22 +9,26 @@ function forEach(callback, array) {
         callback(array[i])
     }
 
-    
 }
-module.exports=forEach;
+
+module.exports = forEach;
+
 // console.log(forEach((i) => {  console.log(i+="-") }, arry));
 
 
 function map(callback, array) {
-    newArray=[];
+    newArray = [];
     for (let i = 0; i < array.length; i++) {
-        newArray.push(callback(array[i]));        
-        
+        newArray.push(callback(array[i]));
+
     }
     return newArray;
 }
-module.exports=map;
-console.log(map((i)=>{return i.toUpperCase()},arry))
+
+module.exports = map;
+console.log(map((i) => {
+    return i.toUpperCase()
+}, arry))
 
 
 function filter(callback, array) {
@@ -37,44 +41,55 @@ function filter(callback, array) {
     }
     return newArray
 }
-module.exports=filter;
 
-console.log(filter((i) => { if (i) { return true } }, arrFalsy));
+module.exports = filter;
+
+console.log(filter((i) => {
+    if (i) {
+        return true
+    }
+}, arrFalsy));
 
 
-function reduce(callback,array, initial) {
+function reduce(callback, array, initial) {
     let result;
     let ac;
-    if (initial===undefined) {
-        ac=array[1]
-    }else{
-        ac= initial
+    if (initial === undefined) {
+        ac = array[1]
+    } else {
+        ac = initial
     }
     for (let i = 0; i < array.length; i++) {
-        ac= callback(ac,array[i]);
-        result=ac
+        ac = callback(ac, array[i]);
+        result = ac
     }
     return ac;
 }
-module.exports=reduce;
-console.log(reduce(((acumulate, c)=> { return acumulate+c }),arr2, 0 ));
+
+module.exports = reduce;
+console.log(reduce(((acumulate, c) => {
+    return acumulate + c
+}), arr2, 0));
 
 
-function reduceRight(callback,array, initial) {
+function reduceRight(callback, array, initial) {
     let result;
     let ac;
-    if (initial===undefined) {
-        ac=array[1]
-    }else{
-        ac= initial
+    if (initial === undefined) {
+        ac = array[1]
+    } else {
+        ac = initial
     }
-    for (let i = array.length-1; i >= 0; i--) {
-        ac= callback(ac,array[i]);
-        result=ac
+    for (let i = array.length - 1; i >= 0; i--) {
+        ac = callback(ac, array[i]);
+        result = ac
     }
     return ac;
 }
-module.exports=reduceRight;
 
-console.log(reduceRight(((a,c)=> { return (a + c)} ),arr,"2"));
+module.exports = reduceRight;
+
+console.log(reduceRight(((a, c) => {
+    return (a + c)
+}), arr, "2"));
 
