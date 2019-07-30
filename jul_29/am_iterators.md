@@ -23,7 +23,7 @@ module.exports={
 };
 ```
 
-* create a tests file with the same name but ending in .test.js aka `am_iterators_<name>.tests.js`
+* create a tests file with the same name but ending in .test.js aka `am_iterators_<name>.test.js`
 * your tests file must require the function definitions, use this way
 ```js
 //.test.js
