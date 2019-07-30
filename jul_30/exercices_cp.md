@@ -12,6 +12,7 @@ function login(name, password) {
 ```
 * Given an array, returns an array with *even* elements if all are *even* or false if at least one is odd
     onlyEven(arr){return []|false}
+
 * Given a string, returns an object with the required params and returning values of the following `functions ["find","findIndex","every","some","values","entries","keys"]`
     ```js
     function google(str){
