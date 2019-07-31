@@ -45,6 +45,14 @@ Write 3 functions that will help comunicating the trops in the battle field by u
   * If message has a character that doesn't have a match in `seed` leave it unchanged.
   * Returns a sring which is the decrypted version of `encryptedMessage`.
 
+### Example I/O
+```js
+["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"] // base alphabet
+["o","e","k","l","i","p","d","f","c","m","j","g","h","n","b","a","q"] // seed
+
+// message    encrypted message
+'hola node' => 'fbgo nbli'
+```
 
 ### TDD
 
