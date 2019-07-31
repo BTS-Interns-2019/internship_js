@@ -22,7 +22,7 @@ function jsonTimes(t){
 //console.log(jsonTimes('1972-07-22'));
 //console.log(jsonTimes({year:1999,month:11,day:20}));}
 function toLazyHuman(todate,fromdate){
-    let res;
+    let res = "";
     if(fromdate==undefined){fromdate.now()}
     let dif = todate-fromdate;
     let rounded = Math.round(dif);
@@ -30,12 +30,16 @@ function toLazyHuman(todate,fromdate){
     let num,rnum;
     if(val>1000 && val<60000){
         num=val/1000;
+        console.log(num);
         rnum = Math.round(num);
-        res=res+rnum+"seconds";
+        console.log(rnum);
+        res=res+rnum+" seconds";
     }else if(val>59999 && val< 3600000){
         num=val/60000;
+        console.log(num);
         rnum = Math.round(num);
-        res=res+rnum+"minutes";
+        console.log(rnum);
+        res=res+rnum+" minutes";
     }
     if(rounded<0){
         res = res +" ago";
