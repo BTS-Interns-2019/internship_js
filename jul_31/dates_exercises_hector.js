@@ -16,8 +16,7 @@ function jsonTimes(date) {
       daysThirteen.push(`${d.getUTCMonth() + 1}/${d.getUTCDate()}/${d.getUTCFullYear()}`);
     }
   }
-  console.log(daysThirteen);
-
+  
   return {
     times: daysThirteen.length,
     dates: [...daysThirteen]

@@ -17,9 +17,9 @@ const jsonCountResults = [
 
 const jsonDatesResults = [
   ['2/13/2015', '3/13/2015', '11/13/2015'],
-  ['Fri, 13 Jun 2025 05:00:00 GMT'],
-  ['Fri, 13 Jun 2014 05:00:00 GMT'],
-  ['Fri, 13 Sep 2019 05:00:00 GMT', 'Fri, 13 Dec 2019 06:00:00 GMT']
+  ['6/13/2025'],
+  ['6/13/2014'],
+  ['9/13/2019', '12/13/2019']
 ];
 
 for (let i = 0; i < jsonCases.length; i++) {
