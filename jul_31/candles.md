@@ -22,3 +22,16 @@ test('blow candles', () => {
 })
 
 ```
+
+```js
+function avoidingFire(...arr) {
+    let result = arr // [[1,2,3,4,5],[3,4,5,6],[4,5,6,7,8,8]]
+    result = result.reduce((acc, item) => { return acc.concat(item) }, []) // [1,2,3,4,5,3,4,5,6,4,5,6,7,8,8]
+    result = result.filter((item,i,iarr) => { return item === Math.max(...iarr)}) // [8,8]
+    result = result.length; // 2
+	return result // 2
+}
+
+
+avoidingFire([1, 2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7, 8, 8])
+```
