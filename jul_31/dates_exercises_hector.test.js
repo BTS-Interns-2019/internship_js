@@ -1,4 +1,4 @@
-const jsonTimes = require('./dates_exercises_hector');
+const { jsonTimes, toLazyHuman } = require('./dates_exercises_hector');
 
 describe('jsonTimes', () => {
   test(`Returns an object`, () => {
