@@ -13,12 +13,12 @@ test('returns an array', () => {
 
 test('returns an array of the same length', () => {
     let result = sort(originalArray);
-    expect(Array.isArray(result.length)).toBe(originalArray.length);
+    expect(result.length).toBe(originalArray.length);
 })
 
 test('returns the same array', () => {
     let result = sort(originalArray);
-    expect(Array.isArray(result)).toBe(originalArray);
+    expect(Array.isArray(result)).toStrictEqual(true);
 })
 
 test('order the array without params', () => {
@@ -30,5 +30,16 @@ test('order the array without params', () => {
 test('order the array with params', () => {
     let control = originalArray.concat();
     sort(originalArray, (a,b) => a - b);
-    expect(originalArray).toEqual(control.sort());
+    expect(originalArray).toEqual([2,4,6,21]);
 })
+
+test('No callback', function(){
+    expect(sort([1,'b','a',2,'a',0])).toEqual([0,1,2,"a","a","b"]);
+})
+
+test('Callback', function(){
+    expect(sort([2,5,1,3,2,6,0], function(a,b){
+        return b-a;
+    })).toEqual([6,5,3,2,2,1,0]);
+})
+
