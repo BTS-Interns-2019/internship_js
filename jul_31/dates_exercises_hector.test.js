@@ -1,5 +1,17 @@
 const jsonTimes = require('./dates_exercises_hector');
 
+test(`Returns an object`, () => {
+  expect(typeof jsonTimes(2016)).toBe('object');
+});
+test(`Returns an array with the dates`, () => {
+  const isArray = Array.isArray(jsonTimes(2016).dates);
+  expect(isArray).toBe(true);
+});
+test(`Returns an number with the Friday 13 count`, () => {
+  const isInteger = Number.isInteger(jsonTimes(2016).times);
+  expect(isInteger).toBe(true);
+});
+
 // jsonTimes tests
 const jsonCases = [
   '2015',
