@@ -12,5 +12,3 @@ function avoidingFire(...candles) {
 }
 
 module.exports = avoidingFire;
-
-console.log(avoidingFire([1,2,3,4], [2,2,2,1], [6,9,1]));
