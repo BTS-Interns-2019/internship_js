@@ -46,20 +46,45 @@ let barajeada = shuffle(cartas);
 
 /// MyHand
 function myHand(barajeada) {
+    let revision = [];
+    let intro = barajeada.splice('');
     let mano = {
         hand:"",
         cards:[]
     };
-    for (let i = 0; i < 5; i++) {
-        mano['cards'].push(barajeada[i]);
-        
+
+    for (let i = 0; i < intro.length; i++) {
+        mano['cards'].push(intro[i]);
+        revision.push(intro[i]);
     }
 
+
+    let par = 0;
+    console.log(revision);
+    
+    for (let h = 0; h < revision.length; h++) {
+        for (let i = 1; i < revision.length; i++) {
+            if(revision[h]['number'] == revision[i]['number'] && h < i){
+                par++;
+            }     
+                   
+        }
+        
+    }
+    if(par >0){mano['hand'] = "one par"}
+    console.log(par);
     
 
+
+
+
+
+
+    
     return mano;
 
 }
 
-console.log(myHand(barajeada));
+console.log(myHand(barajeada.splice(1,5)));
+
 
