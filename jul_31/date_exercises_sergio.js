@@ -8,6 +8,7 @@ function jsonTimes(params) {
     console.log(dato);
     console.log(dato.getDay());
     dato.setMonth(0);
+    dato.setDate(1);
     dato.setDate(4);
     console.log(dato);
     for (let i = 0; i < 52; i++) {
@@ -16,6 +17,7 @@ function jsonTimes(params) {
         
         if(dato.getDate() == 13){
             console.log("Aqui viene el jason");
+
             
         }
         
