@@ -9,15 +9,10 @@ function avoidngFire(arrays) {
             if(params[i] > temp ){
                 temp = params[i];
             }
-            
-            
         }
         return temp;
     }
-
     for (let k = 0; k < arrays.length; k++) {
-        console.log(arrays[k]);
-        
         if(Array.isArray(arrays[k])){ 
             sacar(arrays[k]);
         }else {
@@ -30,15 +25,12 @@ function avoidngFire(arrays) {
             break;
         }
     }
-
     // falta
-
-    
-    
-
 return cont;
 }
 
 console.log(avoidngFire([[1,2,3,1,2,1,3,3,3,2,3],[,2,1,1,2,1,2,1,3],[,3,2,2,1,2,3,1,3,2]]));
+
+module.exports = avoidngFire;
 
 
