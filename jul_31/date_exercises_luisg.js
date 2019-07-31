@@ -55,6 +55,20 @@ function jsonTimes(param){
 return obj;
  
 }
-console.log(jsonTimes("2018-01-01"))
 
+function toLazyHuman(date1,date2){
+ if(!date2){
+     date2 = new Date(Date.now());
+ }
+ 
+ let difmls = date2.getTime() - date1.getTime();
+ let dif_segundos = difmls/1000;
+ let dif_min = dif_segundos/60;
+ let dif_hor = dif_min/60;
+ let dif_dias = dif_hor/24;
+ let dif_anios = dif_dias/365
+ 
+}
+let date1 = new Date(2019,06,30)
+console.log(toLazyHuman(date1))
 module.exports=jsonTimes;
