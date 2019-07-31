@@ -18,7 +18,7 @@ function jsonTimes(year){
     fecha = new Date(anio,i,13);
     if(fecha.getDay() === 5){
       console.log("si entra");
-      fecha_mod = fecha.getMonth() + "/" + 
+      fecha_mod = fecha.getMonth()+1 + "/" + 
                   fecha.getDate() + "/" +
                   fecha.getFullYear()
       arrayFechas.push(fecha_mod);
