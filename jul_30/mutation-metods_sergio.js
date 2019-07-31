@@ -1,8 +1,12 @@
 function sort(arry) {
-    arry.copyWithin(-2, 3, 4);
-    arry.copyWithin(0,5,6);
-    arr.unshift();
-    arry.push(99,66);
+  let sergioArry = arry.filter(word => word == undefined);
+  for (let i = 0; i < arry.length; i++) {
+    if(arry[i] == undefined){
+      arry.splice(i,1);
+    }   
+  }
+console.log(arry);
+
     const l = arry.length;
     for (let i = 0; i < l; i++ ) {
       for (let j = 0; j < l - 1 - i; j++ ) {
@@ -11,9 +15,12 @@ function sort(arry) {
         }
       }
     }
-    return arrySergio;
+    arry.push(...sergioArry);
+    console.log(arry);
+    
+    return arry;
 }  
-  const arr = [10, 4, 40, 32, 67, 12, 43, 31, 65, 1];
+  const arr = [10, 4, 40, 32,undefined, 67, 12, 43,undefined, 31, 65, 1];
 
 console.log(sort(arr));
 
