@@ -31,15 +31,34 @@ function shuffle(deck){
 var shuffleDeck = shuffle(deck);
 
 //-----------------------------
-function myHand(array) {
+function myHand(array) {    
     var cartas = {
         hand: "",
         cards:[]
-    }
+    };
     for (let i = 0; i < 5; i++) {
         cartas.cards.push(array[i]);
-        
     }
+    //-----validaciones---------------------
+    let color = 0;
+    var pareja = 0;
+    for (let x = 0; x < 5; x++) {
+        //color
+        if(array[0].suit == array[x].suit ){
+            color++;
+            if(color == 5){
+                cartas.hand = "Color"
+                return cartas;
+            }
+        }
+        //flush
+        var pareja = 0;
+        if(array[x].number == array[x+1].number){
+            peraja++;
+        }
+    }
+    console.log(pareja);
+    
     return cartas;
 }
 console.log(myHand(shuffleDeck));
