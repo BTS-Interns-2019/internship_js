@@ -32,7 +32,18 @@ function shuffle(array) /* use reference to modify the deck */
 you will decode which is the bigger hand that you have.
 https://www.cardplayer.com/rules-of-poker/hand-rankings
 
-return {hand:"Two pair", cards:[{number:4, suit:"hearts" }, {number:3, suit:"hearts" }, {number:4, suit:"diamonds" }, {number:3, suit:"spades" }, {number:5, suit:"clubs" }]}
+```js
+return {
+    hand:"Two pair",
+    cards:[
+        {number:4, suit:"hearts" },
+        {number:3, suit:"hearts" },
+        {number:4, suit:"diamonds" },
+        {number:3, suit:"spades" },
+        {number:5, suit:"clubs" }
+        ]
+    }
+```
 
 ```js
 function myHand(array) {
