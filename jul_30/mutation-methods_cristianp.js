@@ -56,10 +56,10 @@ function encrypt(baseAlphabet,seed,message){
     return dev;
 }
 
-function decrypt(baseAlphabet, seed, message){
+function decrypt(baseAlphabet, seed, encryptedMessage){
     dev="";
-    message = message.split("");
-    message.forEach((v)=>{
+    encryptedMessage = encryptedMessage.split("");
+    encryptedMessage.forEach((v)=>{
         i=seed.indexOf(v);
         if(i>=0){
             dev+=baseAlphabet[i];
