@@ -17,7 +17,7 @@ function getDeck(suit, number){
             }
         }
         
-        console.log(JSON.stringify(cartas, null));
+      //  console.log(JSON.stringify(cartas, null));
         return cartas;
 
     
@@ -35,7 +35,7 @@ function shuffle(cartas) {
       cartas[i] = cartas[irandom];
       cartas[irandom] = temp;
     }
-    console.log(JSON.stringify(cartas, null));
+    //console.log(JSON.stringify(cartas, null));
     return cartas;
     
   }
@@ -46,16 +46,20 @@ let barajeada = shuffle(cartas);
 
 /// MyHand
 function myHand(barajeada) {
-    let mano = {hand:"",cards:[]};
+    let mano = {
+        hand:"",
+        cards:[]
+    };
     for (let i = 0; i < 5; i++) {
-        mano['cards'] = barajeada[i];
+        mano['cards'].push(barajeada[i]);
         
     }
+
     
-    for (let k = 0; k < mano['cards'].length; k++) {
-        if(mano['cards']['number'])
+    // for (let k = 0; k < mano['cards'].length; k++) {
+    //     if(mano['cards']['number'])
         
-    }
+    // }
     return mano;
 
 }
