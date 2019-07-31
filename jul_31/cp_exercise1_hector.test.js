@@ -10,7 +10,7 @@ const cases = [
 const results = [1, 2, 3, 1];
 
 for (let i = 0; i < cases.length; i++) {
-  test(`Testing case ${i + 1} with ${cases[i]}`, () => {
+  test(`Blowing candles case ${i + 1} with ${cases[i]}`, () => {
     expect(avoidingFire(cases[i])).toBe(results[i]);
   });
 }
