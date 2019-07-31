@@ -1,4 +1,4 @@
-const sort = require('./mutation-methods_marlont');
+const {sort, generateSeed, encrypt, decrypt} = require('./mutation-methods_marlont');
 
 let originalArray;
 
@@ -42,4 +42,49 @@ test('Callback', function(){
         return b-a;
     })).toEqual([6,5,3,2,2,1,0]);
 })
+
+//------------------------The Secret Communication--------------//
+
+var baseAlphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+var seed = generateSeed(baseAlphabet);
+
+test('Create a seed: seed and baseAlphabet have the same length', function(){
+    expect(baseAlphabet.length).toEqual(seed.length);
+})
+
+test('Create a seed: seed can be different in every case', function(){
+    var seed2 = generateSeed(baseAlphabet);
+    var bool = seed2 === seed;
+    expect(bool).toEqual(false);
+})
+
+test('Encrypt a message: message encrypt is different to the original message', function(){
+    var message = "hola mundo";
+    var encrypted = encrypt(baseAlphabet, seed, message) 
+    bool = encrypted === message;
+    expect(bool).toEqual(false);
+})
+
+test('Encrypt a message: message encrypt and original message have the same length', function(){
+    var message = "hola mundo";
+    var encrypted = encrypt(baseAlphabet, seed, message) 
+    expect(message.length).toEqual(encrypted.length);
+})
+
+test('Encrypt a message: characters doesnt have match with baseAlphabet', function(){
+    var message = "hola mundo!1234&&hello World";
+    var encrypted = encrypt(baseAlphabet, seed, message) 
+    bool = encrypted.includes('!1234&&');
+    expect(bool).toEqual(true);
+})
+
+test('Decrypt a message: decrypted message and the original message are equal', function(){
+    var message = "hola mundo!";
+    var encrypted = encrypt(baseAlphabet, seed, message);
+    var decrypted = decrypt(baseAlphabet, seed, encrypted); 
+    bool = decrypted === message;
+    expect(bool).toEqual(true);
+})
+
+
 
