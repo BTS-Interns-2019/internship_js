@@ -96,19 +96,57 @@ var plays = [
         {name: "J", suit: "hearts"},
         {name: "7", suit: "clubs"},
       ]},
+      {hand: "Full house",
+      cards:[
+        {name: "10", suit: "clubs"},
+        {name: "10", suit: "diamonds"},
+        {name: "10", suit: "spades"},
+        {name: "9", suit: "hearts"},
+        {name: "9", suit: "clubs"},
+      ]},
     ]
 
 function myHand(deck){
+/** ---------- my hand -------------- */
   let hand = []
   for(let i = 0; i < 5; i++){
       let draw = deck.pop()
       hand.push(draw)
-  }
-    let pair = hand.map((v,i,a) => v.name )
-    console.log(pair)
-    // console.log(plays.forEach(v => v.cards.includes(hand) ? console.log("si") : console.log("no")))
-  
-  console.log(hand)
+    }
+    console.log(hand)
+/** ----------------------------------------- */
+    let counter = 0
+    for(let i = 0; i < hand.length; i++){
+      for(let x = 1+i; x < hand.length; x++){
+        if(hand[i].name===hand[x].name){
+          counter++
+          console.log()
+        }
+      } 
+    }
+    console.log(counter)
+    
+    const play = {hand:"Pair"}
+    switch(counter){
+      case 1:
+        play.hand = "Pair"
+        play.cards = hand
+        return play
+      break;
+      case 3:
+        play.hand = "Three of a kind"
+        play.cards = hand
+        play
+      break;
+      case 2:
+        play.hand = "Two pairs"
+        play.cards = hand
+        play
+      break; 
+      default:
+        console.log("nada")
+      break;
+      }
 }
 myHand(shuffles(getDeck()))
 
