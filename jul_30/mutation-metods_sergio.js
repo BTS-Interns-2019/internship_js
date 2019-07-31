@@ -15,7 +15,7 @@ console.log(arry);
         }
       }
     }
-    
+
     arry.push(...sergioArry);
     console.log(arry);
     
@@ -23,7 +23,8 @@ console.log(arry);
 }  
   const arr = [10, 4, 40, 32,undefined, 67, 12, 43,undefined, 31, 65, 1];
 
-console.log(sort(arr));
+//console.log(sort(arr));
 
-console.log(arr.sort());
+
+//console.log(arr.sort());
 
