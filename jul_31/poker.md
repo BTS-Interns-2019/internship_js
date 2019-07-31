@@ -4,8 +4,11 @@ fileName: cp_exercise2_YO-NAME.js
 
 ## Create The Deck
 
+```js
 "spades", "diamonds", "clubs", "hearts";
+
 ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+```
 
 Create a function that return a deck of ordered cards
 
