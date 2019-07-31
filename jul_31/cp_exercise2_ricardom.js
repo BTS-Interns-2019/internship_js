@@ -26,14 +26,26 @@ function shuffle(deck){
 
 
 function myHand(array) {
-    mano = {}
+    object = {}
     cartas = array.slice(0,5);
-    mano.cards = cartas
-    // console.log(mano);
-    
+    object.cards = cartas
+     console.log(cartas);
+
+        cartas.forEach(element => {
+            console.log(element);
+            for (const key in element) {
+                if (element.hasOwnProperty(key)) {
+                    const elemento = element[key];
+                    console.log(elemento);
+                    
+                    
+                }
+            }
+            
+        });
 
 
-    // return object;    
+     return object;    
 }
 
 myHand(deck)
