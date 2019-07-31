@@ -22,22 +22,19 @@ test('blow candles', () => {
 })
 
 ``` */
-// let candel = [6,5,4,3,2,1,2,3,4,5,6]
-// let candel1 = [2,5,4,3,2]
-// let candel2 = [8,5,4,3]
+
 
 function avoidingFire(...arr){
   let args = arr.reduce((acc, ind) => acc.concat(ind))
   .sort((a,b) => a - b)
-  console.log(args)
   let counter = 0
-  for(let i = 0; i < args.length; i++){
-    if(i === args[args.length-1]){
+  for(let i = 0; i <= args.length-1; i++){
+    if(args[i] === args[args.length-1]){
       counter++
     }
   }
   return counter
 }
-// console.log(avoidingFire(candel, candel1, candel2))
+
 
 module.exports = avoidingFire;
