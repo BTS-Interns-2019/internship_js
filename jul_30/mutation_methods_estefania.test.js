@@ -1,4 +1,9 @@
-const sort = require('./mutation_methods_estefania.js');
+const {
+    sort,
+    generateSeed,
+    encrypt,
+    decrypt,
+}= require('./mutation_methods_estefania.js');
 
 
 let originalArray;
@@ -32,4 +37,17 @@ test('order the array with params', () => {
     let control = originalArray.concat();
     sort(originalArray, (a,b) => a - b);
     expect(originalArray).toEqual(control.sort());   
+})
+
+
+test('generate seed',()=>{
+    expect(Array.isArray(generateSeed(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"]))).toBe(true)
+})
+
+test('encrypt',()=>{
+    expect(encrypt(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"],["n","o","i","m","p","q","g","b","h","k","f","j","l","e","c","d","a"],"Aquí hay demasiados pingüinos")).toBe("nquí hny semndgnsod rgpdügpod")
+})
+
+test('decrypt',()=>{
+    expect(decrypt(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"],["n","o","i","m","p","q","g","b","h","k","f","j","l","e","c","d","a"],"nquí hny semndgnsod rgpdügpod")).toBe("Aquí hay demasiados pingüinos")
 })

@@ -28,4 +28,52 @@ numbers.sort(function(a, b) {
 });
 console.log(numbers);
 
-module.exports = sort;
+
+//generateSeed
+function generateSeed(arr) {
+    return Array.from(arr).sort(() => Math.floor(Math.random() * (5) + (-1)));
+}
+console.log(generateSeed(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"]))
+
+//encrypt
+function encrypt(baseAlphabet, seed, encryptedMessage) {
+    var str = ''
+    encryptedMessage = encryptedMessage.toLowerCase().split('')
+    console.log(encryptedMessage)
+    encryptedMessage.forEach(element => {
+        var i =baseAlphabet.indexOf(element)
+        console.log(i);
+        if(i >= 0) {
+            str += seed[i];
+        } else {
+            str += element
+        }
+    });
+    return str
+}
+console.log(encrypt(['a', 'b', 'd', 'r', 't', 's', 'd', 'n', 'p', 'i', 'g'], [ 'n', 't', 's', 'a', 'i', 'd', 'b', 'p', 'r', 'g', 'd' ], 'Aquí hay demasiados pingüinos' ))
+
+//decrypt
+function decrypt(baseAlphabet, seed, encryptedMessage) {
+    var str = ''
+    encryptedMessage = encryptedMessage.toLowerCase().split('')
+    console.log(encryptedMessage)
+    encryptedMessage.forEach(element => {
+        var i =seed.indexOf(element)
+        console.log(i);
+        if(i >= 0) {
+            str += baseAlphabet[i];
+        } else {
+            str += element
+        }
+    });
+    return str
+}
+console.log(decrypt(['a', 'b', 'd', 'r', 't', 's', 'd', 'n', 'p', 'i', 'g'], [ 'n', 't', 's', 'a', 'i', 'd', 'b', 'p', 'r', 'g', 'd' ], 'nquí hny semndgnsod rgpdügpod' ))
+
+module.exports = {
+    sort,
+    generateSeed,
+    encrypt,
+    decrypt,
+}
