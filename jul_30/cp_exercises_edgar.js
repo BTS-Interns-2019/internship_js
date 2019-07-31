@@ -123,20 +123,19 @@ if (rest){
 }
 console.log(google("findIndex"));
 
-/*
+
 function evenindex (cad){
-   function indice (ele){
-        if (ele % 2 == 0){
-            return ele;
+    let res = [];
+    for (let i = 0; i < cad.length; i++){
+        if ((cad[i] % 2) == 0){
+            res += cad.indexOf(cad[i]);
         }
     }
-
-    return cad.every(indice); 
-
-
+    res = res.split("")  
+    return res;
 }
-console.log(evenindex([2,4,6,8,20,10]));
-*/
+console.log(evenindex([2,4,6,8,7,10]));
+
 
 module.exports = {
     login,
