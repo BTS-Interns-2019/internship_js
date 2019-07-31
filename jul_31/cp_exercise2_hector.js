@@ -35,10 +35,29 @@ function myHand(deck) {
 
   const identicalSuits = checkCardsSuits(hand.cards);
   const inNumericalOrder = checkCardsNumericalOrder(hand.cards);
+  const isRoyalOrder = checkCardsRoyalOrder(hand.cards, inNumericalOrder);
+
+  // Royal Flush
+  if (isRoyalOrder && identicalSuits) {
+    hand.hand = 'Royal Flush';
+    return hand;
+  }
 
   // Straight Flush
   if (identicalSuits && inNumericalOrder) {
     hand.hand = 'Straight Flush';
+    return hand;
+  }
+
+  // Flush 
+  if (identicalSuits) {
+    hand.hand = 'Flush';
+    return hand;
+  }
+
+  // Straight
+  if (inNumericalOrder) {
+    hand.hand = 'Straight';
     return hand;
   }
 
@@ -67,9 +86,11 @@ function myHand(deck) {
       return hand;
     }
   }
-}
 
-myHand(deck);
+  // High Card
+  hand.hand = `High Card`;
+  return hand;
+}
 
 function checkCardsSuits(hand) {
   switch (hand[0].suit) {
@@ -98,6 +119,10 @@ function checkCardsNumericalOrder(hand) {
   return true;
 }
 
+function checkCardsRoyalOrder(hand, inNumericalOrder) {
+  return inNumericalOrder && hand[0].number === '10' ? true : false;
+}
+
 function checkPairingCards(hand) {
   const handObj = {};
 
@@ -114,3 +139,5 @@ function checkPairingCards(hand) {
 
   return pairings.length > 0 ? pairings : false;
 }
+
+console.log(myHand(deck));
