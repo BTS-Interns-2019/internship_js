@@ -23,13 +23,11 @@ test('blow candles', () => {
 
 ``` */
 let candel = [6,5,4,3,2,1,2,3,4,5,6]
-function avoidingFire(...arr){
-  let sort = [...arguments].(x => x)
-  // .sort((a,b) => a-b)
-  console.log(sort)
+function avoidingFire(arr, ...otherArr){
+  let sort = arr.sort((a,b) => a - b)
   let counter = 0
-  for(let i of sort){
-    if(i === sort[sort.length-1]){
+  for(let i = 0; i <= sort.length; i++){
+    if(arr[i] === sort[sort.length-1]){
       counter++
     }
   }
