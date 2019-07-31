@@ -17,7 +17,7 @@ console.log(arry);
     }
 
     arry.push(...sergioArry);
-    console.log(arry);
+ //   console.log(arry);
     
     return arry;
 }  
