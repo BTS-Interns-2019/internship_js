@@ -8,7 +8,7 @@ function avoidingFire(...candles) {
     }
   });
   
-  return candles.filter((elem) => elem === tallest).length;
+  return candles.filter(elem => elem === tallest).length;
 }
 
 module.exports = avoidingFire;
