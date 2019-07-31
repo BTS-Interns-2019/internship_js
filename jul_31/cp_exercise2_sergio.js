@@ -56,10 +56,7 @@ function myHand(barajeada) {
     }
 
     
-    // for (let k = 0; k < mano['cards'].length; k++) {
-    //     if(mano['cards']['number'])
-        
-    // }
+
     return mano;
 
 }
