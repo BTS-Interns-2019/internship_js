@@ -5,16 +5,19 @@ function jsonTimes(year){
   var result = {};
   var arrayFechas = [];
 
-  if(typeof year === 'number'){
+  if((typeof year === 'number') || 
+  (typeof year === 'string' && year.length === 4)){
     anio = year;
-  } else if(typeof year === 'string' && year.length === 4){
-    anio = year;
-  }
+  } else if(typeof year === 'string' && year.length === 24){
+    anio = year.substring(0,4);
+  } else if(typeof year === 'object'){
+    anio = year.getFullYear();
+  } 
   
   for(var i=0; i<12; i++){
     fecha = new Date(anio,i,13);
-    if(fecha.getDay === 5){
-      counter ++;
+    if(fecha.getDay() === 5){
+      console.log("si entra");
       fecha_mod = fecha.getMonth() + "/" + 
                   fecha.getDate() + "/" +
                   fecha.getFullYear()
@@ -22,9 +25,9 @@ function jsonTimes(year){
     }
   }
 
-  obj = {
+  result = {
       times:arrayFechas.length,
       dates:arrayFechas
   };
-  return obj;
+  return result;
 }
