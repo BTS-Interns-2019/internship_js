@@ -13,9 +13,8 @@ function JsonTimes (param) {
                 }
                 break;
             case "object":
-
+                    year = object.getFullYear();
                 break;
-                       
        }
 
 
