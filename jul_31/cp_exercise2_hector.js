@@ -21,6 +21,12 @@ function shuffle(deck) {
 }
 
 function myHand(handsCard) {
+  const errors = checkForWrongInput(handsCard);
+
+  if (errors.length > 0) {
+    return errors;
+  }
+
   const hand = {
     hand: '',
     cards: [],
@@ -135,6 +141,38 @@ function checkPairingCards(hand) {
   }
 
   return pairings.length > 0 ? pairings : false;
+}
+
+function checkForWrongInput(hand) {
+  const handCopy = Array.from(hand);
+  const errors = [];
+  if (!Array.isArray(hand)) {
+    errors.push('Hand is not an array of cards');
+    return errors;
+  }
+
+  if (handCopy.length !== 5) {
+    errors.push('Wrong number of cards in the hand');
+  }
+
+  handCopy.sort((a, b) => a.number > b.number);
+  handCopy.forEach((card, index, handCopy) => {
+    if (typeof handCopy[index + 1] !== 'undefined' && handCopy[index + 1] !== null) {
+      if (handCopy[index].number === handCopy[index + 1].number && handCopy[index].suit === handCopy[index + 1].suit) {
+        errors.push('More than one identical card in the hand');
+      }
+    }
+  });
+
+  if (handCopy.some(card => !cards.includes(card.number))) {
+    errors.push('Unexistent number in a card in the hand');
+  }
+
+  if (handCopy.some(card => !suits.includes(card.suit))) {
+    errors.push('Unexistent suit in a card in the hand');
+  }
+
+  return errors;
 }
 
 module.exports = {

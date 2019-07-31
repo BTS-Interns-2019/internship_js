@@ -1,7 +1,7 @@
 const { getDeck, shuffle, myHand } = require('./cp_exercise2_hector');
 
 /**
- * Happy Path
+ * Happy Path :D
  */
 const cases = [
   // Royal Flush
@@ -102,5 +102,58 @@ const results = [
 for (let i = 0; i < cases.length; i++) {
   test(`Testing hand ${results[i]}`, () => {
     expect(myHand(cases[i]).hand).toBe(results[i]);
+  });
+}
+
+/**
+ * Sad Path :(
+ */
+const errorCases = [
+  // Not array of cards
+  'cards',
+  // Wrong number of cards
+  [
+    { number: '10', suit: 'spades'},
+    { number: 'J', suit: 'spades'},
+    { number: 'Q', suit: 'spades'},
+    { number: 'K', suit: 'spades'}
+  ],
+  // More than one identical card
+  [
+    { number: '2', suit: 'diamonds'},
+    { number: '2', suit: 'diamonds'},
+    { number: '4', suit: 'diamonds'},
+    { number: '5', suit: 'diamonds'},
+    { number: '6', suit: 'diamonds'}
+  ],
+  // Unexistent number in a card
+  [
+    { number: 'T', suit: 'spades'},
+    { number: 'K', suit: 'diamonds'},
+    { number: 'K', suit: 'clubs'},
+    { number: 'K', suit: 'hearts'},
+    { number: '5', suit: 'hearts'}
+  ],
+  // Unexistent suit in a card
+  [
+    { number: '4', suit: 'spades'},
+    { number: '4', suit: 'clubs'},
+    { number: '4', suit: 'arrows'},
+    { number: '9', suit: 'spades'},
+    { number: '9', suit: 'clubs'}
+  ]
+];
+
+const errorResults = [
+  'Hand is not an array of cards',
+  'Wrong number of cards in the hand',
+  'More than one identical card in the hand',
+  'Unexistent number in a card in the hand',
+  'Unexistent suit in a card in the hand'
+];
+
+for (let i = 0; i < errorCases.length; i++) {
+  test(`Testing hand ${errorResults[i]}`, () => {
+    expect(myHand(errorCases[i])).toContain(errorResults[i]);
   });
 }
