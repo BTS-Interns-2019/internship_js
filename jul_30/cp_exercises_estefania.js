@@ -86,14 +86,14 @@ console.log(google('findInde'))
 
 //onlyEvenIndex
 function onlyEvenIndex(arr){
-    var result = arr.some(element => element %2 ===0)
-    if(result==true) {
-        return arr
-    } else {
-        return false
+    arrPar = arr.filter(element => element %2 ===0)
+    arr2 = []
+    for(i=0; i < arr.length; i++) {
+        arr2[i] = arr.findIndex(element => element == arrPar[i])
     }
+    return arr2
 }
-// console.log(onlyEvenIndex([12, 5, 8, 130, 44]))
+console.log(onlyEvenIndex([1, 2, 3, 4]))
 
 module.exports={
     login,
