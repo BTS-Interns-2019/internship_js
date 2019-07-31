@@ -9,8 +9,8 @@
 
 function avoidingFire(array) {
     if(array.every(elemento => Array.isArray(elemento))) {
-        array = array.reduce(function(a,b) { 
-            return a.concat(b);
+        array = array.reduce(function(acc, item) { 
+            return acc.concat(item);
          });    
     }
     maximo = Math.max(...array);
