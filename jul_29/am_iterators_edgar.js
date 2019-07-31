@@ -1,11 +1,11 @@
 function foreach (cad){
 for (i = 0; i < cad.length; i++){
-   console.log(cad[i]+" " + i + " "+"["+cad+"]");
+  // console.log(cad[i]+" " + i + " "+"["+cad+"]");
 }
-return undefined
+return cad
 }
 
-module.exports = foreach;
+//module.exports = foreach;
 
 console.log(foreach([1,2,3,4,5,]));
 
@@ -15,28 +15,36 @@ function maps (cad, cont){
             res[i] = cad[i] + cont;
         
     }
-    return "["+res+"]";
+    return res;
 }
 
-console.log(maps(["hey", 2,5,"lol"], 2));
+console.log(maps(["hjj","cmn","jdf"], 4));
 
-module.exports = maps;
+//module.exports = maps;
 
 function filters (cad, cont){
     res = [];
-    for (i = 0; i < cad.length; i++){
-        if (cad[i] || cad[i] == cont){
+    for (i = 0, j = 0; i < cad.length; i++, j++){
+        if (cad[i] === cont){
             if (i < cad.length - 1){
-            res += cad[i]+",";
-        } else if (cad[i] && i == cad.length - 1){
-            res += cad[i];
+            res[j] = cad[i];
+        } else if (i == cad.length - 1){
+            res[j] = cad[i];
         }
-    }
+    } else if (cad [i]){
+            if (i < cad.length - 1){
+            res[j] = cad[i];
+        } else if (i == cad.length - 1){
+            res[j] = cad[i];
+        }
 }
-    return "["+res+"]";
+    }
+    return res;
 }
 
-console.log(filters([NaN,null,"",4,"hola",6], true));
+console.log(filters([2,11,2,21,2,98], 2));
+
+//module.exports = filters;
 
 module.exports = filters;
 
@@ -49,7 +57,7 @@ function reduces (cad, acu){
 
 console.log(reduces(["hey", 2, 5, "lol"], 2))
 
-module.exports = filters;
+//module.exports = reduces;
 
 
 function reducesright (cad, acu){
@@ -59,9 +67,14 @@ function reducesright (cad, acu){
     return acu
 }
 
-console.log(reducesright(["hey", 2, 5, "lol"], 2))
+console.log(reducesright(["hjj","cmn","jdf"], "hjj"))
 
-
-
+module.exports = {
+    foreach,
+    maps,
+    filters,
+    reduces,
+    reducesright
+};
 
 
