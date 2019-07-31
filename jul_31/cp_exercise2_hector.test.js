@@ -1,4 +1,30 @@
-const { getDeck, shuffle, myHand } = require('./cp_exercise2_hector');
+const { getDeck, shuffle, myHand, suits, cards } = require('./cp_exercise2_hector');
+
+// getDeck tests
+test('Testing if deck generated has 52 cards', () => {
+  expect(getDeck().length).toBe(52);
+});
+test('Testing if deck has cards with a suit different than the four ones', () => {
+  const result = getDeck().some(card => !suits.includes(card.suit));
+  expect(result).toBe(false);
+});
+test('Testing if deck has cards with a number different than the established', () => {
+  const result = getDeck().some(card => !cards.includes(card.number));
+  expect(result).toBe(false);
+});
+
+// shuffle tests
+test('Testing if shuffled deck generated has 52 cards', () => {
+  expect(shuffle(getDeck()).length).toBe(52);
+});
+test('Testing if shuffled deck has cards with a suit different than the four ones', () => {
+  const result = shuffle(getDeck()).some(card => !suits.includes(card.suit));
+  expect(result).toBe(false);
+});
+test('Testing if shuffled deck has cards with a number different than the established', () => {
+  const result = shuffle(getDeck()).some(card => !cards.includes(card.number));
+  expect(result).toBe(false);
+});
 
 /**
  * Happy Path :D
@@ -7,9 +33,9 @@ const cases = [
   // Royal Flush
   [
     { number: '10', suit: 'spades'},
-    { number: 'J', suit: 'spades'},
-    { number: 'Q', suit: 'spades'},
     { number: 'K', suit: 'spades'},
+    { number: 'Q', suit: 'spades'},
+    { number: 'J', suit: 'spades'},
     { number: 'A', suit: 'spades'}
   ],
   // Straight Flush

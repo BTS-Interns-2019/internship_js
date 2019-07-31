@@ -36,6 +36,8 @@ function myHand(handsCard) {
     hand.cards.push(handsCard[i]);
   }
 
+  hand.cards.sort((a, b) => cards.indexOf(a.number) - cards.indexOf(b.number));
+
   const identicalSuits = checkCardsSuits(hand.cards);
   const inNumericalOrder = checkCardsNumericalOrder(hand.cards);
   const isRoyalOrder = checkCardsRoyalOrder(hand.cards, inNumericalOrder);
@@ -111,7 +113,7 @@ function checkCardsSuits(hand) {
 function checkCardsNumericalOrder(hand) {
   for (let i = 0; i < hand.length; i++) {
     if (typeof hand[i + 1] !== 'undefined' && hand[i + 1] !== null) {
-      if (hand[i].number === 'K' && hand[i + 1].number === 'A') {
+      if (hand[i].number === 'A' && hand[i + 1].number === '10') {
         continue;
       }
       if (cards.indexOf(hand[i + 1].number) - cards.indexOf(hand[i].number) !== 1) {
@@ -123,7 +125,7 @@ function checkCardsNumericalOrder(hand) {
 }
 
 function checkCardsRoyalOrder(hand, inNumericalOrder) {
-  return inNumericalOrder && hand[0].number === '10' ? true : false;
+  return inNumericalOrder && hand[0].number === 'A' ? true : false;
 }
 
 function checkPairingCards(hand) {
@@ -178,5 +180,7 @@ function checkForWrongInput(hand) {
 module.exports = {
   getDeck,
   shuffle,
-  myHand
+  myHand,
+  suits,
+  cards
 };
