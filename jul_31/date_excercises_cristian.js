@@ -29,7 +29,7 @@ function jsonTimes(parameter){
         if(d.getDay()==5){
             friday++;
             //data = d.getY
-            dates.push((d.getMonth()+1) + "-" + d.getDay() + "-" + a);
+            dates.push(d.getDay() + "/" + (d.getMonth()+1) + "/" + a);
         }
         month++;
     }while(month<12);
