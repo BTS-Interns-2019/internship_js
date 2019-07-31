@@ -1,4 +1,4 @@
-const sort = require('./mutation-methods_hector');
+const { sort, generateSeed, encrypt, decrypt } = require('./mutation-methods_hector');
 
 let originalArray;
 beforeEach(() => originalArray = [6, 4, 21, 2]);

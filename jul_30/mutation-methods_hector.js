@@ -27,4 +27,26 @@ function sort(arr, callback) {
   return arr;
 }
 
-module.exports = sort;
+function generateSeed(arr) {
+  return arr.sort((a, b) => Math.floor(Math.random() * (3) + (-1)));
+}
+
+function encrypt(baseAlphabet, seed, message) {
+  message = message.toLowerCase();
+  return message.split('').map((element, index) => {
+    console.log(element, baseAlphabet.indexOf(element), seed);
+    if (baseAlphabet.indexOf(element) === -1) {
+      return element;
+    }
+    return seed[baseAlphabet.indexOf(element)];
+  }).join('');
+}
+
+function decrypt(baseAlphabet, seed, encryptedMessage) {}
+
+module.exports = {
+  sort,
+  generateSeed,
+  encrypt,
+  decrypt,
+};
