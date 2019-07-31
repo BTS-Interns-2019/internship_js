@@ -7,7 +7,7 @@ test(`Returns an array with the dates`, () => {
   const isArray = Array.isArray(jsonTimes(2016).dates);
   expect(isArray).toBe(true);
 });
-test(`Returns an number with the Friday 13 count`, () => {
+test(`Returns a number with the Friday 13 count`, () => {
   const isInteger = Number.isInteger(jsonTimes(2016).times);
   expect(isInteger).toBe(true);
 });
