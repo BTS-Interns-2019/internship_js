@@ -17,3 +17,30 @@ function sort(originalArray, callback) {
 }
 
 console.log(sort(originalArray))
+
+
+let letras=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q"]
+function generateSpeed(arr){
+let arrar1=[];
+
+arrar1=Array.from(letras).sort(() =>Math.floor(Math.random() * (letras.length)));
+return arrar1;
+}
+console.log(generateSpeed())
+
+function encrypt(baseAlphabet, seed, message){
+
+}
+
+function decrypy(baseAlphabet, seed, encryptedMessage){
+
+}
+
+
+
+module.exports={
+    sort,
+    generateSpeed,
+    encrypt,
+    decrypy
+}
