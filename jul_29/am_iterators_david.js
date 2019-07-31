@@ -1,8 +1,5 @@
 //# Array Iterator Methods
 
-//   * reduce
-//   * reduceRight
-
 // forEach()
 array = [1,2,3];
 
@@ -66,20 +63,41 @@ function funfilter(cV, index, array) {
 
 // reduce()
 
-array = [1];
-iV = false;
+array = [1,2,3];
+iV = 100;
 
 console.log(reduce(funcion, array, iV));
 
 function reduce(f, array) {
-    result = array[0];
+    result = 0;
     if (iV) {
         result = iV;
     }
-    if (iV == false && array == []) {
-        result = TypeError;
-    }
     for (i=0; i < array.length; i++) {
+        cV = array[i];
+        index = i;
+        result += f(cV, index, array);    
+    }
+    return result;
+}
+
+function funcion(cV, index, array) {
+    return array[index]*2; 
+}
+
+// reduceRight()
+
+array = [1,2,3];
+iV = 100;
+
+console.log(reduceRight(funcion, array, iV));
+
+function reduceRight(f, array) {
+    result = 0;
+    if (iV) {
+        result = iV;
+    }
+    for (i=array.length-1; i >= 0 ; i--) {
         cV = array[i];
         index = i;
         result += f(cV, index, array);    
