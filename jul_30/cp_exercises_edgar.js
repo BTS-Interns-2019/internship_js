@@ -123,7 +123,7 @@ if (rest){
 }
 console.log(google("findIndex"));
 
-
+/*
 function evenindex (cad){
    function indice (ele){
         if (ele % 2 == 0){
@@ -136,4 +136,9 @@ function evenindex (cad){
 
 }
 console.log(evenindex([2,4,6,8,20,10]));
+*/
 
+module.exports = {
+    login,
+     even
+     };
