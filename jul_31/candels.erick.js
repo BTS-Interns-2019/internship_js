@@ -21,6 +21,7 @@ test('blow candles', () => {
   expect(avoidingFire([2,2,2,1], [6,9,2], [7,7,1,2], [8,8,1,7,3])).toBe(1);
 })
 
+<<<<<<< HEAD:jul_31/candels.erick.js
 ``` */
 
 
@@ -38,3 +39,19 @@ function avoidingFire(...arr){
 
 
 module.exports = avoidingFire;
+=======
+```
+
+```js
+function avoidingFire(...arr) {
+    let result = arr // [[1,2,3,4,5],[3,4,5,6],[4,5,6,7,8,8]]
+    result = result.reduce((acc, item) => { return acc.concat(item) }, []) // [1,2,3,4,5,3,4,5,6,4,5,6,7,8,8]
+    result = result.filter((item,i,iarr) => { return item === Math.max(...iarr)}) // [8,8]
+    result = result.length; // 2
+	return result // 2
+}
+
+
+avoidingFire([1, 2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7, 8, 8])
+```
+>>>>>>> master:jul_31/candles.md
