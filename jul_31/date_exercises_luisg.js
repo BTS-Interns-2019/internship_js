@@ -56,3 +56,5 @@ return obj;
  
 }
 console.log(jsonTimes("2018-01-01"))
+
+module.exports=jsonTimes;
