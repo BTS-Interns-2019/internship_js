@@ -1,17 +1,12 @@
 function avoidingFire(...arrays) {
-    console.log(arrays);
-    console.log(arrays.length);
-    for(let i = 0; i < arrays.length; i++){
-        if(Array.isArray(arrays[i])){
-            for(let x = 0;){
-                
-            }
-        }
+    let arr = []
+    let int = 0;
+    arr = arr.concat(...arrays).sort((a,b)=>b - a)
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[0] == arr[i]){
+            int++;
+        }        
     }
-    
-    
-    
-    
-
+    return int
 }
-console.log(avoidingFire([2,2,2,1], [6,9,2], [7,7,1,2], [8,8,1,7,3]));
+console.log(avoidingFire([9,2,9,2,1], [6,9,2], [7,7,1,2], [8,9,1,9,3]));
