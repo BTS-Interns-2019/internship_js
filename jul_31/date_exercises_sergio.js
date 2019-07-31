@@ -7,7 +7,8 @@ function jsonTimes(params) {
     let dato = params;
     console.log(dato);
     console.log(dato.getDay());
-    dato.setMonth(dato.getMonth(0));
+    dato.setMonth(0);
+    dato.setDate(4);
     console.log(dato);
     for (let i = 0; i < 52; i++) {
         dato.setDate(dato.getDate()+7);
