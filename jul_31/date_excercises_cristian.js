@@ -1,6 +1,6 @@
 function jsonTimes(parameter){
     a = typeof(parameter);
-    console.log(a);
+    //console.log(a);
     var d;
     switch (a){
         case "number":
@@ -29,12 +29,13 @@ function jsonTimes(parameter){
         if(d.getDay()==5){
             friday++;
             //data = d.getY
-            dates.push();
+            dates.push((d.getMonth()+1) + "-" + d.getDay() + "-" + a);
         }
         month++;
     }while(month<12);
-    var obj = {friday13:friday}
+    var obj = {friday13:friday,
+                viernes:dates};
     return obj;
 }   
 
-jsonTimes(1);
+console.log(jsonTimes(2019));
