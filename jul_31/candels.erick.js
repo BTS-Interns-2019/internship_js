@@ -1,4 +1,4 @@
-# Fire in the whole
+/** # Fire in the whole
 
 There are some candles in a room that you have to blow before they start a fire
 as they are of different sizes, you can not blow all of them at the same time only the tallest ones
@@ -9,9 +9,9 @@ you will receive 1 or more Arrays of candles
 doesn't matter how many arrays you receive, you will return only one number of candles that you where able to blow the first time.
 
 ```js
-function avoidingFire(arrays/*one or more*/) {
+function avoidingFire(arrays//one or more//) {
 
-return int /* how many are you able to blow the first time */
+return int /* how many are you able to blow the first time 
 }
 
 test('blow candles', () => {
@@ -21,4 +21,20 @@ test('blow candles', () => {
   expect(avoidingFire([2,2,2,1], [6,9,2], [7,7,1,2], [8,8,1,7,3])).toBe(1);
 })
 
-```
+``` */
+let candel = [6,5,4,3,2,1,2,3,4,5,6]
+function avoidingFire(...arr){
+  let sort = [...arguments].(x => x)
+  // .sort((a,b) => a-b)
+  console.log(sort)
+  let counter = 0
+  for(let i of sort){
+    if(i === sort[sort.length-1]){
+      counter++
+    }
+  }
+  return counter
+}
+console.log(avoidingFire(candel))
+
+module.exports = avoidingFire;
