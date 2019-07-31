@@ -4,7 +4,7 @@ function getDeck() {
     var deck = []; 
     for (var i = 0; i < cartas.length; i = i + 1) {
         for (var j = 0; j <= value.length-1; j = j + 1) {
-            deck[deck.length] = { number: value[j], suit: cartas[i] };
+            deck[deck.length] = { name: cartas[i] + " " + value[j], number: value[j], suit: cartas[i] };
         }
     }
 	return deck;
@@ -25,14 +25,13 @@ deck = (shuffle(deck));
 
 
 function myHand(deck) {
-    arr2 = deck.slice(0, 5)
-    return arr2
-    // for(i=0; i<=arr2.length; i++) {
-    //     if(arr2.number == arr2.number) {
-
-    //     }
-    // }
+    if(!Array.isArray(deck) || (Array.isArray(deck) && deck.length > 5)) {
+        return {
+            hand: "wrong input",
+            cards: "cards"
+   
 } 
+    }
+deck = (myHand(deck.slice(0,5)));
 
-deck = (myHand(deck));
 console.log(deck)
