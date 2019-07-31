@@ -36,3 +36,13 @@ test('Order array with letters and numbers in it', () => {
   sort(newArray);
   expect(newArray).toEqual(control.sort());
 });
+
+// Encrypt and decrypt test
+const message = 'I have never listened to anyone who criticized my taste in space travel, sideshows or gorillas. When this occurs, I pack up my dinosaurs and leave the room.';
+test(`Encryptying and decrypting message '${message}'`, () => {
+  const alpha = ['r', 'e', 'w', 'a', 'c', 'u', 'p', 'm', 'q', 'i', 'o', 'b', 'l', 'n', 'k', 't', 'h', 's'];
+  const seed = generateSeed(alpha);
+  const encrypted = encrypt(alpha, seed, message);
+
+  expect(decrypt(alpha, seed, encrypted)).toBe(message.toLowerCase());
+});

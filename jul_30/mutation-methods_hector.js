@@ -28,21 +28,22 @@ function sort(arr, callback) {
 }
 
 function generateSeed(arr) {
-  return arr.sort((a, b) => Math.floor(Math.random() * (3) + (-1)));
+  return Array.from(arr).sort(() => Math.floor(Math.random() * (3) + (-1)));
 }
 
 function encrypt(baseAlphabet, seed, message) {
-  message = message.toLowerCase();
-  return message.split('').map((element, index) => {
-    console.log(element, baseAlphabet.indexOf(element), seed);
-    if (baseAlphabet.indexOf(element) === -1) {
-      return element;
-    }
-    return seed[baseAlphabet.indexOf(element)];
-  }).join('');
+  return message.toLowerCase()
+    .split('')
+    .map(element => baseAlphabet.indexOf(element) === -1 ? element : seed[baseAlphabet.indexOf(element)])
+    .join('');
 }
 
-function decrypt(baseAlphabet, seed, encryptedMessage) {}
+function decrypt(baseAlphabet, seed, encryptedMessage) {
+  return encryptedMessage.toLowerCase()
+    .split('')
+    .map(element => seed.indexOf(element) === -1 ? element : baseAlphabet[seed.indexOf(element)])
+    .join('');
+}
 
 module.exports = {
   sort,
