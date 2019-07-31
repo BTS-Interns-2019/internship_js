@@ -1,4 +1,10 @@
-const sort = require('./mutation-methods_emmanuelr.js');
+const {
+    sort,
+    generateSeed,
+    encrypt,
+    decrypt 
+}= require('./mutation-methods_emmanuelr.js');
+
 let originalArray;
 beforeEach(()=>originalArray=[6, 4, 21, 2]);
 
@@ -30,4 +36,23 @@ test('order strings',()=>{
 test('order from highest to lowest',()=>{
     result = sort(originalArray.slice(0), (a,b) => b-a); 
     expect(result).toEqual(originalArray.sort((a,b) => b-a));
+})
+
+//communicacion encriptada
+let alphabet="abcdefghijklmnopqrstuvwxyz".split('');
+
+test('prueba para generar seed',()=>{
+    expect(generateSeed(alphabet).length).toBe(alphabet.length);
+    expect(generateSeed(alphabet).sort()).toEqual(alphabet.sort());
+})
+
+alphabet="aeiou".split("");
+let mensaje="¡¡¡¡¡Este es el mensaje de prueba #1 !!!!!";
+let encriptado=encrypt(alphabet, generateSeed(alphabet), mensaje);
+test('encriptar mensaje',()=>{
+    expect(encriptado.length).toBe(mensaje.length);
+})
+
+test('desencriptar mensaje',()=>{
+    expect(decrypt(alphabet, generateSeed(alphabet), encriptado)).toBe(mensaje);
 })

@@ -25,18 +25,29 @@ function generateSeed(arr){
     arr2.filter(val=> val==undefined)
     return arr2;
 }
-alphabet="abcdefghijklmnopqrstuvwxyz".split('');
-console.log(generateSeed(alphabet));
-console.log(encrypt(alphabet, generateSeed(alphabet), 'hola amigos'));
+// alphabet="abcdefghijklmnopqrstuvwxyz".split('');
+// console.log(generateSeed(alphabet));
+// console.log(encriptado=encrypt(alphabet, generateSeed(alphabet), 'hola amigos'));
+// console.log(decrypt(alphabet, generateSeed(alphabet), encriptado));
+
 
 function encrypt(baseAlphabet, seed, message){
     cadena="";
-    message.split("").forEach((val,i) => {
-        
+    message.split("").forEach((val) => {
+       indice=baseAlphabet.indexOf(val);
+       if(indice>=0)cadena+=seed[indice];
+       else cadena+=val;
     });
+    return cadena;
 }
 function decrypt(baseAlphabet, seed, message){
-
+    cadena="";
+    message.split("").forEach((val) => {
+        indice=seed.indexOf(val);
+        if(indice>=0)cadena+=baseAlphabet[indice];
+        else cadena+=val;
+     });
+     return cadena;
 }
 module.exports={
     sort,
