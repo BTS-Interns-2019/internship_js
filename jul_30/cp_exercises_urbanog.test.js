@@ -30,5 +30,5 @@ test("Test Only Evens", function () {
     expect(onlyEven(numberOdd)).toBe(false);
 });
 test("Test Only Evens", function () {
-    expect(onlyEven(1258)).toBe("Solo se pueden ingresar arreglos")
+    expect(onlyEven(1258)).toEqual("Solo se pueden ingresar arreglos")
 });
