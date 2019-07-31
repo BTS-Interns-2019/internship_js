@@ -16,21 +16,18 @@ function getDeck() {
   return deck;
 }
 
-const deck = getDeck();
 function shuffle(deck) {
   return deck.sort(() => Math.floor(Math.random() * (3) + (-1)));
 }
 
-shuffle(deck);
-
-function myHand(deck) {
+function myHand(handsCard) {
   const hand = {
     hand: '',
     cards: [],
   };
 
-  for (let i = 0; i < 5; i++) {
-    hand.cards.push(deck[i]);
+  for (let i = 0; i < handsCard.length; i++) {
+    hand.cards.push(handsCard[i]);
   }
 
   const identicalSuits = checkCardsSuits(hand.cards);
@@ -71,7 +68,7 @@ function myHand(deck) {
         return hand;
       }
 
-      hand.hand = 'Two Pairs';
+      hand.hand = 'Two Pair';
       return hand;
     }
 
@@ -140,4 +137,8 @@ function checkPairingCards(hand) {
   return pairings.length > 0 ? pairings : false;
 }
 
-console.log(myHand(deck));
+module.exports = {
+  getDeck,
+  shuffle,
+  myHand
+};
