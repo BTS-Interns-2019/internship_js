@@ -193,7 +193,7 @@ function myHand(array) {
     let funs = [royalFlush, straightFlush, fourOfAKind, fullHouse,
         flush, straight, threeOfAKind, twoPairs, pair, highCard]
     let names = ["Royal Flush", "Straight Flush", "Four of a kind",
-        "fullHouse", "Flush", "Straight", "Three of a kind", "Two pairs", "Pair", "High Card"]
+        "Full House", "Flush", "Straight", "Three of a kind", "Two pairs", "Pair", "High Card"]
 
     function whatHand(funs,names,cards) {
      for(let i=0;i<funs.length;i++){
@@ -215,9 +215,10 @@ module.exports={
     shuffle,
     myHand
 }
-let deck = getDeck();
+/*let deck = getDeck();
 for(let i=0;i<200;i++){
 let shuf = shuffle(deck)
+console.log(shuf)
 let obj = myHand(shuf)
 console.log(obj)
-}
+}*/
