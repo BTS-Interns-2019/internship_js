@@ -42,11 +42,11 @@ function generateSeed(arre){
 }
 //letras="abcdefghijklmnopqrst".split('');
 //console.log(generateSeed(letras));
-function encrypt(base,seed,message){
+function encrypt(baseAlphabet,seed,message){
     dev="";
     message = message.split("");
     message.forEach((v)=>{
-        i=base.indexOf(v);
+        i=baseAlphabet.indexOf(v);
         if(i>=0){
             dev+=seed[i];
         }else{
@@ -56,13 +56,13 @@ function encrypt(base,seed,message){
     return dev;
 }
 
-function decrypt(base, seed, message){
+function decrypt(baseAlphabet, seed, message){
     dev="";
     message = message.split("");
     message.forEach((v)=>{
         i=seed.indexOf(v);
         if(i>=0){
-            dev+=base[i];
+            dev+=baseAlphabet[i];
         }else{
             dev+=v;
         }
