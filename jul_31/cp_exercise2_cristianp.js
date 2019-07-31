@@ -36,12 +36,42 @@ function shuffle(desor){
 
 function myHand(arr)
 {
-    console.log(JSON.stringify(arr, null));
-    arr.sort((a,b)=>a.Tipo.toString().localeCompare(b.Tipo.toString()));
-    console.log(JSON.stringify(arr, null));
+    if(!Array.isArray(arr) || ( Array.isArray(arr) && arr.length > 5)
+    || ( Array.isArray(arr) && arr.length < 5) ){
+        return{
+            hand:"wrong input",
+            card:arr
+        }
+    }
+
+    if(arr.filter){
+
+    }
+    //return arr;
+    hands={
+        hand:"Royal Flush",
+        cards:[
+            {Tipo: "spades",Card: "A"},
+            {Tipo: "spades",Card: "K"},
+            {Tipo: "spades",Card: "Q"},
+            {Tipo: "spades",Card: "J"},
+            {Tipo: "spades",Card: "10"}
+        ]},
+        {
+            hand:"Strainght Flush",
+            cards:[
+                {Tipo: "spades",Card: "A"},
+                {Tipo: "spades",Card: "K"},
+                {Tipo: "spades",Card: "Q"},
+                {Tipo: "spades",Card: "J"},
+                {Tipo: "spades",Card: "10"}
+            ]
+        }
+    /*console.log(JSON.stringify(arr, null));
     arr.sort((a,b)=>a.Carta.toString().localeCompare(b.Carta.toString()));
     console.log(JSON.stringify(arr, null));
-    
+    arr.sort((a,b)=>a.Tipo.toString().localeCompare(b.Tipo.toString()));
+    console.log(JSON.stringify(arr, null));//*/
 
 }
 

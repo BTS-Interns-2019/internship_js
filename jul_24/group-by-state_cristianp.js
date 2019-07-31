@@ -3,12 +3,6 @@
 //state have: code, name, and people{}
 //people have: name address adn state;
 
-function groupByState(line){
-    line = line.replace(/\n/g, " ");
-    //dividir por comas
-    line = line.replace(/,/g, " ");
-    line = line.split(" ");
-    line = line.filter(Boolean);
     todo = {};
     for(i=0;i<line.length;i++){
         var x = line[5];
@@ -17,7 +11,7 @@ function groupByState(line){
         
         var nombre = line[0] + " " + line[1];
         var dir= line[2] + " " + line[3] + " " + line[4];
-        var sta = line[5];//*/
+        var sta = line[5];
         var persona = {
             name: nombre,
             address: dir,
@@ -36,8 +30,8 @@ function groupByState(line){
             todo[sta].people.push(persona);
         }
         i+=6;
-        //console.log("ciclado");
-    }
+        //console.log("ciclado");//*/
+    //}
     //primero 2 nombre
     //3ro direccion
     //5 estado
