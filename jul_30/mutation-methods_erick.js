@@ -61,30 +61,57 @@ Write at least 1 test case ussing all functions, so it will need to.
 2) encrypt a message
 3) decrypt a message to get the same one in step #2 */
 
+// [6,4,21,2]
+
 function sort(arr, callBack){
   if(!!callBack){
-    
-  }
-  else{
-    arr = arr.join(',').split(',')
-    let ordered = true
     for(let i = 0; i < arr.length; i++){
-      if(arr[i] > arr[i+1]){
-        let save = arr[i]
-        arr[i] = arr[i+1]
-        arr[i+1] = save
+      let ordered = true
+      if(-callBack(arr[i],arr[i+1]) < 0){
+          let save = arr[i]
+          arr[i] = arr[i+1]
+          arr[i+1] = save
+          ordered = false
+        }
+          if(i === arr.length-1 && !ordered){
+            i = -1
+            ordered = true
+            console.log("llegue aqui")
+          }        
+    }
+      return arr
+    } 
+  
+    if(arr.some(val => Number(val)) ){
+      arr = arr.join(',').split(',')
+      bubble(arr)
+      return arr.map(v=>+v)
+    }
+
+    function bubble(array){
+      let ordered = true
+    for(let i = 0; i <= array.length; i++){
+      if(array[i] > array[i+1]){
+        let save = array[i]
+        array[i] = array[i+1]
+        array[i+1] = save
         ordered = false
-        console.log(arr)
       }  
-        if(i == arr.length-1 && !ordered){
+        if(i == array.length-1 && !ordered){
           i = -1
           ordered = true
         }
-    }
-  } return arr.map(v=>+v)
+      }
+    };  
+    bubble(arr)
+   return arr
 }
 
+
+// console.log(sort([6,4,21,2], (a,b) => (a-b) ))
 // console.log(sort([6,4,21,2]))
-console.log(sort([1,21,11,2]))
+// console.log(sort([1,21,11,2]))
+console.log(sort(["M","a","L","r","G","c","I","e","U","o","O"]))
+
 
 
