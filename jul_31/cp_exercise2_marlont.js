@@ -11,13 +11,14 @@ function getDeck(){
 }
 
 function shuffle(deck){
-  for(var i=0; i<deck.length; i++){
+  /*for(var i=0; i<deck.length; i++){
     val_rand = Math.random().toFixed(2)*100 % deck.length;
     val_rand = parseInt(val_rand);
     var temp = deck[i];
     deck[i] = deck[val_rand];
     deck[val_rand] = temp;
-  }  
+  }*/
+  deck.sort(() => Math.random() - 0.5);  
   return deck;
 }
 
@@ -29,7 +30,7 @@ function myHand(mano){
   var sameNumber2 = 1;
 
   mano.sort(function(a,b){
-        return a.order - b.order;
+    return a.order - b.order;
   });
   console.log(mano);
   //Compruebo royalFlush
@@ -39,7 +40,9 @@ function myHand(mano){
 
   //COMPRUEBO SECUENCIA
   for(var i=1; i<mano.length; i++){
-    if(mano[i].order !== mano[i-1].order-1){
+    console.log(mano[i].order, mano[i-1].order+1);
+    if(mano[i].order !== mano[i-1].order+1){
+      console.log("no secuencial");
       sequence = false;
     }
   }
@@ -61,6 +64,7 @@ function myHand(mano){
       }
     }
   }
+  console.log(royalFlush, sequence, sameSuit, sameNumber1, sameNumber2);
   var betterHand = "";
   switch(true){
     case royalFlush && sameSuit : {

@@ -51,6 +51,10 @@ function toLazyHuman(toDate, fromDate){
 
   console.log(years);
   console.log(months);
+  console.log(days);
+  console.log(hours);
+  console.log(minutes);
+  console.log(seconds);
   
 
   function round(number){
@@ -124,6 +128,7 @@ function toLazyHuman(toDate, fromDate){
         break;
       }
     }
+  
   }
 
   switch(true){
