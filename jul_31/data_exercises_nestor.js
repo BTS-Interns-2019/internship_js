@@ -20,6 +20,17 @@ function jsonTimes(data){
             break;
         }
     }
+}
+//---------------------------
+function toLazyHuman(desde, hasta){
+    console.log(desde, hasta);
+    var residuo = new Date(hasta - desde);
+    console.log(residuo.getTime());
+    
 
+    
 
 }
+var toDAte = new Date("2019-07-31T12:00:00.000");
+var fromDate = new Date("2019-07-31T12:01:00.000")
+console.log(toLazyHuman(fromDate,toDAte));
