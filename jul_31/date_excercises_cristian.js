@@ -29,15 +29,17 @@ function jsonTimes(parameter){
         if(d.getDay()==5){
             friday++;
             //data = d.getY
-            dates.push((d.getMonth()+1).toString().padStart(2, 0) + "/" + d.getDay() + "/" + a);
+            dates.push((d.getMonth()+1).toString().padStart(2, 0) + "/" + d.getDate() + "/" + a);
         }
         month++;
     }while(month<12);
-    var obj = {friday13:friday,
-                viernes:dates};
+    var obj = {times:friday,
+                dates:dates};
     return obj;
-}   
-//console.log(jsonTimes(2019));
+    //return JSON.stringify(obj);
+}
+const date = new Date(2019, 9);   
+console.log(jsonTimes(date));
 
 
 
@@ -61,16 +63,16 @@ function toLazyHuman(ob1, ob2){
     //console.log(diffMins);
     //horas
     var diffHour = diffMins / 60;
-    console.log(diffHour);
+    //console.log(diffHour);
     //dias
     var diffDay = diffHour / 24;
-    console.log(diffDay);
+    //console.log(diffDay);
     //meses
     var diffMes = diffDay / 30;
-    console.log(diffMes);
+    //console.log(diffMes);
     //años
     var diffYear = diffMes / 12;
-    console.log(diffYear);
+    //console.log(diffYear);
     msj ="";
     if(diffYear > 30){
         msj += "more than 30 years";
@@ -198,7 +200,7 @@ function toLazyHuman(ob1, ob2){
         msj = "20 minutes";
     }else if(diffMins<20 && diffMins>15){
         msj = "less than 20 minutes";
-    }else if(diffMins<=15 && diffMins <10){
+    }else if(diffMins<=15 && diffMins >10){
         msj = "more than 10 minutes";
     }else if(diffMins==10){
         msj = "10 minutes";
@@ -220,9 +222,9 @@ function toLazyHuman(ob1, ob2){
         msj = "more than 1 minutes";
     }else if(diffMins==1){
         msj = "1 minute";
-    }else if(diffMins<1 && diffMins>0.75){
+    }else if(diffMins<1){
         msj = "less than 1 minute";
-    }else if(diffMins<=0.75 && diffSeg >30){
+    }/*else if(diffMins<=0.75 && diffSeg >30){
         msj = "more than 30 seconds";
     }else if(diffSeg==30){
         msj = "30 seconds";
@@ -234,7 +236,7 @@ function toLazyHuman(ob1, ob2){
         msj = "20 seconds";
     }else if(diffSeg<20 && diffSeg>15){
         msj = "less than 20 seconds";
-    }else if(diffSeg<=15 && diffSeg <10){
+    }else if(diffSeg<=15 && diffSeg >10){
         msj = "more than 10 seconds";
     }else if(diffSeg==10){
         msj = "10 seconds";
@@ -258,7 +260,7 @@ function toLazyHuman(ob1, ob2){
         msj = "1 second";
     }else if(diffSeg<1){
         msj = "less than 1 second";
-    }
+    }//*/
     if(diffNegative){
         msj += " ago";
     }else{
@@ -270,9 +272,9 @@ function toLazyHuman(ob1, ob2){
     //var secondsToTime = as(diferencia);
     //return secondsToTime;
 }
-a = new Date(2019,00,00,00);
-b = new Date(2019,00,00,23);
-console.log(toLazyHuman(a,b));
+//a = new Date('2019');
+//b = new Date(2019,00,00,23);
+console.log(toLazyHuman('2019-07-31T12:00:00.000','2019-07-31T12:04:00.100'));
 
 
 
@@ -291,3 +293,5 @@ function as(s) {
 
     return  addZ(hrs) + ':' + addZ(mins) + ':' + addZ(secs)+ '.' + addZ(ms);
 }
+
+module.exports = {jsonTimes, toLazyHuman};
