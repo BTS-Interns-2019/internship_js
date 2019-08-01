@@ -147,7 +147,7 @@ function roundTime(time, div) {
     //     div += "s"
     // }
 
-    if (absTime > 0.0001 && 0.9999 > absTime) {
+    if (absTime < 1 ) {
         msj = future + less + numbers[0]+div + past
     } else if (absTime === 1.00) {
         msj = future + numbers[0] + div + past
