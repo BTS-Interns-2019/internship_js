@@ -28,12 +28,14 @@ function shuffle(desor){
     for (let i = 0; i <= 4; i++) {
         arr.push(desor[i]);
     }
-    //return JSON.stringify(arr, null)
+    return JSON.stringify(arr, null)
     return(arr);
     //return deck;
 }
-//console.log(shuffle(Deck));
+console.log(shuffle(Deck));
 
+
+//Mano
 function myHand(arr)
 {
     if(!Array.isArray(arr) || ( Array.isArray(arr) && arr.length > 5)
@@ -43,8 +45,11 @@ function myHand(arr)
             card:arr
         }
     }
-
-    if(arr.filter){
+//que tengan mismo color
+//orden numerico
+//basar en orden de las cartas del arreglo
+//some
+    if(arr.filter( (items, index, arr)=>  )){
 
     }
     //return arr;
@@ -75,4 +80,4 @@ function myHand(arr)
 
 }
 
-myHand(shuffle(Deck))
+console.log(( myHand(shuffle(Deck)) ) );
