@@ -6,7 +6,7 @@ TDD in the file `date_exercises_<name>.test.js`
 * Function name `jsonTimes`
 */
 
-function jsonTimes(dataT){
+/*function jsonTimes(dataT){
     let date;
 
     if(dataT.toString().length<=4){
@@ -18,11 +18,33 @@ function jsonTimes(dataT){
     }
 
     date.setDate(13)
-    
+
+    const result={dates: []}
 }
 
+const mes = date.getMonth()+1;
 
-jsonTimes()
+for(let mes = 0; mes <12; mes ++){
+  date.setMonth(mes);
+  if(date.getDay===5){
+
+    result.dates.push(
+      month.toString().padStart(2, '0') + '/' + date.getDate + '/' + date.getFullYear()
+    )
+  }
+
+
+}
+
+result.times = result.dates.length;
+return result;
+
+console.log(jsonTimes())
+
+
+*/
+
+
 /*
 * Upload it before `17:30 07/31/2019`
 * Receives a single paramater
@@ -42,7 +64,7 @@ jsonTimes()
 Write 2 test cases for each exercise.*/
 
 /*## 2) Lazy human time visualization
-  * Function name `toLazyHuman`
+  * Function name `toLazyHuman` 
   * Receives 2 argument as Date objects
   * If second argument is not present use `now`
   * Returns an string representing the time difference between the arguments
@@ -53,22 +75,28 @@ Write 2 test cases for each exercise.*/
     * If the difference is *negative* you need to append `"ago"`
     * If the difference is *positive* you need to preppend `"in"`*/
 
-   function tola(date1, date2) {
-    date2=new Date(Date.now())
-    date1=new Date(date1)
-    let diff = date1 - date1; // the difference in milliseconds
-  
-    if (diff < 1000) { // less than 1 second
-      return 'right now';
+   function toLazyHuman(date1, date2) {
+
+    if(date2===undefined){//si no recibes date2 te crea un date2 con la funcion Date.now con el dia actual
+     let date2=new Date(Date.now())
+      console.log(date2)
     }
-  
-    let sec = Math.floor(diff / 1000); // convert diff to seconds
-  
-    if (sec < 60) {
-      return sec + ' sec. ago';
+    date1=date1.toISOString()//recibes date 1 como objeto y lo conviertes en string
+    date2=date2.toISOString()
+    console.log(date1)
+    console.log(date2)
+    
+    date1=date1.replace(/[-:.TZ]/g, " ").split(" ")
+    console.log(date1)
+    date2=date2.replace(/[-:.TZ]/g, " ").split(" ")
+    console.log(date2)
+
+    let contador=0;
+    for(i=0; i<date1.lenght-1; i++)
+    if(date2[i]!==date2[i]){
+      contador++;
     }
-  
-    let min = Math.floor(diff / 60000); // convert diff to minutes
-    if (min < 60) {
-      return min + ' min. ago';
-    }
+    
+    
+   }
+   toLazyHuman(new Date(1994,12,24,06,03,00),new Date (1992,03,11,10,36,30))

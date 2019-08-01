@@ -19,8 +19,10 @@ console.log(getDeck())
 
 
 function shuffles(arr){
-    for(let i=0; i<52; i++){
-        baraja1=(Math.floor(Math.random()*52))
+    for(let i=0; i<Math.floor(Math.random()* 1000)); i++) {
+        let baraja1=Math.floor(Math.random()*deck).length)
+        let baraja2=Math.floor(Math.random()*deck.length)
+        
 
     }
    return baraja1;
