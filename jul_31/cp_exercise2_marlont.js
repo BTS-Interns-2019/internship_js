@@ -114,13 +114,14 @@ function myHand(mano){
       break;
     }
   }
-  console.log(betterHand);
   var mano_final = [];
 
-  mano.forEach()
+  mano.forEach(function(item){
+    mano_final.push({ number: item.number, suit: item.suit}); 
+  })
   var obj = {
     hand: betterHand,
-    cards:mano
+    cards:mano_final
   } 
   return obj;
 }
