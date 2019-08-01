@@ -42,41 +42,51 @@ function jsonTimes(t){
     }
 }
 function getfriday13(year){
-    date = new Date(year+'-01-01');
+    date = new Date(year+'-01-02');
+    //console.log("date = "+date);
     let day= "";
     let month= "";
     dates = []
     for(let i=0;i<12;i++){
         date.setMonth(i);
         //console.log(date.getMonth());
-        for(let j=1;j<32;j++){
-            date.setDate(j);
-            //console.log(date.getDay()+" - "+date.getDate());
-            if(date.getDay() == 5){//Es viernes
-                if(date.getDate()==13){//Es 13
-                    day=date.getDate();
-                    month=date.getMonth();
-                    if(day.length<3)day="0"+day;
-                    if(month.length<3)month="0"+month;
-                    if(year.length<5){
-                        for(let i=year.length;i<=4;i++){
-                            year="0"+year;
-                        }
-                    }
-                    dates.push(month+"/"+day+"/"+year);
+        date.setDate(13);
+        //console.log("date = "+date);
+        //console.log(date.getDay()+" - "+date.getDate());
+        if(date.getDay() == 5){//Es viernes
+            //console.log("> date = "+date);
+            day=date.getDate();
+            month=date.getMonth()+1;
+            if(day<10){
+                //console.log("-d");
+                day="0"+day;
+        }
+            if(month<10){
+                //console.log("-m");
+                month="0"+month;
+            }
+            if(year.length<5){
+                for(let i=year.length;i<=4;i++){
+                    year="0"+year;
                 }
             }
+            //console.log(day);
+            //console.log(month);
+            //console.log(year);
+            dates.push(month+"/"+day+"/"+year);
         }
         
     }
     return dates;
 }
-console.log(getfriday13('1999'));
+//console.log(getfriday13('1999'));
 let obj = new Date('1999-11-20');
 /*console.log(jsonTimes(5));
 console.log(jsonTimes('1986'));
 console.log(jsonTimes('1972-07-22'));
 console.log(jsonTimes(obj));*/
+/*console.log(jsonTimes('2019-02-03'));//09/13/2019 12/13/2019
+console.log(jsonTimes('2012-02-03'));*/
 function toLazyHuman(todate,fromdate){
     let res = "";
     if(fromdate==undefined){fromdate.now()}

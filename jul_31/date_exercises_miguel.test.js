@@ -36,6 +36,17 @@ describe('jsonTimes', () => {
       expect(jsonTimes('2019-01-02').times).toBe(jsonTimesIn2019);
     })
     //INCLUDE 2 MORE TESTS
+    const date1 = new Date(2012,4);
+    test('another date correct times', function(){
+      expect(jsonTimes(date1).times).toBe(3);
+    })
+    test('another date right values', function(){
+      expect(jsonTimes(date1).dates).toEqual([
+        '01/13/2012',
+        '04/13/2012',
+        '07/13/2012',
+      ]);
+    })
   })
 //PRUEBA
 describe('toLazyHuman', () => {
