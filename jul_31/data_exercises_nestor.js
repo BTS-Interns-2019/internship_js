@@ -29,23 +29,57 @@ function toLazyHuman(hasta, desde){
     console.log(hasta);
     console.log(desde);
     var milisegundos = hasta.getMilliseconds()-desde.getMilliseconds();
-    var segundos = hasta.getMinutes()-desde.getMinutes();
-    var horas = hasta.getSeconds()-desde.getSeconds();
-    var minutos = hasta.getHours()-desde.getHours();
+    var segundos = hasta.getSeconds()-desde.getSeconds();
+    var minutos = hasta.getMinutes()-desde.getMinutes();
+    var horas = hasta.getHours()-desde.getHours();
     var dias = hasta.getDate()-desde.getDate();
     var mes = hasta.getMonth()-desde.getMonth();
     var año = hasta.getYear()-desde.getYear();
     console.log(año, mes, dias, horas, minutos, segundos, milisegundos);
     var valores = [1,2,5,10,20,30];
     if(año > 0 || año < 0){
-
+        //condicional resultado de (mes*8) si es menor de 10 agregar un 0
+        var signo = año < 0 ? "ago" : "in";
+        mes = mes * 8;
+        mes = (mes < 10) ? "0"+ mes : mes;
+        año = Math.abs(Math.round(año+"."+(mes)))
+        console.log(closeTo(año,signo, "years"));
     }
     if(mes > 0 || mes < 0){
+        //condicional resultado de (dias*8) si es menor de 50 agregar un 0
         var signo = mes < 0 ? "ago" : "in";
-        mes = Math.abs(Math.round(mes+"."+(dias * 2)))
-        console.log(closeTo(mes,signo, "months"));
-        
-        
+        dias = dias * 3;
+        dias = (dias < 50) ? "0"+ dias : dias;
+        mes = Math.abs(Math.round(mes+"."+(dias)))
+        console.log(closeTo(mes,signo, "months"));    
+    }
+    if(dias > 0 || dias < 0){
+        //condicional resultado de (horas*4) si es menor de 10 agregar un 0
+        var signo = dias < 0 ? "ago" : "in";
+        horas = horas * 4;
+        horas = (horas < 10) ? "0"+ horas : horas;
+        dias = Math.abs(Math.round(dias+"."+(horas)))
+        console.log(closeTo(dias,signo, "days"));
+    }
+    if(horas > 0 || horas < 0){
+        // sin terminar, condicional si es menos de 10 agregale un 0
+        var signo = horas < 0 ? "ago" : "in";
+        minutos = Math.trunc(minutos * 1.6);
+        minutos = (minutos < 10) ? "0"+ minutos : minutos;
+        horas = Math.abs(Math.round(horas+"."+(minutos * 3)))
+        console.log(closeTo(horas,signo, "hours"));
+    }
+    if(minutos > 0 || minutos < 0){
+        // sin terminar, condicional si es menos de 10 agregale un 0 y quitar decimales
+        var signo = minutos < 0 ? "ago" : "in";
+        minutos = Math.abs(Math.round(minutos+"."+(segundos * 1.6)))
+        console.log(closeTo(minutos,signo, "minutes"));
+    }
+    if(segundos > 0 || segundos < 0){
+        // sin terminar
+        var signo = segundos < 0 ? "ago" : "in";
+        segundos = Math.abs(Math.round(segundos+"."+(milisegundos)))
+        console.log(closeTo(segundos,signo, "seconds"));
     }
     
 
@@ -55,6 +89,10 @@ function closeTo(data,sign,str){
     var valores = [1,2,5,10,20,30];
     for(let i = 0; i < valores.length; i++){
         if(data >= valores[i] && data < valores[i+1]){
+            if(data == valores[i]){
+                // valor is igual al primero
+                return (sign == "in")? sing + " "+valores[i]+ " "+str : valores[i]+" "+str+" "+sign;
+            }
             var pos1 = Math.abs((data-valores[i]));
             var pos2 = Math.abs((data-valores[i+1]));
             if(pos1 < pos2){
