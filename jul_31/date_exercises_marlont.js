@@ -31,3 +31,43 @@ function jsonTimes(year){
   };
   return result;
 }
+
+function toLazyHuman(toDate, fromDate){
+  if(typeof fromDate == 'undefined'){
+    fromDate = Date.now();
+  }
+  var miliseconds = 0;
+  var seconds = 0;
+  var minutes = 0;
+  var hours = 0;
+  var days = 0;
+  var months = 0;
+  var years = 0;
+
+  var difference = (toDate - fromDate);
+  if(difference >= 1000){
+    miliseconds = difference%1000;
+    difference = difference/1000;
+  } else miliseconds = difference; 
+
+  if(difference >= 60){
+    seconds = difference%60;
+    difference = difference/60;
+  } else seconds = difference;
+
+  if(difference >= 60){
+    minutes = difference%60;
+    difference = difference/60;
+  } else minutes = difference;
+
+  if(difference >= 24){
+    hours = difference%24;
+    difference = difference/24;
+  } else hours = difference;
+
+  if(days >= 365){
+    minutes = difference%60;
+    difference = difference/60;
+  } else minutes = difference;
+  console.log(difference);
+}
