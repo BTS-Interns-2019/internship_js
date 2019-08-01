@@ -38,8 +38,8 @@ function jsonTimes(parameter){
     return obj;
     //return JSON.stringify(obj);
 }
-const date = new Date(2019, 9);   
-console.log(jsonTimes(date));
+//const date = new Date(2012,00);   
+console.log(jsonTimes(2012));
 
 
 
@@ -105,7 +105,7 @@ function toLazyHuman(ob1, ob2){
     }else if(diffYear <2 && diffYear > 1.5){
         msj = "less than 2 years";
     }else if(diffYear >1 && diffYear<=1.5){
-        msj = "more than 1 years";
+        msj = "more than 1 year";
     } else if(diffYear == 1){
         msj += "1 year";
     } else if(diffYear<1 && diffYear > 0.75){
@@ -272,9 +272,9 @@ function toLazyHuman(ob1, ob2){
     //var secondsToTime = as(diferencia);
     //return secondsToTime;
 }
-//a = new Date('2019');
-//b = new Date(2019,00,00,23);
-console.log(toLazyHuman('2019-07-31T12:00:00.000','2019-07-31T12:04:00.100'));
+/*b = new Date(2018,00,0);
+a = new Date(2017,00);
+console.log(toLazyHuman(a,b));//*/
 
 
 
