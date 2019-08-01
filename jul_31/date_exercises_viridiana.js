@@ -1,12 +1,16 @@
-# Dates exercises
+/*# Dates exercises
 Function definitions in the file `date_exercises_<name>.js`
 TDD in the file `date_exercises_<name>.test.js`
 
 ## 1) Tell me when Json is coming in the given year
 * Function name `jsonTimes`
+*/
 
+function jsonTimes(data){
+    let date;
 
-function jsonTimes(year){
+    if(data.toString().length)
+
     let date=new Date(2019,0)
     let date=new Date(2019,11)
 
@@ -15,9 +19,7 @@ function jsonTimes(year){
 
 
 jsonTimes()
-
-
-
+/*
 * Upload it before `17:30 07/31/2019`
 * Receives a single paramater
 * This paramater could be...
@@ -33,4 +35,34 @@ jsonTimes()
 
 # TDD
 
-Write 2 test cases for each exercise.
+Write 2 test cases for each exercise.*/
+
+/*## 2) Lazy human time visualization
+  * Function name `toLazyHuman`
+  * Receives 2 argument as Date objects
+  * If second argument is not present use `now`
+  * Returns an string representing the time difference between the arguments
+    * The string will be rounded to values of 1, 2, 5, 10, 20, 30, of magnitude minutes, hours days, months, years
+    * The magnitude of the value should be in singular or plural as needed
+    * If the rounding is to the *top* preppend `"less than`
+    * If the rounding is to the *floor* preppend `"more than`
+    * If the difference is *negative* you need to append `"ago"`
+    * If the difference is *positive* you need to preppend `"in"`*/
+
+   function tola(date) {
+    let diff = new Date() - date; // the difference in milliseconds
+  
+    if (diff < 1000) { // less than 1 second
+      return 'right now';
+    }
+  
+    let sec = Math.floor(diff / 1000); // convert diff to seconds
+  
+    if (sec < 60) {
+      return sec + ' sec. ago';
+    }
+  
+    let min = Math.floor(diff / 60000); // convert diff to minutes
+    if (min < 60) {
+      return min + ' min. ago';
+    }
