@@ -139,3 +139,21 @@ test("on Full house", () => {
     }
   )
 });
+
+test("on Full royal", () =>{
+  const royalFlush = [ 
+    { name: 'A', suit: 'spades' },
+    { name: '10', suit: 'spades' },
+    { name: 'J', suit: 'spades' },
+    { name: 'K', suit: 'spades' },
+    { name: 'Q', suit: 'spades' } ]
+    expect(myPlay(royalFlush)).toStrictEqual(
+      { hand: 'Royal flush',
+        cards:[ 
+          { name: 'A', suit: 'spades' },
+          { name: '10', suit: 'spades' },
+          { name: 'J', suit: 'spades' },
+          { name: 'K', suit: 'spades' },
+          { name: 'Q', suit: 'spades' } ] }
+    )
+});

@@ -65,7 +65,7 @@ const getDeck = () =>{
     }
     return deck
 }
-console.log(getDeck())
+// console.log(getDeck())
 
 const shuffles = deck => deck.sort( () =>  Math.random () - 0.5) 
 
@@ -120,11 +120,11 @@ var plays = [
 /** ----------------------------------------- */
 
 const madeUpHand = [ 
+  { name: 'A', suit: 'spades' },
+  { name: '10', suit: 'spades' },
+  { name: 'J', suit: 'spades' },
   { name: 'K', suit: 'spades' },
-  { name: '7', suit: 'clubs' },
-  { name: '8', suit: 'hearts' },
-  { name: 'K', suit: 'diamonds' },
-  { name: '4', suit: 'clubs' } ]
+  { name: 'Q', suit: 'spades' } ]
 
 function myPlay(hand){
     let counter = 0
@@ -159,19 +159,31 @@ function myPlay(hand){
         return play
       break;
       default:
-        console.log("You Loose!!!!")
+        return validation(hand)
+        // console.log("You Loose!!!!")
       break;
       }
 
       function validation(hand){
         const values = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
-
-
-      }
+        const royal = ["10", "J", "Q", "K", "A"]
+        const palo = ["diamonds", "spades", "clubs", "hearts"]
+        let counter2 = 0
+        for(let p = 0; p < palo.length; p++){
+          for(let r = 0; r < royal.length; r++){
+            if(hand.some((v,i,a) => v.name === royal[r] && v.suit === palo[p])){
+              play.hand = "Royal flush"
+              play.cards = hand
+              counter2++
+            }
+          }
+        }
+        return play
+      } 
   }
 
 // console.log(myPlay(hand))
-// console.log(myPlay(madeUpHand))
+console.log(myPlay(madeUpHand))
 
 module.exports = {
   getDeck,
