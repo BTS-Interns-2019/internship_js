@@ -22,15 +22,41 @@ function apariciones(año){
     }
     return{times:arr.length, dates:arr}    
 }
-const d = new Date()
+/*const d = new Date()
 jsonTimes(2018);
 jsonTimes("2000");
 jsonTimes(d);
-jsonTimes(d.toISOString());
+jsonTimes(d.toISOString());//*/
 
-test("prueba con int",()=>{
+function toLazyHuman(d1, d2){
+    cadena="";
+    if(d2==undefined)d2=new Date();
+    year=d1.getUTCFullYear()-d2.getUTCFullYear()
+    let rest, plural, ;
+    if((rest = Math.abs(d1.getUTCFullYear()-d2.getUTCFullYear()))!==0){
+        
+        console.log(rest);
+    }
+    
+
+    console.log(d1,d2);
+    
+
+    if(d1-d2<0)return cadena + " ago";
+    return "in "+cadena;
+}
+
+const d0= new Date(2000,05,28, 22,3,8);
+const d4=new Date (2000,0)
+console.log(toLazyHuman(d0, d4))
+console.log(toLazyHuman(d0))
+
+
+
+
+/*test("prueba json con int",()=>{
     expect(jsonTimes(2018)).toEqual({"times": 2, "dates": [{"date": "2018/03/13"}, {"date": "2018/06/13"}]});
 })
-test("prueba con string",()=>{
+test("prueba json con string",()=>{
     expect(jsonTimes(d.toISOString())).toEqual({"times": 2, "dates": [{"date": "2020/02/13"}, {"date": "2020/10/13"}]});
-})
+})//*/
