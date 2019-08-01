@@ -32,11 +32,6 @@ function toLazyHuman(todate,fromdate){
     let num,rnum,otherrnum;
     //rounded values 1, 2, 5, 10, 20, 30
     //magnitudes minutes, hours, days, months, years
-    /* letsroundit 60,
-    hours 24
-    days 30
-    months 12
-    years ** */
     if(val<60){
         res=res+"less than 1 minute";
     }else if(val>59 && val< 3600){//Minute
@@ -137,14 +132,12 @@ function toLazyHuman(todate,fromdate){
     }else{
         res=res+"more than 30 years";
     }
-    //Positive or negative
     if(rounded<0){
         res = res +" ago";
     }else{
         res = "in "+res;
     }
     return res;
-    //return diferencia entre dos fechas
 
 }
 function letsroundit60(val){
@@ -322,13 +315,7 @@ function letsroundit12(val){
             return "more than 5";
         }
     }else if(val>10 && val<12){
-        goup = 12 - val;
-        godown = val - 10;
-        if(goup<godown){
-            return "less than 1 y";
-        }else{
-            return "more than 10";
-        }
+        return "less than 1 y";
     }
 }
 let date1 = new Date('2015-07-07T15:30:00.04');
