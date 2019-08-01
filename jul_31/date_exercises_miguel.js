@@ -1,8 +1,12 @@
 module.exports = {jsonTimes,toLazyHuman};
 
+
+//Retornar objeto que contenga {times://numero de veces que aparece viernes 13 en el calendario,dates://arreglo mmddYYYY de las fechas cuando aparece viernes 13}
 function jsonTimes(t){
     let aux;
     let date = new Date(0);
+    let res = {};
+    let arr;
     if(typeof t.getMonth === 'function'){
         date.setDate(t.getDate());
         date.setMonth(t.getMonth());
@@ -11,7 +15,9 @@ function jsonTimes(t){
         date.setMinutes(t.getMinutes());
         date.setSeconds(t.getSeconds());
         date.setMilliseconds(t.getMilliseconds());
-        return date;
+        arr = getfriday13(date.getFullYear());
+        res = {times:arr.length,dates:arr};
+        return res;
     }else{
         if(Number.isInteger(t)==true){
             aux = t.toFixed(0);
@@ -24,19 +30,53 @@ function jsonTimes(t){
             date.setFullYear(aux[0]);
             date.setMonth(aux[1]);
             date.setDate(aux[2]);
-            return date;
+            arr = getfriday13(date.getFullYear());
+            res = {times:arr.length,dates:arr};
+            return res;
         }else{
             date.setFullYear(t);
-            return date;
+            arr = getfriday13(date.getFullYear());
+            res = {times:arr.length,dates:arr};
+            return res;
         }
     }
-    
 }
+function getfriday13(year){
+    date = new Date(year+'-01-01');
+    let day= "";
+    let month= "";
+    dates = []
+    for(let i=0;i<12;i++){
+        date.setMonth(i);
+        //console.log(date.getMonth());
+        for(let j=1;j<32;j++){
+            date.setDate(j);
+            //console.log(date.getDay()+" - "+date.getDate());
+            if(date.getDay() == 5){//Es viernes
+                if(date.getDate()==13){//Es 13
+                    day=date.getDate();
+                    month=date.getMonth();
+                    if(day.length<3)day="0"+day;
+                    if(month.length<3)month="0"+month;
+                    if(year.length<5){
+                        for(let i=year.length;i<=4;i++){
+                            year="0"+year;
+                        }
+                    }
+                    dates.push(month+"/"+day+"/"+year);
+                }
+            }
+        }
+        
+    }
+    return dates;
+}
+console.log(getfriday13('1999'));
 let obj = new Date('1999-11-20');
-console.log(jsonTimes(5));
+/*console.log(jsonTimes(5));
 console.log(jsonTimes('1986'));
 console.log(jsonTimes('1972-07-22'));
-console.log(jsonTimes(obj));
+console.log(jsonTimes(obj));*/
 function toLazyHuman(todate,fromdate){
     let res = "";
     if(fromdate==undefined){fromdate.now()}
