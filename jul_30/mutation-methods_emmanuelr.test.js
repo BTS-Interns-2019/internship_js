@@ -47,12 +47,13 @@ test('prueba para generar seed',()=>{
 })
 
 alphabet="aeiou".split("");
+let seed=generateSeed(alphabet);
 let mensaje="¡¡¡¡¡Este es el mensaje de prueba #1 !!!!!";
-let encriptado=encrypt(alphabet, generateSeed(alphabet), mensaje);
+let encriptado=encrypt(alphabet, seed, mensaje);
 test('encriptar mensaje',()=>{
     expect(encriptado.length).toBe(mensaje.length);
 })
 
 test('desencriptar mensaje',()=>{
-    expect(decrypt(alphabet, generateSeed(alphabet), encriptado)).toBe(mensaje);
+    expect(decrypt(alphabet, seed, encriptado)).toBe(mensaje);
 })
