@@ -29,14 +29,13 @@ TDD in the file `date_exercises_<name>.test.js`
     * If the difference is *positive* you need to preppend `"in"`
 
 ### Example
-```js
 toDate | fromDate | difference | output
 --- | --- | --- | ---
 "2019-07-31T12:00:00.000" | "2019-07-31T12:01:00.000" | "-00:01:00.000" | "1 minute ago"
 "2019-07-31T12:00:00.000" | "2019-07-31T12:01:00.100" | "-00:01:00.100" | "more than 1 minute ago"
 "2019-07-31T12:00:00.000" | "2019-07-31T12:04:00.100" | "-00:04:00.100" | "less than 5 minutes ago"
 "2019-07-31T12:04:00.000" | "2019-07-31T12:00:00.000" | "00:04:00.000" | "in less than 5 minutes"
-```
+"2018-08-31T12:04:00.000" | "2019-07-31T12:00:00.000" | "-0000-11-00" | "in less than 1 year"
 
 # TDD
 
