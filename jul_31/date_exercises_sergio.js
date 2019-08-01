@@ -40,7 +40,7 @@ function toLazyHuman(obj,params) {
         params = Date.now();
     }
     console.log(obj);
-    console.log(params);
+    console.log(new Date(params));
     
     params = new Date(params);
     console.log(params.getFullYear(),params.getMonth(),params.getDay(),params.getHours(),params.getMinutes());
@@ -98,13 +98,9 @@ function toLazyHuman(obj,params) {
     }
 
     console.log('more than ' + (dato)+' '+palabra+' ago');
-    
-    
-    
-    
+
     //console.log(diferencia);
-    
 
 }
 let obj2 = new Date('2019-07-31T12:01:00.000')
-console.log(toLazyHuman(obj,obj2));
+console.log(toLazyHuman(obj));
