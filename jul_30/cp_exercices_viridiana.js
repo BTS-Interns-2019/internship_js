@@ -44,6 +44,11 @@ function onlyEven(arr){
 //* Given a string, returns an object with the required params and returning values of the following `functions ["find","findIndex","every","some","values","entries","keys"]`
 
     function google(str){
+        var data=[{
+            name:"some",
+            description:" "
+            params:[{}]
+        }]
         return {
             name:"some",
             description:"",
