@@ -22,15 +22,51 @@ function jsonTimes(data){
     }
 }
 //---------------------------
-function toLazyHuman(desde, hasta){
-    console.log(desde, hasta);
-    var residuo = new Date(hasta - desde);
-    console.log(residuo.getTime());
-    
+function toLazyHuman(hasta, desde){
+    if(!desde){
+        desde = new Date();
+    };
+    console.log(hasta);
+    console.log(desde);
+    var milisegundos = hasta.getMilliseconds()-desde.getMilliseconds();
+    var segundos = hasta.getMinutes()-desde.getMinutes();
+    var horas = hasta.getSeconds()-desde.getSeconds();
+    var minutos = hasta.getHours()-desde.getHours();
+    var dias = hasta.getDate()-desde.getDate();
+    var mes = hasta.getMonth()-desde.getMonth();
+    var año = hasta.getYear()-desde.getYear();
+    console.log(año, mes, dias, horas, minutos, segundos, milisegundos);
+    var valores = [1,2,5,10,20,30];
+    if(año > 0 || año < 0){
 
+    }
+    if(mes > 0 || mes < 0){
+        var signo = mes < 0 ? "ago" : "in";
+        mes = Math.abs(Math.round(mes+"."+(dias * 2)))
+        console.log(closeTo(mes,signo, "months"));
+        
+        
+    }
     
 
 }
-var toDAte = new Date("2019-07-31T12:00:00.000");
-var fromDate = new Date("2019-07-31T12:01:00.000")
-console.log(toLazyHuman(fromDate,toDAte));
+// funcion recibe el numero date, si es + o - y en que fecha
+function closeTo(data,sign,str){
+    var valores = [1,2,5,10,20,30];
+    for(let i = 0; i < valores.length; i++){
+        if(data >= valores[i] && data < valores[i+1]){
+            var pos1 = Math.abs((data-valores[i]));
+            var pos2 = Math.abs((data-valores[i+1]));
+            if(pos1 < pos2){
+                return (sign == "in")? sing + " more than "+valores[i]+ " "+str : "more than "+valores[i]+" "+str+" "+sign;
+                //valores[i]
+            }else{
+                return (sign == "in")? sing + " less than "+valores[i+1]+ " "+str : "less than "+valores[i+1]+" "+str+" "+sign;
+                //valores[i+1]
+            }
+        }
+    }
+}
+var toDate = new Date("2019-08-31T12:00:00.000");
+var fromDate = new Date("2019-09-31T12:01:00.000")
+console.log(toLazyHuman(toDate, fromDate));
