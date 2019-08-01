@@ -69,7 +69,7 @@ function toLazyHuman(date1, date2 = new Date(Date.now())) {
   }
 
   for (let diff in roundedValues) {
-    const extraction = roundedValues[diff] >= 10 ? -2 : -1;
+    const extraction = roundedValues[diff].total >= 10 ? -2 : -1;
     let lastDigits = Number.parseInt(roundedValues[diff].total.toString().slice(extraction));
 
     if (lastDigits < 0.5 && lastDigits > 0) {
@@ -104,11 +104,19 @@ function toLazyHuman(date1, date2 = new Date(Date.now())) {
       roundedValues[diff].total += (10 - lastDigits);
       roundedValues[diff].roundedTop = true;
       roundedValues[diff].rounded = true;
-    } else if (lastDigits < 15 && lastDigits > 10) {
+    } else if (lastDigits < 12.5 && lastDigits > 10) {
+      roundedValues[diff].total -= (lastDigits - 10);
+      roundedValues[diff].roundedTop = false;
+      roundedValues[diff].rounded = true;
+    } else if (lastDigits < 15 && lastDigits > 12.5) {
+      roundedValues[diff].total += (lastDigits - 15);
+      roundedValues[diff].roundedTop = true;
+      roundedValues[diff].rounded = true;
+    } else if (lastDigits < 17.5 && lastDigits > 15) {
       roundedValues[diff].total -= (lastDigits - 15);
       roundedValues[diff].roundedTop = false;
       roundedValues[diff].rounded = true;
-    } else if (lastDigits > 15 && lastDigits < 20) {
+    } else if (lastDigits > 17.5 && lastDigits < 20) {
       roundedValues[diff].total += (20 - lastDigits);
       roundedValues[diff].roundedTop = true;
       roundedValues[diff].rounded = true;
@@ -147,7 +155,9 @@ function toLazyHuman(date1, date2 = new Date(Date.now())) {
   } else if (roundedValues.diffMonths.total) {
     if (roundedValues.diffMonths.total > 6 && roundedValues.diffMonths.total <= 12) {
       timeUnit = 'year';
-      resultString = `${1} ${timeUnit}`;
+      roundedValues.diffMonths.rounded = false;
+      roundingString = 'less than';
+      resultString = `${roundingString} ${1} ${timeUnit}`;
     } else {
       timeUnit = roundedValues.diffMonths.total > 1 ? 'months' : 'month';
       resultString = `${roundedValues.diffMonths.total} ${timeUnit}`;
@@ -196,21 +206,11 @@ function toLazyHuman(date1, date2 = new Date(Date.now())) {
       roundingString = roundedValues.diffMins.roundedTop ? 'less than' : 'more than';
       resultString = roundingString + ' ' + resultString;
     }
-  } else if (roundedValues.diffSecs.total) {
-    if (roundedValues.diffSecs.total > 30 && roundedValues.diffSecs.total <= 60) {
-      timeUnit = 'minute';
-      resultString = `${1} ${timeUnit}`;
-    } else {
-      timeUnit = roundedValues.diffSecs.total > 1 ? 'seconds' : 'second';
-      resultString = `${roundedValues.diffSecs.total} ${timeUnit}`;
-    }
-
-    if (roundedValues.diffSecs.rounded) {
-      roundingString = roundedValues.diffSecs.roundedTop ? 'less than' : 'more than';
-      resultString = roundingString + ' ' + resultString;
-    }
   } else {
-    return 'Right now';
+    timeUnit = 'minute';
+    roundedValues.diffSecs.rounded = false;
+    roundingString = 'less than';
+    resultString = `${roundingString} ${1} ${timeUnit}`;
   }
 
   return isDiffNegative ? resultString + ' ago' : 'in ' + resultString;

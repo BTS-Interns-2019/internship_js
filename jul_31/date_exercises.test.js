@@ -62,8 +62,7 @@ describe('toLazyHuman', () => {
   test('more than 10 years ago', () => {
     expect(toLazyHuman(new Date('2008-08-31T12:04:00.000'), new Date('2019-07-31T12:00:00.000'))).toBe('more than 10 years ago')
   })
-
   test('in less than 1 minute', () => {
     expect(toLazyHuman(new Date('2019-07-31T12:00:00.100'), new Date('2019-07-31T12:00:00.000'))).toBe('in less than 1 minute')
   })
-})
+});
