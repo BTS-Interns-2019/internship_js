@@ -62,3 +62,61 @@ test("proving Deck creator", () => {
         ]
     )
 })
+
+test("test on Pair hand", () => {
+    const pairHand = [ 
+        { name: 'K', suit: 'spades' },
+        { name: '7', suit: 'clubs' },
+        { name: '8', suit: 'hearts' },
+        { name: 'K', suit: 'diamonds' },
+        { name: '4', suit: 'clubs' } ]
+
+    expect(myPlay(pairHand)).toEqual(
+        { hand: "Pair",
+          cards: [ 
+            { name: 'K', suit: 'spades' },
+            { name: '7', suit: 'clubs' },
+            { name: '8', suit: 'hearts' },
+            { name: 'K', suit: 'diamonds' },
+            { name: '4', suit: 'clubs' } ]
+        }
+    )
+});
+
+test("test on Two Pair hand", () => {
+  const twoPairHand = [ 
+  { name: 'J', suit: 'spades' },
+  { name: '5', suit: 'clubs' },
+  { name: '6', suit: 'diamonds' },
+  { name: 'J', suit: 'hearts' },
+  { name: '5', suit: 'diamonds' } ]
+
+  expect(myPlay(twoPairHand)).toEqual(
+      { hand: "Two pairs",
+        cards: [ 
+          { name: 'J', suit: 'spades' },
+          { name: '5', suit: 'clubs' },
+          { name: '6', suit: 'diamonds' },
+          { name: 'J', suit: 'hearts' },
+          { name: '5', suit: 'diamonds' } ]
+      }
+  )
+});
+
+test("Test on Three of a kind", () => {
+    const threeOfAKind = [
+      { name: 'Q', suit: 'clubs' },
+      { name: '5', suit: 'diamonds' },
+      { name: '5', suit: 'spades' },
+      { name: '5', suit: 'hearts' },
+      { name: '6', suit: 'diamonds' }]
+    expect(myPlay(threeOfAKind)).toStrictEqual(
+      { hand: 'Three of a kind',
+         cards:[ 
+          { name: 'Q', suit: 'clubs' },
+          { name: '5', suit: 'diamonds' },
+          { name: '5', suit: 'spades' },
+          { name: '5', suit: 'hearts' },
+          { name: '6', suit: 'diamonds' } ] }
+    )
+});
