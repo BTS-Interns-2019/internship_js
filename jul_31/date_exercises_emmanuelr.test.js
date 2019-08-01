@@ -1,62 +1,248 @@
-function jsonTimes(año){
-    if(año.length>4){ return apariciones(new Date(año));
-    }else if(año.length==4){
-        año=parseInt(año);
+function jsonTimes(date){
+    let d;
+    switch(typeof(date)){
+        case "string":
+            if (date.length > 4) d = new Date(date);
+            else d = new Date(parseInt(date), 0);
+            break;
+        case "number":
+            d = new Date(date, 0)
+            break;
+        case "object":
+            d=date;
+            break;
     }
-    if(Number.isInteger(año)){
-        return apariciones(new Date(año.toString()))
-    }else return apariciones(año)
+    return apariciones(d);
 }
-function apariciones(año){    
-    año2=año.getUTCFullYear();
+function apariciones(d){
+    count=0;
     arr=[];
-    año.setUTCMonth(0);
-    año.setUTCDate(1);
-    while(año.getUTCFullYear()==año2){
-        if(año.getUTCDay()==5 && año.getUTCDate()==13)arr.push({
-            date:año.getUTCFullYear().toString().padStart(4,"0") + '/' + 
-            año.getUTCMonth().toString().padStart(2,"0")+ "/" + 
-            año.getUTCDate().toString().padStart(2,"0")
-        });
-        año.setUTCDate(año.getUTCDate()+1);
+    for (let i = 0; i < 12; i++) {
+        d.setMonth(i);
+        d.setDate(13);
+        if (d.getDay()==5) {
+            arr.push(
+                (d.getMonth()+1).toString().padStart(2,"0") + "/" + 
+                d.getDate().toString().padStart(2,"0") + '/' +
+                d.getFullYear().toString().padStart(4,"0")
+            )
+        }
     }
-    return{times:arr.length, dates:arr}    
+    return{times:arr.length, dates:arr}
 }
-/*const d = new Date()
-jsonTimes(2018);
-jsonTimes("2000");
-jsonTimes(d);
-jsonTimes(d.toISOString());//*/
+/*
+const d = new Date(2019, 9)
+console.log(d);
+
+console.log(jsonTimes(2019));
+console.log(jsonTimes(d));
+console.log(jsonTimes("2000"));
+console.log(jsonTimes(d));
+console.log(jsonTimes(d.toISOString()));//*/
 
 function toLazyHuman(d1, d2){
-    cadena="";
+    numeros=[1,2,5,10,20,30];
+    let cadena="",moreLess="", magnitud, numero; //redondeo=-1=more redondeo=1=less
     if(d2==undefined)d2=new Date();
-    year=d1.getUTCFullYear()-d2.getUTCFullYear()
-    let rest, plural, ;
-    if((rest = Math.abs(d1.getUTCFullYear()-d2.getUTCFullYear()))!==0){
-        
-        console.log(rest);
+    let rest=Math.abs(d1-d2);//ya que el signo solo afecta el ago o in, no es necesario para el resto
+    const dif=new Date(rest);
+    //console.log(dif);
+    
+    let años=dif.getUTCFullYear()-1970;
+    let meses=dif.getUTCMonth();
+    let dias=dif.getUTCDate()-1;
+    let horas=dif.getUTCHours();
+    let minutos=dif.getUTCMinutes();
+    let milis=dif.getUTCSeconds()*1000+dif.getUTCMilliseconds();    
+    let maxDias=new Date((d1.getTime()+d2.getTime())/2);
+    maxDias.setMonth(maxDias.getMonth()+1);
+    let diasMes=maxDias.setDate(0);
+    
+
+    if(años===0){  //si la diferencia es menor a un año, continua con meses, dias, etc
+        if (meses===0){
+            if(dias===0){
+                if(horas===0){
+                    if(minutos===0){
+                        magnitud="minute";
+                        numero=1;
+                        moreLess=1;
+                    }else if(masMitad([[minutos,29],[milis,29999]])){
+                        magnitud="hour"
+                        numero=1
+                        moreLess=1
+                    }else{
+                        magnitud="minute"
+                        let r=round(minutos, [[milis,29999]])
+                        moreLess=r.red;
+                        numero=r.num;
+                    }
+                }else if(masMitad([[horas,11],[minutos,29],[milis,29999]])){
+                    magnitud="day"
+                    numero=1
+                    moreLess=1
+                }else{
+                    magnitud="hour"
+                    let r=round(horas, [[minutos,29],[milis,29999]])
+                    moreLess=r.red;
+                    numero=r.num;
+                }
+            }else if(masMitad([[dias, diasMes/2],[horas,11],[minutos,29],[milis,29999]])){
+                magnitud="month"
+                numero=1
+                moreLess=1
+            }else{
+                magnitud="day"
+                let r=round(days, [[horas,11],[minutos,29],[milis,29999]])
+                moreLess=r.red;
+                numero=r.num;
+            }
+        }else if(masMitad([[meses,5],[dias, diasMes/2],[horas,11],[minutos,29],[milis,29999]])){
+            magnitud="year"
+            numero=1
+            moreLess=1
+        }else{
+            magnitud="month"
+            let r=round(meses, [[dias, diasMes/2],[horas,11],[minutos,29],[milis,29999]])
+            moreLess=r.red;
+            numero=r.num;
+        }
+    }else{
+        magnitud="year"
+            let r=round(años,[[meses,5],[dias, diasMes/2],[horas,11],[minutos,29],[milis,29999]])
+            moreLess=r.red;
+            numero=r.num;
     }
     
 
-    console.log(d1,d2);
-    
 
+    //console.log(d1,d2);
+    //console.log(moreLess, numero, magnitud,);
+    
+    if(moreLess==1)cadena+="less";
+    else if(moreLess==-1)cadena+="more";
+    if(moreLess) cadena+=" than ";
+    cadena+=numero+" "+magnitud;
+    if(numero>1)cadena+="s"
     if(d1-d2<0)return cadena + " ago";
-    return "in "+cadena;
+    return ("in "+cadena);
 }
 
-const d0= new Date(2000,05,28, 22,3,8);
-const d4=new Date (2000,0)
-console.log(toLazyHuman(d0, d4))
-console.log(toLazyHuman(d0))
+// const d0= new Date(2000,07,28, 12,40,1,000);
+// const d2= new Date(2000,10,28, 13,3,0,000);
+// const d4=new Date (2000,0)
+// console.log(toLazyHuman(d0, d4))
+// console.log(toLazyHuman(d0))
+//console.log(toLazyHuman(d0,d2))
+
+function masMitad(num){
+    let act=num[0][0];
+    let mitad=num[0][1];
+    if(act>mitad)return true;
+    else if(act<mitad)return false;
+    else if (num.length==1) return 0;
+    else{
+        num.shift();
+        return masMitad(num);
+    }
+}
+function sube(num){
+    let act=num[0][0];
+    if(act>0)return true;
+    if (num.length==1) return false;
+    else{
+        num.shift();
+        return sube(num);
+    }
+}
+
+function round(num, mitades){ //retorna {num:redondeado, red:redondeo}    
+    let numeros=[1,2,5,10,20,30];
+    let redondeo;
+    let redondeado=check(num);
+    if(numeros.indexOf(num)!=-1){
+        mitad=sube(mitades);
+        if(mitad){
+            redondeo=-1
+        }else redondeo=undefined;
+    }else if(redondeado<num){
+        redondeo=-1;
+    }else{
+         redondeo=+1;
+    }
+    return {num:redondeado, red:redondeo}
+    function check(num, a,b){
+        if(a==undefined){
+            a=1;
+            b=2;
+        }
+        let numeros=[1,2,5,10,20,30];
+        if(Math.abs(a-num)<Math.abs(b-num)){
+            return a;
+        }else if(b==30){
+            return 30;
+        }else{
+            i=numeros.indexOf(b);
+            return check(num, numeros[i], numeros[i+1]);
+        }
+    }
+}
 
 
-
-
-/*test("prueba json con int",()=>{
-    expect(jsonTimes(2018)).toEqual({"times": 2, "dates": [{"date": "2018/03/13"}, {"date": "2018/06/13"}]});
-})
-test("prueba json con string",()=>{
-    expect(jsonTimes(d.toISOString())).toEqual({"times": 2, "dates": [{"date": "2020/02/13"}, {"date": "2020/10/13"}]});
-})//*/
+describe('jsonTimes', () => {
+    const date = new Date(2019, 9);
+    const jsonTimesIn2019 = 2;
+  
+    test('returns an object', () => {
+      expect(typeof jsonTimes(date)).toBe('object');
+    })
+  
+    test('returns the number of times Json is coming', () => {
+      expect(jsonTimes(date).times).toBe(jsonTimesIn2019);
+    })
+  
+    test('returns the number of times Json is coming in an array', () => {
+      expect(jsonTimes(date).dates.length).toBe(jsonTimesIn2019);
+    })
+  
+    test('the array has the right values', () => {
+      expect(jsonTimes(date).dates).toEqual([
+        '09/13/2019',
+        '12/13/2019',
+      ]);
+    });
+  
+    test('can handle number', () => {
+      expect(jsonTimes(2019).times).toBe(jsonTimesIn2019);
+    })
+  
+    test('can handle a year string', () => {
+      expect(jsonTimes('2019').times).toBe(jsonTimesIn2019);
+    })
+  
+    test('can handle an ISO8601 string', () => {
+      expect(jsonTimes('2019-01-02').times).toBe(jsonTimesIn2019);
+    })
+  })
+  
+  describe('toLazyHuman', () => {
+    test('less than 5 minutes ago', () => {
+      expect(toLazyHuman(new Date('2019-07-31T12:00:00.000'), new Date('2019-07-31T12:04:00.100'))).toBe('less than 5 minutes ago')
+    })
+    test('more than 2 minutes ago', () => {
+      expect(toLazyHuman(new Date('2019-07-31T12:00:00.000'), new Date('2019-07-31T12:03:00.000'))).toBe('more than 2 minutes ago')
+    })
+    test('2 minutes ago', () => {
+      expect(toLazyHuman(new Date('2019-07-31T12:00:00.000'), new Date('2019-07-31T12:02:00.000'))).toBe('2 minutes ago')
+    })
+    test('less than 1 year ago', () => {
+      expect(toLazyHuman(new Date('2018-08-31T12:04:00.000'), new Date('2019-07-31T12:00:00.000'))).toBe('less than 1 year ago')
+    })
+    test('more than 10 years ago', () => {
+      expect(toLazyHuman(new Date('2008-08-31T12:04:00.000'), new Date('2019-07-31T12:00:00.000'))).toBe('more than 10 years ago')
+    })
+  
+    test('in less than 1 minute', () => {
+      expect(toLazyHuman(new Date('2019-07-31T12:00:00.100'), new Date('2019-07-31T12:00:00.000'))).toBe('in less than 1 minute')
+    })
+  })//*/
