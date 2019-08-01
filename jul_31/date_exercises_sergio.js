@@ -30,7 +30,8 @@ function jsonTimes(params) {
     return res;
 }
 console.log(jsonTimes(new Date()));
-let obj = new Date("31 July 2019 19:30:00");
+let obj = new Date("2019-07-31T12:00:00.000");
+//31 July 2019 19:30:00
 
 
 
@@ -39,7 +40,7 @@ function toLazyHuman(obj,params) {
         params = Date.now();
     }
     console.log(obj);
-    console.log(new Date(params));
+    console.log(params);
     
     params = new Date(params);
     console.log(params.getFullYear(),params.getMonth(),params.getDay(),params.getHours(),params.getMinutes());
@@ -53,7 +54,7 @@ function toLazyHuman(obj,params) {
     //console.log(obj);
     params = params.getTime();
     //console.log(params);
-    let diferencia = params-obj;
+    let diferencia = obj-params;
     //console.log(diferencia);
     let unoAño = 31556900000;
     if(diferencia > unoAño){diferencia -= unoAño}
@@ -73,8 +74,9 @@ function toLazyHuman(obj,params) {
     console.log(year1,month1,day1,hours1,minutes1);
     console.log(ymdhm);
     let d = 0;
+    let dato = 0;
     for (let i = 0; i < ymdhm.length; i++) {
-        if( ymdhm[i] > 0 ){
+        if( ymdhm[i] != 0 ){
              dato = ymdhm[i]; 
              d = i;
              break;
@@ -95,7 +97,7 @@ function toLazyHuman(obj,params) {
         palabra = "minute"
     }
 
-    console.log('more than ' + (dato-1)+' '+palabra+' ago');
+    console.log('more than ' + (dato)+' '+palabra+' ago');
     
     
     
@@ -104,5 +106,5 @@ function toLazyHuman(obj,params) {
     
 
 }
-
-console.log(toLazyHuman(obj));
+let obj2 = new Date('2019-07-31T12:01:00.000')
+console.log(toLazyHuman(obj,obj2));
