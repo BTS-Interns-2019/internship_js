@@ -65,7 +65,7 @@ const getDeck = () =>{
     }
     return deck
 }
-getDeck()
+console.log(getDeck())
 
 const shuffles = deck => deck.sort( () =>  Math.random () - 0.5) 
 
@@ -106,25 +106,35 @@ var plays = [
       ]},
     ]
 
-function myHand(deck){
-/** ---------- my hand -------------- */
+    /** ---------- my hand -------------- */
+  function myHand(deck){
   let hand = []
   for(let i = 0; i < 5; i++){
       let draw = deck.pop()
       hand.push(draw)
     }
-    console.log(hand)
+    return hand
+  }
+  const hand = myHand(shuffles(getDeck()))
+  // console.log(hand)
 /** ----------------------------------------- */
+
+const madeUpHand = [ 
+  { name: 'K', suit: 'spades' },
+  { name: '7', suit: 'clubs' },
+  { name: '8', suit: 'hearts' },
+  { name: 'K', suit: 'diamonds' },
+  { name: '4', suit: 'clubs' } ]
+
+function myPlay(hand){
     let counter = 0
     for(let i = 0; i < hand.length; i++){
       for(let x = 1+i; x < hand.length; x++){
         if(hand[i].name===hand[x].name){
           counter++
-          console.log()
         }
       } 
     }
-    console.log(counter)
     
     const play = {hand:"Pair"}
     switch(counter){
@@ -136,19 +146,38 @@ function myHand(deck){
       case 3:
         play.hand = "Three of a kind"
         play.cards = hand
-        play
+        return play
       break;
       case 2:
         play.hand = "Two pairs"
         play.cards = hand
-        play
+        return play
       break; 
+      case 4:
+        play.hand = "Full house"
+        play.cards = hand
+        return play
+      break;
       default:
-        console.log("nada")
+        console.log("You Loose!!!!")
       break;
       }
+
+      function validation(hand){
+        const values = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]
+
+
+      }
+  }
+
+// console.log(myPlay(hand))
+// console.log(myPlay(madeUpHand))
+
+module.exports = {
+  getDeck,
+  myPlay,
+  myHand
 }
-myHand(shuffles(getDeck()))
 
 
 
