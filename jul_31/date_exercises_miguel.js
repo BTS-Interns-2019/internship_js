@@ -1,28 +1,42 @@
-module.exports = toLazyHuman;
+module.exports = {jsonTimes,toLazyHuman};
 
 function jsonTimes(t){
     let aux;
     let date = new Date(0);
-    if(Number.isInteger(t)==true){
-        aux = t.toFixed(0);
-        aux = aux.split("-");
-    }else{
-        aux = t.split("-");
-    }
-    if(aux.length>1 && aux.length<4){
-        console.log("b");
-        
-    }else{
-        console.log("a");
-        date.setFullYear(t);
+    if(typeof t.getMonth === 'function'){
+        date.setDate(t.getDate());
+        date.setMonth(t.getMonth());
+        date.setFullYear(t.getFullYear());
+        date.setHours(t.getHours());
+        date.setMinutes(t.getMinutes());
+        date.setSeconds(t.getSeconds());
+        date.setMilliseconds(t.getMilliseconds());
         return date;
+    }else{
+        if(Number.isInteger(t)==true){
+            aux = t.toFixed(0);
+            aux = aux.split("-");
+        }else{
+            if(typeof t === 'string'){
+                aux = t.split("-");
+            }
+        }if(aux.length>1 && aux.length<4){
+            date.setFullYear(aux[0]);
+            date.setMonth(aux[1]);
+            date.setDate(aux[2]);
+            return date;
+        }else{
+            date.setFullYear(t);
+            return date;
+        }
     }
     
 }
-//console.log(jsonTimes(5));
-//console.log(jsonTimes('1986'));
-//console.log(jsonTimes('1972-07-22'));
-//console.log(jsonTimes({year:1999,month:11,day:20}));}
+let obj = new Date('1999-11-20');
+console.log(jsonTimes(5));
+console.log(jsonTimes('1986'));
+console.log(jsonTimes('1972-07-22'));
+console.log(jsonTimes(obj));
 function toLazyHuman(todate,fromdate){
     let res = "";
     if(fromdate==undefined){fromdate.now()}
@@ -321,7 +335,7 @@ function letsroundit12(val){
 let date1 = new Date('2015-07-07T15:30:00.04');
 let date2 = new Date('2015-07-07T15:31:00.04');
 let date3 = new Date('2015-07-07T15:44:02.04');
-console.log(toLazyHuman(date1,date2));
+/*console.log(toLazyHuman(date1,date2));
 console.log(toLazyHuman(date1,date3));
 console.log(toLazyHuman(date2,date1));
-console.log(toLazyHuman(date3,date1));
+console.log(toLazyHuman(date3,date1));*/
