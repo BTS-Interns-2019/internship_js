@@ -29,9 +29,14 @@ function myHand(deck) {
         return {
             hand: "wrong input",
             cards: "cards"
-   
-} 
+        }
     }
+    const value = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"](){
+        if(deck.filter(() =>))
+    }
+    return deck
+} 
+
 deck = (myHand(deck.slice(0,5)));
 
 console.log(deck)
