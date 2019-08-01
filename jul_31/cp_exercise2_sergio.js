@@ -58,24 +58,41 @@ function myHand(barajeada) {
         revision.push(intro[i]);
     }
 
+//Ordenar acendente
 
-    let par = 0;
-    console.log(revision);
+
+
     
-    for (let h = 0; h < revision.length; h++) {
-        for (let i = 1; i < revision.length; i++) {
-            if(revision[h]['number'] == revision[i]['number'] && h < i){
-                par++;
-            }     
-                   
-        }
-        
+
+
+    
+let checkIguales = function(params) {
+    let primera =params[0]['suit']
+    for (let i = 0; i < params.length; i++) {
+        if (params[i]['suit'] != primera) {
+            return false;
+        } 
     }
-    if(par >0){mano['hand'] = "one par"}
-    console.log(par);
-    
+}
 
 
+let checkOrden = function(params){
+    let verdad = true;
+    for (let i = 0; i < params.length-1; i++) {
+        if( diferentes.indexOf(params['number'])  == diferentes.indexOf(params['number'])){
+        continue;
+        }else{
+            verdad = false;
+        }
+    }
+    return verdad;
+}   
+
+
+let igualesTodo = checkIguales(mano.cards);
+let ordenTodo = checkOrden(mano.cards)
+
+console.log(igualesTodo(mano.cards));
 
 
 
