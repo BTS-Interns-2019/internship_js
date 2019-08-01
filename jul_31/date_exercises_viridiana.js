@@ -6,14 +6,18 @@ TDD in the file `date_exercises_<name>.test.js`
 * Function name `jsonTimes`
 */
 
-function jsonTimes(data){
+function jsonTimes(dataT){
     let date;
 
-    if(data.toString().length)
+    if(dataT.toString().length<=4){
+      date=new Date(dataT,0);
+    }else if(typeof dataT ==='string'){
+      date=new Date(data)
+    }else{
+      date = Date(+dataT)
+    }
 
-    let date=new Date(2019,0)
-    let date=new Date(2019,11)
-
+    date.setDate(13)
     
 }
 
@@ -49,8 +53,10 @@ Write 2 test cases for each exercise.*/
     * If the difference is *negative* you need to append `"ago"`
     * If the difference is *positive* you need to preppend `"in"`*/
 
-   function tola(date) {
-    let diff = new Date() - date; // the difference in milliseconds
+   function tola(date1, date2) {
+    date2=new Date(Date.now())
+    date1=new Date(date1)
+    let diff = date1 - date1; // the difference in milliseconds
   
     if (diff < 1000) { // less than 1 second
       return 'right now';
