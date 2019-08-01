@@ -5,10 +5,11 @@ function jsonTimes(year){
   var result = {};
   var arrayFechas = [];
 
-  if((typeof year === 'num') || 
+  if((typeof year === 'number') || 
   (typeof year === 'string' && year.length === 4)){
+    console.log("es number");
     anio = year;
-  } else if(typeof year === 'string' && year.length === 24){
+  } else if(typeof year === 'string'){
     anio = year.substring(0,4);
   } else if(typeof year === 'object'){
     anio = year.getFullYear();
@@ -18,9 +19,9 @@ function jsonTimes(year){
     fecha = new Date(anio,i,13);
     if(fecha.getDay() === 5){
       console.log("si entra");
-      fecha_mod = fecha.getMonth()+1 + "/" + 
-                  fecha.getDate() + "/" +
-                  fecha.getFullYear()
+      fecha.getMonth() < 10 ? fecha_mod = "0"+(fecha.getMonth()+1)+"/" : fecha_mod = (fecha.getMonth()+1)+"/";
+      fecha.getDate() < 10 ? fecha_mod += "0"+fecha.getDate()+"/" : fecha_mod += fecha.getDate()+"/";
+      fecha_mod += fecha.getFullYear()
       arrayFechas.push(fecha_mod);
     }
   }
@@ -34,8 +35,7 @@ function jsonTimes(year){
 
 function toLazyHuman(toDate, fromDate){
   var message = "";
-  var rounded = 0;
-  var difference = "";
+  var rounded = false;
 
   if(typeof fromDate == 'undefined'){
     console.log('fromDate undefined');
@@ -48,6 +48,10 @@ function toLazyHuman(toDate, fromDate){
   var days = toDate.getDate() - fromDate.getDate();
   var months = toDate.getMonth() - fromDate.getMonth();
   var years = toDate.getFullYear() - fromDate.getFullYear();
+
+  console.log(years);
+  console.log(months);
+  
 
   function round(number){
     var num = Math.abs(number);
@@ -124,112 +128,129 @@ function toLazyHuman(toDate, fromDate){
 
   switch(true){
     case Math.abs(years) > 0: {
+      if(Math.abs(months) >= 1 && Math.abs(years) === 1){
+        message = "less than 1 year ago";
+        break;
+      }
       message = round(years);
       if(Math.abs(years) > 1 || message.charAt(0) == '2'){
-        message += "years "
+        message += "years"
       } else {
-        message += "year "
+        message += "year"
       }
       if(years < 0){
-        message += "ago";
+        message += " ago";
       } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
-  
+
     case Math.abs(months) > 0: {
-      message = round(months);
+      if(Math.abs(months) >= 6){
+        message = "less than 1 year"
+      } else{
+        message = round(months);
+      }
+
       if(Math.abs(months) > 1 || message.charAt(0) == '2'){
-        message += "months "
+        message += "months"
       } else {
-        message += "month "
+        message += "month"
       }
       if(months < 0){
-        message += "ago";
+        message += " ago";
       } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
 
     case Math.abs(days) > 0: {
-      message = round(days);
+      if(Math.abs(days) >= 15){
+        message = "less than 1 month"
+      } else{
+        message = round(days);
+      }
       if(Math.abs(days) > 1 || message.charAt(0) == '2'){
-        message += "days "
+        message += "days"
       } else {
-        message += "day "
+        message += "day"
       }
       if(days < 0){
-        message += "ago";
+        message += " ago";
       } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
 
     case Math.abs(hours) > 0: {
-      message = round(hours);
+      if(Math.abs(hours) >= 12){
+        message = "less than 1 day"
+      } else{
+        message = round(hours);
+      }
       if(Math.abs(hours) > 1 || message.charAt(0) == '2'){
-        message += "hours "
+        message += "hours"
       } else {
-        message += "hour "
+        message += "hour"
       }
 
       if(hours < 0){
-        message += "ago";
+        message += " ago";
       } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
 
     case Math.abs(minutes) > 0: {
-      message = round(minutes);
+      if(Math.abs(minutes) >= 30){
+        message = "less than 1 hour"
+      } else{
+        message = round(minutes);
+      }
       if(Math.abs(minutes) > 1 || message.charAt(0) == '2'){
-        message += "minutes "
+        message += "minutes"
       } else {
-        message += "minute "
+        message += "minute"
       }
 
       if(minutes < 0){
-        message += "ago";
+        message += " ago";
       } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
 
     case Math.abs(seconds) > 0: {
-      message = round(seconds);
-      if(Math.abs(seconds) > 1 || message.charAt(0) == '2'){
-        message += "seconds "
-      } else {
-        message += "second "
-      }
+      message = "less than 1 minute"
 
       if(seconds < 0){
-        message += "ago";
+        message += " ago";
       } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
 
     case Math.abs(miliseconds) > 0: {
-      message = round(miliseconds);
-      if(Math.abs(miliseconds) > 1 || message.charAt(0) == '2'){
-        message += "milliseconds "
+      message = "less than 1 minute"
+
+      if(seconds < 0){
+        message += " ago";
       } else {
-        message += "millisecond "
-      }
-      if(miliseconds < 0){
-        message += "ago";
-      } else {
-        message.padStart(message.length+3, "in ");
+        message = message.padStart(message.length+3, "in ");
       }
       break;
     }
   }
   return message;
+}
+
+module.exports = {
+  jsonTimes,
+  toLazyHuman
 }
