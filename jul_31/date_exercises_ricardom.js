@@ -34,4 +34,8 @@ function jsonTimes(tiempo) {
 console.log(jsonTimes(1234));
 
 
+function toLazyHuman(){
+    
+}
+
 
