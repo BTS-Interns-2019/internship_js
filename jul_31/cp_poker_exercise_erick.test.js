@@ -120,3 +120,22 @@ test("Test on Three of a kind", () => {
           { name: '6', suit: 'diamonds' } ] }
     )
 });
+
+test("on Full house", () => {
+  const fullHouse = 
+    [ { name: '6', suit: 'clubs' },
+     { name: '5', suit: 'diamonds' },
+     { name: '5', suit: 'spades' },
+     { name: '5', suit: 'hearts' },
+     { name: '6', suit: 'diamonds' } ]
+  expect(myPlay(fullHouse)).toStrictEqual(
+    { hand: "Full house",
+      cards:[
+        { name: '6', suit: 'clubs' },
+        { name: '5', suit: 'diamonds' },
+        { name: '5', suit: 'spades' },
+        { name: '5', suit: 'hearts' },
+        { name: '6', suit: 'diamonds' }]
+    }
+  )
+});
