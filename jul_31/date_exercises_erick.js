@@ -35,14 +35,14 @@ toDate | fromDate | difference | output
 "2019-07-31T12:00:00.000" | "2019-07-31T12:01:00.000" | "-00:01:00.000" | "1 minute ago"
 "2019-07-31T12:00:00.000" | "2019-07-31T12:01:00.100" | "-00:01:00.100" | "more than 1 minute ago"
 "2019-07-31T12:00:00.000" | "2019-07-31T12:04:00.100" | "-00:04:00.100" | "less than 5 minutes ago"
-"2019-07-31T12:04:00.000" | "2019-07-31T12:00:00.000" | "00:04:00.000" | "in less than 5 minutes"
+"2007-07-31T12:04:00.000" | "2019-07-31T12:00:00.000" | "00:04:00.000" | "in less than 5 minutes"
 //   sucedio / sucedera              hoy
 # TDD
 
 Write 2 test cases for each exercise.
  */
-const date1 = "2000-07-31T12:00:30.000" 
-const date2 = "2000-07-31T12:00:00.000"
+// const date1 = "1992-04-11T15:20:26.000"
+// const date2 = "1992-04-11T15:20:50.000"
 
 function jasonTimes(input){
   const jasonComes = {
@@ -66,7 +66,7 @@ function jasonTimes(input){
     for(let month = 0; month < 12; month++){
       day = new Date(dateMod[0],month,13).toString().split(" ")
       if(day[0] === "Fri"){
-        let date = '0'+(month+1)+'/'+13+'/'+dateMod[0]
+        let date = (month+1).toString().padStart(2, "0")+'/'+13+'/'+dateMod[0]
         jasonComes.dates.push(date)
         jasonComes.times++
       }
@@ -74,9 +74,9 @@ function jasonTimes(input){
     return jasonComes
   }
 }
-jasonTimes(1990)
-jasonTimes("2014")
-jasonTimes("1998-13-20T03:23:27.000Z")
+// console.log(jasonTimes(1982))
+// console.log(jasonTimes("2014"))
+console.log(jasonTimes("1998-13-20T03:23:27.000Z"))
 
 
 
