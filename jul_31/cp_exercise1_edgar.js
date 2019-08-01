@@ -1,11 +1,22 @@
-function avoidingfire (arr){
-    max = Math.max.apply(null,arr);
-    var char = arr.reduce((val, ind)=>{ 
-    val[ind] = (val[ind] | 0) + 1;
-    return val;
-    },{});
-    return char;
+function avoidingfire (fires){
+    num = 0;
+    var cont = 0;
+    function flatten(fires) {
+     return light = fires.reduce((acc, val) => typeof val =="object" ? acc.concat(flatten(val)) : acc.concat(val), []);
+    
+    }
+    light = flatten (fires);
+    num = Math.max(...light);   
+
+    for (i = 0; i < light.length; i++){
+           if (num === light[i]){
+                cont ++;
+            }      
+    }
+     return cont;
 
 }
 
-console.log(avoidingfire([1,2,3,4,5,6,6]));
+console.log(avoidingfire([1,6,3,6,5,6,6]));
+console.log(avoidingfire([[1,[6],3],6,[5,6],6]));
+

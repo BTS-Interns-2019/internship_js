@@ -1,21 +1,21 @@
-var deck = new Array ();
+//var deck = new Array ();
 var suits = ["spades", "diamonds", "clubs", "hearts"];
 var numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
 function getdeck (suits, numbers){
-  // var deck = new Array();
-	for(var i in suits)
+   var decks = new Array();
+	for(var i = 0; i < suits.length; i++)
 	{
-		for(var j in numbers)
+		for(var j = 0; j < numbers.length; j++)
 		{
 			var card = {Number: numbers[j], Suit: suits[i]};
-			deck.push(card);
+			decks.push(card);
 		}
 	}
-	return JSON.stringify(deck, null);
+	return decks;
 }
 
-function shuffle (){
+function shuffle (deck){
     let getdeck = [];
     for(let i = 0; i < deck.length; i++){
         var num =  Math.floor(Math.random() * deck.length);
@@ -26,24 +26,23 @@ function shuffle (){
         }
     }
 
- return JSON.stringify(getdeck, null);
-
+ return getdeck;
 }
 
-function myhand (){
+function myhand (get){
     let hand = [];
     for (i = 0; i < 5; i++){
        // var num =  Math.floor(Math.random() * deck.length);
-         hand.push(deck[i]);
+         hand.push(get[i]);
     }
     return JSON.stringify(hand, null);
 }
 
 console.log(getdeck(suits, numbers));
-let getdck = getdeck(suits,numbers);
-console.log(shuffle());
-let get = shuffle ()
-console.log(myhand ());
+var deck = getdeck(suits,numbers);
+console.log(shuffle(deck));
+var get = shuffle (deck);
+console.log(myhand (get));
 
 
 

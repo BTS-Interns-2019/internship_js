@@ -1,4 +1,4 @@
-function JsonTimes (param) {
+function jsonTimes (param) {
        let year;
        switch (typeof (param)){
            case "number":
@@ -35,26 +35,25 @@ function JsonTimes (param) {
            dates: date
        }
 
-       return JSON.stringify(calen, null);
+       return calen;
 
 
     }
     
 
 param = "2020-15-11";
-console.log(JsonTimes (param))
+console.log(jsonTimes (param))
 
 function toLazyHuman (d, e){
     if (!e){
         e = new Date (Date.now());
     }
-    console.log(d)
-   // var d = new Date(tA);
-   // var e = new Date(tB);
+    //console.log(d)
+   
 var date1=d.getFullYear()+' '+((d.getMonth()+1)<10?"0"+(d.getMonth()+1):(d.getMonth()+1))+' '+(d.getDate()<10?"0"+d.getDate():d.getDate());
-var time1=(d.getHours()<10?"0"+d.getHours():d.getHours())+' '+(d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes())+' '+(d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds());
+var time1=(d.getHours()<10?"0"+d.getHours():d.getHours())+' '+(d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes())+' '+(d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds())+' '+(d.getMilliseconds()<10?"0"+d.getMilliseconds():d.getMilliseconds());
 var date2=e.getFullYear()+' '+((e.getMonth()+1)<10?"0"+(e.getMonth()+1):(e.getMonth()+1))+' '+(e.getDate()<10?"0"+e.getDate():e.getDate());
-var time2=(d.getHours()<10?"0"+e.getHours():e.getHours())+' '+(e.getMinutes()<10?"0"+e.getMinutes():e.getMinutes())+' '+(e.getSeconds()<10?"0"+e.getSeconds():e.getSeconds());
+var time2=(d.getHours()<10?"0"+e.getHours():e.getHours())+' '+(e.getMinutes()<10?"0"+e.getMinutes():e.getMinutes())+' '+(e.getSeconds()<10?"0"+e.getSeconds():e.getSeconds())+' '+(e.getMilliseconds()<10?"0"+e.getMilliseconds():e.getMilliseconds());
 
 var fe1 = (date1+' '+time1);
 var fe2 = (date2+' '+time2);
@@ -70,61 +69,56 @@ var rest2 = [];
 for (i = 0; i < fe1.length; i ++){
     rest2[i] = fe1[i] - fe2[i];
 }
-//console.log(rest)
+
 console.log(rest2);
-rest3 = rest2;
 found4 = rest2.find(elemento => elemento != 0);
 found = found4;
 found3 = rest2.findIndex(elemento =>elemento != 0);
-//console.log(found3 + "hi")
     var frase = "";
     if (found > 0){
-       frase ="in"+" "+ moreless(rest2) +" "+ yearmonthday(rest3); 
+       frase ="in"+" "+ moreless(rest2) +" "+ yearmonthday(rest2); 
     } else {
-        frase = moreless(rest3) +" "+ yearmonthday(rest2)+" ago";
+        frase = moreless(rest2) +" "+ yearmonthday(rest2)+" ago";
     } 
 
     return frase;
 
 function yearmonthday (found1){
-//    rest3 = rest3.fill(found4,found3 - 2, found3 -1)
-  //  console.log(rest3 + "be")
-  var found1 = rest3.findIndex(elemento => elemento != 0);  
-  //console.log(found1+"hola")
+  var found1 = rest2.findIndex(elemento => elemento != 0);  
     switch (found1){
         case 0:
             if (Math.abs(found4) > 1){
-            return "Years"
+            return "years"
             } else {
-             return "Year"   
+             return "year"   
             }
            // break;
         case 1:
             if (Math.abs(found4) > 1){
-            return "Months"
+            return "months"
             } else {
-             return "Month"   
+             return "month"   
             }
            // break;
         case 2:
             if (Math.abs(found4) > 1){
-            return "Days"
+            return "days"
             } else {
-             return "Day"   
+             return "day"   
             }
            // break;
         case 3:
             if (Math.abs(found4) > 1){
-            return "Hours"
+            return "hours"
             } else {
-             return "Hour"   
+             return "hour"   
             }
            // break;
         case 4:
             if (Math.abs(found4) > 1){
-            return "Minutes"
+            return "minutes"
             } else {
-             return "Minute"   
+             return "minute"   
             }
            // break;
         case 5:
@@ -134,55 +128,74 @@ function yearmonthday (found1){
              return "Second"   
             }
            // break;
+        case 6:
+            return "minute"
+
     }
 
 }
 
 function moreless (restar){
   found1 = restar.findIndex(elemento =>elemento != 0); 
-  //zaz = restar.find(elemento => elemento != 0);
-  //restar = restar.fill(0, found1, found1 + 1);
-  //console.log(restar); 
    found2 = restar.find (elemento => elemento != 0);
    found3 = (restar.findIndex (elemento => elemento != 0)) + 1;
-  // restar = restar.fill (zaz,found1, found1)
-   //console.log(found3+"ge")
+   console.log(found3)
      switch (found3) {
-         case 5:
+         case 7:
+             return "less than 1"
+         case 5: 
+             if (restar[found3] == 0){
+                 return (Math.abs(found))
+             }
              if (restar[found3] > 0) {
-                  return "More than "+ (Math.abs(found));
+                  return "more than "+ (Math.abs(found) - 1);
              } else {
-                 return "Less Than " + (Math.abs(found) + 1);
+                 return "less than " + (Math.abs(found) + 1);
              }
         case 4:
+            if (restar[found3] == 0){
+                 return (Math.abs(found))
+             }
             if (restar[found3] > 0) {
-                  return "More than "+ (Math.abs(found));
+                  return "more than "+ (Math.abs(found) - 1);
              } else {
-                 return "Less Than " + (Math.abs(found) + 1);
+                 return "less than " + (Math.abs(found) + 1);
              }
         case 3:
+            if (restar[found3] == 0){
+                 return (Math.abs(found))
+             }
             if (restar[found3] > 0) {
-                 return "More than "+ (Math.abs(found));
+                 return "more than "+ (Math.abs(found) - 1);
              } else {
-                 return "Less Than " + (Math.abs(found) + 1);
+                 return "less than " + (Math.abs(found) + 1);
              }
         case 2:
+            if (restar[found3] == 0){
+                 return (Math.abs(found))
+             }
             if ((restar[found3]) > 0){
-                 return "More than "+ (Math.abs(found));
+                 return "more than "+ (Math.abs(found)- 1);
              } else {
-                 return "Less Than " + (Math.abs(found) + 1);
+                 return "less than " + (Math.abs(found) + 1);
              } 
-        case 1:     
+        case 1:  
+        if (restar[found3] == 0){
+                 return (Math.abs(found))
+             }   
         if (restar[found3] > 0){
-                 return "More than "+ (Math.abs(found));
+                 return "more than "+ (Math.abs(found) - 1);
              } else {
-                 return "Less Than " + (Math.abs(found) + 1);
+                 return "less than " + (Math.abs(found));
              } 
         case 0:
+            if (restar[found3] == 0){
+                 return (Math.abs(found))
+             }  
         if (restar[found3] > 0) {
-                return "More than "+ (Math.abs(found));
+                return "more than "+ (Math.abs(found));
              } else {
-                 return "Less Than " + (Math.abs(found) + 1);
+                 return "less than " + (Math.abs(found));
              }
      }
 
@@ -197,7 +210,12 @@ function moreless (restar){
 
 }
 
-var hA = new Date(2012, 3, 21, 14, 00, 00);
-var hB = new Date(2012, 6, 20, 13, 59, 00);
+var hA = new Date('2008-08-31T12:04:00.000');
+var hB = new Date('2019-07-31T12:00:00.000');
 
 console.log(toLazyHuman(hA, hB));
+
+module.exports = {
+    jsonTimes,
+    toLazyHuman
+}
