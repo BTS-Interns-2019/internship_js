@@ -14,9 +14,6 @@ function isBoardReady(boats) {
     }
   }
 
-  let inSameColumn;
-  let inSameRow;
-
   for (let i = 0; i < boats.length; i++) {
     boats[i] = boats[i].map(coordinate => {
       coordinate = coordinate.split('');
@@ -27,21 +24,19 @@ function isBoardReady(boats) {
     let firstLetter = boats[i][0].split('')[0];
     let firstNumber = boats[i][0].split('')[1];
 
-    inSameRow = boats[i].every(coordinate => {
+    const inSameRow = boats[i].every(coordinate => {
       coordinate = coordinate.split('');
       return coordinate[0] === firstLetter;
     });
 
-    inSameColumn = boats[i].every(coordinate => {
+    const inSameColumn = boats[i].every(coordinate => {
       coordinate = coordinate.split('');
       return coordinate[1] === firstNumber;
     });
 
-    console.log(inSameColumn, inSameRow);
-
-    // if (!inSameColumn && !inSameRow) {
-    //   return false;
-    // }
+    if (!inSameColumn && !inSameRow) {
+      return false;
+    }
   }
 
   return true;
