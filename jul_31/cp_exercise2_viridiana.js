@@ -18,14 +18,32 @@ console.log(getDeck())
 
 
 
-function shuffles(arr){
-    for(let i=0; i<Math.floor(Math.random()* 1000)); i++) {
-        let baraja1=Math.floor(Math.random()*deck).length)
-        let baraja2=Math.floor(Math.random()*deck.length)
-        
-
-    }
-   return baraja1;
+function shuffles(deck){
+        return deck.sort(card=>Math.random()-0.5)
 
 }
-console.log(shuffles())
+
+console.log(shuffles(getDeck()))
+
+function myHand(arr){
+
+    //Royal flush
+    const hands=['royalFlush']
+    for (let i=0; i<hands.length; i++){
+        
+    }
+
+
+
+
+    arr.sort((a,b)=>{
+        let indA=card.indexOf(a.number)
+        let indB=card.indexOf(b.number)
+        return +a.number -+b.number;
+    })
+    if(myHand.every(car=>card.suit===arr[0].suit)){
+
+    }
+    return object;
+    
+}
