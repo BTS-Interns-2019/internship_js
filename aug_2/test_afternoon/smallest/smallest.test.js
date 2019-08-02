@@ -16,7 +16,7 @@ test('Response is an Array', function(){
 });
 test('First element of response is the smallest number possible', function(){
   let response = smallest('1001234444992003');
-  expect(response[0]).toBe('0001234444992013');
+  expect(response[0]).toBe('1234444992013');
 });
 test('First element of response is a string', function(){
   let response = smallest('1001234444992003');

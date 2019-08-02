@@ -7,31 +7,65 @@ function smallest(str) {
     str = str.toString();
   }
 
-  let weight = [];
-  let acc = 1;
-  for (let i = str.length - 1; i >= 0; i--) {
-    weight.push([str[i], 1 * acc]);
-    acc *= 10;
+  str = str.split('');
+  let biggest = 0;
+  let biggestIndex = 0;
+  let smallest = 0;
+  let smallestIndex = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (Number.parseInt(str[i]) > biggest) {
+      biggest = str[i];
+      biggestIndex = i;
+    }
+    if (Number.parseInt(str[i]) < smallest && str[i] !== 0) {
+      smallest = str[i];
+      smallestIndex = i;
+    }
   }
 
-  let biggest = [0, 1];
-  let biggestIndex;
-  let smallest = [weight[0][0], weight[0][1]];
-  weight.forEach((num, index) => {
-    if (num[1] > biggest[1] && num[0] !== '0' && index <= weight.length - 1) {
-      biggest = [num[0], num[1]];
-      biggestIndex = index;
-    }
-  });
 
-  
+  const resultsBiggest = [];
+  const resultsSmallest = [];
+  for (let i = 0; i < str.length; i++) {
+    let copyBiggest = Array.from(str);
+    let numberBiggest = copyBiggest[i];
+    copyBiggest[i] = biggest;
+    copyBiggest[biggestIndex] = numberBiggest;
+    resultsBiggest.push(
+      {
+        indexMoved: i,
+        number: Number.parseInt(copyBiggest.join(''))
+      }
+    );
 
-  str = str.substring(0, biggestIndex) + smallest[0] + str.substring(biggestIndex);
-  // str[str.length - 1] = biggest;
-  console.log(str);
-  // return [str1, fromIndexMin, 0];
+    let copySmallest = Array.from(str);
+    let numberSmallest = copySmallest[i];
+    copySmallest[i] = smallest;
+    copySmallest[smallestIndex] = numberSmallest;
+    resultsSmallest.push({
+      indexMoved: i,
+      number: Number.parseInt(copySmallest.join(''))
+    });
+  }
+
+  let minBiggest = resultsBiggest.map(result => result.number);
+  minBiggest = Math.min(...minBiggest);
+  let bigIndex;
+  for (let obj of resultsBiggest) {
+    if (minBiggest === obj.number) {
+      bigIndex = obj.indexMoved;
+    } 
+  }
+
+  let minSmallest = resultsSmallest.map(result => result.number);
+  minSmallest = Math.min(...minSmallest);
+  let smallIndex;
+  for (let obj of resultsBiggest) {
+    if (minBiggest === obj.number) {
+      smallIndex = obj.indexMoved;
+    } 
+  }
+  return minBiggest > minSmallest ? [minSmallest.toString(), smallestIndex, smallIndex] : [minBiggest.toString(), biggestIndex, bigIndex];
 }
-
-smallest('1031234444992000');
 
 module.exports = smallest;
