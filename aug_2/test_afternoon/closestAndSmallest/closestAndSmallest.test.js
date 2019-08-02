@@ -9,3 +9,7 @@ test('test closest1', function(){
   expect(response[1][1]).toEqual(0);
   expect(response[1][2]).toEqual(103);
 })
+test("The output is an array",()=>{
+  expect(closestAndSmallest("103 123 4444 99 2000").toBe([[2, 4, 2000], [4, 0, 103]]))
+});
+
