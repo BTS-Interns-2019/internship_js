@@ -1,4 +1,4 @@
-
+// Hector Soto Garcia
 const isBoardReady = require('./battleship')
 
 describe('Battleship board tester', () => {
