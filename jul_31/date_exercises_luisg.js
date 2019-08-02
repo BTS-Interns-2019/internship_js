@@ -68,7 +68,12 @@ function toLazyHuman(date1,date2){
  let dif_dias = dif_hor/24;
  let dif_anios = dif_dias/365
  
+ let res = "";
+ if(dif_anios>=1){
+   res= Math.round(dif_anios)+" years ago"
+ }
+ return res;
 }
-let date1 = new Date(2019,06,30)
+let date1 = new Date(2018,06,30)
 console.log(toLazyHuman(date1))
 module.exports=jsonTimes;

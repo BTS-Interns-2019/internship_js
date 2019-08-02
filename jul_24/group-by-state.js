@@ -13,7 +13,7 @@ let output = {};
           'address':address,
           'state': estado
       };
-      let exi = Object.getOwnPropertyNames(output);
+      let exi = Object.getOwnPropertyNames(output);// []
       if(exi.indexOf(estado)==-1){
         let newState = {};
         newState.code = estado;
@@ -50,6 +50,7 @@ output[estado] = newState;
 }
 
 let res = groupByState(`John Snow, 341 Kings Road, KL
-Arya Stark, 22 No Where St, WF
+Arya Stark, 22 No Where St, HG
 Jaime Lannister, 73 1st Street, KL`);
+console.log(res)
 module.exports = groupByState;
