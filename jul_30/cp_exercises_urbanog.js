@@ -148,4 +148,11 @@ function google(str) {
 }
 console.log(google("entries"))
 
+function whereAreThey(array) {
+    let result= array.filter((val, index, arr)=>arr[index]%2===0)
+    console.log(result)
+}
+
+console.log(whereAreThey([1,2,3,4,8]));
+
 module.exports = {login, onlyEven, google};
