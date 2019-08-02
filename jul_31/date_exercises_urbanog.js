@@ -45,7 +45,7 @@ function jsonTimes(year) {
     return happyFryday;
 }
 
-console.log(jsonTimes("2019"))
+console.log(jsonTimes("2012"))
 
 function toLazyHuman(date1, date2) {
     let newD1;
@@ -63,9 +63,9 @@ function toLazyHuman(date1, date2) {
     
     date1= new Date(date1)
     // newD1= date1.filter((value,index)=> {parseInt(})
-    console.log(newD1)
+    // console.log(newD1)
     // let a= newD1.replace(/[&\s/#,.+()$~%'":*?<>!{}|A-Z]/g, "-")
-    console.log (date1);
+    // console.log (date1);
     dateA = new Date(/*newD1[0], newD1[1], newD1[2], newD1[3], newD1[4], newD1[5], newD1[6]*/);
 
     if (date2 === undefined) {
@@ -123,8 +123,8 @@ function toLazyHuman(date1, date2) {
 // let today = Date.now()
 // let test = new Date(2012, 03, 21, 14, 00, 000)
 
-console.log(toLazyHuman('2019-07-31T12:00:00.100', '2019-07-31T12:00:00.000'))
-
+console.log(toLazyHuman("2020-09-31T12:01:00.000","2019-11-31T12:01:00.000"))
+// , '2019-11-31T12:01:00.000'
 
 //Round time, funcion para redonder e imprimir mensajes
 function roundTime(time, div) {
@@ -187,7 +187,7 @@ function roundTime(time, div) {
     return msj;
 }
 
-module.exports ={
+module.exports={
     jsonTimes,
     toLazyHuman
 };
