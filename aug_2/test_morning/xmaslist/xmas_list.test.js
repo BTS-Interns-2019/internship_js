@@ -1,8 +1,8 @@
-
+// David Martin Silva Cruz
 const xmasList = require('./xmas_list')
 
 const kids =`Cristian Fernandez, 12, 100
-Sergio Piña , 4 , 50
+Sergio Piña, 4 , 50
 Carlos Munguia, 6, 92
 `;
 
@@ -43,5 +43,16 @@ describe('Xmas List', () => {
 
   test('Assign 2 toys and 1 coal', () => {
     expect(xmasList(kids, toys)).toEqual(expectedResult);
-  })
+  });
+
+  test('No missing kids', () => {
+    expect(xmasList(kids, toys).length).toEqual(expectedResult.length);
+  });
+
+  test('Ages in number', () => {
+    xmasList(kids, toys).forEach((kid, i) => {
+      expect(kid.age).toEqual(expectedResult[i].age);
+    });
+  });
+
 })
