@@ -38,6 +38,13 @@ function isBoardReady(boats){
         ['A7','B7','C7','D7','E7','F7','G7','H7','I7','J7','K7'],
         ['A8','B8','C8','D8','E8','F8','G8','H8','I8','J8','K8'],
         ['A9','B9','C9','D9','E9','F9','G9','H9','I9','J9','K9']];
+    let res = boats.map((actual)=>{
+        //B8 C8
+        let inicio = board.find(actual[0]);
+        console.log(inicio);
+        let fin = board.find(actual[1]);
+        console.log(fin);
+    })
     return board;
 }
 
