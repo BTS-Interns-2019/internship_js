@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
->Function definition in `tictactoe.js`
+>Function definition in `tictactoe.js`, you must add `module.exports = ticTacToe;` at the end of the file
 
 >TDD in `tictactoe.test.js`
 
@@ -18,7 +18,7 @@ They start arging about who wins each match, so we need to clarify that.
     * Each element is an string representing coordinades in the board `x,y`.
     * `Player 1` is the one who starts, then `Player 2` is the second play, then `Player 1` again, and so on...
 * The function will return an object containing
-  * `winner`
+  * `winner` should be `'Player 1'` or `'Player 2'` according to who wins, if nobody wins should be empty string
   * `lastPlay` an integer the last played `play` starting in 1
   * `board` An array of 3 items representing the final state of the board
     * Each item is a 3-characters-string
