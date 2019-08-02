@@ -7,7 +7,7 @@ function getDeck(){
     });
     return deck;
 }
-//let deck=getDeck();
+let deck=getDeck();
 //console.log(l(deck));
 
 function shufflee(arr){
@@ -16,10 +16,13 @@ function shufflee(arr){
     arr.forEach(val => {
         y=Math.random()*(x);
         arr2.splice(y, 0, val);        
-    });    
-    return arr2.filter(Boolean);
+    });
+    arr2.filter(x=>x!==undefined).forEach((val, i)=>
+        arr[i]=val
+    )
 }
-//let deckS=shufflee(deck);
+shufflee(deck);
+console.log(deck);
 
 function myHand(arr) {
     let object={cards:arr};
