@@ -111,5 +111,5 @@ function toLazyHuman(obj,params) {
     
 
 }
-let obj2 = new Date('2019-08-31T12:01:00.000')
+let obj2 = new Date('2019-11-31T12:01:00.000')
 console.log(toLazyHuman(obj,obj2));
