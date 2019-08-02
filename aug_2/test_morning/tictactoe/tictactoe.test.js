@@ -20,6 +20,15 @@ describe('Tic Tac Toe', () => {
     '3,1',
     '3,2'
   ]
+  const samplePlay2= [
+    '1,2',
+    '1,3',
+    '2,3',
+    '2,2',
+    '0,0',
+    '3,3',
+    '3,1',
+  ]
 
   test('Winner is player 1', () => {
     expect(ticTacToe(samplePlay).winner).toBe('Player 1')
@@ -33,3 +42,8 @@ describe('Tic Tac Toe', () => {
     expect(ticTacToe(samplePlay).board).toEqual(expectedResult.board)
   })
 })
+
+
+test("Winner is player 2", ()=>{
+  expect(ticTacToe(samplePlay2).winner).toEqual('Player2');
+});
