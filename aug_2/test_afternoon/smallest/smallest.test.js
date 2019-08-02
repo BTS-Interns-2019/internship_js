@@ -1,7 +1,13 @@
 const smallest = require('./smallest');
 
-test('Response says that a string of a number should be provided', function(){
-  let response = smallest(1001234444992003);
+test('test closest1', function(){
+  let response = smallest(261235);
+  expect(response[0]).toBe(126235);
+  expect(response[1]).toBe(2);
+  expect(response[2]).toBe(0);
+});
+test('Response says that a string of a number or a number should be provided', function(){
+  let response = smallest([]);
   expect(response).toBe('Please, provide a number or a string of a number');
 });
 test('Response is an Array', function(){

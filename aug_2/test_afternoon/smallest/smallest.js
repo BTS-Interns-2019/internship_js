@@ -1,35 +1,37 @@
 function smallest(str) {
-  if (typeof str !== 'string') {
+  if (typeof str !== 'string' && typeof str !== 'number') {
     return 'Please, provide a number or a string of a number';
   }
-  let fromIndexMin;
-  let fromIndexMax;
-  for (let i = 0; i <= 9; i++) {
-    if (str.includes(i.toString())) {
-      fromIndexMin = str.lastIndexOf(i.toString());
-      break;
-    }
+
+  if (typeof str === 'number') {
+    str = str.toString();
   }
 
-  for (let i = 9; i >= 0; i--) {
-    if (str.includes(i.toString())) {
-      fromIndexMax = str.indexOf(i.toString());
-      break;
-    }
+  let weight = [];
+  let acc = 1;
+  for (let i = str.length - 1; i >= 0; i--) {
+    weight.push([str[i], 1 * acc]);
+    acc *= 10;
   }
 
-  let replacedMin = str[0];
-  let replacedMax = str[str.length - 1];
+  let biggest = [0, 1];
+  let biggestIndex;
+  let smallest = [weight[0][0], weight[0][1]];
+  weight.forEach((num, index) => {
+    if (num[1] > biggest[1] && num[0] !== '0' && index <= weight.length - 1) {
+      biggest = [num[0], num[1]];
+      biggestIndex = index;
+    }
+  });
 
-  let str1 = str.split('') , str2 = str.split('');
-  str1[0] = str[fromIndexMin];
-  str1[fromIndexMin] = replacedMin;
-  str2[str.length - 1] = str[fromIndexMax];
-  str2[fromIndexMax] = replacedMax;
-  str1 = str1.join('');
-  str2 = str2.join('');
   
-  return Number.parseInt(str1) > Number.parseInt(str2) ? [str2, fromIndexMax, str.length - 1] : [str1, fromIndexMin, 0];
+
+  str = str.substring(0, biggestIndex) + smallest[0] + str.substring(biggestIndex);
+  // str[str.length - 1] = biggest;
+  console.log(str);
+  // return [str1, fromIndexMin, 0];
 }
+
+smallest('1031234444992000');
 
 module.exports = smallest;

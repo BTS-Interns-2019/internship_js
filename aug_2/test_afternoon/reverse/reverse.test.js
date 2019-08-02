@@ -11,3 +11,7 @@ test('reverse words1', function(){
 test('reverse words2', function(){
   expect(reverse(' this is a second test :O ')).toEqual('this si a dnoces test O:');
 })
+
+test('Response is a string', function(){
+  expect(typeof reverse(' this is a second test :O ')).toEqual('string');
+})
