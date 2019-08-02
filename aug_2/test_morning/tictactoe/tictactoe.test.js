@@ -22,12 +22,14 @@ describe('Tic Tac Toe', () => {
   ]
 
   test('Winner is player 1', () => {
-    xmasList(kids, toys).forEach((kid, i) => {
-      expect(kid.name).toEqual(expectedResult[i].name);
-    });
+    expect(ticTacToe(samplePlay).winner).toBe('Player 1')
   });
 
-  test('Assign 2 toys and 1 coal', () => {
-    expect(xmasList(kids, toys)).toEqual(expectedResult);
+  test('Last play was 5', () => {
+    expect(ticTacToe(samplePlay).lastPlay).toBe(5)
+  });
+
+  test('Final status of the board', () => {
+    expect(ticTacToe(samplePlay).board).toEqual(expectedResult.board)
   })
 })
