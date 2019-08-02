@@ -1,5 +1,5 @@
 
-/**
+/**Emmanuel Rubio Navarro
  * xmasList
  * @param {String} kidsList
  * @param {Array} toys

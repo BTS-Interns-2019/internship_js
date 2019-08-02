@@ -1,4 +1,4 @@
-
+//Emmanuel Rubio Navarro
 const xmasList = require('./xmas_list')
 
 const kids =`Cristian Fernandez, 12, 100

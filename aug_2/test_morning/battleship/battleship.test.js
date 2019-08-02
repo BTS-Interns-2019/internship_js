@@ -1,4 +1,4 @@
-
+//Emmanuel Rubio Navarro
 const isBoardReady = require('./battleship')
 
 describe('Battleship board tester', () => {
