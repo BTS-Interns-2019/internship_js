@@ -1,4 +1,3 @@
-
 /**
  * arrayGenerator
  * @param {int} number
