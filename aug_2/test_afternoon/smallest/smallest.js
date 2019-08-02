@@ -22,6 +22,6 @@ function smallest(str) {
   // console.log(theReturn)
   return theReturn
 }
-// console.log(smallest("261235"))
+console.log(smallest("261235"))
 
 module.exports = smallest;

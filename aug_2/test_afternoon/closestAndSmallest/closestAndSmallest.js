@@ -18,7 +18,7 @@ function closestAndSmallest(str) {
       counter.push(nums[i].weight + nums[u].weight) 
     }
   }
-  console.log(newCounter)
+  console.log(counter)
   console.log(nums)
   return result
 }
