@@ -8,4 +8,24 @@ test('test closest1', function(){
   expect(response[1][0]).toEqual(4);
   expect(response[1][1]).toEqual(0);
   expect(response[1][2]).toEqual(103);
-})
+});
+
+test("closestAndSmallest de '103 123 4444 99 2000'", function() {
+  expect(closestAndSmallest('103 123 4444 99 2000')).toEqual([[2, 4, 2000], [4, 0, 103]]);
+});
+
+test("closestAndSmallest de '101 200 101'", function() {
+  expect(closestAndSmallest('101 200 101')).toEqual([[2, 0, 101], [2, 1, 200]]);
+});
+
+test("closestAndSmallest de '80 71 62 53'", function() {
+  expect(closestAndSmallest('80 71 62 53')).toEqual([[8, 0, 80], [8, 1, 71]]);
+});
+
+test("closestAndSmallest de '444 2000 445 544'", function() {
+  expect(closestAndSmallest('444 2000 445 544')).toEqual([[13, 2, 445], [13, 3, 544]]);
+});
+
+test("closestAndSmallest de '239382 162 254765 182 485944 468751 49780 108 54'", function() {
+  expect(closestAndSmallest('239382 162 254765 182 485944 468751 49780 108 54')).toEqual([[9, 1, 162], [9, 7, 108]]);
+});
