@@ -1,5 +1,6 @@
 
 /**
+ * Luis Carlos Gallegos Rodriguez
  * ticTacToe
  * @param {Array} plays
  * @returns {object}

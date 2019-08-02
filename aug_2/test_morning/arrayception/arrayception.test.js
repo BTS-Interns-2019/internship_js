@@ -1,4 +1,4 @@
-
+// Luis Carlos Gallegos Rodriguez
 const arrayGenerator = require('./arrayception');
 
 describe('Arrayception', () => {
