@@ -15,7 +15,7 @@ They start arging about who wins each match, so we need to clarify that.
 * Write a function called `ticTacToe`
 * The function receives 1 parameter
   * `plays` as an array
-    * Each element is an scring representing coordinades in the board `x,y`.
+    * Each element is an string representing coordinades in the board `x,y`.
     * `Player 1` is the one who starts, then `Player 2` is the second play, then `Player 1` again, and so on...
 * The function will return an object containing
   * `winner`
