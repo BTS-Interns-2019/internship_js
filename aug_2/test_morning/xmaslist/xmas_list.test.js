@@ -1,4 +1,4 @@
-
+// Hector Soto Garcia
 const xmasList = require('./xmas_list')
 
 const kids =`Cristian Fernandez, 12, 100
@@ -43,5 +43,16 @@ describe('Xmas List', () => {
 
   test('Assign 2 toys and 1 coal', () => {
     expect(xmasList(kids, toys)).toEqual(expectedResult);
-  })
+  });
+
+  test('Result is an Array', () => {
+    expect(Array.isArray(xmasList(kids, toys))).toBe(true);
+  });
+
+  test('Result is an Array with Objects', () => {
+    const results = xmasList(kids, toys);
+    for (let result of results) {
+      expect(typeof result).toBe('object');
+    }
+  });
 })

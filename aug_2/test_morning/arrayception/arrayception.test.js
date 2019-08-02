@@ -1,4 +1,4 @@
-
+// Hector Soto Garcia
 const arrayGenerator = require('./arrayception');
 
 describe('Arrayception', () => {
@@ -17,5 +17,15 @@ describe('Arrayception', () => {
     const result = arrayGenerator(79);
     const array15th = result[0][0][0][0][0][0][0][0][0][0][0][0][0][0][0];
     expect(array15th[array15th.length-2]).toBe('78');
+  });
+
+  test('Final result is an array', ()=> {
+    const result = arrayGenerator(10);
+    expect(Array.isArray(result)).toBe(true);
+  });
+
+  test('Final result has length of number', ()=> {
+    const result = arrayGenerator(10);
+    expect(result.length - 1).toBe(10);
   });
 });

@@ -1,4 +1,4 @@
-
+// Hector Soto Garcia
 const ticTacToe = require('./tictactoe')
 
 describe('Tic Tac Toe', () => {
@@ -31,5 +31,13 @@ describe('Tic Tac Toe', () => {
 
   test('Final status of the board', () => {
     expect(ticTacToe(samplePlay).board).toEqual(expectedResult.board)
-  })
+  });
+
+  test('Last play is an integer', () => {
+    expect(Number.isInteger(ticTacToe(samplePlay).lastPlay)).toBe(true)
+  });
+
+  test('Board is an array', () => {
+    expect(Array.isArray(ticTacToe(samplePlay).board)).toBe(true)
+  });
 })
