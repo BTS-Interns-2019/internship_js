@@ -12,7 +12,7 @@ Shasbro is working on an online version of battleship table game, but they need 
 ## The Board
 * It is a 11 X 9 matrix
 * 11 is the width and it is referenced by letters `[A-K]`
-* 9 is the height and it si referenced by numbers `[0-9]`
+* 9 is the height and it si referenced by numbers `[1-9]`
 
 ## Available boats
 * Carrier, with five holes
