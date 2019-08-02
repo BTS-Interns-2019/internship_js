@@ -105,14 +105,6 @@ for (let i = 0; i < board.length; i++) {
   return game;
 }
 
-console.log(ticTacToe([
-  '1,1',
-  '1,2',
-  '1,3',
-  '2,2',
-  '2,3',
-  '3,2'
-  
-]))
+console.log(ticTacToe(["1,1", "1,3", "2,1", "2,2", "3,1", "3,2"]))
 // ["1,1", "1,2", "2,1", "2,2", "3,1", "3,2"]
 module.exports = ticTacToe;

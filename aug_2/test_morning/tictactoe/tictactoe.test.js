@@ -20,15 +20,7 @@ describe('Tic Tac Toe', () => {
     '3,1',
     '3,2'
   ]
-  const samplePlay2= [
-    '1,2',
-    '1,3',
-    '2,3',
-    '2,2',
-    '0,0',
-    '3,3',
-    '3,1',
-  ]
+  const samplePlay2= []
 
   test('Winner is player 1', () => {
     expect(ticTacToe(samplePlay).winner).toBe('Player 1')
