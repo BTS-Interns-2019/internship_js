@@ -1,4 +1,4 @@
-
+//Ricardo Martín del campo Loza
 /**
  * xmasList
  * @param {String} kidsList
