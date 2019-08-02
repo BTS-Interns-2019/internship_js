@@ -20,3 +20,8 @@ test('test smallest3', function(){
   expect(response[1]).toEqual(0);
   expect(response[2]).toEqual(5);
 })
+
+test('test smallest4', function(){
+  let response = smallest(123);
+  expect(response[0]).toBe(123)
+})
