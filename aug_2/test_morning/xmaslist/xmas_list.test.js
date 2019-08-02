@@ -1,4 +1,4 @@
-
+//Estefania Cano
 const xmasList = require('./xmas_list')
 
 const kids =`Cristian Fernandez, 12, 100
@@ -45,3 +45,15 @@ describe('Xmas List', () => {
     expect(xmasList(kids, toys)).toEqual(expectedResult);
   })
 })
+
+  test('Age is a number', () => {
+    xmasList(kids, toys).forEach((kid, i) => {
+      expect(typeof(kid.age)).toEqual('number');
+    });
+  });
+
+  test('Score is a number', () => {
+    xmasList(kids, toys).forEach((kid, i) => {
+      expect(typeof(kid.score)).toEqual('number');
+    });
+  });
