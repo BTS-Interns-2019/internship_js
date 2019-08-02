@@ -1,5 +1,6 @@
 //Emmanuel Rubio Navarro
 function isBoardReady(botes){
+    if(botes.length<5)return false
     let tab= Array(9);
     tab.fill(0);
     tab.forEach((x,i) => {
