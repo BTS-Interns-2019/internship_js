@@ -1,4 +1,4 @@
-
+//Emmanuel Rubio Navarro
 const arrayGenerator = require('./arrayception');
 
 describe('Arrayception', () => {
@@ -18,4 +18,14 @@ describe('Arrayception', () => {
     const array15th = result[0][0][0][0][0][0][0][0][0][0][0][0][0][0][0];
     expect(array15th[array15th.length-2]).toBe('78');
   });
+  test("From the position 1 to the end, must be strings",()=>{
+    const result = arrayGenerator(79);
+    const strings=result.slice(1).every(x=>typeof(x)=="string");
+    expect(strings).toBe(true);
+  })
+  test("From the psoition 1 to the end must be the numbers from 1 to \'number\'",()=>{
+    const result = arrayGenerator(200);
+    const filled =result.slice(1).every((x,i)=>parseInt(x)===i+1);
+    expect(filled).toBe(true);
+  })
 });

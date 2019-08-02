@@ -1,4 +1,4 @@
-
+//Emmanuel Rubio Navarro
 const ticTacToe = require('./tictactoe')
 
 describe('Tic Tac Toe', () => {
@@ -31,5 +31,22 @@ describe('Tic Tac Toe', () => {
 
   test('Final status of the board', () => {
     expect(ticTacToe(samplePlay).board).toEqual(expectedResult.board)
+  })
+  const tiedPlay = [
+    '1,1',
+    '1,2',
+    '2,1',
+    '2,2',
+    '3,2',
+    '3,1',
+    '1,3',
+    '2,3',
+    '3,3'
+  ]
+  test('Tied game',()=>{
+    expect(ticTacToe(tiedPlay).winner).toBe("")
+  })
+  test('Last play of a tied game was 9',()=>{
+    expect(ticTacToe(tiedPlay).lastPlay).toBe(9)
   })
 })
