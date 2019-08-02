@@ -1,5 +1,5 @@
-
-/**Ricardo Martín del Campo Loza
+  // Ricardo Martín del Campo Loza
+/**
  * arrayGenerator
  * @param {int} number
  * @returns {array}
@@ -13,8 +13,8 @@ function arrayGenerator(number) {
   for (i = 0; i <= number; i++) {
     arrayBase.push(i.toString());
   }
-  finalArray = arrayBase.slice();;
-while( j <= number){    //poner loop despues de las pruebas
+  finalArray = arrayBase.slice();
+while( j <= number){    //poner loop despues de las pruebas while(true){
     finalArray[0]=arrayBase;
     arrayBase = finalArray.slice()
     j++
