@@ -5,9 +5,20 @@
  * @returns {array}
  */
 function arrayGenerator(number) {
-
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  if (number == 0) {
+    return "basura"
+  }
   
-  return [[number += number.toString();&$%&$/(&%$"&(&()(&%/$(%I( ")][arrayGenerator(number-1)]];
+  return [[arrayGenerator(number-1)]];
 }
 
 module.exports = arrayGenerator;
