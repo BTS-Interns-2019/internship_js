@@ -11,3 +11,7 @@ test('reverse words1', function(){
 test('reverse words2', function(){
   expect(reverse(' this is a second test :O ')).toEqual('this si a dnoces test O:');
 })
+
+test('anita tina con espacios', function(){
+  expect(reverse(' anita lava la tina ')).toEqual('anita aval la anit');
+})
