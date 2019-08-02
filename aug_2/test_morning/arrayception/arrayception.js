@@ -1,4 +1,4 @@
-
+// Sergio Manuel Rivera Vazquez
 /**
  * arrayGenerator
  * @param {int} number
@@ -6,7 +6,12 @@
  */
 function arrayGenerator(number) {
 
-  return [];
+  
+  return [[number += number.toString();&$%&$/(&%$"&(&()(&%/$(%I( ")][arrayGenerator(number-1)]];
 }
 
 module.exports = arrayGenerator;
+
+
+console.log(arrayGenerator(5));
+console.log(arrayGenerator(7));
