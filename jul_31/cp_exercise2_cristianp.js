@@ -45,6 +45,33 @@ function myHand(arr)
             card:arr
         }
     }
+    const hands = ["royalFlush"]
+    for (let i = 0; i < arr.length; i++) {
+        const currentHandToTest = arr[i];
+        switch (currentHandToTest) {
+            case royalFluz:
+                arr.sort( (a,b) => {
+                    indexA = cards.indexOf(a.number);
+                    indexB = cards.indexOf(b.number);
+                    return indexA - indexB
+                } );
+                let initialposition = cartas.indexOf(card.number)-1;
+                const cardsAreOrdered = !arr.every
+                if(!arr.every((card,i)=>{
+                    let posotion = initialposition+1;
+                    if(posotion>=cartas.length){
+                        position -= cartas.length;
+                    }
+                }))
+                break;
+        
+            default:
+                break;
+        }
+        
+    }
+    
+    if(arr.every( card => card.carta === arr[0].carta ))
 //que tengan mismo color
 //orden numerico
 //basar en orden de las cartas del arreglo
@@ -57,7 +84,7 @@ function myHand(arr)
         hand:"Royal Flush",
         cards:[
             {Tipo: "spades",Card: "A"},
-            {Tipo: "spades",Card: "K"},
+            {Tipo: "spades",Card: "K"},019
             {Tipo: "spades",Card: "Q"},
             {Tipo: "spades",Card: "J"},
             {Tipo: "spades",Card: "10"}
