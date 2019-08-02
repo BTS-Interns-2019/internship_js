@@ -1,13 +1,4 @@
-const requireGlob = require('require-glob');
-const modules = requireGlob.sync(['./date_exercises_*.js']);
-
-console.log(modules[Object.keys(modules)[0]])
-
-const {
-  jsonTimes,
-  toLazyHuman,
-} = modules[Object.keys(modules)[0]];
-// } = require('./date_exercises_braulior');
+const { jsonTimes, toLazyHuman } = require("./date_exercises_nestor");
 
 
 describe('jsonTimes', () => {
