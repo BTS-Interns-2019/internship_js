@@ -43,3 +43,100 @@ test('test cashMeOut 1', function(){
   expect(response.coin2).toEqual(2)
   expect(response.coin1).toEqual(0)
 })
+test('paid exactly', function(){
+  obj1 = {
+    bill500: 2,
+    bill200: 0,
+    bill100: 0,
+    bill50: 0,
+    bill20: 0,
+    coin50: 0,
+    coin20: 0,
+    coin10: 0,
+    coin5: 0,
+    coin2: 0,
+    coin1: 0,
+  };
+  number = 1000;
+  obj2 = {
+    bill500: 2,
+    bill200: 0,
+    bill100: 1,
+    bill50: 0,
+    bill20: 0,
+    coin50: 0,
+    coin20: 0,
+    coin10: 0,
+    coin5: 0,
+    coin2: 0,
+    coin1: 0,
+  };
+
+  let response = cashMeOut(obj1, number, obj2);
+  expect(response).toBe(0);
+})
+test('paid less than the amount', function(){
+  obj1 = {
+    bill500: 1,
+    bill200: 0,
+    bill100: 0,
+    bill50: 0,
+    bill20: 0,
+    coin50: 0,
+    coin20: 0,
+    coin10: 0,
+    coin5: 0,
+    coin2: 0,
+    coin1: 0,
+  };
+  number = 1000;
+  obj2 = {
+    bill500: 2,
+    bill200: 0,
+    bill100: 1,
+    bill50: 0,
+    bill20: 0,
+    coin50: 0,
+    coin20: 0,
+    coin10: 0,
+    coin5: 0,
+    coin2: 0,
+    coin1: 0,
+  };
+
+  let response = cashMeOut(obj1, number, obj2);
+  expect(response).toBe("Not enough money for payment");
+})
+test('is not enough money', function(){
+  obj1 = {
+    bill500: 2,
+    bill200: 0,
+    bill100: 0,
+    bill50: 0,
+    bill20: 0,
+    coin50: 0,
+    coin20: 0,
+    coin10: 0,
+    coin5: 0,
+    coin2: 0,
+    coin1: 0,
+  };
+  number = 1000;
+  obj2 = {
+    bill500: 1,
+    bill200: 0,
+    bill100: 1,
+    bill50: 0,
+    bill20: 0,
+    coin50: 0,
+    coin20: 0,
+    coin10: 0,
+    coin5: 0,
+    coin2: 0,
+    coin1: 0,
+  };
+
+  let response = cashMeOut(obj1, number, obj2);
+  expect(response).toBe("Not enough money to return");
+})
+
