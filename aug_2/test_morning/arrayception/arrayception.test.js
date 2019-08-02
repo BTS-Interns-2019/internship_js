@@ -1,4 +1,4 @@
-
+//Itati Viridiana De la Rocha
 const arrayGenerator = require('./arrayception');
 
 describe('Arrayception', () => {
@@ -18,4 +18,15 @@ describe('Arrayception', () => {
     const array15th = result[0][0][0][0][0][0][0][0][0][0][0][0][0][0][0];
     expect(array15th[array15th.length-2]).toBe('78');
   });
+
+  test('The argument is a number', ()=> {
+    const result = arrayGenerator(8);
+    expect(Number).toBe(8);
+  });
+
+  test('The first position is 0', ()=> {
+    const result = arrayGenerator(5);
+    expect(result.indexOf[0]).toBe(0);
+  });
+ 
 });
