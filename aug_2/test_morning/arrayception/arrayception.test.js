@@ -21,6 +21,11 @@ describe('Arrayception', () => {
 });
 
 test('number is integer', ()=> {
-  expect(arrayGenerator("a")).toBe(false);
+  const result = arrayGenerator("a");
+  expect(result).toBe(false);
 });
 
+test('second element is an integer', ()=> {
+  const result = arrayGenerator(8);
+  expect(!isNaN(result[1])).toBe(true);
+});

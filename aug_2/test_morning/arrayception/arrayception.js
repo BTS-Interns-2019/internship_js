@@ -6,6 +6,7 @@
  */
 
 function arrayGenerator(number) {
+  if( !isNaN(number)){
   let finalArray = [];
   arrayBase = [];
   let j = 0;
@@ -19,7 +20,10 @@ while( j <= number){    //poner loop despues de las pruebas
     j++
 }
   return finalArray;
+}else return false;
 }
+
+
 
 
 console.log(arrayGenerator(8))
