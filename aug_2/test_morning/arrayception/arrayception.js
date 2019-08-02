@@ -5,20 +5,19 @@
  * @returns {array}
  */
 
-number = 3;
 arrayGenerator(3);
-
 function arrayGenerator(number) {
-  array = []
-  for (i = 0; i <= number; i++) {
-    if (i == 0) {
-      array[0] = arrayGenerator(number);
-    } else {
+
+  array = new Array(number+1);
+  // array.fill(0);
+  for (i = number; i >= 0; i--) {
+    if (i != 0) {
       array[i] = String(i);
+    } else {
+
+      array[i] =  arrayGenerator(number); 
     }
-    console.log(array);
   }
-  return array
 }
 
 module.exports = arrayGenerator;
