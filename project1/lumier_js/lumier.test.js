@@ -5,10 +5,10 @@ describe("Data types", () =>{
       expect(Array.isArray(queenProblem(4, [0,0]))).toBe(true)
   });
   test("Is an object array", () =>{
-    expect(typeof queenProblem(0,[4,4])).toBe("object")
+    expect(typeof queenProblem(5,[1,1])).toBe("object")
   });
   test("Typeof of 'object' typeof is a string", () =>{
-    expect(typeof typeof queenProblem(0,[4,4])).toBe("string")
+    expect(typeof typeof queenProblem(5,[1,1])).toBe("string")
   });
 
 });
@@ -23,11 +23,13 @@ describe("Data types", () =>{
     });
 
     test("Not calculatable size requirement", ()=>{
+      let failSize = 0
       const error = () =>{
-        queenProblem(0, [0,0])
-        throw "Invalid size."
+        queenProblem(failSize, [0,0])
+        throw new TypeError 
+        
       }
-      expect(error).toThrow("Invalid size.")
+      expect(error).toThrow(TypeError)
     })
     test("Theres no solution on size (4, [0,0])",()=>{
       const noSol = () =>{
@@ -36,19 +38,4 @@ describe("Data types", () =>{
       }
       expect(noSol).toThrow(TypeError)
     });
-
-    test("Time exceeded, no possible solution",()=>{
-      const fail = queenProblem(5, [1,1])
-      const fail2 = () => {return fail2}
-      function mistake(foo){
-      try{
-        throw fail()
-      }
-      catch(error){
-        let msg = "esto no sirve"
-        return msg
-      }
-    }
-      expect(mistake(fail2)).toBe("esto no sirve")
-    })
   });
