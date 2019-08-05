@@ -6,7 +6,7 @@ function groupByState(input){
   const persons = input.split("\n")
   const kingdom = {}
   const people = []
-  let states = [{code: "KL", name: "King's Landing"},
+  const states = [{code: "KL", name: "King's Landing"},
                 {code: "WF", name: "Winter Felt"},
                 {code: "BR", name: "Braavos"},
                 {code: "HG", name:"Highgarden"},
@@ -19,18 +19,21 @@ function groupByState(input){
     people[data].address = hero[x+1];
     people[data].state = hero[x+2];
   }
-  //**-----------------------Countries in Arr and Property States----------------------- */
-  let countries = []
-  for(let c = 0; c < persons.length; c++){
-    let state = people[c].state
-    countries.push(state)
-  }//console.log(people)
-  for(let i = 0; i < countries.length; i++){
-    kingdom[countries[i]] = {code: countries[i]}
+  // console.log(people)
+  //**-----------------------Countries set in Kingdom register----------------------- */
+  for(let hero = 0; hero < people.length; hero++){
+    for(let st = 0; st < states.length; st++){
+    if(states[st].code === people[hero].state){
+        kingdom[people[hero].state] = states[st]
+        kingdom[people[hero].state].people = []
+      }
+    }
   }
+  /**----------------------Final stage - Set people to States register---------------------- */
+  people.forEach((v,i,arr) => v.state === kingdom[v.state].code ? kingdom[v.state].people.push(v) : v)
   
-  console.log(kingdom)
-  console.log(people)
-  /**-----------------------------Final stage---------------------------------------- */
+  return kingdom
 }
-groupByState(input)
+console.log(typeof typeof groupByState(input))
+
+module.exports = groupByState;
