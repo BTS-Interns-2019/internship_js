@@ -1,4 +1,6 @@
 function queenProblem(size, xy) {
+    if(!xy)xy=[0,1];
+    if(xy[0] < 0 || xy[1] < 0 || xy[0] > size || xy[1] > size) return "Coordenadas fuera del talbero"
     return(print_board(place_next_queen(size, size, xy),size))
 }
     var print_board = function (columns, size) {
@@ -56,7 +58,7 @@ function queenProblem(size, xy) {
       }
       return null;
     }
-console.log(JSON.stringify(queenProblem(4,[0,0])));
+//console.log(JSON.stringify(queenProblem(4,[0,0])));
 
 //console.log(typeof(queenProblem));
 
