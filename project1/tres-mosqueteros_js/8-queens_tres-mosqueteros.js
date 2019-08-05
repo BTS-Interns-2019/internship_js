@@ -58,7 +58,7 @@ function queenProblem(size, xy) {
       }
       return null;
     }
-console.log(JSON.stringify(queenProblem(4,[0,4])));
+console.log(JSON.stringify(queenProblem(4,[1,0])));
 
 //console.log(typeof(queenProblem));
 
