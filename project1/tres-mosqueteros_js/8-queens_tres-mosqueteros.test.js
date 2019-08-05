@@ -7,6 +7,14 @@ test('array length of 4', () => {
     let result = queenProblem(4, [0,1])
     expect(result.length).toBe(4);
 })
+test('the array\'s length in the resulting array must be 4',()=>{
+    let result = queenProblem(4, [0,1])
+    expect(result[0].length).toBe(4);
+    expect(result[1].length).toBe(4);
+    expect(result[2].length).toBe(4);
+    expect(result[3].length).toBe(4);
+})
+
 test('array length of 20', () => {
     let result = queenProblem(20, [0,1])
     expect(result.length).toBe(20);
