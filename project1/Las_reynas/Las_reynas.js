@@ -5,10 +5,12 @@ var mesh = new Array(size);
       mesh[i] = new Array(size);
       mesh[i].fill(NaN);
     }
+    console.log(mesh);
+    
     //Viri: funcion itera por las posiciones y buscar que el lugar este disponible
 function Encontrar(mesh,dato2){
-        let buscarX =dato2[0][0];
-        let buscarY = dato2[0][1];
+        let buscarX =dato2[0];
+        let buscarY = dato2[1];
         for (i=0;i<size;i++) {
         for(let j=0; j<size; j++){
             if(typeof mesh[i][j] === 'number'&& i === buscarX && j === buscarY){
@@ -22,8 +24,8 @@ function Encontrar(mesh,dato2){
     }
     }
    //mesh[0][1] = 0;
-Encontrar(mesh,[1,3]);
-    console.log(mesh);
+//Encontrar(mesh,[1,3]);
+//    console.log(mesh);
 
     //Sergio: funcion que posiciona 0 por donde pasa la reina
 function llenarCeros(arry) {
@@ -47,7 +49,57 @@ function llenarCeros(arry) {
                             arry[1][index][y] = 0;
                         }
                     }
-                    //console.log(mesh);   
+                    // veretical hacia adelante - abajo
+                    for (x,y; y < arry[1][i].length; x++,y++) {
+                        if(arry[1][x][y] == 1){
+                            continue;
+                        }else{
+                            arry[1][x][y] = 0;
+                        }
+                        
+                    }
+                    console.log(mesh);
+                    x = arry[0][0];
+                    y = arry[0][1];
+
+                    //atras diagonal atras - arriba
+                    for (x,y; x >= 0; x--,y--) {
+                        if(arry[1][x][y] == 1){
+                            continue;
+                        }else{
+                            arry[1][x][y] = 0;
+                        }
+                        
+                    }
+                    console.log(mesh);
+                    x = arry[0][0];
+                    y = arry[0][1];
+
+                    // vertical hacia atras y abajo
+                    for (x,y; x >= 0; x--,y++) {
+                        if(arry[1][x][y] == 1){
+                            continue;
+                        }else{
+                            arry[1][x][y] = 0;
+                        }
+                        
+                    }
+                    console.log(mesh);
+                    x = arry[0][0];
+                    y = arry[0][1];
+
+
+                    // vertical hacia atras y arriba
+                    for (x,y; y < 0; x++,y--) {
+                        if(arry[1][x][y] == 1){
+                            continue;
+                        }else{
+                            arry[1][x][y] = 0;
+                        }
+                        
+                    }
+                    console.log(mesh);
+                    
                 }
             }
         }
@@ -67,7 +119,6 @@ function ponerReina(position, mesh){
         }
         ponerReina(first, mesh)
 
+
+
 }
-   
-   
-  console.log(queenProblem(8,[1,5]));
