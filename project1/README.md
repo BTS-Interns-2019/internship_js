@@ -1,13 +1,13 @@
 # Instructions
 
-1. You will be working in teams of 3
-1. Create a directory inside the this one named: `<name of your team>_js`
-1. Discus the problem to solve with your team, do some research and create a presentation in markdown named README.md
-1. Create some tests covering basic cases
-1. Create the code to solve the problem
-1. Create more tests to cover all the cases
-1. Add instructions and how to use your program in the README.md
-1. Create a PR against master
+You will be working in teams of 3
+Create a directory inside the this one named: <name of your team>_js
+Discus the problem to solve with your team, do some research and create a presentation in markdown named README.md
+Create some tests covering basic cases
+Create the code to solve the problem
+Create more tests to cover all the cases
+Add instructions and how to use your program in the README.md
+Create a PR against master
 
 # the 8 queen problem
 
@@ -32,7 +32,7 @@ function queenProblem(4, [x,y]) {
 
 ```js
 [
-    [ 
+    [
         "Erick Vazquez",
         "Miguel Vivanco",
         "Luis Carlos",
