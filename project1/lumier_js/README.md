@@ -30,12 +30,12 @@ Para poder llamar al programa se deben ingresar dos parametros para que esta pue
 > let board = [];
 2. Se rellena el tablero con las posiciones iniciales (0's), esto a base el tamaño del arreglo.
 ```JS
-> for (let i = 0; i < size; i++) {  
->  board [i] = [];  
->   for (let j = 0; j < size; j++) {  
->       board [i] [j] = 0;  
->   }  
-> }
+ for (let i = 0; i < size; i++) {  
+  board [i] = [];  
+   for (let j = 0; j < size; j++) {  
+       board [i] [j] = 0;  
+   }  
+ }
 ```
 3. Se ingresa la posición de la primer reina, donde **ini[0]** es el desplazamiento en vertical y ini[1] es el desplazamiento en horizontal, es decir se desplazará de izquierda a derecha.
 > board [ini[0]] [ini[1]] = 1;
