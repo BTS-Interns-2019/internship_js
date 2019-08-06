@@ -10,7 +10,7 @@ function getDeck(suit, number){
     for (let i = 0; i < suit.length; i++) {
         for (let x = 0; x < number.length; x++) {
             if(!isNaN(number[x])){
-                cartas.push({number: +number[x], suit: suit[i]});
+                cartas.push({number: ''+number[x], suit: suit[i]});
             }else {
                 cartas.push({number: number[x], suit: suit[i]});
                 }
@@ -60,26 +60,28 @@ function myHand(barajeada) {
 
 //Ordenar acendente
 
-
+mano.cards.sort((a, b) => diferentes.indexOf(a.number) - diferentes.indexOf(b.number));
 
     
 
 
     
 let checkIguales = function(params) {
+    let verdad = true;
     let primera =params[0]['suit']
     for (let i = 0; i < params.length; i++) {
         if (params[i]['suit'] != primera) {
-            return false;
+            verdad = false;
         } 
     }
+    return verdad;
 }
 
 
 let checkOrden = function(params){
     let verdad = true;
     for (let i = 0; i < params.length-1; i++) {
-        if( diferentes.indexOf(params['number'])  == diferentes.indexOf(params['number'])){
+        if( diferentes.indexOf(params[i]['number'])+1 == diferentes.indexOf(params[i+1]['number']) ){
         continue;
         }else{
             verdad = false;
@@ -89,8 +91,13 @@ let checkOrden = function(params){
 }   
 
 
+
+
 let igualesTodo = checkIguales(mano.cards);
 let ordenTodo = checkOrden(mano.cards)
+
+if(igualesTodo() && ordenTodo()){mano.hand = "Royal flush"}
+if(ordenTodo()){mano.hand = "Straight flush"}
 
 console.log(igualesTodo(mano.cards));
 

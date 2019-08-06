@@ -79,10 +79,10 @@ function toLazyHuman(obj,params) {
         if( ymdhm[i] != 0 ){
              dato = ymdhm[i]; 
              d = i;
+
              break;
             }; 
     }
-
 
     let palabra = "";
     if (d == 0) {
@@ -97,6 +97,7 @@ function toLazyHuman(obj,params) {
         palabra = "minute"
     }
 
+<<<<<<< HEAD
     console.log('more than ' + (dato)+' '+palabra+' ago');
 
     //console.log(diferencia);
@@ -104,3 +105,21 @@ function toLazyHuman(obj,params) {
 }
 let obj2 = new Date('2019-07-31T12:01:00.000')
 console.log(toLazyHuman(obj));
+=======
+    // MINUTES 
+
+    if(dato < 0){
+      palabra =  ""+dato+" "+palabra+" ago";
+    }else if(dato > 0){
+      palabra =  "in "+"less than "+dato+" "+palabra;
+    }
+
+    
+    //console.log(diferencia);
+    return palabra;
+    
+
+}
+let obj2 = new Date('2019-11-31T12:01:00.000')
+console.log(toLazyHuman(obj,obj2));
+>>>>>>> d9c026f49f7146ba2996c9bbd47a356d1261ac5f
