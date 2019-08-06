@@ -19,7 +19,7 @@ function queenProblem(size, xy) {
  * @return {array[][]}          tablero dibujado con "0" para casillas vacias y "1" para cada reina
  */
 print_board = function (columns, size) {
-    if(columns==null)return matrizCeros(size); //si el parametro es null rellena de "0"s
+    if(columns==null)return matriz_ceros(size); //si el parametro es null rellena de "0"s
     const board=[]; //tablero
     let n = columns.length, row = 0, col = 0
     while (row < n) {   //agrega filas al tablero
@@ -88,7 +88,7 @@ place_next_queen = function (size, queens, xy, columns) {
  * Retorna una matriz cuadrada de tamaño "size" llena de ceros
  * @param {num} size //tamaño de la matriz cuadrada
  */
-function matrizCeros(size){
+function matriz_ceros(size){
     arr = Array(size);
     for (let i = 0; i < size; i++) {
         arr[i] = Array(size);          
