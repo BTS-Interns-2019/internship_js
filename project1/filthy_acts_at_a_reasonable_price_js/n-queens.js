@@ -11,8 +11,8 @@ function nQueens(n, firstQueen) {
     initialBoard[i].fill(0);
   }
   
-  // Check if second parameter is an array
-  if (!Array.isArray(firstQueen)) {
+  // Check if second parameter is an array and n is bigger than 20 or smaller than 4
+  if (!Array.isArray(firstQueen) || n > 20 || n < 4) {
     return initialBoard;
   }
 
@@ -22,88 +22,113 @@ function nQueens(n, firstQueen) {
   vector[firstQueen[1]] = firstQueen[0]; // Place the first Queen
 
   const column = firstQueen[1]; // Get the column of the firstQueen
-  return solveBoard(vector, column);
-  // return solveBoard(vector, column) ? board : initialBoard; // Draw the board 
+  
+  return solveBoard(n, vector, column) ? drawBoard(vector) : initialBoard;
 }
 
-function solveBoard(vector, column) {
+function drawBoard(vector) {
+  const result = [];
+  for (let i = 0; i < vector.length; i++) {
+    result[i] = Array(vector.length);
+    result[i].fill(0);
+  }
+
+  for (let i = 0; i < result.length; i++) {
+    for (let j = 0; j < vector.length; j++) {
+      if (i === vector[j]) {
+        result[i][j] = 1;
+      }
+    }
+  }
+
+  return result;
+}
+
+function solveBoard(length, vector, column) {
   if (column === 0) {
-    return solveBoardLeftToRight(vector, column);
-  } else if (column === (vector.length - 1)) {
-    return solveBoardRightToLeft(vector, column);
-  } else if (column > 0 && column < vector.length - 1) {
-    return solveBoardFromMiddle(vector, column);
+    return solveBoardLeftToRight(length, vector, column);
+  } else if (column === (length - 1)) {
+    return solveBoardRightToLeft(length, vector, column);
+  } else if (column > 0 && column < length - 1) {
+    return solveBoardFromMiddle(length, vector, column);
   }
 }
 
-function solveBoardLeftToRight(vector, column) {
-  if (column <= 0) {
-    return false;
-  }
-
-  for (let i = column + 1; i < vector.length; i++) {
-    console.log(vector);
-    for (let j = 0; j < vector.length; j++) {
+function solveBoardLeftToRight(length, vector, column) {
+  let i = column + 1;
+  while (i < length) {
+    // console.log(vector);
+    for (let j = 0; j < length; j++) {
+      // console.log('i: ' + i, 'j: ' + j, 'i + 1: ' + (vector[i-1] + 1), 'i - 1: ' + (vector[i-1] -1),'j - i: ' + (j - i), 'j + i: ' + (j + i));
       if (
-        j !== vector[i] && 
-        j !== (vector[i - 1] + 1) && 
-        j !== (vector[i - 1] - 1) && 
+        j !== Number.parseInt(vector[i - 1]) && 
+        j !== Number.parseInt((vector[i - 1] + 1)) && 
+        j !== Number.parseInt((vector[i - 1] - 1)) && 
         !vector.includes(j) &&
         !descDiag.includes(j - i) &&
         !ascDiag.includes(j + i)
       ) {
         vector[i] = j;
-        descDiag.push(j - i); 
-        ascDiag.push(j + i);
+        descDiag[i] = (j - i); 
+        ascDiag[i] = (j + i);
         break;
       }
     }
-
     if (typeof vector[i] === 'undefined' || vector[i] === null) {
-       return solveBoardLeftToRight(vector, column - 1);
+      vector[i - 1] = undefined;
+      i--;
+    } else {
+      i++;
+    }
+    
+    if (vector.every(num => typeof num === 'undefined')) {
+      return false;
     }
   }
 
   return vector;
 }
 
-function solveBoardRightToLeft(vector, column) {
-  for (let i = column - 1; i >= 0; i--) {
-    for (let j = 0; j < vector.length; j++) {
+function solveBoardRightToLeft(length, vector, column) {
+  let i = column - 1;
+  while (i >= 0) {
+    // console.log(descDiag, ascDiag, vector);
+    for (let j = 0; j < length; j++) {
+      // console.log('i: ' + i, 'j: ' + j, 'i + 1: ' + (vector[i+1] + 1), 'i - 1: ' + (vector[i + 1] -1),'j - i: ' + (j - i), 'j + i: ' + (j + i));
       if (
-        j !== vector[i] && 
-        j !== (vector[i + 1] + 1) && 
-        j !== (vector[i + 1] - 1) && 
+        j !== Number.parseInt(vector[i + 1]) && 
+        j !== Number.parseInt((vector[i + 1] + 1)) && 
+        j !== Number.parseInt((vector[i + 1] - 1)) && 
         !vector.includes(j) &&
         !descDiag.includes(j - i) &&
         !ascDiag.includes(j + i)
       ) {
         vector[i] = j;
-        descDiag.push(j - i); 
-        ascDiag.push(j + i);
-        break;
+        descDiag[i] = (j - i); 
+        ascDiag[i] = (j + i);
       }
     }
+    if (typeof vector[i] === 'undefined' || vector[i] === null) {
+      vector[i + 1] = undefined;
+      i++;
+    } else {
+      i--;
+    }
 
-    // if (typeof vector[i] === 'undefined') {
-    //   i = i + 2;
-    //   if (i > column) {
-    //     i = vector.length - 1;
-    //     solveBoardLeftToRight(vector, i)
-    //   }
-    // }
+    if (vector.every(num => typeof num === 'undefined')) {
+      return false;
+    }
   }
 
   return vector;
 }
 
-function solveBoardFromMiddle(vector, column) {
-  solveBoardLeftToRight(vector, column);
-  console.log(vector);
-  solveBoardRightToLeft(vector, column);
-  // return vector;
-}
+function solveBoardFromMiddle(length, vector, column) {
+  if (solveBoardLeftToRight(length, vector, column) && solveBoardRightToLeft(length, vector, column)) {
+    return vector;
+  }
 
-console.log(nQueens(4, [0, 1]));
+  return false;
+}
 
 module.exports = nQueens;
