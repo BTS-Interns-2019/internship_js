@@ -1,5 +1,5 @@
 # The Queen Problem
-#### Por Ricardo, Cristian y Estefania
+#### Por Estefania, Cristian y Ricardo
 ## Explicación
 
 Este problema consiste en colocar N reinas de ajedrez en un tablero de N × N para que no se ataquen, es decir, que no haya dos reinas que comparten la misma fila, columna o diagonal. Para este problema existen soluciones para todos los números naturales n con la excepción de n = 2 y n = 3.
