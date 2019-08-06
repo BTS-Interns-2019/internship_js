@@ -39,3 +39,22 @@ describe("Data types", () =>{
       expect(noSol).toThrow(TypeError)
     });
   });
+
+  describe("Correct cases", ()=>{
+    const queenAt5 = queenProblem(5,[1,1])
+    let result = [ 
+      [ 0, 0, 0, 1, 0 ],
+      [ 0, 1, 0, 0, 0 ],
+      [ 0, 0, 0, 0, 1 ],
+      [ 0, 0, 1, 0, 0 ],
+      [ 1, 0, 0, 0, 0 ] ];
+    let queenPos = result[1,1]
+    
+    test("Board of 5, coods for Queen [1,1]", () =>{ 
+      expect(queenAt5).toStrictEqual(result)
+    })
+    
+    test("Initial Queen is at [1,1] on a 5x5 board", () =>{
+      expect(result[1,1]).toEqual(queenPos)
+    })
+  })
