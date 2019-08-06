@@ -64,7 +64,11 @@ function queenProblem(size, xy) {
       }
       return null;
     }
-console.log(JSON.stringify(queenProblem(4,[1,0])));
+print = queenProblem(8,[0,0]);
+
+for (i = 0; i < print.length; i ++){
+    console.log(print[i]);
+}
 
 //console.log(typeof(queenProblem));
 
