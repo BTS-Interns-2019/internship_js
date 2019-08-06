@@ -67,6 +67,7 @@ function solve(n, arr) {
 
 
 
-console.log(solve(4, [0, 1]))
+console.log(solve(4, [0, 0]))
 
 
+module.exports= solve;
