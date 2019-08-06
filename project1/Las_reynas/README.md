@@ -17,7 +17,7 @@ Como cada reina puede amenazar a todas las reinas que estén en la misma fila, c
 
 * ejemplo: queenProblem(4,[0,1])
 
-###Instrucciones
+### Instrucciones
 1. Nuestra funcion global se llama queenProblem la cual recibe como parametros el tamaño de la matriz y las posiciones de la reina.
 2. Una vez creado el tablero creamos una funcion llamada Encontrar en la cual itera por las posiciones y busca el lugar que esta disponible y nos retorna true o false si cumple con ciertas condiciones.
 3. La funcion llenarCeros llena el tablero con ceros para indicar las posiciones en donde la reina puede moverse.
