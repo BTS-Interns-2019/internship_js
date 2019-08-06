@@ -42,7 +42,8 @@ function jsonTimes (param) {
     
 
 param = "2020-15-11";
-console.log(jsonTimes (param))
+console.log(jsonTimes (param));
+
 
 function toLazyHuman (d, e){
     if (!e){
@@ -134,6 +135,8 @@ function yearmonthday (found1){
     }
 
 }
+
+
 
 function moreless (restar){
   found1 = restar.findIndex(elemento =>elemento != 0); 

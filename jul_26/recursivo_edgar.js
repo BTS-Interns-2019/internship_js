@@ -80,6 +80,17 @@ function recorre (foo){
         
 }
 
+function recurr (arr){
+    if(Array.isArray(arr)){
+        for (let i = 0; 1 < arr.length; i++){
+            console.log(arr[i].name)
+        }
+        for (let i = 0; i < arr.length; i++){
+            recur(arr[i].children)
+        }
+    }
+}
+
 /*
 function foo(i){
     console.log('begin' + i);

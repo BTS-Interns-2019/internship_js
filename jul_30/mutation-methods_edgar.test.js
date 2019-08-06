@@ -1,6 +1,3 @@
-
-const sort = require('/mutation-mehods_edgar.js');
-
 let originalArray = [6,4,21,2];
 
 beforeEach(()=>{
@@ -12,7 +9,7 @@ test ('returns an array', () => {
     expect(Array.isArray(result)).toBe(true);
 })
 
-test ('returns an arra of the same length', () => {
+test ('returns an array of the same length', () => {
     let result = sort(originalArray);
     expect(result.length).toBe(originalArray.length);
 })
@@ -28,5 +25,5 @@ test ('order the arrays without params', () => {
     expect(originalArray).toEqual(control.sort());
 })
 
-
+const sort = require('./mutation-methods_edgar.js');
 
