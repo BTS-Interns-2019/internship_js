@@ -24,6 +24,54 @@ Given a N which determines the number of Queens, and therefore the size of the c
 * Output has no Queens attacking one another.
 ```
 
+## Approach
+To solve this problem, we opted to use a vector that contains all the Queens' locations in a single array. In this vector, you can find a sequence of numbers ranging from `0` to `n - 1`. The number of each element of the vector represents the row, and the position of the number in the vector represents the column. 
+
+In other words, the number specifies in which row is the Queen located, and the position in the vector specifies in which column the Queen can be found. 
+
+An example of a vector that contains a solution for a 4x4 chessboard with a Queen in the position `[1, 0]` would be:
+
+```js
+vector = [1, 3, 0, 2]
+```
+
+Transforming this vector to the array would result in:
+
+```js
+[
+  [0, 0, 1, 0], // Row: 0, Column: 2
+  [1, 0, 0, 0], // Row: 1, Column: 0
+  [0, 0, 0, 1], // Row: 2, Column: 3
+  [0, 1, 0, 0]  // Row: 3, Column: 1
+]
+```
+
+### How to obtain the vector
+To obtain the vector, we need to iterate over a range of numbers from `0` to `n-1` that can satisfy the following conditions:
+
+1. The number cannot be equal to the previous number in the vector (initially the position of the first Queen).
+1. The number cannot be equal to the previous number in the vector plus/minus 1.
+1. The number cannot be already included in the vector.
+1. The subtraction of the number and its would-be position in the vector cannot be the same as the same operation of any other number in the vector. E.g.
+```js
+const number = 2;
+const position = 2;
+const result = number - position;
+
+const descDiagonal = [0, 2, 4]; // In this case, the number would be discarded as an option for the vector
+```
+1. The sum of the number and its would-be position in the vector cannot be the same as the same operation of any other number in the vector.
+```js
+const number = 2;
+const position = 2;
+const result = number + position;
+
+const descDiagonal = [0, 2, 4]; // In this other case, the number would be discarded as an option for the vector
+```
+
+These last two points is to make sure that none of the Queens represented in the vector attacks each other in a diagonal fashion.
+
+
 ## Instructions
 
  In order to solve the N queen problem, our function need to receive 2 arguments:
