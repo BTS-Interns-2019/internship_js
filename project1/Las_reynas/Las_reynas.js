@@ -3,9 +3,9 @@ function queenProblem(size, first){
 var mesh = new Array(size);
     for(var i=0; i<size; i++){
       mesh[i] = new Array(size);
-      mesh[i].fill(NaN);
+      mesh[i].fill(2);
     }
-    console.log(mesh);
+    //console.log(mesh);
     
     //Viri: funcion itera por las posiciones y buscar que el lugar este disponible
 function Encontrar(mesh,dato2){
@@ -13,7 +13,7 @@ function Encontrar(mesh,dato2){
         let buscarY = dato2[1];
         for (i=0;i<size;i++) {
         for(let j=0; j<size; j++){
-            if(typeof mesh[i][j] === 'number'&& i === buscarX && j === buscarY){
+            if(mesh[i][j] === 2 && i === buscarX && j === buscarY){
                 return true;
             }else if(mesh[i][j]==0 && i === buscarX && j === buscarY ){
                 return false;
@@ -49,60 +49,66 @@ function llenarCeros(arry) {
                             arry[1][index][y] = 0;
                         }
                     }
-                    // veretical hacia adelante - abajo
-                    for (x,y; y < arry[1][i].length; x++,y++) {
+                    // veretical derecha - abajo
+                    for (x,y; y < arry[1][i].length && x < arry[1][i].length; x++,y++) {
                         if(arry[1][x][y] == 1){
                             continue;
                         }else{
                             arry[1][x][y] = 0;
+                            // console.log(mesh);
                         }
                         
                     }
-                    console.log(mesh);
+                   // console.log(mesh);
                     x = arry[0][0];
                     y = arry[0][1];
 
-                    //atras diagonal atras - arriba
-                    for (x,y; x >= 0; x--,y--) {
+                    //diagonal izquierda - arriba
+                    for (x,y; x >= 0 && y >=0; x--,y--) {
                         if(arry[1][x][y] == 1){
                             continue;
                         }else{
                             arry[1][x][y] = 0;
+                            //console.log(mesh);
                         }
                         
                     }
-                    console.log(mesh);
+                   // console.log(mesh);
                     x = arry[0][0];
                     y = arry[0][1];
+
+                    // vertical derecha y arriba
+                    for (x,y; y < arry[1][i].length && x >= 0; x--,y++) {
+                        if(arry[1][x][y] == 1){
+                            continue;
+                        }else{
+                            arry[1][x][y] = 0;
+                            //console.log(mesh);
+                        }
+                        
+                    }
+                    //console.log(mesh);
+                    x = arry[0][0];
+                    y = arry[0][1];
+
 
                     // vertical hacia atras y abajo
-                    for (x,y; x >= 0; x--,y++) {
+                    for (x,y; x < arry[1][i].length && y >= 0; x++,y--) {
                         if(arry[1][x][y] == 1){
                             continue;
                         }else{
                             arry[1][x][y] = 0;
+                            //console.log(mesh);
                         }
                         
                     }
-                    console.log(mesh);
-                    x = arry[0][0];
-                    y = arry[0][1];
-
-
-                    // vertical hacia atras y arriba
-                    for (x,y; y < 0; x++,y--) {
-                        if(arry[1][x][y] == 1){
-                            continue;
-                        }else{
-                            arry[1][x][y] = 0;
-                        }
-                        
-                    }
-                    console.log(mesh);
+                    //console.log(mesh);
                     
                 }
             }
         }
+
+        return arry[1];
     }
 
        
@@ -110,15 +116,24 @@ function llenarCeros(arry) {
 function ponerReina(position, mesh){
         if(Encontrar(mesh, position)){
         mesh[position[0]][position[1]] = 1;
-        console.log(mesh);
+        //console.log(mesh);
         mesh = llenarCeros([position, mesh]);
-        console.log(mesh);
+        //console.log(mesh);
         //return [];
         }
-        
-        }
-        ponerReina(first, mesh)
+        return mesh;
+}
+
+
+console.log(ponerReina(first, mesh));
+
+        // ponerReina(first, mesh)
 
 
 
 }
+   
+
+ 
+
+console.log(queenProblem(8,[2,6]));
