@@ -13,7 +13,7 @@ A matrix with the final position of the 8 queens.
 2. __xi__ it's a value between 0 and 7.
 3. __yi__ it's a value between 0 and 7.
 4. __every xi are diferents__ there's no 2 queens on the same row.
-5. _every yi are diferents__ there's no 2 queens on the same colum.
+5. __every yi are diferents__ there's no 2 queens on the same colum.
 6. __every xi - yi are diferents__ there's no 2 queens on the same diagonal, up - left and down - right.
 7. __every xi + yi are diferents__ there's no 2 queens on the same diagonal, up - left and down - right.
 
