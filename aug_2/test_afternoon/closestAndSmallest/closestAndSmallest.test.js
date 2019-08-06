@@ -9,3 +9,16 @@ test('test closest1', function(){
   expect(response[1][1]).toEqual(0);
   expect(response[1][2]).toEqual(103);
 })
+
+test("test closest are not smallest", function() {
+  let response2 = smallest('10 488 1990 666')
+  expect(response2[0]).toEqual([19, 2, 1990])
+  expect(response2[1]).toEqual([20, 1, 488])
+})
+
+test("test closest are not smallest", function() {
+  let response2 = smallest('10 488 1990 666')
+  expect(Array.isArray(response2)).toBe(true)
+  expect(typeof response2[0][0]).toEqual('number')
+  expect(typeof typeof response2[0][0]).toEqual('string')
+})

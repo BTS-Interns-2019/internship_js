@@ -1,4 +1,4 @@
-function solve(n, arr) {
+function queenProblem(n, arr) {
   var ans = []
   solver([])
   sol = ans
@@ -67,7 +67,7 @@ function solve(n, arr) {
 
 
 
-console.log(solve(4, [0, 0]))
+console.log(queenProblem(4, [0, 0]))
 
 
-module.exports= solve;
+module.exports= queenProblem;

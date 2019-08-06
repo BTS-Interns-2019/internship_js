@@ -9,5 +9,11 @@ test('reverse words1', function(){
 })
 
 test('reverse words2', function(){
-  expect(reverse(' this is a second test :O ')).toEqual('this si a dnoces test O:');
+  expect(reverse('this is a second test :O')).toEqual('this si a dnoces test O:');
 })
+
+test('reverse words3', function(){
+  expect(reverse("This si so yzarc")).toEqual("This is so crazy")
+})
+
+
