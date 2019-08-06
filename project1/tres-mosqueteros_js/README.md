@@ -18,7 +18,7 @@ A matrix with the final position of the 8 queens.
 7. __every xi + yi are diferents__ there's no 2 queens on the same diagonal, up - left and down - right.
 
 ## theoretical framework
-For the current case, la exemplification of a logic function will be used, in which the behavior of one of the most important chess pieces, the queen, will be exposed.
+For the current case, the representation of a logic function will be used, in which the behavior of one of the most important chess pieces, the queen, will be exposed.
 It is intended to develop a function in javascript, which is executed in console mode, which will place the queens corresponding to the objective set at the beginning of this project and that fulfills the predefined function.
 
 ### the n-queens algoritm
