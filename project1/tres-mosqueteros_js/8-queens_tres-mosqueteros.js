@@ -1,5 +1,5 @@
 /**
- * Verifica que los parametros sean correctos llama las funciones necesarias para realizar el proyecto
+ * Verifica que los parametros sean correctos, llama las funciones necesarias para realizar el proyecto
  * @param {number}  size    tamaño del tablero
  * @param {array}   xy      coordenada donde debe hubicar una reina
  * @return {array}          arreglo bidimensional con representacion de "0" como casillas vacias y "1" casillas donde se hubica una reina
@@ -10,8 +10,8 @@ function queenProblem(size, xy) {
     return(print_board(place_next_queen(size, size, xy),size)) //retorna el tablero resultante con una reina en cada fila y columna, quedando una especificamente en las coordenadas dadas
 }
     /**
-     * Esta función recive un arreglo con las posiciones de las reinas y "dibuja" el tablero, en caso de recivir un "null" rellena el tablero con ceros
-     * @param {array}       columns arrego unidimensional con las posiciones de cada una de las reinas
+     * Esta función recibe un arreglo con las posiciones de las reinas y "dibuja" el tablero, en caso de recibir un "null" rellena el tablero con ceros
+     * @param {array}       columns arreglo unidimensional con las posiciones de cada una de las reinas
      * @param {number}      size    tamaño del tablero
      * @return {array[][]}          tablero dibujado con "0" para casillas vacias y "1" para cada reina
      */
@@ -40,10 +40,10 @@ function queenProblem(size, xy) {
         }
     }
     /**
-     * Determina si las posicions en que están colocadas las reinas son válidas
+     * Determina si las posiciones en que están colocadas las reinas son válidas
      * @param {array} columns   arreglo con las reinas colocadas
      * @param {array} xy        coordenadas donde debe haber una reina
-     * @return {boolean}        true si hay conflicto (las reinas no están el la posicion correcta), false si están bien colocadas
+     * @return {boolean}        true si hay conflicto (las reinas no están en la posicion correcta), false si están bien colocadas
      */
     var has_conflict = function (columns, xy) {
       let len = columns.length, last = columns[len - 1], previous = len - 2;
@@ -84,7 +84,7 @@ function queenProblem(size, xy) {
       return null;
     }
 print = queenProblem(8,[0,0]);
-
+// imprime la matriz resultado
 for (i = 0; i < print.length; i ++){
     console.log(print[i]);
 }

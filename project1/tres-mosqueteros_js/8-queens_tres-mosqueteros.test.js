@@ -46,11 +46,11 @@ test('array length of 4, without cordinates', () => {
 })
 test('size of mesh 4, cordinates out of mesh', function(){
     let result = queenProblem(4, [0,10]);
-    expect(result).toBe("Coordenadas fuera del talbero");
+    expect(result).toBe("Coordenadas fuera del tlabero");
 })
 test('size of mesh 4, cordinates out of mesh', function(){
     let result = queenProblem(4, [0,4]);
-    expect(result).toBe("Coordenadas fuera del talbero");
+    expect(result).toBe("Coordenadas fuera del tlabero");
 
 })
     
