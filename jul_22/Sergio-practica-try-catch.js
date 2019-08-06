@@ -16,8 +16,6 @@ hola = [];
 
 console.log(hola);
 
-<<<<<<< HEAD
-=======
 //2
 
 function resiveNumeros(info){
@@ -33,7 +31,6 @@ function resiveNumeros(info){
 
 
 //3
->>>>>>> 8f6bfd61a5682a7c678d0a2a21e38b3cb2b5f018
 
 function JhonaSeLa(toda){
             let frase = "";
