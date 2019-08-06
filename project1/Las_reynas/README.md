@@ -22,4 +22,3 @@ Como cada reina puede amenazar a todas las reinas que estén en la misma fila, c
 2. Una vez creado el tablero creamos una funcion llamada Encontrar en la cual itera por las posiciones y busca el lugar que esta disponible y nos retorna true o false si cumple con ciertas condiciones.
 3. La funcion llenarCeros llena el tablero con ceros para indicar las posiciones en donde la reina puede moverse.
 4. La funcion PonerReina manda a ejecutar y llena el tablero con la reina en la posicion disponible.
-
