@@ -1,17 +1,18 @@
 # **Ocho reinas**
 ### **Descripción**
 El problema de las ocho reinas consiste en colocar la misma cantidad de reinas que de dimensiones de la tabla, solo que deben estar colocadas de forma que ninguna de ellas pueda eliminarse entre sí.  
-|   | A | B | C | D | E | F | G | H |<br>
-|---|---|---|---|---|---|---|---|---|<br>
-| 8 |   |   |   | ♕ |   |   |   |   |<br>
-| 7 |   |   |   |   |   |   | ♕ |   |<br>
-| 6 |   |   | ♕ |   |   |   |   |   |<br>
-| 5 |   |   |   |   |   |   |   | ♕ |<br>
-| 4 |   | ♕ |   |   |   |   |   |   |<br>
-| 3 |   |   |   |   | ♕ |   |   |   |<br>
-| 2 | ♕ |   |   |   |   |   |   |   |<br>
-| 1 |   |   |   |   |   | ♕ |   |   |<br>
-
+```JS
+|   | A | B | C | D | E | F | G | H |
+|---|---|---|---|---|---|---|---|---|
+| 8 |   |   |   | ♕ |   |   |   |   |
+| 7 |   |   |   |   |   |   | ♕ |   |
+| 6 |   |   | ♕ |   |   |   |   |   |
+| 5 |   |   |   |   |   |   |   | ♕ |
+| 4 |   | ♕ |   |   |   |   |   |   |
+| 3 |   |   |   |   | ♕ |   |   |   |
+| 2 | ♕ |   |   |   |   |   |   |   |
+| 1 |   |   |   |   |   | ♕ |   |   |
+```
 ---------------------
 
 Para ello se realiza un arreglo de dos dimensiones en el cual necesitara que se le ingrese un tamaño y una posición inicial para poder calcular si en la posición colocada se puede realizar este algoritmo o no.  
