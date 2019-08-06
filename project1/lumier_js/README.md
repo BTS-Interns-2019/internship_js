@@ -1,6 +1,6 @@
 # **Ocho reinas**
 ### **Descripción**
-El problema de las ocho reinas consiste en colocar la misma cantidad de reinas que de dimensiones de la tabla, solo que deben estar colocadas de forma que ninguna de ellas pueda eliminarse entre sí.
+El problema de las ocho reinas consiste en colocar la misma cantidad de reinas que de dimensiones de la tabla, solo que deben estar colocadas de forma que ninguna de ellas pueda eliminarse entre sí.  
 |   | A | B | C | D | E | F | G | H |
 |---|---|---|---|---|---|---|---|---|
 | 8 |   |   |   | ♕ |   |   |   |   |
