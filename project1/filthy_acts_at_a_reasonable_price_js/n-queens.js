@@ -16,11 +16,8 @@ function nQueens(n, firstQueen) {
     return initialBoard;
   }
 
-  // Vector
-  const vector = Array(n);
-
+  const vector = Array(n); // Vector
   vector[firstQueen[1]] = firstQueen[0]; // Place the first Queen
-
   const column = firstQueen[1]; // Get the column of the firstQueen
   
   return solveBoard(n, vector, column) ? drawBoard(vector) : initialBoard;
@@ -57,9 +54,7 @@ function solveBoard(length, vector, column) {
 function solveBoardLeftToRight(length, vector, column) {
   let i = column + 1;
   while (i < length) {
-    // console.log(vector);
     for (let j = 0; j < length; j++) {
-      // console.log('i: ' + i, 'j: ' + j, 'i + 1: ' + (vector[i-1] + 1), 'i - 1: ' + (vector[i-1] -1),'j - i: ' + (j - i), 'j + i: ' + (j + i));
       if (
         j !== Number.parseInt(vector[i - 1]) && 
         j !== Number.parseInt((vector[i - 1] + 1)) && 
@@ -92,9 +87,7 @@ function solveBoardLeftToRight(length, vector, column) {
 function solveBoardRightToLeft(length, vector, column) {
   let i = column - 1;
   while (i >= 0) {
-    // console.log(descDiag, ascDiag, vector);
     for (let j = 0; j < length; j++) {
-      // console.log('i: ' + i, 'j: ' + j, 'i + 1: ' + (vector[i+1] + 1), 'i - 1: ' + (vector[i + 1] -1),'j - i: ' + (j - i), 'j + i: ' + (j + i));
       if (
         j !== Number.parseInt(vector[i + 1]) && 
         j !== Number.parseInt((vector[i + 1] + 1)) && 
