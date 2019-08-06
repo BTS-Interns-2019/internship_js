@@ -1,95 +1,61 @@
+# Instructions
+
+1. You will be working in teams of 3
+1. Create a directory inside the this one named: `<name of your team>_js`
+1. Discus the problem to solve with your team, do some research and create a presentation in markdown named README.md
+1. Create some tests covering basic cases
+1. Create the code to solve the problem
+1. Create more tests to cover all the cases
+1. Add instructions and how to use your program in the README.md
+1. Create a PR against master
+
 # the 8 queen problem
 
-The 8 Queens Problem is a problem which involves placing 8 Queens in a 8x8 chessboard, in a way that none of them attacks another one. \
-We define attack as having a Queen having another one within her range of attack. A Queen can move freely in any vertical, horizontal and diagonal direction. \
-In other words, a Queen is being attacked when it is positioned in the range of another previously positioned Queen.
+https://en.wikipedia.org/wiki/Eight_queens_puzzle
 
-There's a variation to this problem in which the number of Queens, (and therefore the size of the chessboard) is a variable. \
-This is called the N Queens Problem. It is basically the same as the 8 Queens Problem. \
-And more than that, the 8 Queens Problem is a subproblem for the N Queens Problem. The rules are to place N number of Queens in an NxN size chessboard. \
-This problem usually expects a matrix with the positions of N Queens in the NxN chessboard as a solution. \
-There might be cases where there is no solution achievable given the position of the first Queen. 
+your function will receive 2 arguments
 
-## Test Driven Development
-Given a N which determines the number of Queens, and therefore the size of the chessboard, and the position of the first Queen, we proceed to explain the following basic tests:
-```
-* Size of the board (NxN) is the same as the number of Queens.
-* N = 4
-* N = 20
-* N = 10
-* N < 4 or N > 20
-* Coordinates for first Queen doesnt go beyond the size of the chessboard.
-* Coordinates for first Queen are in the right format.
-* Output must be an array [] and must not be empty.
-* Output has no Queens attacking one another.
-```
-
-## Approach
-To solve this problem, we opted to use a vector that contains all the Queens' locations in a single array. In this vector, you can find a sequence of numbers ranging from `0` to `n - 1`. The number of each element of the vector represents the row, and the position of the number in the vector represents the column. 
-
-In other words, the number specifies in which row is the Queen located, and the position in the vector specifies in which column the Queen can be found. 
-
-An example of a vector that contains a solution for a 4x4 chessboard with a Queen in the position `[1, 0]` would be:
+1. size of mesh
+1. coordinates of one queen
 
 ```js
-vector = [1, 3, 0, 2]
+function queenProblem(4, [x,y]) {
+    // Your code Here
+    return [
+        [ 0,  1,  0,  0],
+        [ 0,  0,  0,  1],
+        [ 1,  0,  0,  0],
+        [ 0,  0,  1,  0]
+    ];
+}
 ```
-
-Transforming this vector to the array would result in:
 
 ```js
 [
-  [0, 0, 1, 0], // Row: 0, Column: 2
-  [1, 0, 0, 0], // Row: 1, Column: 0
-  [0, 0, 0, 1], // Row: 2, Column: 3
-  [0, 1, 0, 0]  // Row: 3, Column: 1
+    [
+        "Erick Vazquez",
+        "Miguel Vivanco",
+        "Luis Carlos",
+    ],
+    [
+        "Estefania Cano",
+        "Cristian Plascencia",
+        "Ricardo Martin",
+    ],
+    [
+        "Sergio Rivera",
+        "Itati Viridiana",
+        "Marlon Torres",
+    ],
+    [
+        "Urbano Gonzalez",
+        "David Martin",
+        "Hector Soto",
+    ],
+    [
+        "Edgar David",
+        "Emmanuel Rubio",
+        "Nestor Lira",
+    ]
 ]
 ```
-
-### How to obtain the vector
-To obtain the vector, we need to iterate over a range of numbers from `0` to `n-1` that can satisfy the following conditions:
-
-1. The number cannot be equal to the previous number in the vector (initially the position of the first Queen).
-1. The number cannot be equal to the previous number in the vector plus/minus 1.
-1. The number cannot be already included in the vector.
-1. The subtraction of the number and its would-be position in the vector cannot be the same as the same operation of any other number in the vector. E.g.
-```js
-const number = 2;
-const position = 2;
-const result = number - position;
-
-const descDiagonal = [0, 2, 4]; // In this case, the number would be discarded as an option for the vector
-```
-1. The sum of the number and its would-be position in the vector cannot be the same as the same operation of any other number in the vector.
-```js
-const number = 2;
-const position = 2;
-const result = number + position;
-
-const descDiagonal = [0, 2, 4]; // In this other case, the number would be discarded as an option for the vector
-```
-
-These last two points is to make sure that none of the Queens represented in the vector attacks each other in a diagonal fashion.
-
-
-## Instructions
-
- In order to solve the N queen problem, our function need to receive 2 arguments:
-
-1. Size of mesh, a number between 4 and 20, the limits for this function
-1. Coordinates of one queen, an array with 2 elements that represents positions in 'x' and 'y', also numbers
-
-```js
-queenProblem(4, [2,0]) 
-```
-In this case, we expect a "square" array with 4 array elements of length 4 each and with the seed queen in row 2 and column 0 as input data \
-The output data must be a single solution with Queens positions so they can't attack each other, with only one Queen per row, column and theirs diagonals \
-Queens are represented with number 1 and empty spaces with 0
-```js
-    [
-      [ 0,  1,  0,  0],
-      [ 0,  0,  0,  1],
-      [ 1,  0,  0,  0],
-      [ 0,  0,  1,  0]
-    ]
-``` 
