@@ -10,6 +10,7 @@ test('test closest1', function(){
   expect(response[1][2]).toEqual(103);
 })
 
+<<<<<<< HEAD
 
 test('test closest2', function(){
   let response = closestAndSmallest('101 200 101');
@@ -30,3 +31,17 @@ test('test closest5', function(){
   let response = closestAndSmallest('239382 162 254765 182 485944 468751 49780 108 54');
   expect(response).toEqual([[9, 1, 162], [9, 7, 108]]);
 })
+=======
+test("test closest are not smallest", function() {
+  let response2 = smallest('10 488 1990 666')
+  expect(response2[0]).toEqual([19, 2, 1990])
+  expect(response2[1]).toEqual([20, 1, 488])
+})
+
+test("test closest are not smallest", function() {
+  let response2 = smallest('10 488 1990 666')
+  expect(Array.isArray(response2)).toBe(true)
+  expect(typeof response2[0][0]).toEqual('number')
+  expect(typeof typeof response2[0][0]).toEqual('string')
+})
+>>>>>>> 43bed090b2f7dd8105c964b70d1533c34a75e127
