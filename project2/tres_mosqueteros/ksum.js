@@ -24,5 +24,6 @@ function kSum (strNum1, strNum2) {
     if(suma[suma.length-1]===0)suma.splice(suma.length-1,1);
     return suma.reverse().join("");
 }
+console.log(kSum('99','1'));
 
 module.exports=kSum;
