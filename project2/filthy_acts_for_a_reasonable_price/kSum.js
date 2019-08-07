@@ -1,3 +1,9 @@
+/**
+ * Returns the sum of two strings representing numbers, doing the addition in a kindergarden fashion
+ * (digit by digit)
+ * @param {*} strNum1 String 1 representing the first number 
+ * @param {*} strNum2 String 2 representing the second number
+ */
 function kSum(strNum1, strNum2) {
   // Check if input has anything other than digits 0-9
   if (strNum1.match(/[^0-9]/g) || strNum2.match(/[^0-9]/g)) {
