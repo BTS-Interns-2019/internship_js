@@ -1,3 +1,7 @@
+/**
+ * Transform the input Morse code into a decoded message
+ * @param {*} input String with binary numbers to represent a message in Morse code
+ */
 function morse(input) {
   if (input.match(/[^0-1]/g)) { // Check if input has anything other than 1's and 0's
     return input;
