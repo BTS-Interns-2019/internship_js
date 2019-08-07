@@ -32,5 +32,3 @@ function  fibonacci( nth )
     return nthNumberOfFibonacci;
 }
 module.exports= fibonacci;
-
-//console.log(fibonacci(2000));
