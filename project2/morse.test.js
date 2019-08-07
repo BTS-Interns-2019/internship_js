@@ -5,7 +5,7 @@ const output = 'HEY JUDE';
 describe('Morse Tests', () => {
 
     test('expect HEY JUDE', () => {
-        expect(morse(input).length).toBe(output);
+        expect(morse(input)).toBe(output);
     });
 
 });
