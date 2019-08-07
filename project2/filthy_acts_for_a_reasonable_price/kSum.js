@@ -7,7 +7,8 @@ function kSum(strNum1, strNum2) {
   // Add zeros to the beginning of the string with smaller length to match the length of the other one
   if (strNum1.length < strNum2.length) {
     strNum1 = strNum1.padStart(strNum2.length, "0");
-  } else if (strNum2.length < strNum1.length) {
+  } 
+  if (strNum2.length < strNum1.length) {
     strNum2 = strNum2.padStart(strNum1.length, "0");
   }
 
