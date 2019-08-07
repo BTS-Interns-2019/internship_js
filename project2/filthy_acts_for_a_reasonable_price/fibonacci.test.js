@@ -13,3 +13,16 @@ describe('Fibonacci Tests', () => {
     });
 
 });
+
+const tenth=55;
+
+describe('Our Fibonacci tests',()=>{
+
+    test("Out put must be a BigInt object", ()=>{
+        expect(typeof Object(fibonacci(10))).toBe('bigint');
+    });
+    test("Output must be the tenth Fibonacci", ()=>{
+        expect(fibonacci(10)).toBe(BigInt(55));
+    });
+
+});
