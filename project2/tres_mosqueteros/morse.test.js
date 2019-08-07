@@ -16,7 +16,6 @@ describe('Morse Tests', () => {
 
     test('expect HEY JUDE', () => {
         expect(morse(input)).toBe(output);
-<<<<<<< HEAD
     });
 
     test('expect HELLO', () => {
@@ -29,8 +28,6 @@ describe('Morse Tests', () => {
 
     test('expect VAYAN A LOS TACOS', () => {
         expect(morse(input4)).toBe(output4);
-=======
->>>>>>> 5485acecd2dfbb61b333bd5a6b4021c4d45cd7e4
     });
     
 
