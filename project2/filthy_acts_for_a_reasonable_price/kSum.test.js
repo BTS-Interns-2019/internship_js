@@ -26,7 +26,7 @@ describe("Our Ksum tests", () => {
 
   test("Intput must contain character from 0 to 9", () => {
     expect(kSum("8sdf", "3we")).toEqual(["8sdf", "3we"]);
-    expect(kSum("hola", "amigo!!")).toEqual(["hola", "amigo"]);
+    expect(kSum("hola", "amigo!!")).toEqual(["hola", "amigo!!"]);
     expect(kSum("HastaLaVista", "Baby")).toEqual(["HastaLaVista", "Baby"]);
   });
 });
