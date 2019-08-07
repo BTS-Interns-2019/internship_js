@@ -3,16 +3,16 @@ const kSum = require("./ksum");
 const output = "131151201344081895336534324866";
 const output2 = "100";
 
-describe("Morse Tests", () => {
-  test("expect HEY JUDE", () => {
-    expect(kSum("131151201344081895330000000000", "0006534324866").length).toBe(
+describe("Ksum test", () => {
+  test("expect results", () => {
+    expect(kSum("131151201344081895330000000000", "0006534324866")).toBe(
       output
     );
-    expect(kSum("99", "1").length).toBe(output2);
+    expect(kSum("99", "1")).toBe(output2);
   });
 });
 
-describe("Ksum tests", () => {
+describe("Our Ksum tests", () => {
   test("Output must be a number", () => {
     expect(typeof kSum("5", "6")).toBe("string");
     expect(typeof kSum("255", "700")).toBe("string");
@@ -25,8 +25,8 @@ describe("Ksum tests", () => {
   });
 
   test("Intput must contain character from 0 to 9", () => {
-    expect(kSum("8sdf", "3we")).toEqual("8sdf", "3we");
-    expect(kSum("hola", "amigo!!")).toEqual("hola", "amigo");
-    expect(kSum("HastaLaVista", "Baby")).toEqual("HastaLaVista", "Baby");
+    expect(kSum("8sdf", "3we")).toEqual(["8sdf", "3we"]);
+    expect(kSum("hola", "amigo!!")).toEqual(["hola", "amigo"]);
+    expect(kSum("HastaLaVista", "Baby")).toEqual(["HastaLaVista", "Baby"]);
   });
 });
