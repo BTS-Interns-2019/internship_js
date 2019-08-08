@@ -12,21 +12,21 @@ function kSum(strNum1, strNum2) {
 
   // Add zeros to the beginning of the string with smaller length to match the length of the other one
   if (strNum1.length < strNum2.length) {
-    strNum1 = strNum1.padStart(strNum2.length, "0");
+    strNum1 = strNum1.padStart(strNum2.length, '0');
   } 
   if (strNum2.length < strNum1.length) {
-    strNum2 = strNum2.padStart(strNum1.length, "0");
+    strNum2 = strNum2.padStart(strNum1.length, '0');
   }
 
   // Create arrays from both strings
-  strNum1 = strNum1.split("");
-  strNum2 = strNum2.split("");
+  strNum1 = strNum1.split('');
+  strNum2 = strNum2.split('');
 
   const sum = new Array(strNum1.length); // Create array with the same length as both strings
   let remainder = 0; // Remainder to keep track of the remainder if the sum of the digits is bigger than 9
   let digitSum; // Variable to sum the digits of both strings
 
-  for (let i = (strNum1.length - 1); i >= 1; i--) { // Stops at 1, to not mess with the last digit of both strings
+  for (let i = (strNum1.length - 1); i >= 1; i -= 1) { // Stops at 1, to not mess with the last digit of both strings
     // Store the sum of the digits of each string plus the remainder and turn it to string
     digitSum = String(Number(strNum1[i]) + Number(strNum2[i]) + remainder); 
 

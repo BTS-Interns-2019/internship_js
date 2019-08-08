@@ -58,7 +58,7 @@ function morse(input) {
     word => word.split('000000') // Separate the letters of each word
       .map(letter => ref[letter]) // Create a new array with the decoded letter using the Morse code map
       .join('') // Join the array of letters to create the decoded word
-    ).join(' '); // Join the array of decoded words to create the final message
+  ).join(' '); // Join the array of decoded words to create the final message
 }
 
 module.exports = morse;
