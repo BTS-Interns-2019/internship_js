@@ -1,4 +1,4 @@
-#Fibonacci Sequence
+#*Fibonacci Sequence*#
 Sequence of numbers made up by **Leonardo of Pisa** in *1838*. And the funny part is... idea came from the assumption of growth population of rabbits! :) 
 
 >>Here it is some of the Sequence:
