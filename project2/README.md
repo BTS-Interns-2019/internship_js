@@ -84,7 +84,13 @@ function (strNum1, strNum2) {
 }
 ```
 
-* La funcion add() evalua los numeros resibidos en string estos asginalodos a num1 el mas grande y num2 el mas pequeño 
-cada variable num1 y num2 se colocan en un arreglo con cada valor del mismo seguin cada digito de los datos resibidos
-se suma posicion por posicion num1[i] + num2[i] en res[i] sinedo i el indice.
-fi hubiece crecido el numero en logitud se guarda en aux y se concatena al inicio de res.
+### ADD()
+- La funcion add() evalua los numeros recibidos en string estos asginalodos a num1 el mas grande y num2 el mas pequeño cada variable num1 y num2 se colocan en un arreglo con cada valor del mismo seguin cada digito de los datos resibidos se suma posicion por posicion num1[i] + num2[i] en res[i]sinedo i el indice. Si hubiera crecido el numero en logitud se guarda en aux y se suma al suigiente numero en evaluar.
+
+##### *Por ejemplo
+
+
+`-->1 llevamos `
+`   12'8'020 `
+` +   '3'025`
+` =131045`
