@@ -23,6 +23,6 @@ describe('Fibonacci Tests', () => {
         expect(fibonacci(1)),toBe(1n)
     })
 
-    test('Fibonacci with 0',()=>{
-        expect(fibonacci(0)),toBe(0n)
+    test('Fibonacci with 100',()=>{
+        expect(fibonacci(100)),toBe(573147844013817084101n)
 })
