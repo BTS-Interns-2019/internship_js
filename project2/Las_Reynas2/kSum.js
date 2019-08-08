@@ -39,7 +39,7 @@ let aux = 0;
             res[k] = temp[temp.length-1];
             if(temp.length > 1){aux = temp.substr(0,temp.length-1)}
             
-            num1[k-1] = parseInt(num1[k-1]) + parseInt(temp[0]);
+            num1[k-1] = parseInt(num1[k-1]) + parseInt(aux);
         }else{
             res[k] = parseInt(num1[k]) + parseInt(emparejar[k]);
             res[k] = res[k].toString();
@@ -63,7 +63,7 @@ let aux = 0;
 
 }
 
-console.log(add('131151201344081895330000000000','0006534324866'));
+console.log(add('12125','12920'));
 //console.log(add('123100000','900987654'));
 module.exports = add;
 
