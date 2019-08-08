@@ -19,8 +19,16 @@ describe("Sum like kindergarden", () => {
     
     test('expect the sum', () => {
         const output = "9334299525531648942012";
-        const output2 = "10000"
         expect(kSum('9334287432322340000000','12093209308942012')).toBe(output);
+    });
+
+    test('expect the sum', () => {
+        const output2 = "1000";
+        expect(kSum('999','1')).toBe(output2);
+    });
+
+    test('expect the sum', () => {
+        const output2 = "10000"
         expect(kSum('9999','1')).toBe(output2);
     });
 });
