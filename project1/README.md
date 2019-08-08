@@ -32,7 +32,7 @@ function queenProblem(4, [x,y]) {
 
 ```js
 [
-    [
+    [ 
         "Erick Vazquez",
         "Miguel Vivanco",
         "Luis Carlos",

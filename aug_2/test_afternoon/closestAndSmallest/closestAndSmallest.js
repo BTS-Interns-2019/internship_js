@@ -1,3 +1,5 @@
+const input = '444 2000 445 544'
+
 function closestAndSmallest(str) {
   var arr = [];
   str = str.trim().split(" ");

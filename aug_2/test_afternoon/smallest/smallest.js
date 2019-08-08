@@ -1,3 +1,4 @@
+// [126235, 2, 0]
 function smallest(str) {
   let result = [];
   str = str.toString();
@@ -38,6 +39,7 @@ function smallest(str) {
   
   return result;
 }
+console.log(smallest("261235"))
 
 console.log(smallest (83425825));
 
