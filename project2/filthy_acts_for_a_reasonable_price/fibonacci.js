@@ -4,9 +4,9 @@
  * @param {*} fibObj  Object to store the calculations of previous positions
  */
 function fibonacci(position, fibObj = {}) {
-  // To be able to obtain a large result for Fibonacci, we need to transform the position into a BigInt
+  // To be able to obtain a large result for Fibonacci, we need to transform
+  // the position into a BigInt
   position = BigInt(position);
-  
 
   // If the Fibonacci number of the input position given is already stored and calculated, return it
   if (fibObj[position]) {
@@ -20,11 +20,12 @@ function fibonacci(position, fibObj = {}) {
   /* This part stores the result of recursive Fibonacci calls to have them available in case
   ** the input position has not been calculated
   */
-  return fibObj[position] = 
-    BigInt(fibonacci(position - BigInt(1), fibObj)) +
-    BigInt(fibonacci(position - BigInt(2), fibObj)); 
+  fibObj[position] = BigInt(fibonacci(position - BigInt(1), fibObj))
+  + BigInt(fibonacci(position - BigInt(2), fibObj));
+
+  return fibObj[position];
 }
 
-// console.log(fibonacci(6611)); // Maximum allowed 
+// console.log(fibonacci(6611)); // Maximum allowed
 
 module.exports = fibonacci;
