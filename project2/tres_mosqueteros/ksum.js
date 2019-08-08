@@ -11,7 +11,7 @@ function kSum (strNum1, strNum2) {
     mayor=mayorMenor[0].split("").reverse();
     menor=mayorMenor[1].split("").reverse();
     //arreglo para guardar la suma inicializado con numeros "0"s del tamaño del
-    //numero más largo más uno, por si el restulatdo es un digito más grande
+    //numero más largo más uno, por si el resultado es un digito más grande
     let suma = new Array(mayor.length+1);
     suma.fill(0);
     //hace la suma hasta el digito "n"th donde "n" es la longitud del numero más corto
@@ -34,7 +34,7 @@ function kSum (strNum1, strNum2) {
 }
 
 /**
- * Recive dos strings y devuelve un arreglo con el de mayor longitud
+ * Recibe dos strings y devuelve un arreglo con el de mayor longitud
  *  en la posicion 0 y y el de menor en la posicion 1
  * @param {string} a 
  * @param {string} b 
@@ -44,6 +44,6 @@ function greater(a, b){
     if(a.length>b.length) return[a,b];
     return [b,a];
 }
-console.log(kSum('99','1'));
+console.log(kSum('999','1'));
 
 module.exports=kSum;
