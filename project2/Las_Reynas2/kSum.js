@@ -61,4 +61,3 @@ let aux = 0;
 }
 module.exports = kSum;
 
-console.log(kSum('99999','1'));

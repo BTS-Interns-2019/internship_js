@@ -1,4 +1,4 @@
-function add(num1, num2) {
+function kSum(num1, num2) {
     // el numero mas pequeño sera el num2
     let temp = "";
     if(num2.length > num1.length){
@@ -59,5 +59,6 @@ let aux = 0;
     return temp;
 
 }
-module.exports = add;
+module.exports = kSum;
+
 
