@@ -44,6 +44,7 @@ function greater(a, b){
     if(a.length>b.length) return[a,b];
     return [b,a];
 }
-console.log(kSum('99','1'));
+console.log(kSum('999','1'));
+
 
 module.exports=kSum;
