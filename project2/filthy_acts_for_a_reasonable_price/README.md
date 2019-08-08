@@ -123,3 +123,15 @@ kSum('1914896', '789452');
 ```
 
 ### Solution
+The solution that the team came up with works the following way:
+
+1. Both strings are checked to have only numeric values from `0` to `9`. If not, both strings are returned in an array.
+1. Both strings are transformed to arrays to be able to work with each digit individually.
+1. A new array is created that contains the results of each individual sum, along with a variable that holds the remainder of a sum should the result be greater than `9`.
+1. Within an iteration that starts at the end and stops before the first element of the input strings (arrays now), each digit is being added to the other with the inclusion of the variable that holds the remainder.
+1. If the sum is greater than `9`, store a `1` in the `remainder`.
+1. Store the result of the sum in the new array `sum`.
+1. After the loop is over, add to the beginning of the `sum` array the sum of the first digits of both numbers plus the remainder and return it as a `string`.
+
+# And now... a horror story...
+![The horror...](./horror.jpg)
