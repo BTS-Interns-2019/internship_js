@@ -20,7 +20,7 @@ function fibonacci(position, fibObj = {}) {
   ** the input position has not been calculated
   */
   return fibObj[position] = 
-    BigInt(fibonacci(position - BigInt(1), fibObj)) + // 
+    BigInt(fibonacci(position - BigInt(1), fibObj)) +
     BigInt(fibonacci(position - BigInt(2), fibObj));
 }
 
