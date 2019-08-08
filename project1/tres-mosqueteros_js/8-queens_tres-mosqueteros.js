@@ -85,9 +85,11 @@ function queenProblem(size, xy) {
     }
 print = queenProblem(8,[0,0]);
 // imprime la matriz resultado
-for (i = 0; i < print.length; i ++){
-    console.log(print[i]);
-}
+// for (i = 0; i < print.length; i ++){
+//     console.log(print[i]);
+// }
+console.log(queenProblem(8,[0,1]));
+
 
 //console.log(typeof(queenProblem));
 
