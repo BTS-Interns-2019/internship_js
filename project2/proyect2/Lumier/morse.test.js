@@ -5,7 +5,21 @@ const output = 'HEY JUDE';
 describe('Morse Tests', () => {
 
     test('expect HEY JUDE', () => {
-        expect(morse(input).length).toBe(output);
+        expect(morse(input).length).toBe(output.length);
     });
-
+    test('Same datatype', ()=>{
+        expect(typeof morse(input)).toBe(typeof output);
+    })
+    test('Same output', ()=>{
+        expect(morse(input)).toBe(output);
+    })
+    test('Integer case', ()=>{
+        expect(morse(110011001100000011)).toBe("please, insert it like a string");
+    })
+    test('Empty case', ()=>{
+        expect(morse("")).toBe("");
+    })
+    test('None case', ()=>{
+        expect(morse()).toBe();
+    })
 });
