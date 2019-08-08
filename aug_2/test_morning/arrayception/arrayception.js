@@ -1,20 +1,24 @@
 
-//  Erick Israel Vazquez Neri
-/** 
+/** Edgar David Peregrino Jimenez
  * arrayGenerator
  * @param {int} number
  * @returns {array}
  */
 function arrayGenerator(number) {
-    let arr = []
-    for(let i = 0; i <= number; i++){
-      arr.push(i.toString())
-      if(arr[i] === "0"){
-        arr.splice(i, 1, arrayGenerator(number-1))
+    array = [];
+    for (i = 0; i < number; i++){
+      array [i] = i;
+     }
+     array.fill(array,0,1);
+      function fills (arr){ 
+      if (typeof (fills (arr[0])) == "object" ){
+        arr[0].fill(arr,0,1);
       }
-    }
-    return arr
-  }
-  
-  module.exports = arrayGenerator;
-  
+    return arr;
+     }         
+  return fills (array, number);
+}
+
+
+console.log (arrayGenerator(3))
+module.exports = arrayGenerator;

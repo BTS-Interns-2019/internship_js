@@ -1,27 +1,46 @@
 // [126235, 2, 0]
 function smallest(str) {
-  /**------Encontre mi valor mas pequeño------------- */
-  const theReturn = []
-  let split = str.split('').map(n => +n)
-  let min = Math.min.apply(null, split)
-  let initialIndex = split.indexOf(min)
-  theReturn.push(initialIndex)
-
-/**--------Movi el minimo a lugares posibles---------------- */
-  let sum = []
-  for(let t = 0; t < split.length; t++){
-    sum.push(split.join(''))
-    let minIndex = split.indexOf(min)
-    let take = split.splice(minIndex,1)
-    let place = split.splice(t, 0, take)
+  let result = [];
+  str = str.toString();
+  str = Array.from(str)
+  let num = Number.MAX_VALUE;
+  cont = 0; 
+  for (i=0; i < str.length; i++){
+    if (i == 0){
+        num1 = str[i];
+        ind1 = i;
+        inv1 = i + 1;
+        cont = cont -2;
+      }
+      else if (str[i] < num || str[i] == num){
+        num = str[i];
+        ind = i;
+        inv = i + 1;
+        cont ++;
+      }  
   }
-  theReturn.unshift(+sum[1])
-  let minNumber = theReturn[0].toString().split('').map(v => +v)
-  let lastIndex = minNumber.indexOf(min)
-  theReturn.push(lastIndex)
-  // console.log(theReturn)
-  return theReturn
+
+  if (cont == str.length - 3 || cont == str.length - 4) {
+    str.splice(ind1,inv1);
+    str.push(num1);
+    str = str.join("");
+    result[0] = parseInt(str);
+    result[1] = ind1;
+    result [2] = 6;
+  } else {
+  str.splice(ind, ind);
+  console.log(str)
+  str.unshift(num);
+  str = str.join("");
+  result[0] = parseInt(str);
+  result[1] = ind;
+  result [2] = 0;
+  }
+  
+  return result;
 }
 console.log(smallest("261235"))
+
+console.log(smallest (83425825));
 
 module.exports = smallest;

@@ -1,26 +1,35 @@
 const input = '444 2000 445 544'
 
 function closestAndSmallest(str) {
-  let splitInput = str.split(" ")
-  let nums = []
-  let result = []
-  for(let i = 0; i < splitInput.length; i++){
-    nums.push({})
-    nums[i].num = splitInput[i] 
-    nums[i].weight = splitInput[i].split('')
-        .map(v => +v)
-        .reduce((acc, v) => acc + v, 0)
-  }
-  let counter = []
-  
-  for(let i = 0; i < nums.length; i++){
-    for(let u = 1; u < nums.length; u++){
-      counter.push(nums[i].weight + nums[u].weight) 
+  var arr = [];
+  str = str.trim().split(" ");
+for (i = 0; i < str.length; i++){
+    let cont = 0;
+    let val = str[i];
+    val = val.split("");
+    for (j=0; j<val.length; j ++){
+        cont = cont + parseInt(val[j]);
+        arr[i] = cont;
     }
+    var dif = [];
+    for (i = 0; i < arr.length - 1; i ++){
+      dif[i] = arr[i] - arr[i + 1]
+    }
+
+    console.log(dif)
+
+
+    
+   // val = val.reverse(val).join("");
+    //str[i] = val;
+    console.log(arr)
   }
-  console.log(counter)
-  console.log(nums)
-  return result
+ console.log(str);
+  
+  
+  
+  return [[2, 4, 2000], [4, 0, 103]];
 }
-closestAndSmallest(input)
+console.log(closestAndSmallest('444 2000 445 544'))
+
 module.exports = closestAndSmallest;
