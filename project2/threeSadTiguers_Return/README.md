@@ -24,9 +24,9 @@ The principal problem that we found when we started to program the solution was 
 
 # Fibonacci
 
-In mathematics, Fibonacci numbers are a sequence where each number is the sum of the previous two, starting with 0 and 1.
-
 ## **Description**
+
+In mathematics, Fibonacci numbers are a sequence where each number is the sum of the previous two, starting with 0 and 1.
 
 This method was programmed with the name of **fibonacci** and receives a parameter that is the number of the position n of the fibonacci series. The parameter is entered in a **while loop** by adding the previous number with the current one, knowing that the **fibonacci of 1 is 1** and starting from there. All the numbers used are converted to **BigInt** to obtain large numbers.
 
