@@ -20,11 +20,11 @@ function fibonacci(position, fibObj = {}) {
   /* This part stores the result of recursive Fibonacci calls to have them available in case
   ** the input position has not been calculated
   */
-  fibObj[position] = 
+  return fibObj[position] = 
     BigInt(fibonacci(position - BigInt(1), fibObj)) +
     BigInt(fibonacci(position - BigInt(2), fibObj)); 
-  
-  return fibObj[position];
 }
+
+// console.log(fibonacci(6611)); // Maximum allowed 
 
 module.exports = fibonacci;
