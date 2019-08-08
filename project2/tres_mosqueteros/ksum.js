@@ -25,6 +25,10 @@ function kSum (strNum1, strNum2) {
     //agrega el resto de digitos del numero más largo a la suma
     for (let i = menor.length; i < mayor.length; i++) {
         suma[i]+=parseInt(mayor[i]);
+        if (suma[i]>=10){
+            suma[i+1]+=1;
+            suma[i]=suma[i]%10;
+        }   
     }
     //si el resultado de la suma tiene el mismo número de digitos que numero más grande
     //se elimina el espacio agregado a la suma
@@ -45,5 +49,7 @@ function greater(a, b){
     return [b,a];
 }
 console.log(kSum('999','1'));
+
+
 
 module.exports=kSum;
