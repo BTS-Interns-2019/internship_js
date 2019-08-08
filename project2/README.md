@@ -51,21 +51,50 @@ one Unit is equal to 2 values (because we wanna make sure nothing is lost in the
 
 ## Fibonacci sequence
 
-filename `fibonacci.js`
+### Introduccion
+Es una serie que comienza con los números 0 y 1,2​ y a partir de estos, «cada término es la suma de los dos anteriores», es la relación de recurrencia que la define.
+Un ejemplo de elloes la siguiente:
 
-I want to be able to calculate the 2000th number of fibonacci
+0,1,1,2,3,5,8,13,21,34...
+**Ejemplo: (0+1=1 / 1+1=2 / 1+2=3 / 2+3=5 / 3+5=8 / 5+8=13 / 8+13=21 / 13+21=34...)
 
-[More information here](https://en.wikipedia.org/wiki/Fibonacci_number)
+### Problema
+El problema establecido tiene las siguientes requisitos:
+- Usar BigInt
+- Poder calcular el numero 2000 de fibonacci
+- La funcion debe llamarse fibonacci
 
-use [javascript bigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+### BigInt
+BigIntes un objeto incorporado que proporciona una forma de representar números enteros mayores que 2^53 , que es el número más grande que JavaScript puede representar de manera confiable.BigInt se puede usar para enteros grandes.
 
-function specs
+### Solucion
+- La funcion recibe como parametro n que es el numero a calcular en la serie de fibonacci
+---
+function fibonacci(n) {
+---
 
-```js
-function fibonacci (nth) {
-    // your code here ...
-    return nthNumberOfFibonacci;
-}
+-Crea un objeto donde almacena los registros 
+
+---
+let fibo={}
+---
+
+- Valida que se cumplan las condiciones
+---
+  }
+    if (n <= 1 || n === 2){// si la posicion es igual a 1 o 2 nos regresa 1
+        return 1;
+    }
+---
+
+- Guarda los registros anteriores y retorna con la conversion de BigInt y la operacion de los numeros
+---
+    return fibo[n]=BigInt(fibonacci(n - BigInt(1),fibo)) + BigInt(fibonacci(n - BigInt(2),fibo))
+  }
+
+ ejemplo: fibonacci(5)
+ 1,1,2,3,5
+---
 ```
 
 ## Sum like kindergarten
