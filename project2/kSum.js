@@ -1,4 +1,4 @@
-function add(num1, num2) {
+function kSum(num1, num2) {
     // el numero mas pequeño sera el num2
     let temp = "";
     if(num2.length > num1.length){
@@ -6,7 +6,6 @@ function add(num1, num2) {
         num2 = num1;
         num1 = temp;
     }
-
     num1 = num1.split('');
     let emparejar = [];
     num2 = num2.split('');
@@ -31,11 +30,9 @@ let aux = 0;
         temp = "";
         num1[k] = parseInt(num1[k]);
         emparejar[k] = parseInt(emparejar[k]);
-        
         if((num1[k] + emparejar[k]) > 9){
             temp = num1[k] + emparejar[k];
             temp =  temp.toString();
-            // if(temp.length >)
             res[k] = temp[temp.length-1];
             if(temp.length > 1){aux = temp.substr(0,temp.length-1)}
             
@@ -62,8 +59,6 @@ let aux = 0;
     return temp;
 
 }
+module.exports = kSum;
 
-console.log(add('12125','12920'));
-//console.log(add('123100000','900987654'));
-module.exports = add;
 
