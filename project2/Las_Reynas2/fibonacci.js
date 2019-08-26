@@ -11,5 +11,5 @@ function fibonacci(n) {
     //Guarda los registros anteriores y si no lo encuentra realiza la operacion para tener el resultado
         return fibo[n]=BigInt(fibonacci(n - BigInt(1),fibo)) + BigInt(fibonacci(n - BigInt(2),fibo))
   }
-
+fibonacci(10)
 module.exports =fibonacci;
