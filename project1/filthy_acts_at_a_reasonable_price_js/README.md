@@ -89,4 +89,16 @@ Queens are represented with number 1 and empty spaces with 0
       [ 1,  0,  0,  0],
       [ 0,  0,  1,  0]
     ]
+<<<<<<< HEAD
 ``` 
+=======
+```
+## Functions
+To resolve the problem we make some functions to help us, three of them help us to get the posible solution for the problem, every function return a vector, a vector is a simple array of numbers, the position in the vector represnts a column in our board and the value is a row. 
+
+1. **solveBoard**: this function call a the other functions depending on the position of first queen.
+1. **solveFromFirstColumn**: itereates over the vector form left to rigth, when the first queen is in the position 0.
+1. **solveBoardRightToLeft**: iterates over the vector from right to left, this function is called when the first queen is in the las position of the vector.
+1. **solveFromLastColumn**: iterates over the vector form the middle. It's called when the first queen is not in the begining or the end of the vector.
+1. **solveFromMiddleColumn**: returns the board with the solution if the others functions return true, else this will return a board with 0 in every position.
+>>>>>>> 5b763435ec8769939b98e290636eb5e487e4dfdb
