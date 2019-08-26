@@ -1,4 +1,4 @@
-const Prism = require('./prism');
+const Prism = require('./prism_hector');
 
 const p = new Prism(1, 1, 1);
 
