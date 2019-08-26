@@ -4,6 +4,7 @@ The 8 Queens Problem is a problem which involves placing 8 Queens in a 8x8 chess
 We define attack as having a Queen having another one within her range of attack. A Queen can move freely in any vertical, horizontal and diagonal direction. \
 In other words, a Queen is being attacked when it is positioned in the range of another previously positioned Queen.
 
+<<<<<<< HEAD
 There's a variation to this problem in which the number of Queens, (and therefore the size of the chessboard) is a variable. \
 This is called the N Queens Problem. It is basically the same as the 8 Queens Problem. \
 And more than that, the 8 Queens Problem is a subproblem for the N Queens Problem. The rules are to place N number of Queens in an NxN size chessboard. \
@@ -23,6 +24,9 @@ Given a N which determines the number of Queens, and therefore the size of the c
 * Output must be an array [] and must not be empty.
 * Output has no Queens attacking one another.
 ```
+=======
+## The 8 queen problem
+>>>>>>> master
 
 ## Instructions
 
