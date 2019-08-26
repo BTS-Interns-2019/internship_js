@@ -2,7 +2,6 @@ const prism = require('./prism_marlont');
 
 test('Normal Input', function(){
     let p = new prism(2,2,2);
-    console.log(p);
 
     expect(p.long).toBe(2);
     expect(p.width).toBe(2);
