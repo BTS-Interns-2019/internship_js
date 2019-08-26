@@ -15,6 +15,6 @@ function prism(long, width, height) {
       return this.long * this.width * this.height;
     }
   
-  }
+}
   
-  
+  module.exports = prism;
