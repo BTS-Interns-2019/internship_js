@@ -9,7 +9,7 @@
 1. Add instructions and how to use your program in the README.md
 1. Create a PR against master
 
-# the 8 queen problem
+## The 8 queen problem
 
 https://en.wikipedia.org/wiki/Eight_queens_puzzle
 
