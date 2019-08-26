@@ -1,13 +1,13 @@
 # Instructions
 
 1. You will be working in teams of 3
-1. Create a directory inside the this one named: `<name of your team>_js`
-1. Discus the problem to solve with your team, do some research and create a presentation in markdown named README.md
-1. Create some tests covering basic cases
-1. Create the code to solve the problem
-1. Create more tests to cover all the cases
-1. Add instructions and how to use your program in the README.md
-1. Create a PR against master
+2. Create a directory inside the this one named: <name of your team>_js
+3. Discus the problem to solve with your team, do some research and create a presentation in markdown named README.md
+4. Create some tests covering basic cases
+5. Create the code to solve the problem
+6. Create more tests to cover all the cases
+7. Add instructions and how to use your program in the README.md
+8. Create a PR against master
 
 # the 8 queen problem
 

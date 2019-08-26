@@ -1,17 +1,23 @@
+
 function reverse(str) {
-try{
-  if (typeof(str)!="string") {
-    throw new Error(message = "Solo funciona si envias un string como parametro");  
+  //console.log(str)
+  if (str == ""){
+  return str;
+  } else {
+str = str.trim().split(" ");
+for (i = 0; i < str.length; i++){
+  if ((i % 2) != 0){
+    let val = str[i];
+    val = val.trim().split("");
+    val = val.reverse(val).join("");
+    str[i] = val;
   }
-  if(str.length==1)return str;
-  return str.split(" ").filter(Boolean).map((val,i)=>{
-    if(i%2===1){
-      return val.split("").reverse().join("");
-    }
-    return val;
-  }).join(" ");
-}catch(e){
-  return e.message;
 }
+  }
+str = str.join(" ").toString();
+ return str;
 }
+
+console.log(reverse(' hola amigo como estas '))
+
 module.exports = reverse;

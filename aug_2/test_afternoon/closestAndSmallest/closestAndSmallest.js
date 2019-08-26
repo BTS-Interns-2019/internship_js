@@ -1,29 +1,34 @@
 function closestAndSmallest(str) {
-try{
-  if (typeof(str)!=="string") throw new Error(message="Requiere un string")
-  if (str.length==0) throw new Error(message="La cadena está vacía")
-  str=str.split(" ").filter(Boolean);
-  sumas=str.map(x=>parseInt(x.split("").reduce((acc, y)=>parseInt(acc)+parseInt(y))))
-  let indexA, indexB, dif=Math.max(...sumas);
-  sumas.forEach((val,i)=>{
-    sumas2=JSON.parse(JSON.stringify(sumas));
-    sumas2.splice(i,1);
-    //val es el numero que falta en sumas2
-    sumas2.forEach((numero,j)=>{
-      difTemp=Math.abs(val-numero);
-      if (difTemp<dif || (difTemp==dif && val+numero<sumas[indexA]+sumas[indexB])){
-        dif=difTemp;
-        indexA=i;
-        indexB=j+1;
-      }
-    })
-  })
-  if(sumas[indexA]>sumas[indexB]){
-    aux=indexA;
-    indexA=indexB;
-    indexB=aux;
+  var arr = [];
+  str = str.trim().split(" ");
+for (i = 0; i < str.length; i++){
+    let cont = 0;
+    let val = str[i];
+    val = val.split("");
+    for (j=0; j<val.length; j ++){
+        cont = cont + parseInt(val[j]);
+        arr[i] = cont;
+    }
+    var dif = [];
+    for (i = 0; i < arr.length - 1; i ++){
+      dif[i] = arr[i] - arr[i + 1]
+    }
+
+    console.log(dif)
+
+
+    
+   // val = val.reverse(val).join("");
+    //str[i] = val;
+    console.log(arr)
   }
-  output=[[sumas[indexA], indexA, parseInt(str[indexA])],[sumas[indexB], indexB, parseInt(str[indexB])]];
+ console.log(str);
+  
+  
+  
+  return [[2, 4, 2000], [4, 0, 103]];
+}
+console.log(closestAndSmallest('444 2000 445 544'))
 
 return output;
 }catch(e){

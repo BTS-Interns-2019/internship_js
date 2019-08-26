@@ -1,47 +1,46 @@
-function smallest(num) {
-try{
-  if (typeof(num)!=="number") throw new Error(message="Requiere un number")
-  let numbers=[];
-  num=num.toString().split("");
-  i=menor(num);
-  let minimo=parseInt(num[i]);
-  let primero;
-  for (let j = 0; j < num.length; j++) {
-    val=parseInt(num[j]);
-    if(val>minimo){
-      primero=j;
-      break;
-    }
+function smallest(str) {
+  let result = [];
+  str = str.toString();
+  str = Array.from(str)
+  let num = Number.MAX_VALUE;
+  cont = 0; 
+  for (i=0; i < str.length; i++){
+    if (i == 0){
+        num1 = str[i];
+        ind1 = i;
+        inv1 = i + 1;
+        cont = cont -2;
+      }
+      else if (str[i] < num || str[i] == num){
+        num = str[i];
+        ind = i;
+        inv = i + 1;
+        cont ++;
+      }  
   }
-  valorPrimero=num[primero]; 
-  arr3=JSON.parse(JSON.stringify(num)) 
-  arr3.splice(i,1);
-  arr3.splice(primero,1,valPrimero);
 
-  if(primero==0){
-    num.splice(i,1);
-    num.unshift(minimo)
+  if (cont == str.length - 3 || cont == str.length - 4) {
+    str.splice(ind1,inv1);
+    str.push(num1);
+    str = str.join("");
+    result[0] = parseInt(str);
+    result[1] = ind1;
+    result [2] = 6;
+  } else {
+  str.splice(ind, ind);
+  console.log(str)
+  str.unshift(num);
+  str = str.join("");
+  result[0] = parseInt(str);
+  result[1] = ind;
+  result [2] = 0;
   }
-  else{
-    num.splice(i,1,num[primero]);
-    num.splice(primero,1,minimo);
-  }
-  return [parseInt(arr2.join("")), i, 0]
-}catch(e){
-  return e.message;
-}
-}
-function menor(num2){
-  let minimo, k, l=num2.length;
-  for (let j = 0; j < l; j++) {
-    minimo=Math.min(...num2);
-    k=num2.lastIndexOf(minimo.toString());
-    if(k!=0)return k;
-    else num2=num2.slice(1);
-  }
-  return 0;
+  
+  return result;
 }
 console.log(smallest(91111))
 //console.log(menor("12345".toString().split("")));
+
+console.log(smallest (83425825));
 
 module.exports = smallest;
