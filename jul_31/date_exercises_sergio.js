@@ -40,7 +40,7 @@ function toLazyHuman(obj,params) {
         params = Date.now();
     }
     console.log(obj);
-    console.log(params);
+    console.log(new Date(params));
     
     params = new Date(params);
     console.log(params.getFullYear(),params.getMonth(),params.getDay(),params.getHours(),params.getMinutes());

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Sergio Manuel Rivera Vazquez
 
 function ticTacToe(plays) {
@@ -80,15 +79,3 @@ function ticTacToe(plays) {
 
 
 console.log(ticTacToe(["1,1","1,2","2,2","3,1","3,3"]));
-=======
-
-/**
- * ticTacToe
- * @param {Array} plays
- * @returns {object}
- */
-function ticTacToe(plays) {
-
-  return {};
-}
->>>>>>> master
