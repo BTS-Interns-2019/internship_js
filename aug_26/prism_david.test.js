@@ -1,4 +1,4 @@
-const prism = require('./prism.js');
+const prism = require('./prism_david.js');
 
 test('prism de 1, 1, 1', function() {
   expect(prism(1, 1, 1).long).toEqual(1);
