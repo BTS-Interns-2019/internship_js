@@ -7,19 +7,19 @@ function Person(name, lastName) {
     },
     set fullName(fullName) {
       const newFullName = fullName.split(' ');
-      this.name = newFullName[0];
-      this.lastName = newFullName[1];
+      this.name = newFullName.shift();
+      this.lastName = newFullName.join(' ');
     }
   };
   return person;
 }
 
-const p = new Person('Jose', 'Vasconselos');
+const p = new Person('Jose', 'Vasconselos Rosas');
 console.log(p.fullName);
 p.name = 'Roberto';
 console.log(p.fullName);
 p.fullName = 'Pedro Casas';
 console.log(p.name);
 console.log(p.lastName);
-
+console.log(p.fullName);
 module.exports = Person; 
