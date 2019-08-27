@@ -7,12 +7,15 @@ function Person(name, lastName) {
       return `${this.name} ${this.lastName}`;
     },
     set fullName(newName) {
-      if (newName.split(' ').length > 1) {
-        const nameArr = newName.split(' ');
-        [this.name, this.lastName] = [nameArr[0], nameArr.slice(1).join(' ')];
-      } else {
-        this.name = newName;
-      }
+      const nameArr = newName.split(' ');
+      this.name = nameArr.shift();
+      this.lastName = nameArr.join(' ');
+      // if (newName.split(' ').length > 1) {
+      //   const nameArr = newName.split(' ');
+      //   [this.name, this.lastName] = [nameArr[0], nameArr.slice(1).join(' ')];
+      // } else {
+      //   this.name = newName;
+      // }
     },
   };
 
