@@ -1,4 +1,4 @@
-const prism = require('./Prism');
+const prism = require('./prism_ricardom');
 
 p = new prism(1,1,1);
 
