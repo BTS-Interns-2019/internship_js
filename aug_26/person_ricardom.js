@@ -1,16 +1,16 @@
-function Person(name, lastname){
+function Person(name, lastName){
     const person = {
         name : name,
-        lastname : lastname,
+        lastName : lastName,
 
-        get fullname (){
-            return this.name + " " + this.lastname;
+        get fullName (){
+            return this.name + " " + this.lastName;
         },
         
-        set fullname(fullname){
-            fullname = fullname.split(" ");
-            this.name = fullname[0];
-            this.lastname = fullname[1];
+        set fullName(fullName){
+            fullName = fullName.split(" ");
+            this.name = fullName[0];
+            this.lastName = fullName[1];
         }
     }
     return person;
