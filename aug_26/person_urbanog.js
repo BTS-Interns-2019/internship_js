@@ -18,7 +18,7 @@ const p = new Person('Jose', 'Vasconselos Rosas');
 console.log(p.fullName);
 p.name = 'Roberto';
 console.log(p.fullName);
-p.fullName = 'Pedro Casas';
+p.fullName = 'Pedro Casas del Arollo';
 console.log(p.name);
 console.log(p.lastName);
 console.log(p.fullName);
