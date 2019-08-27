@@ -18,21 +18,20 @@ function Person (name, lastName){
 /*
 const p = new Person ('Edgar', 'Peregrino');
 console.log(p.name);
-console.log(p.last_name);
-console.log(p.full_name);
+console.log(p.lastName);
+console.log(p.fullName);
 
 p.name = 'Federico';
 console.log(p.name);
-console.log(p.last_name);
-console.log(p.full_name);
-p.last_name = 'parangaricutirimicuaro';
+console.log(p.lastName);
+console.log(p.fullName);
+p.lastName = 'parangaricutirimicuaro';
 console.log(p.name);
-console.log(p.last_name);
-console.log(p.full_name);
-p.full_name = 'Pancho Lopez';
+console.log(p.lastName);
+console.log(p.fullName);
+p.fullName = 'Pancho Lopez';
 console.log(p.name);
-console.log(p.last_name);
-console.log(p.full_name);
+console.log(p.lastName);
+console.log(p.fullName);
 */
-
 module.exports = Person;
