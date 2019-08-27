@@ -1,6 +1,6 @@
-const prisms = require('./prisms.js');
+const prisms = require('./prisms_viridiana.js');
 
 
 test('El resultado del area es:', function(){
-    expect(p = new prism(1,1,1).toBe())
+    expect(p.perimeter().toBe())
 })
