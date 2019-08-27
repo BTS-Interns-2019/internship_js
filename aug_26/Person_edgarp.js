@@ -7,8 +7,8 @@ function Person (name, lastName){
         },
         set fullName (fullName){
             const word = fullName.split(' ');
-            this.name = word[0];
-            this.lastName = word[1];
+            this.name = word.shift();
+            this.lastName = word.join(' ');
         }
     };
     return Person;
@@ -29,9 +29,10 @@ p.lastName = 'parangaricutirimicuaro';
 console.log(p.name);
 console.log(p.lastName);
 console.log(p.fullName);
-p.fullName = 'Pancho Lopez';
+p.fullName = 'Pancho Lopez Lara';
 console.log(p.name);
 console.log(p.lastName);
 console.log(p.fullName);
 */
+
 module.exports = Person;

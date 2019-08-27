@@ -32,3 +32,11 @@ test ('Test for Person Name: Federico Gonzalez', () => {
     expect (p.fullName).toEqual('Federico Gonzalez');
     
 });
+
+test ('Test for Person Name: Federico Gonzalez', () => {
+    p.fullName = 'Pablo Lopez Hernandez'
+    expect (p.name).toEqual('Pablo');
+    expect (p.lastName).toEqual('Lopez Hernandez');
+    expect (p.fullName).toEqual('Pablo Lopez Hernandez');
+    
+});
