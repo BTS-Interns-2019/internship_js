@@ -9,15 +9,15 @@ Create constructors for 2d and 3d figures
 * each figure has
   * constructor
     * Define all needed mesures to know the figure dimension
-  * *getters*
+  * getters
     * `descriptionObj`: an object representation of the figure with:
-      * `type`: <string>
-      * `mesures`: <object> key value of each needed messure to define the figure
-        * valid names are `base`, `height`, `radius`, `vHeight` in this order
+      - `type`: \<string> as
+      - `mesures`: \<object> key value of each needed messure to define the figure
+      - valid names are `base`, `height`, `radius`, `vHeight` in this order
     * `description`: a text representation of the figure, based on `descriptionObj`
       * example `Cube of base = 10`
-    * `area`: <number>
-    * `perimeter`: <number>
+    * `area`: \<number>
+    * `perimeter`: \<number>
 
 * Create 2d objects for
   * `Rectangle`
@@ -47,7 +47,7 @@ square.perimeter; // 40
 
 const cube = new Cube(10);
 cube.perimeter; // 40
-cube.area; // 40
+cube.area; // 240
 cube.descriptionObj;
 // {
 //   type: 'Cube',
@@ -59,7 +59,7 @@ cube.description; // Cube of base = 10
 
 
 const triangle = new Triangle(10, 11);
-const fakeCube = new Cube(triangle) // [error]
+const fakeCube = new Cube(triangle, 20) // [error]
 // Error creating Cube: It expects an object of Type Square but got Triangle instead
 ```
 
