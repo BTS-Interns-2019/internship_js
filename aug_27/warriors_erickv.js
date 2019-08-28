@@ -14,6 +14,7 @@ Persona.attack = function attack (target){
   let shield = target.shieldPoints -= this.attackPoints
   target.shieldPoints = shield;
   if(shield < 0){
+    target.shieldPoints = 0;
     target.healthPoints += shield;
   }
   if(target.healthPoints <= 0){
@@ -79,15 +80,10 @@ Ninja.legion = []
 module.exports = {
   Samurai,
   Ninja
-}
+};
 
-// const Algren = new Samurai()
-// const Arun = new Samurai()
+// const Katsumoto = new Samurai();
+// const Masamune = new Samurai();
 
-// const Kabuto = new Ninja()
-// const Hatori = new Ninja()
-
-
-
-
-
+// const Hatori = new Ninja();
+// const Ishikawa = new Ninja();
