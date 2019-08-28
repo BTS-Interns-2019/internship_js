@@ -1,14 +1,14 @@
 function Person(name, lastName) {
   const per = {
-    'name' : name,
-    'lastName' : lastName,
+    name,
+    lastName,
     get fullName() {
-      return this.name+' '+this.lastName;
+      return `${this.name} ${this.lastName}`;
     },
     set fullName(full) {
-      this.lastName = full.split(' ');
-      this.name = this.lastName.splice(0, this.lastName.length - 1 > 0 || 1).join('');
-      this.lastName = this.lastName.join(' ');
+      const nameArr = full.split(' ');
+      this.name = nameArr.shift();
+      this.lastName = nameArr.join(' ');
     },
   };
   return per;
