@@ -10,9 +10,9 @@ let Person = {
         let diff = target.shieldPoints - this.attackPoints;
         if(diff <= 0){
             target.shieldPoints = 0;
-            this.healthPoints -= Math.abs(diff);
+            target.healthPoints -= Math.abs(diff);
         }else {
-            this.shieldPoints -= this.attackPoints;
+            target.shieldPoints -= this.attackPoints;
         }
         if(target.healthPoints <= 0){
             target.isDead = true; 
@@ -78,18 +78,19 @@ Samurai.prototype = Person;
 
 
 
-const ninjaGaiden = new Ninja();
-const ninjaNaruto = new Ninja();
+// const ninjaGaiden = new Ninja();
+// const ninjaNaruto = new Ninja();
 
-const samTanjiro = new Samurai();
-const samBatusai = new Samurai();
+// const samTanjiro = new Samurai();
+// const samBatusai = new Samurai();
 
-ninjaGaiden.heal(10); // 110
-ninjaGaiden.healUnit(20); // undefined
-ninjaGaiden.heal; // 130
-ninjaNaruto.heal; // 120
+// ninjaGaiden.heal(10); // 110
+// ninjaGaiden.healUnit(20); // undefined
+// ninjaGaiden.heal; // 130
+// ninjaNaruto.heal; // 120
 
-samTanjiro.heal; // 100
-samBatusai.breathing(ninjaGaiden); // false
-ninjaGaiden.healUnit; // 130
-console.log(ninjaGaiden.isDead);   // false
+// samTanjiro.heal; // 100
+// samBatusai.breathing(ninjaGaiden); // false
+// ninjaGaiden.healUnit; // 130
+// console.log(ninjaGaiden.isDead);   // false
+module.exports = {Ninja,Samurai};
