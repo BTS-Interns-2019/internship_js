@@ -1,5 +1,5 @@
 class Persona {
-  constructor(){
+  constructor() {
 		this.healthPoints = 100,
 		this.shieldPoints = 20,
 		this.attackPoints = 0,
