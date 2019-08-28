@@ -4,7 +4,13 @@ const Persona = {
   healthPoints: 100,
   shieldPoints: 20,
   attackPoints: 0,
-  isDead: false,
+  dead: false,
+  get isDead() {
+    return this.dead;
+  },
+  set isDead(killed) {
+    this.dead = killed;
+  },
 
   // methods
   attack(target) {
