@@ -9,7 +9,7 @@ const Persona = {
   // methods
   attack(target) {
     if (target.isDead) {
-      return;
+      return target.isDead;
     }
 
     const remainer = target.shieldPoints - this.attackPoints;
@@ -65,10 +65,10 @@ Ninja.instances = [];
 Ninja.prototype = Persona;
 
 // Samurai Constructor
-function Samurai(armour) {
+function Samurai(armor) {
   Samurai.instances.push(this);
   this.attackPoints = 10;
-  this.armour = armour;
+  this.armor = armor;
 
   this.breathing = (target) => {
     this.attackPoints *= 2.5;
