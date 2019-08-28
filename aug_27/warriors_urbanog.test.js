@@ -17,6 +17,7 @@ describe('Test for warriors', () => {
   });
   test('Samurai attaking', () => {
     expect(Tanjiro.breathing(ninjaGaiden)).toBe(false);
+    expect(ninjaGaiden.healthPoints).toBe(95);
   });
 
 

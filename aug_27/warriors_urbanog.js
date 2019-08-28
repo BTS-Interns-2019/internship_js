@@ -89,4 +89,5 @@ console.log(samBatusai.breathing(ninjaGaiden)); // false
 console.log(ninjaGaiden.healthPoints); // 105
 console.log(ninjaGaiden.isDead); // false
 
+console.log(ninjaGaiden.healthPoints);
 module.exports = { Ninja, Samurai }; 
