@@ -59,6 +59,7 @@ function Ninja(weapon) {
     this.attackPoints *= 2;
     this.attack(target);
     this.attackPoints = 20;
+    return target.isDead;
   };
 }
 Ninja.instances = [];
@@ -74,6 +75,7 @@ function Samurai(armor) {
     this.attackPoints *= 2.5;
     this.attack(target);
     this.attackPoints = 10;
+    return target.isDead;
   };
 }
 Samurai.instances = [];
