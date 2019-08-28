@@ -4,7 +4,8 @@
   "description": "internship exercises",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-changes": "node test_changes.js"
   },
   "repository": {
     "type": "git",
