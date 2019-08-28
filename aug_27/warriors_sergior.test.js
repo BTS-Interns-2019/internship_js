@@ -31,3 +31,16 @@ test('Vamos a crear a japosai como Ninja', () => {
     Batusai.attack(Goku);
     expect(Goku.isDead).toBe(true);
   });
+
+  test('Vamos a matar un Ninja', () => {
+    var elJhona = new Ninja('milArrugas');
+    var negroWhatspp = new Samurai('elMaCanon');
+    negroWhatspp.breathing(elJhona);
+    negroWhatspp.breathing(elJhona);
+    negroWhatspp.attack(elJhona);
+    elJhona.attack(negroWhatspp);
+    elJhona.attack(negroWhatspp);
+    elJhona.jutsu(negroWhatspp);
+    expect(elJhona.healthPoints).toBe(60);
+    expect(negroWhatspp.healthPoints).toBe(40);
+  });
