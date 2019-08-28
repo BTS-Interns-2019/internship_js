@@ -1,3 +1,5 @@
+module.exports=Persona;
+
 function Persona(){
     this.healthPoints=100;
     this.shieldPoints=20;
