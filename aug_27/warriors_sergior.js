@@ -79,6 +79,7 @@ Samurai.prototype = Person;
 
 
 // const ninjaGaiden = new Ninja();
+
 // const ninjaNaruto = new Ninja();
 
 // const samTanjiro = new Samurai();
