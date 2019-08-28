@@ -56,7 +56,7 @@ const Persona = {
 };
 
 // Ninja Constructor
-function Ninja(weapon) {
+function Ninja(weapon = 'Katana') {
   Ninja.instances.push(this);
   this.attackPoints = 20;
   this.weapon = weapon;
@@ -72,7 +72,7 @@ Ninja.instances = [];
 Ninja.prototype = Persona;
 
 // Samurai Constructor
-function Samurai(armor) {
+function Samurai(armor = 'Kozane') {
   Samurai.instances.push(this);
   this.attackPoints = 10;
   this.armor = armor;
