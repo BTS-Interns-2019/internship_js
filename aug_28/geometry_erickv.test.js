@@ -29,35 +29,32 @@ PrismTriangle.prototype = Figure
 Cilinder.prototype = Figure
 
 
-// describe('Figure Prototype check', () => {
-//   const proto = fig => {
-//     return Object.getPrototypeOf(fig)
-//   }
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(Square)).toBe(true) 
-//   });
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(Rectangle)).toBe(true)  
-//   }); 
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(Triangle)).toBe(true)   
-//   });
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(Circle)).toBe(true)  
-//   }); 
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(Cube)).toBe(true)   
-//   });
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(PrismRectangle)).toBe(true)   
-//   });
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(PrismTriangle)).toBe(true)   
-//   });
-//   test('Objects prototype = Figure', () => {
-//     expect(Figure.isPrototypeOf(Cilinder)).toBe(true) 
-//   });  
-// });
+describe('Figure Prototype check', () => {
+  test('cuadrado prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(cuadrado)).toBe(true) 
+  });
+  test('rectangulo prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(rectangulo)).toBe(true)  
+  }); 
+  test('triangulo prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(triangulo)).toBe(true)   
+  });
+  test('circulo prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(circulo)).toBe(true)  
+  }); 
+  test('cubo prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(cubo)).toBe(true)   
+  });
+  test('prismarectangular prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(prismarectangular)).toBe(true)   
+  });
+  test('prismatriangular prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(prismatriangular)).toBe(true)   
+  });
+  test('ciliondro prototype = Figure', () => {
+    expect(Figure.isPrototypeOf(cilindro)).toBe(true) 
+  });  
+});
 
 describe('Area, perimeter', () => {
   /*--------Square---------- */
