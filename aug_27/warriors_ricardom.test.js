@@ -14,3 +14,11 @@ test('values asigned Samurai',()=>{
     expect(samTanjiro.isDead).toBe(false);
 });
 
+
+test('heal Ninja',()=>{
+    ninjaGaiden.heal(10);
+    expect(ninjaGaiden.healthPoints).toBe(110);
+    expect(ninjaGaiden.attackPoints).toBe(20);
+    expect(ninjaGaiden.isDead).toBe(false);
+});
+
