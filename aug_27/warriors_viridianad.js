@@ -1,4 +1,4 @@
-let Person = {
+let Persona = {
     healthPoints:100,
     shieldPoints:20,
     attackPoints:0,
@@ -31,7 +31,7 @@ let Person = {
 
 function Ninja () {
     this.attackPoints = 20;
-    this.weapon = 'katana';
+    this.weapon = 'kat';
     this.jutsu = function (target) {
         this.attackPoints *= 2;
         this.attack(target);
@@ -42,3 +42,26 @@ function Ninja () {
     }
 }
 
+Ninja.prototype = Persona;
+
+// samurai constructor
+function Samurai () {
+    this.attackPoints = 10;
+    this.armor = 'kab';
+    this.breathing = function (target) {
+        this.attackPoints *= 2.5;
+        this.attack(target);
+        if (target.healthPoints <= 0) {
+            target.isDead = true;
+        }
+        return target.isDead ? true : false; 
+    }
+}
+
+Samurai.prototype = Persona;
+
+
+module.exports = {
+    Ninja,
+    Samurai
+}
