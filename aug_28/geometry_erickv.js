@@ -112,7 +112,7 @@ function Cilinder (radius, vHeight){
   this.radius = radius,
   this.vHeight = vHeight,
   this.area = Math.pow((Math.PI * radius), 2) * 2,
-  this.perimeter = 
+  this.perimeter = Math.PI * (radius * 2),
   this.type = 'Cilinder,'
   this.mesures = {
     radius: this.radius,
@@ -122,5 +122,14 @@ function Cilinder (radius, vHeight){
 };
 Cilinder.prototype = Figure;
 
-
-
+module.exports = {
+  Square,
+  Triangle,
+  Rectangle,
+  Circle,
+  Cube,
+  PrismRectangle,
+  PrismTriangle,
+  Cilinder,
+  Figure
+}
