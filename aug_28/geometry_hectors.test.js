@@ -57,6 +57,8 @@ describe('Measure tests', () => {
             expect(figure.descriptionObj.measures.radius).not.toBeUndefined();
             expect(figure.descriptionObj.measures.vHeight).not.toBeUndefined();
             break;
+          default:
+            break;
         }
       });
     });

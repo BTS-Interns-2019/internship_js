@@ -56,7 +56,7 @@ Object.defineProperties(Figure, {
 // Rectangle
 function Rectangle(base, height) {
   Figure.apply(this, [base, height]);
-  this.descriptionObj.type = 'Rectangle';
+  this.descriptionObj = 'Rectangle';
   this.area = (() => this.base * this.height)();
   this.perimeter = (() => (this.base * 2) + (this.height * 2))();
 }
@@ -65,7 +65,7 @@ Rectangle.prototype = Object.create(Figure);
 // Square
 function Square(base) {
   Figure.apply(this, [base]);
-  this.descriptionObj.type = 'Square';
+  this.descriptionObj = 'Square';
   this.area = (() => this.base ** 2)();
   this.perimeter = (() => this.base * 4)();
 }
@@ -74,7 +74,7 @@ Square.prototype = Object.create(Figure);
 // Triangle
 function Triangle(base, height) {
   Figure.apply(this, [base, height]);
-  this.descriptionObj.type = 'Triangle';
+  this.descriptionObj = 'Triangle';
   this.area = (() => (this.base * this.height) / 2)();
   // this perimeter assumes the height of the triangle is right at the middle of the base
   this.perimeter = (() => {
