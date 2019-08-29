@@ -1,4 +1,3 @@
-//https://reqres.in/api/users/2
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const url = 'https://reqres.in/api/users/2';
