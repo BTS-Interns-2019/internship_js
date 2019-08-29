@@ -190,15 +190,3 @@ module.exports = Cube;
 module.exports = PrismRectangle;
 module.exports = PrismTriangle;
 module.exports = Cilinder;
-
-const a = new Square(2);
-const b = new Rectangle(2, 4);
-const c = new Triangle(1, 1);
-const d = new Circle(1);
-const e = new Cube(10);
-const f = new PrismRectangle(1, 2, 3);
-const g = new PrismTriangle(1, 1, 3);
-const h = new Cilinder(1, 3);  
-
-console.log(c instanceof Rectangle);
-console.log(h instanceof Square);
