@@ -1,4 +1,5 @@
 function ajax(){
+    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     const http = new XMLHttpRequest();
     const url = 'https://reqres.in/api/users/2'
     http.onreadystatechange = function(){
