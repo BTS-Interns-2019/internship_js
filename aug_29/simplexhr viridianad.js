@@ -3,7 +3,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const dato = new XMLHttpRequest(); //creamos un objeto
 dato.open('GET', 'https://reqres.in/api/users/2'); //especificamos metodo, URL
 dato.onload = function() {
-    if(dato.readyState === 4) {
+    if(dato.status === 200) {
         console.log(dato.responseText)
       // respuesta lista para procesar
     }
