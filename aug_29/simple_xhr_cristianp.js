@@ -83,3 +83,5 @@ if (req.status == 200)
 
 /*var xhr = new XMLHttpRequest();
 xhr.open("GET", "https://reqres.in/api/users/2",false);*/
+
+module.exports = {get, post, request};
