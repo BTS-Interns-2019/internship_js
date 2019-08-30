@@ -12,7 +12,8 @@ const data = `{
   'grateful': 'Thank you.' 
 }`;
 
-request('GET', url, data);
+request('GET', `${url}/funny_cats`);
+request('POST', `${url}/grateful`, data);
 /*-----------------Promise Get---------------------- */
 // const promiseGet = new Promise( (resolve, reject) => {
 //   const Http = new XMLHttpRequest();
@@ -52,21 +53,12 @@ request('GET', url, data);
 
 /*-------------------------Refactor------------------------ */
 function request(method, url, data){
-  if(method === 'GET'){
-    return new Promise( (resolve, reject) => {
+    const thisPromise = new Promise( (resolve, reject) => {
       const Http = new XMLHttpRequest()
-      Http.open('GET', `${url}/funny_cats`)
-      Http.send()
+      Http.open(method, url)
+      Http.send(data)
     });
-  }
-  else if(method === 'POST'){
-
-    return new Promise( (resolve, reject) => {
-      const Http = new XMLHttpRequest()
-        Http.open('POST', `${url}/thanks_message`)
-        Http.send(data)
-    });
-  }
+  
 /*-------------track request-response-------------- */
   Http.onreadystatechange = function(){
     if(this.readyState === 4 && this.status === 200){
@@ -78,7 +70,7 @@ function request(method, url, data){
     }      
   }
 /*----------------------then-catch----------------- */
-    Promise.then( (response) => {
+    thisPromise.then( (response) => {
       console.log(
         {
         msg: 'Success!',
