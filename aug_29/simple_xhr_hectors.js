@@ -50,11 +50,7 @@ function request(method, url, onSuccess, onError, data) {
   }
 
   xhr.open(method, url);
-  if (dataString) {
-    xhr.send(dataString);
-  } else {
-    xhr.send();
-  }
+  dataString ? xhr.send(dataString) : xhr.send();
 
   xhr.onload = () => {
     xhr.status < 200 || xhr.status > 299 ? onError(xhr.responseText) : onSuccess(xhr.responseText);
@@ -77,4 +73,6 @@ function post(url, data, onSuccess, onError) {
 
 module.exports = {
   request,
+  get,
+  post,
 };
