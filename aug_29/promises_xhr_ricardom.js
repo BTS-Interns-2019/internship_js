@@ -1,15 +1,4 @@
 
-/*Lo que hicimos en clase */
-
-// const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-// const xhr = new XMLHttpRequest();
-// xhr.open("GET", "https://reqres.in/api/users/2", true);
-// xhr.onload = function(){
-//     console.log(xhr.responseText);
-// };
-// xhr.send();
-
-
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 function get(url, onSuccess, onError) {
@@ -29,7 +18,7 @@ function get(url, onSuccess, onError) {
     };
   }
   
-    //get('https://reqres.in/api/users/2', function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
+//   get('https://reqres.in/api/users/2', function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
 
 
 
@@ -55,4 +44,6 @@ function get(url, onSuccess, onError) {
     "job": "leader"
 }
   
-    // post('https://reqres.in/api/users',JSON.stringify(data),function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
+  post('https://reqres.in/api/users',JSON.stringify(data),function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
+
+
