@@ -1,5 +1,5 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
+const {get, post, request} = require ('./simple_xhr_urbanog');
 const url = 'https://reqres.in/api/users/2';
 
 function promisesXhr(method, url) {
@@ -25,13 +25,30 @@ function promisesXhr(method, url) {
         http.send();
     });
 }
-function resolve(response) {
-    console.log(response);
-  }
-  function reject(e, st) {
-    console.log(e, st);
-  }
-promisesXhr('GET', url)
-.then (resolve)
-.catch(reject);
 
+// promise
+
+
+function promRequest(){
+  return new Promise((resolve, reject) =>{
+    request(url, method, body)
+  });
+}
+function promPost(url, data) {
+  return new Promise ((resolve, reject) => {
+    request(url, 'POST', data)
+});
+}
+function promGet(url) {
+  return new Promise ((resolve, reject) => {
+    request(url, 'get')
+});
+}
+
+const me = {
+  name: 'urabano',
+  apellido: 'gonzalez'
+}
+promPost('https://envkltpq4il7.x.pipedream.net', me);
+
+promGet('https://envkltpq4il7.x.pipedream.net');

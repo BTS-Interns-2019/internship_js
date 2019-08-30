@@ -22,7 +22,7 @@ function get(url) {
     getR.send();
 }
 
-get(url);
+// get(url);
 //function post
 function post(url, body) {
     //Format the body parameter to simple text
@@ -40,7 +40,7 @@ const data = {
 };
 
 //Recieves a url, and an object to send the information to the server
-post('https://reqres.in/api/users', data);
+// post('https://reqres.in/api/users', data);
 
 //Recieves a url, a method on string or a body
 function request(url, method, body) {
@@ -59,7 +59,7 @@ function request(url, method, body) {
             break;
     }
 }
-request('https://reqres.in/api/users/4', 'get');
+// request('https://reqres.in/api/users/4', 'get');
 
 // This function handle the callback and catch the errors for requests
 // revieves an XMLHTTPREQUEST object as parameter
@@ -79,4 +79,9 @@ function processRequest(xhrObj) {
             error(`${this.status} ${this.statusText}`);
         }
     };
+}
+
+
+module.exports = {
+    get, post, request,
 }
