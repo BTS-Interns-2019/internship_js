@@ -52,3 +52,5 @@ const me = {
 promPost('https://envkltpq4il7.x.pipedream.net', me);
 
 promGet('https://envkltpq4il7.x.pipedream.net');
+
+request('DELETE','https://envkltpq4il7.x.pipedream.net/post/1')

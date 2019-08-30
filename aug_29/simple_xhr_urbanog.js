@@ -43,21 +43,16 @@ const data = {
 // post('https://reqres.in/api/users', data);
 
 //Recieves a url, a method on string or a body
-function request(url, method, body) {
+function request(method, url, body) {
     if (typeof method !== 'string') {
         return 'Method parameter, must be a String';
     }
     let meth = method.toUpperCase();
-    switch (meth) {
-        case 'GET':
-            get(url);
-            break;
-        case 'POST':
-            post(url, body);
-        default:
-            'Bad method choice';
-            break;
-    }
+    const postBody = JSON.stringify(body);
+    const request = new XMLHttpRequest();
+    request.open(meth, url, true);
+    processRequest(request);
+    request.send(postBody);
 }
 // request('https://reqres.in/api/users/4', 'get');
 
