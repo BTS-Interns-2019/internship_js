@@ -57,7 +57,7 @@ dato.onload = function() {
   
   const dataString = {
       name: 'Viridiana',
-      job: 'De la rocha'
+      lastname: 'De la rocha'
     };
     
   console.log(post('https://reqres.in/api/users', JSON.stringify(dataString), function success(responseText) {
