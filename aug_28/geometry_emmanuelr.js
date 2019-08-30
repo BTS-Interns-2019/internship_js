@@ -87,7 +87,7 @@ Triangle.prototype = Object.create(Figure, {
   },
   perimeter: {
     get() {
-      return this.mesures.base * 3;
+      return (Math.hypot((this.mesures.base / 2), this.mesures.height) * 2) + this.mesures.base;
     },
   },
 });
