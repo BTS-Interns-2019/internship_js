@@ -31,17 +31,17 @@ function promisesXhr(method, url) {
 
 function promRequest(){
   return new Promise((resolve, reject) =>{
-    request(url, method, body)
+    request(method, url, body)
   });
 }
 function promPost(url, data) {
   return new Promise ((resolve, reject) => {
-    request(url, 'POST', data)
+    request('POST', url, data)
 });
 }
 function promGet(url) {
   return new Promise ((resolve, reject) => {
-    request(url, 'get')
+    request('get', url)
 });
 }
 
