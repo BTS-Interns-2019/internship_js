@@ -1,5 +1,6 @@
 
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+/*var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const dato = new XMLHttpRequest(); //creamos un objeto
 dato.open('GET', 'https://reqres.in/api/users/2'); //especificamos metodo, URL
 dato.onload = function() {
@@ -8,11 +9,36 @@ dato.onload = function() {
       // respuesta lista para procesar
     }
   }
-  dato.send();
+  dato.send();*/
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+function get(url) {
+  return new Promise(function(resolve, reject) {
+    const dato = new XMLHttpRequest(); //creamos un objeto
+    dato.open('GET' ,'https://reqres.in/api/users/2');
+    dato.onload = function() {
+      if (dato.status === 200) {
+        resolve(dato.responseText)
+  }
+  else{
+    reject(Error(dato.statusText));
+  }
+};
 
-//fase de peticion
-/*  0: Petición aún no inicializada
-    1: Conexión establecida con el servidor
-    2: Petición enviada
-    3: Proceso de la petición
-    4: Respuesta lista*/
+    dato.onError=function(){
+      reject(Error('Error'));
+    };
+    dato.send();
+  })
+}
+
+get().then(function(response) {
+  console.log("Success!", response);
+}, function(error) {
+  console.error("Failed!", error);
+});
+
+
+
+
+ 
+ 
