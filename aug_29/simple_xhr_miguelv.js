@@ -30,8 +30,10 @@ function(status){
     console.log("error: ",status)
 })
 function post(url,dataString,onsuccess,onerror){
-
+    let http=new XMLHttpRequest();
+    http.open("POST",url);
 }
+
 function request(method,url,dataString,onsuccess,onerror){
-    
+    let http=new XMLHttpRequest();
 }
