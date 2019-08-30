@@ -12,8 +12,7 @@ const data = `{
   'grateful': 'Thank you.' 
 }`;
 
-request('GET', `${url}/funny_cats`);
-request('POST', `${url}/grateful`, data);
+
 /*-----------------Promise Get---------------------- */
 // const promiseGet = new Promise( (resolve, reject) => {
 //   const Http = new XMLHttpRequest();
@@ -51,38 +50,50 @@ request('POST', `${url}/grateful`, data);
 //   console.log(`Something went bad: ${reason}`)
 // })
 
+get(`${url}/funny_cats`).then ( (res) => console.log(res)).catch((reason) => { console.log ('no sirvio')})
+post(`${url}/grateful`, data).catch((reason) => { console.log ('no sirvio')})  // this are handlers.
+
+/*----------------GET----------------------- */
+function get(url){
+
+  return request('GET', url);
+};
+/*----------------POST---------------------- */
+function post(url, data){
+
+  return request("POST", url, data);
+};
 /*-------------------------Refactor------------------------ */
 function request(method, url, data){
     const thisPromise = new Promise( (resolve, reject) => {
       const Http = new XMLHttpRequest()
       Http.open(method, url)
       Http.send(data)
-    });
-  
+    
 /*-------------track request-response-------------- */
-  Http.onreadystatechange = function(){
-    if(this.readyState === 4 && this.status === 200){
+  Http.onload = function(){
+    if(this.status === 200){
       let response = JSON.parse(this.responseText)
-      resolve(response)
+      resolve(response);
     }
     else{
-      reject(response)
+      let reason = JSON.parse(this.responseText)
+      reject(reason);
     }      
   }
+  Http.onerror = function(error){
+    reject(error)
+  }
+})
 /*----------------------then-catch----------------- */
-    thisPromise.then( (response) => {
-      console.log(
-        {
+    return thisPromise.then( (response) => {
+      return `{
         msg: 'Success!',
-        body: response
-        });
+        body: ${response}
+        }`;
     }).catch( (reason) => {
-      console.log(
-        {
-          msg: 'Something went wrong...',
-          body: reason
-        });
-    })
+      return Promise.reject(reason)
+    });
 };
 
 
