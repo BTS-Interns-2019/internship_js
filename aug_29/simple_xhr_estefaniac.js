@@ -70,4 +70,9 @@ function request(method, url, dataString, onSuccess, onError) {
     
 console.log(request('POST','https://reqres.in/api/users/2', JSON.stringify(dataString), function success(responseText) {
     console.log(responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
-    
+
+module.exports = {
+    get,
+    post,
+    request
+}

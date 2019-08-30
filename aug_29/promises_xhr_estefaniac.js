@@ -70,3 +70,10 @@ function requestPromise (method, url, dataString) {
 
 console.log(requestPromise('POST','https://reqres.in/api/users/2', JSON.stringify(dataString)).then(function(responseText) {
     console.log('response', responseText)}).catch((function error(e) {console.log(e.status, e.statusText, e)})));
+
+    
+module.exports = {
+    getPromise,
+    postPromise,
+    requestPromise
+}
