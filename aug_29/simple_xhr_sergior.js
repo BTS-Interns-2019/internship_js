@@ -68,7 +68,7 @@ const dataString = {
   };
 
 
-function post(url, dataString, onsuccess, onerror){
+function post(url, onsuccess, onerror, dataString){
 
     const http = new XMLHttpRequest();
     http.open("POST", url);
@@ -92,7 +92,13 @@ http.send(dataString);
 
 
 
-function request(method, url, dataString, onsuccess, onerror){
+function request(method, url, onsuccess, onerror,dataString){
+    if(method == 'GET'){
+        get(url,onsuccess,onerror);
+    }else if(method == 'POST'){
+        post(url, onsuccess, onerror,dataString)
+    }
+
     
 };
 
@@ -103,9 +109,16 @@ get('https://en74aq4z283n.x.pipedream.net',function (respuesta){
     
 })
 
-post('https://en74aq4z283n.x.pipedream.net/', dataString, function (respuesta){
+post('https://en74aq4z283n.x.pipedream.net/', function (respuesta){
     console.log(respuesta+ "nestor se la come");   
 }, function (respuesta){
 
     console.log(respuesta); 
-});
+},dataString);
+
+request('POST','https://en74aq4z283n.x.pipedream.net/', function (respuesta){
+    console.log(respuesta+ "nestor se la come");   
+}, function (respuesta){
+
+    console.log(respuesta); 
+},dataString);
