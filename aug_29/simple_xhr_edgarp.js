@@ -1,11 +1,16 @@
 //GET
 
-function ajaxGet (URL, onsuccess, onerror) {
+function ajaxGet (URL) {
     let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
     let req = new XMLHttpRequest ();
     req.open ('GET', URL, true);
-    req.addEventListener('load', function () {
+    Gets (req, show, error );
+    
+}
+
+function Gets(req, onsuccess, onerror ) {
+req.addEventListener('load', function () {
         if (req.status >= 200 && req.status < 400) {
        onsuccess(req.responseText);
         } else {
@@ -16,7 +21,7 @@ function ajaxGet (URL, onsuccess, onerror) {
         console.error('network error');
     });
     req.send(null);
-}
+};
 
 function show (answer){
     console.log(answer);
@@ -26,7 +31,7 @@ function error (err){
     console.log(err);
 }
 
-ajaxGet ('https://reqres.in/api/users/2', show, error);
+ajaxGet ('https://reqres.in/api/users/2');
 
 //POST
 function ajaxPost (URL, datastring, onsuccess, onerror) {
@@ -70,6 +75,6 @@ function ajaxRequest (method, URL, datastring, onsuccess, onerror) {
     }   
 };
 
-ajaxRequest ('POST', 'https://reqres.in/api/users', JSON.stringify(data), show, error);
+ajaxRequest ('Post', 'https://reqres.in/api/users/2', JSON.stringify(data), show, error);
 
 
