@@ -1,45 +1,31 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-function get(url, onSucess, onError) {
+function request(method, url, dataString, onSucess, onError) {
   const http = new XMLHttpRequest();
-  http.open('GET', url);
-  console.log(http.send());
+  http.open(method, url);
+  http.send(dataString);
   http.onload = () => {
-    if (http.status < 400) {
-      console.log('funcionó correctamente');
-    } else {
-      console.log('hubo una respuesta negativa');
+    if (http.status >= 400) {
       return onError(http);
     }
-    http.onerror = (e) => {
-      console.log('errorcillo: ', e);
-      onError(http);
-    };
+    onSucess(http.responseText);
+  };
+  http.onerror = (e) => {
+    onError(http, e);
   };
 }
+function get(url, onSucess, onError) {
+  request('GET', url, undefined, onSucess, onError);
+}
+function post(url, dataString, onSucess, onError) {
+  request('POST', url, dataString, onSucess, onError);
+}
+
 get(
   'https://reqres.in/api/users/2',
   respuesta => console.log(':) ', respuesta),
   respuesta => console.log(':( ', respuesta),
 );
-
-function post(url, dataString, onSucess, onError) {
-  const http = new XMLHttpRequest();
-  http.open('POST', url);
-  console.log(http.send(dataString));
-  http.onload = () => {
-    if (http.status < 400) {
-      console.log('uncionó correctamente');
-    } else {
-      console.log('hubo una respuesta negativa');
-      return onError(http)
-    }
-    http.onerror = (e) => {
-      console.log('errorcillo: ', e);
-      onError(http);
-    };
-  };
-}
 const user = JSON.stringify(
   {
     name: 'morpheus',
@@ -52,13 +38,6 @@ post(
   respuesta => console.log(':) ', respuesta),
   respuesta => console.log(':( ', respuesta),
 );
-
-function request(method, url, dataString, onSucess, onError) {
-  if (method === 'GET') get(url, onSucess, onError);
-  else if (method === 'Post') post(url, dataString, onSucess, onError);
-  else console.log('hay algo mal en este request');
-}
-
 request(
   'POST',
   'https://reqres.in/api/users/2',

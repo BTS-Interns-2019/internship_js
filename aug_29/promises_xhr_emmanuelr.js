@@ -1,25 +1,50 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-const get = (url) => {
+const request = (method, url, dataString) => {
   return new Promise((resolve, reject) => {
     const http = new XMLHttpRequest();
-    http.open('GET', url);
-    http.send();
+    http.open(method, url);
+    http.send(dataString);
     http.onload = () => {
-      if (http.status < 400) {
-        resolve(http.responseText);
-      } else {
-        reject(`status: ${http.status}, ${http}`);
+      if (http.status >= 400) {
+        reject(http);
       }
-      http.onerror = (e) => {
-        reject(e);
-      };
+      resolve(http.responseText);
+    };
+    http.onerror = (e) => {
+      reject(http, e);
     };
   });
 };
+function get(url) {
+  return request('GET', url, undefined);
+}
+function post(url, dataString) {
+  return request('POST', url, dataString);
+}
 
-const url = ('https://reqres.in/api/users/2');
+let url = 'https://reqres.in/api/use/2';
 get(url)
+  .then((value) => {
+    console.log(`Result: ${value}`);
+  }).catch((error) => {
+    console.warn(`Error: ${error}`);
+  });
+url = 'https://reqres.in/api/users';
+const user = JSON.stringify(
+  {
+    name: 'morpheus',
+    job: 'leader',
+  },
+);
+post(url, user)
+  .then((value) => {
+    console.log(`Result: ${value}`);
+  }).catch((error) => {
+    console.warn(`Error: ${error}`);
+  });
+
+request('POST', url, user)
   .then((value) => {
     console.log(`Result: ${value}`);
   }).catch((error) => {
