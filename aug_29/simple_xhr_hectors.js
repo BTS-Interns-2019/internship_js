@@ -40,54 +40,55 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 /**
  * Functions using XMLHttpRequests
  */
+// Function that executes a request depending on the method
+function executeRequest(method, url, onSuccess, onError, dataString) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open(method, url);
+  if (dataString) {
+    xhr.send(dataString);
+  } else {
+    xhr.send();
+  }
+
+  xhr.onload = () => {
+    xhr.status < 200 || xhr.status > 299 ? onError(xhr.responseText) : onSuccess(xhr.responseText);
+  };
+
+  xhr.onerror = () => {
+    onError(xhr.responseText);
+  };
+}
+
+// GET request wrapper
 function get(url, onSuccess, onError) {
-  const xhr = new XMLHttpRequest();
-
-  xhr.open('GET', url);
-  xhr.send();
-
-  xhr.onload = () => {
-    xhr.status < 200 || xhr.status > 299 ? onError(xhr.responseText) : onSuccess(xhr.responseText);
-  };
-
-  xhr.onerror = () => {
-    onError(xhr.responseText);
-  };
+  executeRequest('GET', url, onSuccess, onError);
 }
 
-get('https://reqres.in/api/users/4', response => console.log(response), response => console.log(`Error: ${response}`));
+// get('https://reqres.in/api/users/4', response => console.log(response), response => console.log(`Error: ${response}`));
 
-function post(url, dataString, onSuccess, onError) {
-  const xhr = new XMLHttpRequest();
-
-  xhr.open('POST', url);
-  xhr.send(dataString);
-
-  xhr.onload = () => {
-    xhr.status < 200 || xhr.status > 299 ? onError(xhr.responseText) : onSuccess(xhr.responseText);
-  };
-
-  xhr.onerror = () => {
-    onError(xhr.responseText);
-  };
+// POST request wrapper
+function post(url, data, onSuccess, onError) {
+  executeRequest('POST', url, onSuccess, onError, JSON.stringify(data));
 }
 
-const dataString = {
+const data = {
   name: 'morpheus',
   job: 'leader',
 };
 
-post(
-  'https://reqres.in/api/users', 
-  JSON.stringify(dataString),
-  response => console.log(response), 
-  response => console.log(`Error: ${response}`)
-);
+// post(
+//   'https://reqres.in/api/users',
+//   data,
+//   response => console.log(response),
+//   response => console.log(`Error: ${response}`),
+// );
 
-function request(method, url, dataString, onSuccess, onError) {
+// Any request wrapper
+function request(method, url, data, onSuccess, onError) {
   switch (method.toUpperCase()) {
     case 'POST':
-      post(url, dataString, onSuccess, onError);
+      post(url, data, onSuccess, onError);
       break;
     case 'GET':
       get(url, onSuccess, onError);
@@ -98,10 +99,14 @@ function request(method, url, dataString, onSuccess, onError) {
   }
 }
 
-request(
-  'post',
-  'https://reqres.in/api/users', 
-  JSON.stringify(dataString),
-  response => console.log(response), 
-  response => console.log(`Error: ${response}`)
-);
+// request(
+//   'post',
+//   'https://reqres.in/api/users', 
+//   data,
+//   response => console.log(response), 
+//   response => console.log(`Error: ${response}`)
+// );
+
+module.exports = {
+  get,
+};
