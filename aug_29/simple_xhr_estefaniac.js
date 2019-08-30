@@ -27,6 +27,7 @@ function get(url, onSuccess, onError) {
 console.log(get('https://reqres.in/api/users/2', function success(responseText) {
     console.log('respuesta', responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
 
+
 function post(url, dataString, onSuccess, onError) {
     let http = new XMLHttpRequest()
     http.open('POST', url)
