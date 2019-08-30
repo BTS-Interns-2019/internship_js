@@ -64,37 +64,32 @@ http.send();
 
 const dataString = {
     nombre: 'Braulio',
-    trabajo: 'pasarse diario'
+    trabajo: 'te pasas con las tareas'
   };
 
 
 function post(url, dataString, onsuccess, onerror){
 
     const http = new XMLHttpRequest();
-    http.open("GET", url);
+    http.open("POST", url);
 
     http.onreadystatechange = function(){
 
-    if(this.readyState == 4 && this.status == 200){
-        var resultado = JSON.stringify(this.responseText);
-        onsuccess(resultado);
-       console.log(resultado.data);    
-    }else if(this.status > 299){
-        var resultado = JSON.stringify(this.responseText);
-        onerror(resultado);
+        if(this.readyState == 4 && this.status == 200){
+            var resultado = JSON.stringify(this.responseText);
+            onsuccess(resultado);
+        console.log(resultado.data);    
+        }else if(this.status > 299){
+            var resultado = JSON.stringify(this.responseText);
+            onerror(resultado);
+        }
     }
-}
+dataString = JSON.stringify(dataString);
 http.send(dataString);
 
 };
 
-post(url, dataString, 
-    function(respuesta){
-    console.log();
-    
-}, function (respuesta){
-    console.log(respuesta)
-});
+
 
 
 function request(method, url, dataString, onsuccess, onerror){
@@ -102,18 +97,15 @@ function request(method, url, dataString, onsuccess, onerror){
 };
 
 
-get('https://enwk6idcs9d6.x.pipedream.net',function (respuesta){
+get('https://en74aq4z283n.x.pipedream.net',function (respuesta){
 
     console.log(respuesta);
     
 })
 
-post(url, dataString, function (respuesta){
-
-    console.log(respuesta);
-    
+post('https://en74aq4z283n.x.pipedream.net/', dataString, function (respuesta){
+    console.log(respuesta+ "nestor se la come");   
 }, function (respuesta){
 
-    console.log(respuesta);
-    
+    console.log(respuesta); 
 });
