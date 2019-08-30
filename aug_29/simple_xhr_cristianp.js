@@ -1,7 +1,7 @@
-
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const url = 'https://enn5ncwmw9ci.x.pipedream.net';
 
-function post(url, dataString, onsuccess, onerror) {
+/*function post(url, dataString, onsuccess, onerror) {
   const XMLHttpRequest1 = require('xmlhttprequest').XMLHttpRequest;
   const http = new XMLHttpRequest1();
   const data = JSON.stringify(dataString,null);
@@ -34,11 +34,9 @@ function proceso(obj){
       onerror(this.status + " " + this.statusText);
     }
   }
-}
-
-//*/
-function request(method, url, dataString, onsuccess, onerror){
-  switch (method.toUpperCase()){
+}//*/
+function request(method, url, dataString){
+  /*switch (method.toUpperCase()){
     case 'GET':
         get(url, onsuccess, onerror);
         break;
@@ -48,9 +46,51 @@ function request(method, url, dataString, onsuccess, onerror){
     default:
         console.log('unknow method');
         break;
-  }  
+  }*/
+  return new Promise((resolve,reject)=>{
+    let http = new XMLHttpRequest();
+
+    http.open(method, url);
+    http.send(JSON.stringify(dataString));
+
+    http.onload = ()=>{
+      if(http.status >=400){
+        return reject(http);
+      }
+      resolve(http.responseText);
+    }
+    http.onerror = (e)=>{
+      reject(http, e);
+    }
+  });
+  return http;
 }
-let req = new request("post", url, "Toño");
+//let req = new request("post", url, "Toño");
+
+function get(url){
+  return request("GET", url);
+}
+function post(url, data){
+  return request("POST", url, data);
+}
+
+/*get('https://envkltpq4il7.x.pipedream.net')
+.then ((response)=>{
+  console.log(response);
+})*/
+/*post('https://envkltpq4il7.x.pipedream.net/like', {postId:01, now:Date.now()} )
+.then((response)=>{
+  console.log("El like ", response);
+})*/
+
+request("DELETE", "https://envkltpq4il7.x.pipedream.net/like", {postId:01, now:Date.now()})
+.then((response)=>{
+  console.log("el like fue borrado ", response);
+});
+
+
+
+
 /*request(
   method,
   function(respuesta) {
@@ -84,4 +124,4 @@ if (req.status == 200)
 /*var xhr = new XMLHttpRequest();
 xhr.open("GET", "https://reqres.in/api/users/2",false);*/
 
-module.exports = {get, post, request};
+//module.exports = {get, post, request};
