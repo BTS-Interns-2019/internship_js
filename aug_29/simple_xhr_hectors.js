@@ -41,8 +41,13 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
  * Functions using XMLHttpRequests
  */
 // Function that executes a request depending on the method
-function executeRequest(method, url, onSuccess, onError, dataString) {
+function request(method, url, onSuccess, onError, data) {
   const xhr = new XMLHttpRequest();
+  let dataString;
+
+  if (data) {
+    dataString = JSON.stringify(data);
+  }
 
   xhr.open(method, url);
   if (dataString) {
@@ -62,51 +67,14 @@ function executeRequest(method, url, onSuccess, onError, dataString) {
 
 // GET request wrapper
 function get(url, onSuccess, onError) {
-  executeRequest('GET', url, onSuccess, onError);
+  request('GET', url, onSuccess, onError);
 }
-
-// get('https://reqres.in/api/users/4', response => console.log(response), response => console.log(`Error: ${response}`));
 
 // POST request wrapper
 function post(url, data, onSuccess, onError) {
-  executeRequest('POST', url, onSuccess, onError, JSON.stringify(data));
+  request('POST', url, onSuccess, onError, JSON.stringify(data));
 }
-
-const data = {
-  name: 'morpheus',
-  job: 'leader',
-};
-
-// post(
-//   'https://reqres.in/api/users',
-//   data,
-//   response => console.log(response),
-//   response => console.log(`Error: ${response}`),
-// );
-
-// Any request wrapper
-function request(method, url, data, onSuccess, onError) {
-  switch (method.toUpperCase()) {
-    case 'POST':
-      post(url, data, onSuccess, onError);
-      break;
-    case 'GET':
-      get(url, onSuccess, onError);
-      break;
-    default:
-      console.log('Unknown method');
-      break;
-  }
-}
-
-// request(
-//   'post',
-//   'https://reqres.in/api/users', 
-//   data,
-//   response => console.log(response), 
-//   response => console.log(`Error: ${response}`)
-// );
 
 module.exports = {
-  get,
+  request,
 };

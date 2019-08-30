@@ -1,7 +1,7 @@
-const { get } = require('./simple_xhr_hectors');
+const { request } = require('./simple_xhr_hectors');
 
 // Promises
-const promise = new Promise((resolve, reject) => get('https://reqres.in/api/users/10', resolve, reject));
+const promise = new Promise((resolve, reject) => request('GET', 'https://reqres.in/api/users/10', resolve, reject));
 
 // Executing the promise
 promise
