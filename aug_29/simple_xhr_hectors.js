@@ -50,7 +50,7 @@ function request(method, url, onSuccess, onError, data) {
   }
 
   xhr.open(method, url);
-  dataString ? xhr.send(dataString) : xhr.send();
+  xhr.send(dataString);
 
   xhr.onload = () => {
     xhr.status < 200 || xhr.status > 299 ? onError(xhr.responseText) : onSuccess(xhr.responseText);
