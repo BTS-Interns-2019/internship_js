@@ -1,5 +1,3 @@
-
-
 /*var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const dato = new XMLHttpRequest(); //creamos un objeto
 dato.open('GET', 'https://reqres.in/api/users/2'); //especificamos metodo, URL
@@ -10,35 +8,75 @@ dato.onload = function() {
     }
   }
   dato.send();*/
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-function get(url) {
-  return new Promise(function(resolve, reject) {
-    const dato = new XMLHttpRequest(); //creamos un objeto
-    dato.open('GET' ,'https://reqres.in/api/users/2');
-    dato.onload = function() {
-      if (dato.status === 200) {
-        resolve(dato.responseText)
+  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+  const http = new XMLHttpRequest()
+  
+  http.open("GET", "https://reqres.in/api/users/2")
+  http.send()
+  
+  http.onload = () => console.log(http.responseText)
+  
+  
+  function get(url, onSuccess, onError) {
+      let http = new XMLHttpRequest()
+      http.open('GET', url)
+      http.send()
+      http.onload = () => {
+          if (http.status < 400) {
+              console.log('Ok!!!')
+          } else {
+              console.log('Algo salio mal')
+              return onError(http.responseText)
+          }
+          onSuccess(http.responseText)
+      }
+      http.onerror = (e) => console.log('Error', e)
+      onError(http)
+  };
+  
+  console.log(get('https://reqres.in/api/users/2', function success(responseText) {
+      console.log('respuesta', responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
+  
+  
+  function post(url, dataString, onSuccess, onError) {
+      let http = new XMLHttpRequest()
+      http.open('POST', url)
+      http.send(dataString)
+      http.onload = () => {
+          if (http.status < 400) {
+              console.log('Creado')
+          } else {
+              console.log('No creado')
+              return onError(http.responseText)
+          }
+          onSuccess(http.responseText)
+      }
+      http.onerror = (e) => console.log('Error', e)
+      onError(http)
   }
-  else{
-    reject(Error(dato.statusText));
-  }
-};
-
-    dato.onError=function(){
-      reject(Error('Error'));
+  
+  const dataString = {
+      name: 'Viridiana',
+      job: 'De la rocha'
     };
-    dato.send();
-  })
-}
-
-get().then(function(response) {
-  console.log("Success!", response);
-}, function(error) {
-  console.error("Failed!", error);
-});
-
-
-
-
- 
- 
+    
+  console.log(post('https://reqres.in/api/users', JSON.stringify(dataString), function success(responseText) {
+      console.log(responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
+  
+  
+  function request(method, url, dataString, onSuccess, onError) {
+      switch(method.toUpperCase()) {
+          case 'GET':
+          get(url, onSuccess, onError);
+          break;
+          case 'POST':
+          post(url, dataString, onSuccess, onError);
+          break;
+          default:
+          console.log('?');
+          break;
+      }
+  }
+      
+  console.log(request('POST','https://reqres.in/api/users/2', JSON.stringify(dataString), function success(responseText) {
+      console.log(responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
