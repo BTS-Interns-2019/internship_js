@@ -19,6 +19,8 @@ Create constructors for 2d and 3d figures
     * `area`: \<number>
     * `perimeter`: \<number>
 
+> *Note:* `descriptionObj` and `description` must be defined in the base prototype, not any other
+
 * Create 2d objects for
   * `Rectangle`
   * `Square`
