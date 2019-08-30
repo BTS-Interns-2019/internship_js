@@ -74,7 +74,7 @@ function post(url, dataString, onSuccess, onError) {
 
 const dataString = {
   name: 'morpheus',
-  job: 'leader'
+  job: 'leader',
 };
 
 post(
@@ -85,7 +85,7 @@ post(
 );
 
 function request(method, url, dataString, onSuccess, onError) {
-  switch(method.toUpperCase()) {
+  switch (method.toUpperCase()) {
     case 'POST':
       post(url, dataString, onSuccess, onError);
       break;
