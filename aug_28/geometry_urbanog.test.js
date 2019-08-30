@@ -1,5 +1,5 @@
 const {
-  Rectangle, Square, Triangle, Circle, PrismRectangule, Cube, Cilinder, PrismTriangle,
+  Rectangle, Square, Triangle, Circle, prismRectangule, Cube, Cilinder, PrismTriangle,
 } = require('./geometry_urbanog');
 
 describe('Test for geometry', () => {

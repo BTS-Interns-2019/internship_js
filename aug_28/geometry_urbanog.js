@@ -145,5 +145,5 @@ function PrismTriangle(triangle, vHeight) {
 
 
 module.exports = {
-  rectangle: Rectangle, square: Square, triangle: Triangle, Circle, prismRectangule, cube: Cube, cilinder: Cilinder, prismTriangle: PrismTriangle,
+   Rectangle, Square, Triangle, Circle, prismRectangule, Cube,  Cilinder, PrismTriangle,
 };
