@@ -1,71 +1,56 @@
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
 const url = 'https://enn5ncwmw9ci.x.pipedream.net';
 
 function post(url, dataString, onsuccess, onerror) {
-  const http = new XMLHttpRequest();
-  http.open('POST', url);
-  http.onreadystatechange = function() {
-    if (this.readyState == 4 && (this.status >= 200 && this.status < 300)) {
-      var res = dataString;
-      onsuccess(res);
-      console.log(res.data);
-    } else if (this.status > 299) {
-      var res = JSON.parse(this.datastring);
-      onerror(res);
-    }
-  };
-  http.send();
+  const XMLHttpRequest1 = require('xmlhttprequest').XMLHttpRequest;
+  const http = new XMLHttpRequest1();
+  const data = JSON.stringify(dataString,null);
+  http.open('POST', url, true);
+  proceso(http);
+  http.send(data);
 }
 
-post(
-  url,
-  function(respuesta) {
-    console.log(respuesta);
-  },
-  function(algo) {
-    console.log(algo);
-  },
-  function(error) {
-    console.log(error);
-  }
-);
+
 function get(url, onsuccess, onerror){
-      const http = new XMLHttpRequest();
-      http.open("GET", url);
-      http.onreadystatechange = function(){
-        if(this.readyState == 4 && (this.status >= 200 && this.status <300)){
-          var res = JSON.parse(this.responseText);
-          onsuccess(res);
-          console.log(res.data);
-        }else if(this.status >299){
-          var res = JSON.parse(this.responseText);
-          onerror(res);
-        }
-      }
-      http.send();
-    };
-
-get(url, function(respuesta){
-  console.log(respuesta);
-
-  },function(msjerror){
-    console.log(msjerror);
+  const XMLHttpRequest2 = require('xmlhttprequest').XMLHttpRequest;
+  const http = new XMLHttpRequest2();
+  http.open("GET", url);
+  proceso(http)
+  http.send();
+}
+function proceso(obj){
+  function onsucces(onsucces){
+    console.log("Se armo" + onsucces);
   }
-)//*/
+  function onerror(error){
+    console.log("No se armo" + error);
+  }
+  obj.onload = function(){
+    if(this.status <= 400){
+      var res = this.responseText;
+      onsucces(res);
+      console.log(res.data);
+    }else{
+      onerror(this.status + " " + this.statusText);
+    }
+  }
+}
+
+//*/
 function request(method, url, dataString, onsuccess, onerror){
   switch (method.toUpperCase()){
     case 'GET':
-        ajaxGet (URL, onsuccess, onerror);
+        get(url, onsuccess, onerror);
         break;
     case 'POST':
-        ajaxPost (URL, datastring, onsuccess, onerror);
+        post(url, dataString, onsuccess, onerror);
         break;   
     default:
         console.log('unknow method');
         break;
   }  
 }
-
+let req = new request("post", url, "Toño");
 /*request(
   method,
   function(respuesta) {
