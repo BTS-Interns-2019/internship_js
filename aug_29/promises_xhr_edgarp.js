@@ -1,13 +1,13 @@
-const promise = new Promise ((callback, callerror) => {
+const promise = new Promise ((onsuccess, onerror) => {
     let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
     let req = new XMLHttpRequest ();
     req.open ('GET', 'https://reqres.in/api/users/2', true);
     req.addEventListener('load', function () {
         if (req.status >= 200 && req.status < 400) {
-       callback(req.responseText);
+       onsuccess(req.responseText);
         } else {
-            callerror(req.status + ' ' + req.statusText)
+            onerror(req.status + ' ' + req.statusText)
         } 
     });
     req.addEventListener('error', function () {

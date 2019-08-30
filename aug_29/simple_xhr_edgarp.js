@@ -1,15 +1,15 @@
 //GET
 
-function ajaxGet (URL, callback, callerror) {
+function ajaxGet (URL, onsuccess, onerror) {
     let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
     let req = new XMLHttpRequest ();
     req.open ('GET', URL, true);
     req.addEventListener('load', function () {
         if (req.status >= 200 && req.status < 400) {
-       callback(req.responseText);
+       onsuccess(req.responseText);
         } else {
-            callerror(req.status + ' ' + req.statusText)
+            onerror(req.status + ' ' + req.statusText)
         } 
     });
     req.addEventListener('error', function () {
@@ -26,25 +26,25 @@ function error (err){
     console.log(err);
 }
 
-ajaxGet ('https://reqres.in/api/users/hjghjg', show, error);
+ajaxGet ('https://reqres.in/api/users/2', show, error);
 
 //POST
-function ajaxPost (URL, data, callback, callerror) {
+function ajaxPost (URL, datastring, onsuccess, onerror) {
     let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
     let req = new XMLHttpRequest ();
     req.open ('POST', URL, true);
     req.addEventListener('load', function () {
         if (req.status >= 200 && req.status < 400) {
-       callback(req.responseText);
+       onsuccess(req.responseText);
         } else {
-            callerror(req.status + ' ' + req.statusText)
+            onerror(req.status + ' ' + req.statusText)
         } 
     });
     req.addEventListener('error', function () {
         console.error('network error');
     });
-    req.send(data);
+    req.send(datastring);
 }
 
 const data = {
@@ -56,13 +56,13 @@ ajaxPost ('https://reqres.in/api/users', JSON.stringify(data), show, error);
 
 //REQUEST
 
-function ajaxRequest (method, URL, data, callback, callerror) {
+function ajaxRequest (method, URL, datastring, onsuccess, onerror) {
     switch (method.toUpperCase()){
         case 'GET':
-            ajaxGet (URL, show, callback, callerror);
+            ajaxGet (URL, onsuccess, onerror);
             break;
         case 'POST':
-            ajaxPost (URL, JSON.stringify(data), callback, callerror);
+            ajaxPost (URL, datastring, onsuccess, onerror);
             break;   
         default:
             console.log('unknow method');
