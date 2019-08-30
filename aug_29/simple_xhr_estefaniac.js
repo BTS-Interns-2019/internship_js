@@ -7,15 +7,35 @@ http.send()
 http.onload = () => console.log(http.responseText)
 
 
-function get(method, url, onSuccess, onError) {
+function get(url, onSuccess, onError) {
     let http = new XMLHttpRequest()
-    http.open(method, url)
+    http.open('GET', url)
     http.send()
     http.onload = () => {
         if (http.status < 400) {
-            console.log('Todo fue bien')
+            console.log('Everything is fine :D')
         } else {
-            console.log('todo salió mal')
+            console.log('Something was wrong :(')
+            return onError(http.responseText)
+        }
+        onSuccess(http.responseText)
+    }
+    http.onerror = (e) => console.log('error', e)
+    onError(http)
+};
+
+console.log(get('https://reqres.in/api/users/2', function success(responseText) {
+    console.log('respuesta', responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
+
+function post(url, dataString, onSuccess, onError) {
+    let http = new XMLHttpRequest()
+    http.open('POST', url)
+    http.send(dataString)
+    http.onload = () => {
+        if (http.status < 400) {
+            console.log('Created :D')
+        } else {
+            console.log('Not created :(')
             return onError(http.responseText)
         }
         onSuccess(http.responseText)
@@ -24,5 +44,29 @@ function get(method, url, onSuccess, onError) {
     onError(http)
 }
 
-console.log(get('GET','https://reqres.in/api/users/2', function success(responseText) {
-    console.log('respuesta', responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
+const dataString = {
+    name: 'John Wick',
+    job: 'killer'
+  };
+  
+console.log(post('https://reqres.in/api/users', JSON.stringify(dataString), function success(responseText) {
+    console.log(responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
+
+
+function request(method, url, dataString, onSuccess, onError) {
+    switch(method.toUpperCase()) {
+        case 'GET':
+        get(url, onSuccess, onError);
+        break;
+        case 'POST':
+        post(url, dataString, onSuccess, onError);
+        break;
+        default:
+        console.log('This method is unknown for us D:');
+        break;
+    }
+}
+    
+console.log(request('POST','https://reqres.in/api/users/2', JSON.stringify(dataString), function success(responseText) {
+    console.log(responseText)}, function error(e) {console.log(e.status, e.statusText, e)}));
+    
