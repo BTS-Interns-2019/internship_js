@@ -1,29 +1,77 @@
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 const url = 'https://reqres.in/api/users/2';
 const http = new XMLHttpRequest();
 
 http.open('GET', url, true);
 http.onreadystatechange = function () {
-    //readyState property eturns the state an XMLHttpRequest client is in
-    // number 4 means tha the operation is complete 
+    //readyState property returns the state an XMLHttpRequest client is in
+    // number 4 means tha the operation is complete
     if (this.readyState == 4 && this.status == 200) {
         let result = this.responseText
         console.log(result)
     }
 };
-http.send();
+// http.send();
 
-// function get
+// function get recieves an url to retrieve the data
+function get(url) {
+    const getR = new XMLHttpRequest();
+    getR.open('GET', url, true);
+    processRequest(getR);
+    getR.send();
+}
 
-function get(url, callback, error) {
-    // const { XMLHttpRequest } = require('xmlhttprequest');
-    const http = new XMLHttpRequest();
+get(url);
+//function post
+function post(url, body) {
+    //Format the body parameter to simple text
+    const postBody = JSON.stringify(body);
+    const postR = new XMLHttpRequest();
+    postR.open('POST', url, true);
+    processRequest(postR);
+    postR.send(postBody);
+}
 
-    http.open('GET', url, true);
-    http.onload = function () {
-        // readyState property eturns the state an XMLHttpRequest client is in
-        // number 4 means tha the operation is complete
+const data = {
+    name: 'Urbano',
+    apellido: 'Gonzalez',
+    edad: 22
+};
+
+//Recieves a url, and an object to send the information to the server
+post('https://reqres.in/api/users', data);
+
+//Recieves a url, a method on string or a body
+function request(url, method, body) {
+    if (typeof method !== 'string') {
+        return 'Method parameter, must be a String';
+    }
+    let meth = method.toUpperCase();
+    switch (meth) {
+        case 'GET':
+            get(url);
+            break;
+        case 'POST':
+            post(url, body);
+        default:
+            'Bad method choice';
+            break;
+    }
+}
+request('https://reqres.in/api/users/4', 'get');
+
+// This function handle the callback and catch the errors for requests
+// revieves an XMLHTTPREQUEST object as parameter
+function processRequest(xhrObj) {
+    
+    function callback(response) {
+        console.log(response);
+    }
+    function error(e) {
+        console.log(e);
+    }
+    xhrObj.onload = function () {
         if (this.status <= 400) {
             const result = this.responseText;
             callback(result);
@@ -31,52 +79,4 @@ function get(url, callback, error) {
             error(`${this.status} ${this.statusText}`);
         }
     };
-    http.send();
 }
-function callback(response) {
-    console.log(response);
-}
-function error(e) {
-    console.log(e);
-}
-//function post
-function post(url, body, callback, error) {
-    const http = new XMLHttpRequest();
-    http.open('POST', url, true);
-    http.onload = function () {
-        if (this.status <= 400) {
-            const result = this.responseText;
-            callback(result)
-        } else {
-            return error(http.status, http.statusText);
-        }
-    };
-    http.send(body);
-}
-
-const body = {
-    name: 'Urbano',
-    apellido: 'Gonzalez',
-    edad: 22
-};
-
-console.log(post('https://reqres.in/api/users', JSON.stringify(body), callback, error))
-
-function request(url, method, callback, error,body) {
-    if (typeof method !== 'string') {
-        return 'Method parameter, must be a String'
-    }
-    let meth = method.toUpperCase();
-    switch (meth) {
-        case 'GET':
-            get(url, callback, error);
-            break;
-        case 'POST':
-            post(url, body, callback, error);
-        default:
-            'Bad method choice';
-            break;
-    }
-}
-request('https://reqres.in/api/users/1', 'get', callback, error);
-
