@@ -34,7 +34,7 @@ function Triangle(b,h){
     this.type = "Triangle"
     this.base = b;
     this.height = h;
-    hp = Math.sqrt(  );
+    const hp = Math.sqrt(Math.pow(((base/2)+height),2 ));
     this.perimeter = (hp * 2) + b;
     this.area = b * h /2 ;
 }
