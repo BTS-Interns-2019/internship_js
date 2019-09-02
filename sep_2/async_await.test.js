@@ -1,5 +1,5 @@
 const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+const { get, post, request } = require('../aug_29/simple_xhr_cristianp');
 
 xhrMock.setup()
 
@@ -109,9 +109,14 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
-      // your stuff
+    return get('/users/self').then((data)=>{
+      //console.log(JSON.parse(data));
+      data = JSON.parse(data);
+      return post('/posts',{userId:data.id,
+        content:"This is my first post after beeing excomunicato"});
+    })
       .then(data => {
+        //console.log(JSON.parse(data));
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
@@ -142,7 +147,9 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
+    return get('/posts').then((data)=>{
+      console.log(JSON.parse(data));
+    })
       // your stuff
       .then(data => {
         const post = JSON.parse(data);
