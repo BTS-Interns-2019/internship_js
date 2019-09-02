@@ -39,10 +39,10 @@ function request(method, url, callback, error, body) {
         }
         callback(result);
       } else {
-        new Error(`No jokes at url: ${api.url}`);
+        new Error(`No jokes at url: ${url}`);
       }
     } else {
-      new Error(`No jokes at url: ${api.url}`);
+      new Error(`No jokes at url: ${url}`);
     
   };
   request.send(postBody);
