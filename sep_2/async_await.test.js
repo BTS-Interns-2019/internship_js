@@ -1,7 +1,9 @@
 const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+xhrMock.setup();
+const req = new XMLHttpRequest ();
+const { get, post, request } = require('../aug_29/promises_xhr_edgarp.js');
 
-xhrMock.setup()
+
 
 const userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
@@ -78,8 +80,7 @@ describe('manipulations with promises', () => {
 
 
     expect.assertions(2)
-    return get('/users/self')
-      .then(data => {
+    return get ('/users/self').then(data => {
         const user = JSON.parse(data);
         expect(user.userName).toBe('JohnWick');
         expect(user.id).toBe(userID);
@@ -109,14 +110,18 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
-      // your stuff
-      .then(data => {
+    return get('/users/self').then(data => {
+      const user = JSON.parse(data);
+      return post('/posts', {
+        userId: user.id,
+        content: 'This is my first post after being excomunicato',
+      }).then(data => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
       });
   });
+});
 
   test('like a post', () => {
     expect.assertions(3);
@@ -142,13 +147,22 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
-      // your stuff
-      .then(data => {
-        const post = JSON.parse(data);
-        expect(post.likes).toBe(1);
-      });
+    return get('/users/self').then(data => {
+      const user = JSON.parse(data);
+      return post('/posts', {
+        userId: user.id,
+        content: 'This is my first post after being excomunicato',
+      })
+        .then(data => {
+          const post = JSON.parse(data);
+          return put(`/posts/${post.id}/like`, {
+            userId: post.userId,
+          })
+            .then(data => {
+            const post = JSON.parse(data);
+              expect(post.likes).toBe(1);
+            });
+        });
+    });
   });
-
-
 });
