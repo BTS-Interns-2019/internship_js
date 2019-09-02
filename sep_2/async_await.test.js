@@ -1,7 +1,7 @@
-const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+const { default: xhrMock } = require('xhr-mock');
+const { get, post, request } = require('./promises_xhr_emmanuelr');
 
-xhrMock.setup()
+xhrMock.setup();
 
 const userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
@@ -13,8 +13,8 @@ const api = {
     body: {
       id: userID,
       userName: 'JohnWick',
-      email: 'john@wickservices.com'
-    }
+      email: 'john@wickservices.com',
+    },
   },
   postsPost: {
     method: 'post',
@@ -30,13 +30,13 @@ const api = {
       content: 'This is my first post after beeing excomunicato',
       likes: 0,
       comments: [],
-    }
+    },
   },
   likePut: {
     method: 'put',
     url: `/posts/${postID}/like`,
     requestBody: {
-      userId: userID
+      userId: userID,
     },
     body: {
       id: postID,
@@ -45,7 +45,7 @@ const api = {
       content: 'This is my first post after beeing excomunicato',
       likes: 1,
       comments: [],
-    }
+    },
   },
   commentsPost: {
     method: 'post',
@@ -61,9 +61,9 @@ const api = {
       content: 'I whish you look, even if you don\'t need it',
       likes: 0,
       postId: postID,
-    }
-  }
-}
+    },
+  },
+};
 
 describe('manipulations with promises', () => {
   beforeEach(() => xhrMock.setup());
@@ -77,9 +77,9 @@ describe('manipulations with promises', () => {
     });
 
 
-    expect.assertions(2)
+    expect.assertions(2);
     return get('/users/self')
-      .then(data => {
+      .then((data) => {
         const user = JSON.parse(data);
         expect(user.userName).toBe('JohnWick');
         expect(user.id).toBe(userID);
@@ -109,12 +109,21 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
-      // your stuff
-      .then(data => {
+    return get('/users/self')
+      .then((userText) => {
+        const user = JSON.parse(userText);
+        const dataString = JSON.stringify(
+          {
+            userId: user.id,
+            content: 'This is my first post after beeing excomunicato',
+          },
+        );
+        return post('/posts', dataString);
+      })
+      .then((data) => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
-        expect(post.content).toBe(api.postsPost.body.content)
+        expect(post.content).toBe(api.postsPost.body.content);
       });
   });
 
@@ -135,20 +144,31 @@ describe('manipulations with promises', () => {
     });
 
     xhrMock.put(api.likePut.url, (req, res) => {
-      console.log(req)
+      console.log(req);
       expect(req.body()).toBe(JSON.stringify(api.likePut.requestBody));
       return res
         .status(200)
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
-      // your stuff
-      .then(data => {
+    return get('/users/self')
+      .then((userText) => {
+        const user = JSON.parse(userText);
+        const dataString = JSON.stringify(
+          {
+            userId: user.id,
+            content: 'This is my first post after beeing excomunicato',
+          },
+        );
+        return post('/posts', dataString);
+      })
+      .then((myPostText) => {
+        const myPost = JSON.parse(myPostText);
+        return request('PUT', `/posts/${myPost.id}/like`, JSON.stringify({ userId: myPost.userId }));
+      })
+      .then((data) => {
         const post = JSON.parse(data);
         expect(post.likes).toBe(1);
       });
   });
-
-
 });
