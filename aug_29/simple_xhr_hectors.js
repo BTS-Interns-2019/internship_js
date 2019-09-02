@@ -2,7 +2,7 @@
  * Using XMLHttpRequest
  */
 // Vanilla JS API call
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+// const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 // const xhr = new XMLHttpRequest();
 // xhr.open('GET', 'https://reqres.in/api/users/2');
@@ -52,27 +52,51 @@ function request(method, url, onSuccess, onError, data) {
   xhr.open(method, url);
   xhr.send(dataString);
 
-  xhr.onload = () => {
-    xhr.status < 200 || xhr.status > 299 ? onError(xhr.responseText) : onSuccess(xhr.responseText);
-  };
-
-  xhr.onerror = () => {
-    onError(xhr.responseText);
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          onSuccess(xhr.responseText);
+        } catch (error) {
+          onError(error);
+        }
+      } else if (xhr.status) {
+        try {
+          onError(xhr.responseText);
+        } catch (error) {
+          onError(error);
+        }
+      } else {
+        onError(new Error('An error ocurred'));
+      }
+    }
   };
 }
 
 // GET request wrapper
-function get(url, onSuccess, onError) {
-  request('GET', url, onSuccess, onError);
+function get(url) {
+  return new Promise((resolve, reject) => {
+    request('GET', url, resolve, reject);
+  });
 }
 
 // POST request wrapper
-function post(url, data, onSuccess, onError) {
-  request('POST', url, onSuccess, onError, JSON.stringify(data));
+function post(url, data) {
+  return new Promise((resolve, reject) => {
+    request('POST', url, resolve, reject, data);
+  });
+}
+
+// PUT request wrapper
+function put(url, data) {
+  return new Promise((resolve, reject) => {
+    request('PUT', url, resolve, reject, data);
+  });
 }
 
 module.exports = {
   request,
   get,
   post,
+  put,
 };
