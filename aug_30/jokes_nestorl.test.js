@@ -5,12 +5,13 @@ const category = ["Programming","Miscellaneous","Dark","Any"]
 test("should be an object",()=>{
     expect(typeof giveAJoke(url,category[0])).toBe("object")
 }) 
-test("saySetup should be a string ",()=>{
-    giveAJoke(url, category[1]).then((ok)=>{
+test("saySetup should be string ",()=>{
+    giveAJoke(url, category[0]).then((ok)=>{
         expect(typeof ok.saySetup()).toBe("string")
+        expect(typeof ok.sayPunchLine()).toBe("string")
     });
 })
-test("sayPunchLine should be a string ",()=>{
+test("sayPunchLine should be string ",()=>{
     giveAJoke(url, category[1]).then((ok)=>{
         expect(typeof ok.sayPunchLine()).toBe("string")
     });
