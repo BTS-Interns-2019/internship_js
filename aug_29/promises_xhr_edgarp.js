@@ -1,3 +1,4 @@
+/*
 const Get = new Promise ((onsuccess, onerror) => {
     //let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
@@ -99,4 +100,64 @@ Request
         get,
         post,
         request,
+    } */
+
+    function request(method, url, onSuccess, onError, data) {
+  const req = new XMLHttpRequest();
+  let dataString;
+
+  if (data) {
+    dataString = JSON.stringify(data);
+  }
+
+  req.open(method, url);
+  req.send(dataString);
+
+  req.onreadystatechange = () => {
+    if (req.readyState === XMLHttpRequest.DONE) {
+      if (req.status >= 200 && req.status < 300) {
+        try {
+          onSuccess(req.responseText);
+        } catch (error) {
+          onError(error);
+        }
+      } else if (req.status) {
+        try {
+          onError(req.responseText);
+        } catch (error) {
+          onError(error);
+        }
+      } else {
+        onError(new Error('An error ocurred'));
+      }
     }
+  };
+}
+
+// GET request wrapper
+function get(url) {
+  return new Promise((resolve, reject) => {
+    request('GET', url, resolve, reject);
+  });
+}
+
+// POST request wrapper
+function post(url, data) {
+  return new Promise((resolve, reject) => {
+    request('POST', url, resolve, reject, data);
+  });
+}
+
+// PUT request wrapper
+function put(url, data) {
+  return new Promise((resolve, reject) => {
+    request('PUT', url, resolve, reject, data);
+  });
+}
+
+module.exports = {
+  request,
+  get,
+  post,
+  put,
+};

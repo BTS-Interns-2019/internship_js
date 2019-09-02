@@ -1,7 +1,6 @@
 const {default: xhrMock} = require('xhr-mock');
 xhrMock.setup();
-const req = new XMLHttpRequest ();
-const { get, post, request } = require('../aug_29/promises_xhr_edgarp.js');
+const { get, post, request, put } = require('../aug_29/promises_xhr_edgarp.js');
 
 
 
@@ -114,9 +113,9 @@ describe('manipulations with promises', () => {
       const user = JSON.parse(data);
       return post('/posts', {
         userId: user.id,
-        content: 'This is my first post after being excomunicato',
-      }).then(data => {
-        const post = JSON.parse(data);
+        content: 'This is my first post after beeing excomunicato',
+      }).then((postdata) => {
+        const post = JSON.parse(postdata);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
       });
@@ -151,7 +150,7 @@ describe('manipulations with promises', () => {
       const user = JSON.parse(data);
       return post('/posts', {
         userId: user.id,
-        content: 'This is my first post after being excomunicato',
+        content: 'This is my first post after beeing excomunicato',
       })
         .then(data => {
           const post = JSON.parse(data);
