@@ -3,7 +3,7 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 function giveAJoke(apiUrl, category) {
   if (category === '' || category === ' ') {
-    category = 'Miscellaneous';
+    category = 'dark';
   }
   return new Promise((resolve, reject) => {
     request('GET', apiUrl + '/' + category, resolve, reject);
@@ -50,7 +50,7 @@ function request(method, url, callback, error, body) {
         }
     });*/
 }
-giveAJoke('http://api.icndb.com/jokes', 'Miscellaneous')
+giveAJoke('http://api.icndb.com/jokes', '')
   .then(function(val) {
     console.log(val.hasOwnProperty('saySetup'));
     console.log(val.saySetup());
