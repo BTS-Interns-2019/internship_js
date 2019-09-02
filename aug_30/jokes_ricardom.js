@@ -1,6 +1,6 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-function giveAJoke(apiUrl, category) {
+function giveMeAJoke(apiUrl, category) {
   if (category === '' || category === ' ') {
     category = 'any'
   }
@@ -8,7 +8,7 @@ function giveAJoke(apiUrl, category) {
     request('GET', apiUrl +'/'+ category, resolve, reject);
   });
 }
-giveAJoke('http://api.icndb.com/jokes', 'random')
+giveMeAJoke('https://sv443.net/jokeapi/category/miscellaneous?type=twopart', 'random')
   .then(function (value) {
       console.log(value.hasOwnProperty('saySetup'));
       console.log(value.saySetup())
@@ -39,13 +39,14 @@ function request(method, url, callback, error, body) {
         }
         callback(result);
       } else {
-        error(`new Error (No jokes at url: ${url}`);
+       error: `new Error (No jokes at url: ${url}`;
       }
     } else {
-      error(`new Error (No jokes at url: ${url}`);
-    }
+      error:`new Error (No jokes at url: ${url}`;
+    
   };
   request.send(postBody);
 }
+}
 
-module.exports = {giveAJoke}
+module.exports = {giveMeAJoke};
