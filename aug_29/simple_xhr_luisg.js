@@ -33,10 +33,14 @@ function get(url, onsuccess, onerror) {
     request("GET",url,undefined,onsuccess,onerror);
 }
 
+function post(url,dataString, onsuccess, onerror) {
+    request("GET",url,dataString,onsuccess,onerror);
+}
+/*get('https://reqres.in/api/users/2',(x)=>{console.log(x)},(x)=>{console.log('error'+x)})
 function post(url, dataString, onsuccess, onerror) {
     request("POST",url,dataString,onsuccess,onerror);
 }
-
+*/
 
 module.exports = {
     request,
