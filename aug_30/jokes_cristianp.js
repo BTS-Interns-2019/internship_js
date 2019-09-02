@@ -1,7 +1,7 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 //const url = 'https://sv443.net/jokeapi/category/miscellaneous?type=twopart';
 
-function giveAJoke(apiUrl, category) {
+function giveMeAJoke(apiUrl, category) {
   if (category === '' || category === ' ') {
     category = 'dark';
   }
@@ -50,15 +50,15 @@ function request(method, url, callback, error, body) {
         }
     });*/
 }
-giveAJoke('http://api.icndb.com/jokes', '')
-  .then(function(val) {
-    console.log(val.hasOwnProperty('saySetup'));
-    console.log(val.saySetup());
-    console.log(val.sayPunchLine());
-  })
-  .catch(function(val) {
-    console.log(val);
-  });
+// giveMeAJoke('http://api.icndb.com/jokes', '')
+//   .then(function(val) {
+//     console.log(val.hasOwnProperty('saySetup'));
+//     console.log(val.saySetup());
+//     console.log(val.sayPunchLine());
+//   })
+//   .catch(function(val) {
+//     console.log(val);
+//   });
 
 /*function get(url){
     return request("GET", url);
