@@ -19,9 +19,9 @@ function get(url,cb,error){
         if(http.readyState == 4){
             if(http.status == 200){
             var resultado = JSON.parse(http.responseText);
-            cb(http.responseText);
+            return cb(http.responseText);
             } 
-            error(`Error ${http.status} ${url}`);
+            return error(`Error ${http.status} ${url}`);
         }
     };
     http.send();

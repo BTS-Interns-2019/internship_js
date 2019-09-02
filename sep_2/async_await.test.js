@@ -110,12 +110,12 @@ describe('manipulations with promises', () => {
     });
     //post
 
-      xhrMock.post(api.postsPost.url,JSON.stringify(api.postsPost.body), resolve, reject)
-      .then(data => {
-        const post = JSON.parse(data);
-        expect(post.userId).toBe(api.postsPost.body.userId);
-        expect(post.content).toBe(api.postsPost.body.content)
-      });
+      // get(api.postsPost.url,JSON.stringify(api.postsPost.body))
+      // .then(data => {
+      //   const post = JSON.parse(data);
+      //   expect(post.userId).toBe(api.postsPost.body.userId);
+      //   expect(post.content).toBe(api.postsPost.body.content)
+      // });
   });
 
   test('like a post', () => {
@@ -142,8 +142,11 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
     // another post
-    return new Promise((resolve, reject) => {
-      xhrMock.post(api.commentsPost.url,JSON.stringify(api.commentsPost.body), resolve, reject);
+    return get('/users/self',(ok)=>{console.log(ok)},(err)=>{console.error(err)})
+      .then(data => {
+        const user = JSON.parse(data)
+        console.log(user);
+        
       })
       .then(data => {
         const post = JSON.parse(data);
