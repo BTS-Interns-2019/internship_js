@@ -1,7 +1,6 @@
 const {
     request: requestCB,
-    get,
-    post} = require('./simple_xhr_luisg');
+    } = require('./simple_xhr_luisg');
 
 //const promise = new Promise((onsuccess, onerror) => request('GET', 'https://reqres.in/api/users/2',undefined,onsuccess,onerror));
 
@@ -10,6 +9,17 @@ const {
 function request(method,url,dataString){
     return new Promise((resolve, reject) => requestCB(method, url,dataString, resolve, reject));
 }
+
+function get(url){
+    return request("GET",url,undefined);
+}
+
+function post(url,dataString){
+    return request("POST",url,dataString);
+}
+
+module.exports = {get,post,request}
+
 
 /*request("GET",'https://reqres.in/api/users/2',undefined)
   .then(resolve => console.log('response: '+resolve))
