@@ -16,13 +16,13 @@ function giveMeAJoke(url){new Promise(function(resolve,reject){
         }
     },1000);
 })}
-function saySetup(){
+giveMeAJoke.prototype.saySetup=function(){
     let r=JSON.parse(responseText);
     console.log("success");
     console.log(r.setup);
     return r.setup;
 }
-function sayPunchLine(){
+giveMeAJoke.prototype.sayPunchLine=function(){
     let r=JSON.parse(responseText);
     console.log("success");
     console.log(r.delivery);
