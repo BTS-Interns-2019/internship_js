@@ -36,17 +36,6 @@ function proceso(obj){
   }
 }//*/
 function request(method, url, dataString){
-  /*switch (method.toUpperCase()){
-    case 'GET':
-        get(url, onsuccess, onerror);
-        break;
-    case 'POST':
-        post(url, dataString, onsuccess, onerror);
-        break;   
-    default:
-        console.log('unknow method');
-        break;
-  }*/
   return new Promise((resolve,reject)=>{
     let http = new XMLHttpRequest();
 
@@ -74,19 +63,19 @@ function post(url, data){
   return request("POST", url, data);
 }
 
-/*get('https://envkltpq4il7.x.pipedream.net')
+get('https://envkltpq4il7.x.pipedream.net')
 .then ((response)=>{
   console.log(response);
-})*/
+})
 /*post('https://envkltpq4il7.x.pipedream.net/like', {postId:01, now:Date.now()} )
 .then((response)=>{
   console.log("El like ", response);
 })*/
 
-request("DELETE", "https://envkltpq4il7.x.pipedream.net/like", {postId:01, now:Date.now()})
+/*request("DELETE", "https://envkltpq4il7.x.pipedream.net/like", {postId:01, now:Date.now()})
 .then((response)=>{
   console.log("el like fue borrado ", response);
-});
+});*/
 
 
 
