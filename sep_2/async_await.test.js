@@ -151,13 +151,11 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    /*return // promise
-      // your stuff
-      .then(data => {
+    return post('/posts').then(data => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
-      });*/
+      });
   });
 
   test('like a post', () => {
