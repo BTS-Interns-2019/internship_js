@@ -111,10 +111,24 @@ class Cube extends Figure {
 }
 
 class PrismRectangle extends Figure {
-    constructor(base, height, vHeight) {
-        super();
-        this.base = base;
-        this.height = height;
+    constructor(vHeight,...args) {
+        super()
+        switch(args.length){
+            case 1:
+                let fig = args[0]
+                if(fig.type == 'Rectangle'){
+                    this.base = fig.base;
+                    this.height = fig.height;
+                }else{
+                    throw new Error("Error creating PrismRectangle: It expects an object of Type Rectangle but got " + fig.type + " instead")
+                }
+                break;
+            case 2:
+                    this.base = args[0];
+                    this.height = args[1];
+                break;
+        }
+       
         this.vHeight = vHeight;
         this.type = 'Prism Rectangle'
         this.measures.base = this.base
@@ -130,10 +144,23 @@ class PrismRectangle extends Figure {
 }
 
 class PrismTriangle extends Figure {
-    constructor(base, height, vHeight) {
+    constructor(vHeight, ...args) {
         super();
-        this.base = base;
-        this.height = height;
+        switch(args.length){
+            case 1:
+                let fig = args[0]
+                if(fig.type == 'Triangle'){
+                    this.base = fig.base;
+                    this.height = fig.height;
+                }else{
+                    throw new Error("Error creating  PrismTriangle: It expects an object of Type Triangle but got " + fig.type + " instead")
+                }
+                break;
+            case 2:
+                    this.base = args[0];
+                    this.height = args[1];
+                break;
+        }
         this.vHeight = vHeight;
         this.type = 'Prism Triangle'
         this.measures.base = this.base
@@ -156,9 +183,16 @@ class PrismTriangle extends Figure {
 class Cilinder extends Figure {
     constructor(radius, vHeight) {
         super()
+        if (radius.type !== undefined) {
+            if (base.type != 'Circle') {
+                throw new Error("Error creating Cilinder: It expects an object of Type Circle but got " + radius.type + " instead")
+            } else {
+                radius = radius.radius;
+            }
+        }
         this.radius = radius;
         this.vHeight = vHeight
-        this.type = 'Circle'
+        this.type = 'Cilinder'
         this.measures.radius = this.radius
         this.measures.vHeight = this.vHeight
     }
