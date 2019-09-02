@@ -56,3 +56,6 @@ function get(url, onSuccess, onError) {
 }
   
     // post('https://reqres.in/api/users',JSON.stringify(data),function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
+
+
+    module.exports = {get, post}

@@ -1,7 +1,8 @@
 
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const get,post = require('xmlhttprequest').XMLHttpRequest;
 
 function get(url, onSuccess, onError) {
+    gerPromise = new Promise(url, )
     const xhr = new XMLHttpRequest();
 
     xhr.open('GET', url);
@@ -47,3 +48,6 @@ function get(url, onSuccess, onError) {
   post('https://reqres.in/api/users',JSON.stringify(data),function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
 
 
+const {request: requestCB} = require('./simple_xhr_ricardom');
+function get ()
+  
