@@ -1,5 +1,37 @@
-const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+const {default: xhrMock} = require('../node_modules/xhr-mock');
+// const XMLHttpRequest = require("../node_modules/xmlhttprequest").XMLHttpRequest;
+const { post, request } = require('../aug_29/simple_xhr_sergior');
+
+//
+//
+//
+
+function get(url, resolve, reject){
+  const http = new XMLHttpRequest();
+  http.open("GET", url);
+
+  http.onreadystatechange = function(){
+
+  if( this.status >= 200 && this.status < 299){
+      var resultado = JSON.parse(this.responseText);
+       return new Promise (( resolve,reject) => {
+         resolve(resultado)
+      console.log(resultado.data);});
+      
+  }else if(this.status > 299){
+      var resultado = JSON.parse(this.responseText);
+     return new Promise((resolve,reject)=>{
+      reject(resultado);
+     }) 
+  }
+}
+http.send();
+
+};
+
+//
+//
+//
 
 xhrMock.setup()
 
@@ -78,7 +110,10 @@ describe('manipulations with promises', () => {
 
 
     expect.assertions(2)
-    return get('/users/self')
+    return get(api.url,function(data){
+      console.log(data);
+      
+    })
       .then(data => {
         const user = JSON.parse(data);
         expect(user.userName).toBe('JohnWick');
@@ -109,7 +144,10 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
+    return new Promise((resolve, reject) =>{
+      get(api.url, resolve, reject)
+    })
+    // promise
       // your stuff
       .then(data => {
         const post = JSON.parse(data);
@@ -142,7 +180,10 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
+    return new Promise((resolve, reject) =>{
+      post(api.url, resolve, reject, api.postsPost)
+    })
+    //promise
       // your stuff
       .then(data => {
         const post = JSON.parse(data);
