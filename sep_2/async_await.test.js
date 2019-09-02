@@ -1,7 +1,7 @@
-const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+const { default: xhrMock } = require('xhr-mock');
+const { get, post, request } = require('../aug_29/promises_xhr_marlont');
 
-xhrMock.setup()
+xhrMock.setup();
 
 const userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
@@ -108,9 +108,8 @@ describe('manipulations with promises', () => {
         .status(200)
         .body(JSON.stringify(api.likePut.body));
     });
-
-    return // promise
-      // your stuff
+    // este
+    return post(api.postsPost.url, api.postsPost.requestBody)
       .then(data => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
@@ -141,9 +140,8 @@ describe('manipulations with promises', () => {
         .status(200)
         .body(JSON.stringify(api.likePut.body));
     });
-
-    return //promise
-      // your stuff
+    // y este
+    return post()
       .then(data => {
         const post = JSON.parse(data);
         expect(post.likes).toBe(1);
