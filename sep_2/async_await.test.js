@@ -1,5 +1,47 @@
 const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+function get(url){
+  return new Promise(function (resolve,reject){
+    let http=new XMLHttpRequest();
+    http.open("GET",url,true);
+    http.send();
+    http.onload=()=>{
+      if(http.status<400){
+          console.log("success");
+          resolve(http.responseText);
+      }else{
+          console.log("fail");
+          reject(http.status,http.statusText);
+      }
+    }
+    http.onerror=(e)=>{
+        console.log("Error: ",e)
+    }
+  })
+}
+
+function post(url,dataString){
+  return new Promise(function(resolve, reject){
+    let http=new XMLHttpRequest();
+    http.open("POST",url,true);
+    http.setRequestHeader("Content-type","aplication/json");
+    http.send(dataString);
+    setTimeout(function(){
+      http.onload=()=>{
+        if(http.status<400){
+            console.log("success");
+            resolve(http.responseText);
+            /*onsuccess(http.responseText);*/
+        }else{
+            console.log("fail");
+            reject(http.status,http.statusText);
+        }
+      }
+      http.onerror=(e)=>{
+          console.log("Error: ",e);
+      }
+    },10000)
+  })
+}
 
 xhrMock.setup()
 
@@ -109,13 +151,13 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
+    /*return // promise
       // your stuff
       .then(data => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
-      });
+      });*/
   });
 
   test('like a post', () => {
@@ -142,12 +184,12 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
+    /*return //promise
       // your stuff
       .then(data => {
         const post = JSON.parse(data);
         expect(post.likes).toBe(1);
-      });
+      });*/
   });
 
 
