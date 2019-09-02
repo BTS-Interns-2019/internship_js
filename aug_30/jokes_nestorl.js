@@ -1,5 +1,5 @@
 var XMLHttpRequest = require('xmlhttpRequest').XMLHttpRequest;
-const url = 'https://sv443.net/jokeapi/category';
+// const url = 'https://sv443.net/jokeapi/category';
 
 function get(url,onsuccess,error){
     const http = new XMLHttpRequest();
@@ -13,11 +13,11 @@ function get(url,onsuccess,error){
                     resultado.saySetup = ()=>{return resultado.setup };
                     onsuccess(resultado);
                 }else {
-                    error(`new Error('No jokes at url: ${url}')`)
+                    error(new Error('No jokes at url: ${url}'))
                 }
                 
             }
-            error(`new Error('No jokes at url: ${url}')`)
+            error(new Error('No jokes at url: ${url}'))
         }
     };
     http.send();
@@ -30,17 +30,17 @@ function get(url,onsuccess,error){
 //         console.error(err);
 // });
 
-function giveAJoke(apiUrl, category) {
+function giveMeAJoke(apiUrl, category) {
     return new Promise((resolve, reject) => {
     get(apiUrl +'/'+ category+"?type=twopart", resolve, reject);
     });  
 }
-giveAJoke(url,"dark")
-    .then((ok)=>{
-        console.log(ok);
+// giveMeAJoke(url,"dark")
+//     .then((ok)=>{
+//         console.log(ok);
         
-    }).catch((er)=>{
-        console.error(er);
+//     }).catch((er)=>{
+//         console.error(er);
         
-});
-module.exports = giveAJoke;
+// });
+module.exports = giveMeAJoke;
