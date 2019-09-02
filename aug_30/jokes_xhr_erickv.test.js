@@ -19,7 +19,7 @@ test('Getting full joke object', () => {
 test('Failing request, bad apiUrl', () => {
   giveMeAJoke('https//sv443netjokeapicategory').catch( (err) => {
 
-    expect(JSON.stringify(err)).toMatch({})
+    expect(JSON.stringify(err)).toMatch('{}')
   });
 });
 
