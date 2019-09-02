@@ -1,5 +1,5 @@
 const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+const { get, post, request } = require('./async_await_lib.js');
 
 xhrMock.setup()
 
@@ -52,7 +52,7 @@ const api = {
     url: `/posts/${postID}/comments`,
     requestBody: {
       userId: userID,
-      content: 'I whish you look, even if you don\'t need it'
+      content: 'I wish you look, even if you don\'t need it'
     },
     body: {
       id: '12qwasd121',
@@ -69,22 +69,22 @@ describe('manipulations with promises', () => {
   beforeEach(() => xhrMock.setup());
   afterEach(() => xhrMock.teardown());
 
-  test('get user', () => {
-    xhrMock.get(api.userGet.url, (req, res) => {
-      return res
-        .status(200)
-        .body(JSON.stringify(api.userGet.body));
-    });
+  // test('get user', () => {
+  //   xhrMock.get(api.userGet.url, (req, res) => {
+  //     return res
+  //       .status(200)
+  //       .body(JSON.stringify(api.userGet.body));
+  //   });
 
 
-    expect.assertions(2)
-    return get('/users/self')
-      .then(data => {
-        const user = JSON.parse(data);
-        expect(user.userName).toBe('JohnWick');
-        expect(user.id).toBe(userID);
-      });
-  });
+  //   expect.assertions(2)
+  //   return get('/users/self')
+  //     .then(data => {
+  //       const user = JSON.parse(data);
+  //       expect(user.userName).toBe('JohnWick');
+  //       expect(user.id).toBe(userID);
+  //     });
+  // });
 
   test('create a post', () => {
     expect.assertions(3);
@@ -109,13 +109,15 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
-      // your stuff
-      .then(data => {
-        const post = JSON.parse(data);
-        expect(post.userId).toBe(api.postsPost.body.userId);
-        expect(post.content).toBe(api.postsPost.body.content)
-      });
+    xhrMock.post(api.commentsPost.url, (req, res) => {
+
+    })
+    // return post(api.commentsPost.url, api.commentsPost.requestBody)
+    //   .then(data => {
+    //     const post = JSON.parse(data);
+    //     expect(post.userId).toBe(api.postsPost.body.userId);
+    //     expect(post.content).toBe(api.postsPost.body.content)
+    //   });
   });
 
   test('like a post', () => {
@@ -142,13 +144,14 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
-      // your stuff
-      .then(data => {
-        const post = JSON.parse(data);
-        expect(post.likes).toBe(1);
-      });
+  //   return //promise
+  //     // your stuff
+  //     .then(data => {
+  //       const post = JSON.parse(data);
+  //       expect(post.likes).toBe(1);
+  //     });
+  // });
+
+
   });
-
-
-});
+})
