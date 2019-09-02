@@ -1,4 +1,5 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const {default: xhrMock} = require('../node_modules/xhr-mock');
 // Creación de la petición HTTP
 
 function ajaxGet (URL, callback) {
@@ -122,3 +123,5 @@ request('POST','https://en74aq4z283n.x.pipedream.net/', function (respuesta){
 
     console.log(respuesta); 
 },dataString);
+
+module.exports = {get, post, request}
