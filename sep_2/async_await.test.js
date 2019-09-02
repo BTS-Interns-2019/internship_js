@@ -1,9 +1,9 @@
 const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/promises_xhr_braulior');
+xhrMock.setup();
+const { promGget, promPost, promRequest } = require('../aug_29/promises_xhr_urbanog');
 
-xhrMock.setup()
-
-const userID = '_' + Math.random().toString(36).substr(2, 9);
+const 
+userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
 
 const api = {
@@ -76,9 +76,8 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.userGet.body));
     });
 
-
     expect.assertions(2)
-    return get('/users/self')
+    return promRequest('GET','/users/self')
       .then(data => {
         const user = JSON.parse(data);
         expect(user.userName).toBe('JohnWick');
@@ -109,7 +108,10 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return // promise
+    promRequest('get','/users/self')
+    .then(data => {
+      
+    })
       // your stuff
       .then(data => {
         const post = JSON.parse(data);
@@ -142,12 +144,12 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return //promise
-      // your stuff
-      .then(data => {
-        const post = JSON.parse(data);
-        expect(post.likes).toBe(1);
-      });
+    // return //promise
+    //   // your stuff
+    //   .then(data => {
+    //     const post = JSON.parse(data);
+    //     expect(post.likes).toBe(1);
+    //   });
   });
 
 
