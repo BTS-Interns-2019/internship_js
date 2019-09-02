@@ -147,7 +147,7 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return get('/posts').then((data)=>{
+    return get('/users/self').then((data)=>{
       console.log(JSON.parse(data));
     })
       // your stuff
