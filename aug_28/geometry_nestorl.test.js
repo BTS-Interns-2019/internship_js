@@ -1,7 +1,7 @@
 
 const {
   Rectangle,
-} = require('./geometry_braulior');
+} = require('./geometry_nestorl.js');
 
 describe('Rectangle', () => {
   const rectangle = new Rectangle(5, 10);
