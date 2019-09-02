@@ -114,8 +114,8 @@ describe('manipulations with promises', () => {
       return post('/posts', {
         userId: user.id,
         content: 'This is my first post after beeing excomunicato',
-      }).then((postdata) => {
-        const post = JSON.parse(postdata);
+      }).then((data) => {
+        const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
       });
