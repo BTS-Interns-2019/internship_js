@@ -28,12 +28,15 @@ function request(method, url, callback, error, body) {
         result.sayPunchLine = function() {
           return this.delivery;
         };
+        if(!result.delivery){
+            error(new Error `(No jokes at url: ${url}`);
+        }
         callback(result);
       } else {
-        error(`new Error (No jokes at url: ${url}`);
+        error(new Error `(No jokes at url: ${url}`);
       }
     } else {
-      error(`new Error (No jokes at url: ${url}`);
+      error(new Error `(No jokes at url: ${url}`);
     }
   };
   http.send(pBody);
