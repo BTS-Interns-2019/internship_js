@@ -1,7 +1,7 @@
 const giveMeAJoke = require('./jokes_emmanuelr.js');
 
 const url = 'https://sv443.net/jokeapi';
-let cat = 'programming';
+const cat = 'programming';
 const noop = {};
 
 test('Joke from a category', () => {
@@ -20,9 +20,9 @@ test('function sayPunchLine', () => {
   }, noop);
 });
 
-cat = 'programmingggg';
+const cat2 = 'programmingggg';
 test('Mistake API', () => {
-  return giveMeAJoke(url, cat).catch((error) => {
+  return giveMeAJoke(url, cat2).catch((error) => {
     expect(error.message).toBe(`No jokes at url: https://sv443.net/jokeapi/category/programmingggg?type=twopart`);
   }, noop);
 });
