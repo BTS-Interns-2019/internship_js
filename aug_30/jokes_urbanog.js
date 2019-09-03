@@ -1,7 +1,7 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-function giveAJoke(apiUrl, category) {
-  if (category === '' || category === ' ' || category === undefined) {
+function giveMeAJoke(apiUrl, category) {
+  if (category === '' || category === ' ') {
     category = 'any'
   }
   return new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ function giveAJoke(apiUrl, category) {
 //https://api.chucknorris.io/jokes/random
 //https://sv443.net/jokeapi/category/miscellaneous?type=twopart
 ///category/miscellaneous?type=twopart
-giveAJoke('https://sv443.net/jokeapi/category')
+giveMeAJoke('http://api.icndb.com/jokes', 'random')
   .then(function (val) {
       console.log(val.saySetup())
       console.log(val.sayPunchLine())
@@ -32,8 +32,9 @@ function request(method, url, callback, error, body) {
   request.open(meth, url, true);
   request.onload = function () {
     if (this.status >= 200 && this.status <= 299) {
+
       console.log((this.status))
-      if (this.responseText.includes('twopart') && this.responseText.includes('setup') && this.responseText.includes('delivery') && this.responseText.includes('category') && this.responseText.includes('id')) {
+      if (this.responseText.includes('twopart')) {
         const result = JSON.parse(this.responseText);
         result.saySetup = function () {
           return this.setup;
@@ -44,14 +45,14 @@ function request(method, url, callback, error, body) {
         callback(result);
       } else {
 
-        error(new Error (`No jokes at url: ${url}`));
+        error(`new Error (No jokes at url: ${url}`);
       }
 
     } else {
-      error(new Error (`No jokes at url: ${url}`));
+      error(`new Error (No jokes at url: ${url}`);
     }
   };
   request.send(postBody);
 }
 
-module.exports = {giveAJoke}
+module.exports = {giveMeAJoke}
