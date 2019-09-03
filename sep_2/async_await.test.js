@@ -23,23 +23,19 @@ function post(url,dataString){
   return new Promise(function(resolve, reject){
     let http=new XMLHttpRequest();
     http.open("POST",url,true);
-    http.setRequestHeader("Content-type","aplication/json");
     http.send(dataString);
-    setTimeout(function(){
-      http.onload=()=>{
-        if(http.status<400){
-            console.log("success");
-            resolve(http.responseText);
-            /*onsuccess(http.responseText);*/
-        }else{
-            console.log("fail");
-            reject(http.status,http.statusText);
-        }
+    http.onload=()=>{
+      if(http.status<400){
+          console.log("success");
+          resolve(http.responseText);
+      }else{
+          console.log("fail");
+          reject(http.status,http.statusText);
       }
-      http.onerror=(e)=>{
-          console.log("Error: ",e);
-      }
-    },10000)
+    }
+    http.onerror=(e)=>{
+        console.log("Error: ",e)
+    }
   })
 }
 
@@ -47,6 +43,8 @@ xhrMock.setup()
 
 const userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
+
+console.log(get('/posts'));
 
 const api = {
   userGet: {
@@ -151,11 +149,18 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return post('/posts').then(data => {
+    return get('user/self').then(response => {
+      const obj = {
+        userId: response.id,
+        content: "This is my first post after beeing excomunicato"
+      }
+      const newBody = JSON.stringify(obj);
+      return post('/posts', newBody)
+      }).then(data => { //
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
-        expect(post.content).toBe(api.postsPost.body.content)
-      });
+        expect(post.content).toBe(api.postsPost.body.content);
+    })
   });
 
   test('like a post', () => {
@@ -182,13 +187,10 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    /*return //promise
-      // your stuff
+    return get(`/posts/${postID}/comments`)//
       .then(data => {
         const post = JSON.parse(data);
         expect(post.likes).toBe(1);
-      });*/
+      });
   });
-
-
 });
