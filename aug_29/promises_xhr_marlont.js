@@ -1,7 +1,7 @@
 const url_example = 'https://reqres.in/api/users/2';
 const fake_url = 'https://reqres.in/lalala/lalala';
 const me = { first_name: 'Marlon', last_name: 'Torres' };
-const method = 'GET';
+const method_example = 'GET';
 
 function get(url) {
   return new Promise((resolve, rejected) => {
@@ -33,28 +33,18 @@ function post(url, data) {
   });
 }
 
-const promiseRequest = new Promise((onSuccess, onError) => {
-  
-});
-
 function request(method, url, data) {
   return new Promise((resolve, rejected) => {
-    switch (method.toUpperCase()) {
-      case 'GET': {
-        get(url);
-        break;
+    const http = new XMLHttpRequest();
+    http.open(method, url, true);
+    http.send(JSON.stringify(data));
+    http.addEventListener('load', () => {
+      if (http.status >= 200 && http.status < 400) {
+        resolve(http.responseText);
+      } else {
+        rejected(`${http.status  } ${  http.statusText}`);
       }
-  
-      case 'POST': {
-        post(url, data);
-        break;
-      }
-  
-      default: {
-        console.error('the specified method dont exists');
-        break;
-      }
-    }
+    });   
   });
 }
 

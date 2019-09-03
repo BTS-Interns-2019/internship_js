@@ -1,7 +1,7 @@
 const { default: xhrMock } = require('xhr-mock');
 const { get, post, request } = require('../aug_29/promises_xhr_marlont');
 
-xhrMock.setup();
+xhrMock.setup()
 
 const userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
@@ -85,7 +85,7 @@ describe('manipulations with promises', () => {
         expect(user.id).toBe(userID);
       });
   });
-
+  
   test('create a post', () => {
     expect.assertions(3);
 
@@ -108,15 +108,20 @@ describe('manipulations with promises', () => {
         .status(200)
         .body(JSON.stringify(api.likePut.body));
     });
-    // este
-    return post(api.postsPost.url, api.postsPost.requestBody)
-      .then(data => {
+
+    return get('/users/self').then(data => {
+      const user = JSON.parse(data);
+      return post('/posts', {
+        userId: user.id,
+        content: 'This is my first post after beeing excomunicato'
+      }).then(data => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
         expect(post.content).toBe(api.postsPost.body.content)
       });
+    });
   });
-
+  
   test('like a post', () => {
     expect.assertions(3);
 
@@ -134,19 +139,122 @@ describe('manipulations with promises', () => {
     });
 
     xhrMock.put(api.likePut.url, (req, res) => {
-      console.log(req)
       expect(req.body()).toBe(JSON.stringify(api.likePut.requestBody));
       return res
         .status(200)
         .body(JSON.stringify(api.likePut.body));
     });
-    // y este
-    return post()
-      .then(data => {
+
+    return get('/users/self').then(data => {
+      const user = JSON.parse(data);
+      return post('/posts', {
+        userId: user.id,
+        content: 'This is my first post after beeing excomunicato',
+      }).then(data => {
         const post = JSON.parse(data);
-        expect(post.likes).toBe(1);
+        return request('PUT', `/posts/${post.id}/like`, {
+          userId: post.userId,
+        }).then(data => {
+          const post = JSON.parse(data);
+          expect(post.likes).toBe(1);
+        });
       });
+    });
   });
+});
+
+describe('manipulations with async/await', () => {
+  beforeEach(() => xhrMock.setup());
+  afterEach(() => xhrMock.teardown());
+
+  it('get user', async () => {
+    xhrMock.get(api.userGet.url, (req, res) => {
+      return res
+        .status(200)
+        .body(JSON.stringify(api.userGet.body));
+    });
 
 
+    expect.assertions(2)
+    const data = await get('/users/self');
+    const user = JSON.parse(data);
+    expect(user.userName).toBe('JohnWick');
+    expect(user.id).toBe(userID);
+  });
+  
+  it('create a post', async () => {
+    expect.assertions(3);
+
+    xhrMock.get(api.userGet.url, (req, res) => {
+      return res
+        .status(200)
+        .body(JSON.stringify(api.userGet.body));
+    });
+
+    xhrMock.post(api.postsPost.url, (req, res) => {
+      expect(req.body()).toBe(JSON.stringify(api.postsPost.requestBody));
+      return res
+        .status(200)
+        .body(JSON.stringify(api.postsPost.body));
+    });
+
+    xhrMock.put(api.likePut.url, (req, res) => {
+      expect(req.body()).toBe(JSON.stringify(api.likePut.requestBody));
+      return res
+        .status(200)
+        .body(JSON.stringify(api.likePut.body));
+    });
+
+    const dataGet = await get('/users/self');
+    const user = JSON.parse(dataGet);
+
+    const dataPost = await post('/posts', {
+      userId: user.id,
+      content: 'This is my first post after beeing excomunicato'
+    });
+    const postRes = JSON.parse(dataPost);
+
+    expect(postRes.userId).toBe(api.postsPost.body.userId);
+    expect(postRes.content).toBe(api.postsPost.body.content);
+  });
+  
+  it('like a post', async () => {
+    expect.assertions(3);
+
+    xhrMock.get(api.userGet.url, (req, res) => {
+      return res
+        .status(200)
+        .body(JSON.stringify(api.userGet.body));
+    });
+
+    xhrMock.post(api.postsPost.url, (req, res) => {
+      expect(req.body()).toBe(JSON.stringify(api.postsPost.requestBody));
+      return res
+        .status(200)
+        .body(JSON.stringify(api.postsPost.body));
+    });
+
+    xhrMock.put(api.likePut.url, (req, res) => {
+      expect(req.body()).toBe(JSON.stringify(api.likePut.requestBody));
+      return res
+        .status(200)
+        .body(JSON.stringify(api.likePut.body));
+    });
+
+    const dataGet = await get('/users/self');
+    const user = JSON.parse(dataGet);
+
+    const dataPost = await post('/posts', {
+      userId: user.id,
+      content: 'This is my first post after beeing excomunicato'
+    });
+    const postRes = JSON.parse(dataPost);
+
+    const dataPut = await request('PUT', `/posts/${postRes.id}/like`, {
+      userId: postRes.userId,
+    });
+    const putRes = JSON.parse(dataPut);
+
+    expect(putRes.likes).toBe(1);
+  });
 });
