@@ -202,7 +202,6 @@ describe('manipulations with await', () => {
     expect(postPost.content).toBe(api.postsPost.body.content)
   })
 
-
   test('like a post', async () => {
     expect.assertions(3);
 
