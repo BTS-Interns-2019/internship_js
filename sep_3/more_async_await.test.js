@@ -1,4 +1,4 @@
-// const { ... } = require('path to file');
+const { findHero } = require('./superheroes_ricardom');
 
 
 describe('Find Super heroes', () => {
