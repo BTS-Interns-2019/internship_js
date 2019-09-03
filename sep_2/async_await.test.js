@@ -201,7 +201,7 @@ describe('manipulations with await', () => {
     expect(postPost.userId).toBe(api.postsPost.body.userId)
     expect(postPost.content).toBe(api.postsPost.body.content)
   })
-});
+
 
   test('like a post', async () => {
     expect.assertions(3);
@@ -232,4 +232,5 @@ describe('manipulations with await', () => {
     })
     const postLike = JSON.parse(likePost)
     expect(postLike.likes).toBe(1)
-  })
+  });
+})
