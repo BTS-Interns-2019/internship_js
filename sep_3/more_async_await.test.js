@@ -1,4 +1,4 @@
-// const { ... } = require('path to file');
+ const getConnection=require('./superheroes_viridianad.js');
 
 
 describe('Find Super heroes', () => {
