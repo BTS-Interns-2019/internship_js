@@ -150,11 +150,13 @@ describe('manipulations with promises', () => {
     return get('/users/self').then((data)=>{
       //console.log(JSON.parse(data));
       data = JSON.parse(data);
+      
       return post('/posts',{userId:data.id,
         content:"This is my first post after beeing excomunicato"});
     }).then((data)=>{
       //console.log(JSON.parse(data));
       const post = JSON.parse(data);
+      console.log(post);
       return request('PUT', `/posts/${post.id}/like`,{
         userId:post.userId
       })
