@@ -167,8 +167,7 @@ describe('manipulations with promises', () => {
   });
 });
 /********************************************************************************************************************/
-// coño coño coño coño 
-describe('manipulations with promises', () => {
+describe('manipulations with promises, async and await', () => {
   beforeEach(() => xhrMock.setup());
   afterEach(() => xhrMock.teardown());
 
@@ -189,7 +188,7 @@ describe('manipulations with promises', () => {
       });
   });
 
-  test('create a post', async() => {
+  test('create a post async and await', async() => {
     expect.assertions(3);
 
     xhrMock.get(api.userGet.url, (req, res) => {
@@ -226,7 +225,7 @@ describe('manipulations with promises', () => {
       //a aqui
   });
 
-  test('like a post', async () => {
+  test('like a post async and await', async () => {
     expect.assertions(3);
 
     xhrMock.get(api.userGet.url, (req, res) => {
