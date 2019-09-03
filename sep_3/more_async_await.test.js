@@ -1,4 +1,4 @@
-// const { ... } = require('path to file');
+const {findHero, findSeries} = require('./more_async_await_miguelv.js');
 
 
 describe('Find Super heroes', () => {
