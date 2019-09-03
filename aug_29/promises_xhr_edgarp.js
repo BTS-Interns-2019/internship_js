@@ -102,7 +102,7 @@ Request
         request,
     } */
 
-    function request(method, url, onSuccess, onError, data) {
+  function request(method, url, onSuccess, onError, data) {
   const req = new XMLHttpRequest();
   let dataString;
 
@@ -134,21 +134,21 @@ Request
   };
 }
 
-// GET request wrapper
+// GET 
 function get(url) {
   return new Promise((resolve, reject) => {
     request('GET', url, resolve, reject);
   });
 }
 
-// POST request wrapper
+// POST 
 function post(url, data) {
   return new Promise((resolve, reject) => {
     request('POST', url, resolve, reject, data);
   });
 }
 
-// PUT request wrapper
+// PUT 
 function put(url, data) {
   return new Promise((resolve, reject) => {
     request('PUT', url, resolve, reject, data);
