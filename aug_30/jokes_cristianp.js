@@ -3,34 +3,32 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 function giveMeAJoke(apiUrl, category) {
   if (category === '' || category === ' ') {
-    category = 'dark';
+    category = 'Miscellaneous';
   }
   return new Promise((resolve, reject) => {
     request('GET', apiUrl + '/' + category, resolve, reject);
   });
 }
 
-function request(method, url, callback, error, body) {
-  if (typeof method !== 'string') {
-    return 'Need a string method';
-  }
+function request(method, url, callback, error) {
+  
   const http = new XMLHttpRequest();
-  const pBody = JSON.stringify(body);
+  //para un post...
+  //const pBody = JSON.stringify(body);
   http.open(method, url, true);
+
   http.onload = function() {
     if (this.status >= 200 && this.status <= 299) {
-      console.log(this.status);
-      if (this.responseText.includes('twopart')) {
+      if (this.responseText.includes('delivery') && this.responseText.includes('setup')) {
         const result = JSON.parse(this.responseText);
+        //console.log(result);
+        /*utilizar funciones para retornar propiedad setup y delivery*/
         result.saySetup = function() {
           return this.setup;
         };
         result.sayPunchLine = function() {
           return this.delivery;
         };
-        if(!result.delivery){
-            error(new Error `(No jokes at url: ${url}`);
-        }
         callback(result);
       } else {
         error(new Error `(No jokes at url: ${url}`);
@@ -39,33 +37,16 @@ function request(method, url, callback, error, body) {
       error(new Error `(No jokes at url: ${url}`);
     }
   };
-  http.send(pBody);
-  /*return new Promise((resolve, reject)=>{
-        const http = new XMLHttpRequest();
-        const pBody = JSON.stringify(body);
-        http.open(method, url,true);
-
-        http.onload = ()=>{
-            if(http.status >= 400){
-                error.send(pBody);
-            }
-            resolve(http.responseText);
-        }
-    });*/
+  http.send();
 }
-// giveMeAJoke('http://api.icndb.com/jokes', '')
+
+// giveMeAJoke('https://sv443.net/jokeapi/category', '')
 //   .then(function(val) {
-//     console.log(val.hasOwnProperty('saySetup'));
 //     console.log(val.saySetup());
 //     console.log(val.sayPunchLine());
 //   })
-//   .catch(function(val) {
-//     console.log(val);
+//   .catch(function(vale) {
+//     console.log(vale);
 //   });
 
-/*function get(url){
-    return request("GET", url);
-}
-function post(url, data){
-    return request("POST", url, data);
-}*/
+  module.exports = giveMeAJoke;
