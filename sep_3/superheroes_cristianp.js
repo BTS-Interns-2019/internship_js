@@ -14,7 +14,14 @@ function justRequest(method, url, resolve, reject, body) {
         Object.defineProperties(ob,{
             wiki:{
                 get(){
-                    return this.data.results[0].urls[1].url;
+                    const wik = (this.data.results[0].urls[1].url).split('?');
+                    return wik[0];
+                }
+            },
+            description:{
+                get(){
+                    const des = this.data.results[0].description;
+                    return des;
                 }
             }
         });
@@ -40,6 +47,6 @@ function findHero(name){
   }
 
 const a = findHero("Spider-man");
-console.log(a.then(console.log(this)));
+console.log(a.then((a)=>{return a}));
 
-module.exports = findHero;
+module.exports = {findHero};
