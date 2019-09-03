@@ -1,5 +1,4 @@
-// const { ... } = require('path to file');
-
+const { findHero, findSeries } = require('./superheroes_estefaniac');
 
 describe('Find Super heroes', () => {
 
