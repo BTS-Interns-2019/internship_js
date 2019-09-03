@@ -1,10 +1,70 @@
 const {default: xhrMock} = require('xhr-mock');
-const { get, post, request } = require('../aug_29/simple_xhr_sergior.js');
+// const {post, request } = require('../aug_29/simple_xhr_sergior.js');
 
 xhrMock.setup()
 
 const userID = '_' + Math.random().toString(36).substr(2, 9);
 const postID = '_' + Math.random().toString(36).substr(2, 9);
+
+function get(url, onsuccess, onerror){
+  const http = new XMLHttpRequest();
+  http.open("GET", url);
+
+  http.onload = function(){
+
+  if(this.readyState == 4 && this.status == 200){
+      var resultado = this.responseText;
+      console.log(resultado);
+      
+      onsuccess(resultado);
+      
+      
+  }else if(this.status > 299){
+      var resultado = JSON.parse(this.responseText);
+      onerror(resultado);
+  }
+}
+http.send();
+
+};
+
+
+
+function post(url, onsuccess, onerror, dataString){
+
+  const http = new XMLHttpRequest();
+  http.open("POST", url);
+
+  http.onload = function(){
+
+      if(this.readyState == 4 && this.status == 200){
+          var resultado = JSON.stringify(this.responseText);
+          onsuccess(resultado);
+      console.log(resultado.data);    
+      }else if(this.status > 299){
+          var resultado = JSON.stringify(this.responseText);
+          onerror(resultado);
+      }
+  }
+dataString = JSON.stringify(dataString);
+http.send(dataString);
+
+};
+
+function postPromise(url,body){
+  return new Promise((resolve, reject) => {
+    post(url, resolve,reject,body);
+  })
+}
+
+
+
+
+function getPromise(url){
+  return new Promise((resolve, reject) => {
+    get(url, resolve,reject);
+  })
+}
 
 const api = {
   userGet: {
@@ -78,9 +138,13 @@ describe('manipulations with promises', () => {
 
 
     expect.assertions(2)
-    return get('/users/self')
+    return getPromise('/users/self')
       .then(data => {
+        console.log(data);
+        
         const user = JSON.parse(data);
+        console.log(user);
+        
         expect(user.userName).toBe('JohnWick');
         expect(user.id).toBe(userID);
       });
@@ -109,13 +173,15 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return new Promise(get(api.url,function (dato){
-      console.log(dato);
+    return getPromise('/users/self')
+    .then((data) => {
       
-    },function(dato){
-      console.log(dato);
       
-    }) )
+      const user = JSON.parse(data);
+      console.log(user.id);
+      return postPromise('/posts',{userId:user.id,content: 'This is my first post after beeing excomunicato'
+})
+    })
     
     // promise
       // your stuff
@@ -150,13 +216,13 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return new Promise( post(api.url,function(dato){
+    return getPromise(api.url,function(dato){
       console.log(dato);
       
     },function(dato){
-      console.log();
+      console.log(dato);
       
-    },JSON.stringify(api.body)))
+    })
     
     //promise
       // your stuff

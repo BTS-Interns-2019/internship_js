@@ -1,5 +1,5 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const {default: xhrMock} = require('../node_modules/xhr-mock');
+// const {default: xhrMock} = require('../node_modules/xhr-mock');
 // Creación de la petición HTTP
 
 function ajaxGet (URL, callback) {
@@ -74,7 +74,7 @@ function post(url, onsuccess, onerror, dataString){
     const http = new XMLHttpRequest();
     http.open("POST", url);
 
-    http.onreadystatechange = function(){
+    http.onload = function(){
 
         if(this.readyState == 4 && this.status == 200){
             var resultado = JSON.stringify(this.responseText);
