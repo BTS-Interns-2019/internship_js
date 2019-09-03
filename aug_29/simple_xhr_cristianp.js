@@ -1,4 +1,4 @@
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+//const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const url = 'https://enn5ncwmw9ci.x.pipedream.net';
 
 /*function post(url, dataString, onsuccess, onerror) {
@@ -63,14 +63,14 @@ function post(url, data){
   return request("POST", url, data);
 }
 
-get('https://envkltpq4il7.x.pipedream.net')
+/*get('https://envkltpq4il7.x.pipedream.net')
 .then ((response)=>{
   console.log(response);
 })
 /*post('https://envkltpq4il7.x.pipedream.net/like', {postId:01, now:Date.now()} )
 .then((response)=>{
   console.log("El like ", response);
-})*/
+})//*/
 
 /*request("DELETE", "https://envkltpq4il7.x.pipedream.net/like", {postId:01, now:Date.now()})
 .then((response)=>{
@@ -113,4 +113,4 @@ if (req.status == 200)
 /*var xhr = new XMLHttpRequest();
 xhr.open("GET", "https://reqres.in/api/users/2",false);*/
 
-//module.exports = {get, post, request};
+module.exports = {get, post, request};
