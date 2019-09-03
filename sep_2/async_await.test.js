@@ -109,13 +109,18 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    // return // promise
-    //   // your stuff
-    //   .then(data => {
-    //     const post = JSON.parse(data);
-    //     expect(post.userId).toBe(api.postsPost.body.userId);
-    //     expect(post.content).toBe(api.postsPost.body.content)
-    //   });
+     return get ('/users/self').then(data => {
+       let user = JSON.parse(data);
+       return post('/posts',{
+         userId:user.id,
+         content: 'This is my first post after beeing excomunicato'
+       })
+     }) // your stuff
+       .then(data => {
+         const post = JSON.parse(data);
+         expect(post.userId).toBe(api.postsPost.body.userId);
+         expect(post.content).toBe(api.postsPost.body.content)
+       });
   });
 
   test('like a post', () => {
@@ -142,13 +147,22 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    // return //promise
-    //   // your stuff
-    //   .then(data => {
-    //     const post = JSON.parse(data);
-    //     expect(post.likes).toBe(1);
-    //   });
+    return get('/users/self').then(data => {
+      const user = JSON.parse(data);
+      return post('/posts', {
+        userId: user.id,
+        content: 'This is my first post after beeing excomunicato',
+      })
+        .then(data => {
+          const post = JSON.parse(data);
+          return put(`/posts/${post.id}/like`, {
+            userId: post.userId,
+          })
+            .then(data => {
+              const post = JSON.parse(data);
+              expect(post.likes).toBe(1);
+            });
+        });
+    });
   });
-
-
 });
