@@ -24,13 +24,20 @@ function get(url) {
 
 // get(url);
 // function post
-function post(url, body) {
+function post(url, body,callback, error) {
   // Format the body parameter to simple text
   const postBody = JSON.stringify(body);
   const postR = new XMLHttpRequest();
   postR.open('POST', url, true);
-  processRequest(postR);
   postR.send(postBody);
+  postR.onload = function () {
+    if (this.status >= 200 &&this.status <= 299) {
+      const result = this.responseText;
+      callback(result);
+    } else {
+      error(`${this.status} ${this.statusText}`);
+    }
+  };
 }
 
 const data = {

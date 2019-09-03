@@ -3,29 +3,29 @@
 // const url = 'https://reqres.in/api/users/2';
 
 function justRequest(method, url, resolve, reject, body) {
-  const meth = method.toUpperCase();
+  // const meth = method.toUpperCase();
   const postBody = JSON.stringify(body);
   const request = new XMLHttpRequest();
-  request.open(meth, url, true);
+  request.open(method, url, true);
+  request.send(postBody);
   request.onload = function () {
-    if (this.status <= 400) {
-      const result = this.responseText;
+    if (request.status >= 200 && request.status <= 299) {
+      const result = request.responseText;
       resolve(result);
     } else {
-      reject(`${this.status} ${this.statusText}`);
+      reject(`${request.status} ${request.statusText}`);
     }
   };
-  request.send(postBody);
 }
 function promRequest(method, url, body) {
   return new Promise((resolve, reject) => {
     justRequest(method, url, resolve, reject, body);
-    console.log(body);
+    // console.log(body);
   });
 }
 function promPost(url, data) {
   return new Promise((resolve, reject) => {
-    request('POST', url, resolve, reject, data);
+    post(url, data, resolve, reject);
   });
 }
 function promGet(url) {

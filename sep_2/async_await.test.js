@@ -1,10 +1,9 @@
-const { default: xhrMock } = require('xhr-mock');
-
+const {default: xhrMock} = require('xhr-mock');
+const {promGget, promPost, promRequest} = require('../aug_29/promises_xhr_urbanog');
 xhrMock.setup();
-const { promGget, promPost, promRequest } = require('../aug_29/promises_xhr_urbanog');
 
 const
-  userID = `_${ Math.random().toString(36).substr(2, 9)}`;
+  userID = `_${Math.random().toString(36).substr(2, 9)}`;
 const postID = `_${Math.random().toString(36).substr(2, 9)}`;
 
 const api = {
@@ -90,14 +89,12 @@ describe('manipulations with promises', () => {
     xhrMock.get(api.userGet.url, (req, res) => res
       .status(200)
       .body(JSON.stringify(api.userGet.body)));
-
     xhrMock.post(api.postsPost.url, (req, res) => {
       expect(req.body()).toBe(JSON.stringify(api.postsPost.requestBody));
       return res
         .status(200)
         .body(JSON.stringify(api.postsPost.body));
     });
-
     xhrMock.put(api.likePut.url, (req, res) => {
       expect(req.body()).toBe(JSON.stringify(api.likePut.requestBody));
       return res
@@ -108,17 +105,18 @@ describe('manipulations with promises', () => {
     return promRequest('GET', '/users/self')
       .then((data) => {
         const user = JSON.parse(data);
-        return promRequest('POST', '/posts', {
+        promRequest('POST','/posts', {
           userId: user.id,
-          content: 'This is my first post after being excomunicato',
-        });
+          content: 'This is my first post after beeing excomunicato',
+        })
+          .then((data) => {
+            console.log(data);
+            const post = JSON.parse(data);
+            expect(post.userId).toBe(api.postsPost.body.userId);
+            expect(post.content).toBe(api.postsPost.body.content);
+          });
       })
-      .then((data) => {
-        console.log(data);
-        const post = JSON.parse(data);
-        expect(post.userId).toBe(api.postsPost.body.userId);
-        expect(post.content).toBe(api.postsPost.body.content);
-      });
+
   });
 
   test('like a post', () => {
@@ -146,7 +144,6 @@ describe('manipulations with promises', () => {
     return promRequest('GET', '/users/self')
       .then((data) => {
         const user = JSON.parse(data);
-        console.log(user.id);
         return promRequest('POST', '/posts', {
           userId: user.id,
           content: 'This is my first post after beeing excomunicato',
@@ -154,11 +151,13 @@ describe('manipulations with promises', () => {
       })
       .then((data) => {
         const post = JSON.parse(data);
-
-        return promRequest('PUT', `/posts/${post.id}/like`);
+        console.log(post.userId)
+        return promRequest('PUT', `/posts/${post.id}/like`, {
+          userId: post.userId,
+        });
       })
-      // your stuff
       .then((data) => {
+        // console.log('das', data)
         const post = JSON.parse(data);
         expect(post.likes).toBe(1);
       });
