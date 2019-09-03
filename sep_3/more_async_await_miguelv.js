@@ -22,11 +22,13 @@ function get(url){
             let http=new XMLHttpRequest();
             http.open("GET",url,true);
             http.send();
-            console.log("++"+event.timestamp);
             http.onload=()=>{
                 console.log("status = "+http.status+"-->"+typeof http.status);
                 if(http.status<400){
                     console.log("success");
+                    console.log(typeof http.responseText);
+                    console.log(http.responseText);
+                    console.log("-"+JSON.parse(http.responseText).urls)
                     resolve(http.responseText);
                 }else{
                     console.log("fail");
@@ -43,13 +45,13 @@ function get(url){
 }
 async function neo(){
     let p = "3d439829a5351f94e9224b2c8a1f58126278381b";
-    let p2 = "3ee825f31bd11f3d60b465f450f6eae6"
-    let ts;//ts es dinamico, numero de milisegundos obtenidos por date
-    let link = "https://gateway.marvel.com:443/v1/public/characters?name=Black-Widow&"+ts+"apikey=3ee825f31bd11f3d60b465f450f6eae6";
-    let linkp = "&hash="+md5(p+p2);
+    let p2 = "3ee825f31bd11f3d60b465f450f6eae6";
+    let ts = Date.now();//ts es dinamico, numero de milisegundos obtenidos por date
+    let link = "https://gateway.marvel.com:443/v1/public/characters?name=Black-Widow&ts="+ts+"&apikey=3ee825f31bd11f3d60b465f450f6eae6";
+    let linkp = "&hash="+md5(ts+p+p2);
     let a = await get(link+linkp);
     return a;
 }
-neo();
+console.log(neo());
 
 //marvel.render();
