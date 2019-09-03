@@ -1,7 +1,4 @@
-const url_example = 'https://reqres.in/api/users/2';
-const fake_url = 'https://reqres.in/lalala/lalala';
-const me = { first_name: 'Marlon', last_name: 'Torres' };
-const method_example = 'GET';
+const XMLHttpRequest = require('../node_modules/xmlhttprequest').XMLHttpRequest;
 
 function get(url) {
   return new Promise((resolve, rejected) => {
@@ -56,16 +53,4 @@ function error(error) {
   console.error(error);
 }
 
-/*promiseGet
-  .then(response)
-  .catch(error);
-
-promisePost
-  .then(response)
-  .catch(error);
-
-promiseRequest
-  .then(response)
-  .catch(error);*/
-
-module.exports = { get, post, request };
+module.exports = get;
