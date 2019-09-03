@@ -23,8 +23,10 @@ function request(method, url, data){
     Http.send(data);
 
   }).then( (response) => {
+    
     return response
   }).catch( (err) => {
+    // console.log(err)
     return new Error(`No response from url: ${url}. Error: ${err}`)
   })
 };
@@ -35,7 +37,6 @@ function get(url){
 };
 
 function post(url, data){
-
   return request('POST', url, data);
 };
 
