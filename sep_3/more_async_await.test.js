@@ -1,5 +1,4 @@
-// const { ... } = require('path to file');
-
+const { findHero, findSeries } = require('./superheroes_emmanuelr');
 
 describe('Find Super heroes', () => {
 
@@ -16,9 +15,9 @@ describe('Find Super heroes', () => {
     expect.assertions(1)
 
     return findHero('Thor')
-      .then(thor => {
+      .then((thor) => {
         expect(thor.description).toBe("As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate.  He's self-assured, and he would never, ever stop fighting for a worthwhile cause.");
-      })
+      });
   });
 });
 
