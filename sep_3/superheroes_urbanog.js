@@ -53,5 +53,7 @@ findHero('Spider-man')
     console.log(val.wiki);
   });
 
-
+function findSeries(title, filter) {
+  
+}
 module.exports= findHero;
