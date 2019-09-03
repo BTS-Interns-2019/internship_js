@@ -49,9 +49,9 @@ function get(url, onsuccess, onerror){
     http.onreadystatechange = function(){
 
     if(this.readyState == 4 && this.status == 200){
-        var resultado = JSON.parse(this.responseText);
-        onsuccess(resultado);
-        console.log(resultado.data);
+        var resultado = JSON.parse(this.results.data);
+        onsuccess(results);
+        console.log(results);
         
     }else if(this.status > 299){
         var resultado = JSON.parse(this.responseText);

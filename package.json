@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BTS-Interns-2019/internship_js#readme",
   "dependencies": {
     "add": "^2.0.6",
+    "blueimp-md5": "^2.12.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",

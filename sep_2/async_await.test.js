@@ -48,7 +48,8 @@ function get(url, onsuccess, onerror){
   http.open("GET", url);
 
   http.onload = function(){
-
+  console.log('entró a get');
+  
   if(this.readyState == 4 && this.status == 200){
       var resultado = this.responseText;
       console.log(resultado);
