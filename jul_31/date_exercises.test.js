@@ -1,5 +1,5 @@
 const requireGlob = require('require-glob');
-const modules = requireGlob.sync(['./date_exercises_*.js']);
+const modules = requireGlob.sync(['./date_exercises_ricardom.js']);
 
 console.log(modules[Object.keys(modules)[0]])
 
@@ -8,6 +8,7 @@ const {
   toLazyHuman,
 } = modules[Object.keys(modules)[0]];
 // } = require('./date_exercises_braulior');
+
 
 
 describe('jsonTimes', () => {
