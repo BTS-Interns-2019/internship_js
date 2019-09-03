@@ -1,37 +1,5 @@
-const {default: xhrMock} = require('../node_modules/xhr-mock');
-// const XMLHttpRequest = require("../node_modules/xmlhttprequest").XMLHttpRequest;
-const { post, request } = require('../aug_29/simple_xhr_sergior');
-
-//
-//
-//
-
-function get(url, resolve, reject){
-  const http = new XMLHttpRequest();
-  http.open("GET", url);
-
-  http.onreadystatechange = function(){
-
-  if( this.status >= 200 && this.status < 299){
-      var resultado = JSON.parse(this.responseText);
-       return new Promise (( resolve,reject) => {
-         resolve(resultado)
-      console.log(resultado.data);});
-      
-  }else if(this.status > 299){
-      var resultado = JSON.parse(this.responseText);
-     return new Promise((resolve,reject)=>{
-      reject(resultado);
-     }) 
-  }
-}
-http.send();
-
-};
-
-//
-//
-//
+const {default: xhrMock} = require('xhr-mock');
+const { get, post, request } = require('../aug_29/simple_xhr_sergior.js');
 
 xhrMock.setup()
 
@@ -110,10 +78,7 @@ describe('manipulations with promises', () => {
 
 
     expect.assertions(2)
-    return get(api.url,function(data){
-      console.log(data);
-      
-    })
+    return get('/users/self')
       .then(data => {
         const user = JSON.parse(data);
         expect(user.userName).toBe('JohnWick');
@@ -144,9 +109,14 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return new Promise((resolve, reject) =>{
-      get(api.url, resolve, reject)
-    })
+    return new Promise(get(api.url,function (dato){
+      console.log(dato);
+      
+    },function(dato){
+      console.log(dato);
+      
+    }) )
+    
     // promise
       // your stuff
       .then(data => {
@@ -180,9 +150,14 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    return new Promise((resolve, reject) =>{
-      post(api.url, resolve, reject, api.postsPost)
-    })
+    return new Promise( post(api.url,function(dato){
+      console.log(dato);
+      
+    },function(dato){
+      console.log();
+      
+    },JSON.stringify(api.body)))
+    
     //promise
       // your stuff
       .then(data => {
