@@ -109,12 +109,29 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
-    //return // promise
-    //  // your stuff
-    //  .then(data => {
+    expect.assertions(2)
+    return get('/users/self')
+      .then(data => {
+        const user = JSON.parse(data);
+        const message=JSON.stringify({
+          userId:user.id,
+          content: 'This is my first post after beeing excomunicato'
+        })
+
+    return post('/users/self', message)
+    .then(data=>{
+      console.log(JSON.parse(data))
+      const post=JSON.parse(data)
+      expect(post.userId).toBe(api.postsPost.body.userId);
+    expect(post.content).toBe(api.postsPost.body.content)
+
+    })    
+    
+      
+  });
+      //.then(data => {
     //    const post = JSON.parse(data);
-    //    expect(post.userId).toBe(api.postsPost.body.userId);
-    //    expect(post.content).toBe(api.postsPost.body.content)
+        
     //  });
   });
 

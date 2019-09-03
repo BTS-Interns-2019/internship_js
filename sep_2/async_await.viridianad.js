@@ -8,10 +8,8 @@ function get(url, onSuccess, onError) {
     http.onload = () => {
       if (http.status < 400) {
         resolve(http.responseText);
-        console.log('Ok!!!');
       } else {
         reject(new Error(http.responseText));
-        console.log('Algo salio mal');
       }
     };
     http.send();
@@ -19,6 +17,28 @@ function get(url, onSuccess, onError) {
   return newPromise;
 }
 
-module.exports = {
-  get
-};
+function post(url,data, onSuccess, onError) {
+    let newPromise = new Promise(function(resolve, reject) {
+      let http = new XMLHttpRequest();
+      http.open('POST', url);
+  
+      http.onload = () => {
+        if (http.status < 400) {
+          resolve(http.responseText);
+          console.log('Ok!!!');
+        } else {
+          reject(new Error(http.responseText));
+          console.log('Algo salio mal');
+        }
+      };
+      http.send(data);
+    });
+    return newPromise;
+  }
+  
+  module.exports = {
+    get,
+    post
+  };
+
+
