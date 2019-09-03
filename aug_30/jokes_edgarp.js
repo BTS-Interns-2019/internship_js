@@ -1,20 +1,20 @@
-let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 function  request (apiURL, category, onSuccess, onError) {
     let req = new XMLHttpRequest ();
 
      let URL;
-    if (apiURL.match(new RegExp('https://sv443.net/jokeapi/category/'))) {
+    if (apiURL.match(new RegExp('sv443.net'))) {
         URL = apiURL.concat('', category +'?type=twopart');
     } else {
         URL = apiURL;
     }
 
     req.open('GET', URL);
-    
-    req.addEventListener('load', function () {
-        if (this.status >= 200 && this.status <= 299) {
-       const responseObj = JSON.parse(this.responseText);
+    req.send();
+    req.onload = () => {
+        if (req.status >= 200 && req.status <= 299) {
+       const responseObj = JSON.parse(req.responseText);
 
        if (typeof responseObj !== 'object' || !('setup' in responseObj)) {
            onError(`New Error: (No jokes at URL: ${URL})`)
@@ -41,7 +41,7 @@ function  request (apiURL, category, onSuccess, onError) {
 
         onError(`New Error: (No jokes at URL: ${URL})`);
         return false;
-    });
+    };
 
         req.onError = () => {
         onError(`New Error: (No jokes at URL: ${URL})`);
@@ -50,25 +50,15 @@ function  request (apiURL, category, onSuccess, onError) {
     req.addEventListener('error', function () {
         console.error('network error');
     });
-   req.send();
+   
 };
 
 function giveMeAJoke(apiURL, category) {
-  const promise = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     request (apiURL, category, resolve, reject);
   });
-  promise
-    .then(show)
-    .catch(error);
 }; 
 
-function show (answer){
-    console.log(answer);
-}
-
-function error (err){
-    console.log(err);
-}
 
 
 giveMeAJoke('https://sv443.net/jokeapi/category/', 'dark');
