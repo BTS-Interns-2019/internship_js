@@ -1,4 +1,4 @@
-// const { ... } = require('path to file');
+const findHero = require('../sep_3/superheroes_edgarp.js');
 
 
 describe('Find Super heroes', () => {
