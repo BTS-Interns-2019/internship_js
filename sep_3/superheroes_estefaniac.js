@@ -22,7 +22,7 @@ const marvel = {
             // for(const hero of json.data.results) {
             // let nameHero = hero.name
             // console.log(nameHero)
-            // console.log(json.data.results)
+            console.log(json.data.results)
             // }
             for(const hero of json.data.results) {
             let urlHero = hero.urls[1].url
@@ -43,62 +43,6 @@ const marvel = {
 console.log(findHero('Spider-Man'))
 // console.log(marvel.render());
 
-
-/*creando el metodo que nos haga la conección y nos traiga los elementos*/
-// const getConnection = () => {
-
-
-
-//       fetch(url)
-//       /*con json es un metodo del objeto response que me va a traer la data y la va a formatear en json */
-//               .then(response => response.json())
-//               .then(response => {
-//                   response.data.results.forEach(e => {
-//                       get(url);
-//                   });
-//               });
-//       };
-// function request(method, url, onSuccess, onError, data) {
-//     const http = new XMLHttpRequest();
-//     let dataString;
-  
-//     if (data) {
-//       dataString = JSON.stringify(data);
-//     }
-  
-//     http.open(method, url);
-//     http.send(dataString);
-  
-//     http.onreadystatechange = () => {
-//       if (http.readyState === XMLHttpRequest.DONE) {
-//         if (http.status < 400) {
-//           try {
-//             onSuccess(http.responseText);
-//           } catch (error) {
-//             onError(error);
-//           }
-//         } else if (http.status) {
-//           try {
-//             onError(http.responseText);
-//           } catch (error) {
-//             onError(error);
-//           }
-//         } else {
-//           onError(new Error('An error ocurred'));
-//         }
-//       }
-//     };
-//   }
-  
-// function get(url) {
-//     return new Promise((resolve, reject) => {
-//         request('GET', url, resolve, reject);
-//     });
-// }
-// getConnection();
-
-// function findHero(name) {
-    
 
 module.exports = {
     findHero,
