@@ -59,18 +59,18 @@ async function findHero(name) {
   });
   return hero;
 }
-async function findComic(idComic) {
+// https://gateway.marvel.com/v1/public/comics/${idComic}?apikey=eb47d94cc85c07c9bd75002b35d3a3f3&hash=${hash}&ts=1
+async function findComic(idHero, number, dateStart) {
   const apikey = '11c2e531436ba70475725db077377796648609e42eb47d94cc85c07c9bd75002b35d3a3f3';
   const hash = md5(apikey);
   const comic = await new Promise((resolve, reject) => {
-    justRequest('GET', `https://gateway.marvel.com/v1/public/comics/${idComic}?apikey=eb47d94cc85c07c9bd75002b35d3a3f3&hash=${hash}&ts=1`, resolve, reject);
+    justRequest('GET', `https://gateway.marvel.com:443/v1/public/characters/${idHero}/comics?startYear=${dateStart}&issueNumber=${number}&apikey=eb47d94cc85c07c9bd75002b35d3a3f3&hash=${hash}&ts=1`, resolve, reject);
   });
   return comic;
 }
 findHero('deadpool')
   .then((val) => {
-    // const personaje = JSON.parse(val);
-    console.log(val.data.results[0].id);
+    console.log(val.id);
   });
 
 async function findSeries(title, filter) {
@@ -83,10 +83,9 @@ async function findSeries(title, filter) {
   serie.title = serie.data.results[0].title;
   serie.characters = serie.data.results[0].characters;
   serie.characters.deadpool = await findHero('deadpool');
-  serie.characters.deadpool.comics.first = await findComic(58990);
+  serie.characters.deadpool.comics.first = await findComic(serie.characters.deadpool.id, 1, filter.startYear);
   serie.characters.deadpool.comics.first.issueNumber = serie.characters.deadpool.comics.first.data.results[0].issueNumber;
   serie.characters.deadpool.comics.first.title = serie.characters.deadpool.comics.first.data.results[0].title;
-  // serie.characters.deadpool.comics
 
   // for (let i = 0; i < (serie.data.results[0].characters.items).length; i += 1) {
   //   serie.characters[(serie.data.results[0].characters.items[i].name).toLowerCase()] = await findHero(serie.data.results[0].characters.items[i].name);
