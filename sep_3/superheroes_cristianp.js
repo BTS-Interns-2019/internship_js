@@ -1,6 +1,8 @@
 const md5 = require('blueimp-md5');
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
+
+
 function justRequest(method, url, resolve, reject, body) {
     // const meth = method.toUpperCase();
     const postBody = JSON.stringify(body);

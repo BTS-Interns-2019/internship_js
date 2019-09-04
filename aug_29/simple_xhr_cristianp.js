@@ -1,4 +1,4 @@
-//const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const url = 'https://enn5ncwmw9ci.x.pipedream.net';
 
 /*function post(url, dataString, onsuccess, onerror) {
@@ -62,10 +62,10 @@ function get(url){
 function post(url, data){
   return request("POST", url, data);
 }
-
-/*get('https://envkltpq4il7.x.pipedream.net')
+//121b5746b0e0e8c51dc917ff06704ade25c26ba8e317b52d1a706d7643efb0cfa14652722
+/*get('https://gateway.marvel.com:443/v1/public/characters?ts=1&limit=1&apikey=317b52d1a706d7643efb0cfa14652722&hash=9421A3C42D5CF58687444464ACCF1D4A')
 .then ((response)=>{
-  console.log(response);
+  console.log(JSON.parse(response));
 })
 /*post('https://envkltpq4il7.x.pipedream.net/like', {postId:01, now:Date.now()} )
 .then((response)=>{
