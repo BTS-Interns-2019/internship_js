@@ -1,4 +1,4 @@
-// const {default: xhrMock} = require('xhr-mock');
+// const {default: xhrMock} = require('../node_modules/xhr-mock'); 
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 // xhrMock.setup()
@@ -26,14 +26,20 @@ function put(url, onsuccess, onerror,dataString){
   }
 
   function get(url, onsuccess, onerror){
+    
+    
     const http = new XMLHttpRequest();
     http.open("GET", url);
-    http.onreadystatechange = function(){
-      console.log('PUTOS - Todos');
-      console.log(JSON.parse(this.responseText));
+    
+    http.onload = function(){
+      console.log('me carga la verga');
       
-    if(this.status >= 200 && this.status < 299){
+      
+      console.log(this.status);
+    if(this.status >= 200 ){
         var resultado = JSON.parse(this.responseText);
+        
+        
         
         
         
