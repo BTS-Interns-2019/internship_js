@@ -47,7 +47,7 @@
   
 //   post('https://reqres.in/api/users',JSON.stringify(data),function success (responseText){console.log('respuesta: ', responseText)},function error (errorcito){});
 
-const {XMLHttpRequest} = require('xmlhttprequest');
+// const {XMLHttpRequest} = require('xmlhttprequest').XMLHttpRequest;
 const { request: requestCB } = require('./simple_xhr_ricardom');
 
 

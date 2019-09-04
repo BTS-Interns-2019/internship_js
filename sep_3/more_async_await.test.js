@@ -1,4 +1,4 @@
-const { findHero } = require('./superheroes_ricardom');
+const findHero = require('./superheroes_ricardom');
 
 
 describe('Find Super heroes', () => {
