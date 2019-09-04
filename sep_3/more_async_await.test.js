@@ -1,5 +1,5 @@
 
-const findHero = require('./superheroes_sergior.js');
+const {findHero, findSeries} = require('./superheroes_sergior.js');
 
 
 
