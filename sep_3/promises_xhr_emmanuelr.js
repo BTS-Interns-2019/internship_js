@@ -12,7 +12,7 @@ const request = (method, url, dataString) => {
       resolve(http.responseText);
     };
     http.onerror = (e) => {
-      reject(http, e);
+      reject(http);
     };
   });
 };
