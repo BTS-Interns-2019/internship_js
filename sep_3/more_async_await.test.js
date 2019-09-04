@@ -1,4 +1,4 @@
-const findHero = require('../sep_3/superheroes_edgarp.js');
+const {findHero, findSeries} = require('../sep_3/superheroes_edgarp.js');
 
 
 describe('Find Super heroes', () => {

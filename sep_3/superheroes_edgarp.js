@@ -1,56 +1,73 @@
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const axios = require ('axios');
 
-function request(method, url, onSuccess, onError) {
-  const req = new XMLHttpRequest();
-
-  req.open(method, url);
-  req.send();
-
-  req.onload = () => {
-      if (req.status >= 200 && req.status < 300) {
-          const responseObj = JSON.parse(req.responseText);
-         
-        onSuccess(responseObj);
-        return true;         
-      } else if (req.status) {
-        try {
-          onError(req.responseText);
-        } catch (error) {
-          onError(error);
-        }
-      } else {
-        onError(new Error('An error ocurred'));
-      }
-  };
+function  request (url) {
+    return axios.get(url);
 }
 
-// GET 
-function get(url) {
-  const pc =  new Promise((resolve, reject) => {
-    request('GET', url, resolve, reject);
-  });
-pc
-.then(show)
-.catch(error);
-}
-
-function show (answer){
-    console.log(answer);
-}
-
-function error (err){
-    console.log(err);
-}
-
-
-function findHero (name) {
+async function findHero (name) {
 link ='https://gateway.marvel.com:443/v1/public/characters?'
 apikey = 'ca07ee3a91c19295d08a91cd49ba1596&hash=98d893735cfa455ead385b953c25f13d'
-
 url = link.concat('ts=1&name='+name+'&apikey='+apikey);
-get (url);
+let heroe;
+
+  try {
+    heroe = await request(url);
+  } catch (error) {
+    return error;
+  }
+
+  const hero = heroe.data.data.results[0];
+  
+  if (hero) {
+    [hero.wiki] = hero.urls.filter(url => url.type === 'wiki');
+    if (hero.wiki) {
+      hero.wiki = hero.wiki.url.substring(0, hero.wiki.url.indexOf('?'));
+    }
+      return hero;
+  }
+  return new Error('Hero not found');
 }
 
-findHero('Thor');
+async function findSeries (SName, filter) {
+  link ='https://gateway.marvel.com:443/v1/public/series?'
+  apikey = 'ca07ee3a91c19295d08a91cd49ba1596&'
+  hash ='98d893735cfa455ead385b953c25f13d';
 
-module.exports = findHero;
+  if (filter) {
+    const filterKeys = Object.keys(filter);
+     url = link.concat('title='+SName);
+    filterKeys.forEach(key => {
+      url += `&${key}=${filter[key]}`;
+    });
+    url = url.concat('&ts=1&apikey='+apikey+'&hash='+hash);
+  } else {
+   url = link.concat('title='+SName+'&ts=1&apikey='+apikey+'&hash='+hash);
+  }
+
+  const serie = await request(url).catch(error => console.log(error));
+  const [series] = serie.data.data.results;
+
+  const heroesPromises = series.characters.items.map(character => findHero(character.name).catch(error => console.log(error)));
+  
+  let heroes = await Promise.all(heroesPromises);
+  heroes = heroes.filter(hero => hero);
+
+  heroes.forEach((hero) => {
+    series.characters[hero.name.toLowerCase()] = hero;
+    [series.characters[hero.name.toLowerCase()].comics.first] = series.characters[hero.name.toLowerCase()].comics.items;
+
+    const issueIndex = series.characters[hero.name.toLowerCase()].comics.first.name.indexOf('#');
+    const issueNumber = series.characters[hero.name.toLowerCase()].comics.first.name.substring(issueIndex + 1);
+
+    series.characters[hero.name.toLowerCase()].comics.first.issueNumber = issueNumber;
+    series.characters[hero.name.toLowerCase()].comics.first.title = series.characters[hero.name.toLowerCase()].comics.items[0].name;
+    delete series.characters[hero.name.toLowerCase()].comics.first.name;
+  });
+
+  return series;
+}
+
+module.exports = {
+  findHero,
+  findSeries,
+};
