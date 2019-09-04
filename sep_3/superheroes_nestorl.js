@@ -7,10 +7,10 @@ function get(url,cb,error){
         if(http.readyState == 4){
             if(http.status == 200){
                 const res = JSON.parse(http.responseText)
-                let wiki = res.data.results[0].urls[1].url;
-                let arr = wiki.split("?");           
+                // let wiki = res.data.results[0].urls[1].url;
+                // let arr = wiki.split("?");           
                 let hero = {};
-                hero.wiki = arr[0];
+                hero.wiki = res.data.results[0].urls[1].url.split("?")[0];
                 hero.description = res.data.results[0].description;
             return cb(hero);
             } 
@@ -33,5 +33,5 @@ function post(url, body, cb, error){
         }
     };
     http.send(body);
-  }
+}
   module.exports = {get, post}
