@@ -6,6 +6,13 @@ function findHero(hero) {
   get(url, resolve, reject);
   });
 }
+function findSeries(serie, year){
+  const hash =  'c2ea1985191bf9ebc56e3dbf95619284'
+  const url = `https://gateway.marvel.com:443/v1/public/series?title=${serie}&startYear=${year.startYear}&ts=1&apikey=9b04d37e84bdf94e5610a5caa34dd978&hash=${hash}`
+  return new Promise((resolve, reject) => {
+    get(url, resolve, reject);
+    });
+}
 
 describe('Find Super heroes', () => {
 
