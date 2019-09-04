@@ -5,7 +5,7 @@ url = 'https://reqres.in/api/users/2';
 http.open("GET", url);
 http.send();
 
-http.onreadystatechange = () => {
+http.onload = () => {
   console.log(http.responseText);
 }
 
