@@ -1,4 +1,4 @@
-const findHero  = require('./superheroes_urbanog');
+const {findHero, findSeries}  = require('./superheroes_urbanog');
 
 
 describe('Find Super heroes', () => {
