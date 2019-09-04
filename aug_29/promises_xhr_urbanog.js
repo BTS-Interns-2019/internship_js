@@ -1,4 +1,4 @@
-// const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 // const { get, post, request } = require('./simple_xhr_urbanog');
 // const url = 'https://reqres.in/api/users/2';
 
@@ -69,5 +69,5 @@ const me = {
 // request('get', 'https://envkltpq4il7.x.pipedream.net/post/1')
 
 module.exports = {
-  promGet, promPost, promRequest, promisesXhr,
+  promGet, promPost, promRequest, promisesXhr, justRequest,
 };
