@@ -1,6 +1,6 @@
 //var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-function get(url, onSuccess, onError) {
+function get(url, onSuccess, onError, request) {
   let newPromise = new Promise(function(resolve, reject) {
     let http = new XMLHttpRequest();
     http.open('GET', url);
@@ -17,27 +17,21 @@ function get(url, onSuccess, onError) {
   return newPromise;
 }
 
-function post(url,data, onSuccess, onError) {
-    let newPromise = new Promise(function(resolve, reject) {
-      let http = new XMLHttpRequest();
-      http.open('POST', url);
-  
-      http.onload = () => {
-        if (http.status < 400) {
-          resolve(http.responseText);
-          console.log('Ok!!!');
-        } else {
-          reject(new Error(http.responseText));
-          console.log('Algo salio mal');
-        }
-      };
-      http.send(data);
-    });
-    return newPromise;
-  }
-  
+function post(url, data) {
+  return new Promise((resolve, reject) => {
+    request('POST', url, resolve, reject, data);
+  });
+}
+
+function put(url, data) {
+  return new Promise((resolve, reject) => {
+    request('PUT', url, resolve, reject, data);
+  });
+}
   module.exports = {
     get,
+    post,
+    put,
     post
   };
 
