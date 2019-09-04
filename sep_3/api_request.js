@@ -1,7 +1,7 @@
 const toMD5 = require('../node_modules/blueimp-md5');
 const {XMLHttpRequest} = require('../node_modules/xmlhttprequest');
 
-const ts = 1;
+const ts = '1';
 const publicKey = '667b28d13784d155d0759f9ca264742e';
 const privateKey = '61fbdc2c82c1827370e472ff3acc57b35c1ff9cf';
 const hash = toMD5(ts + privateKey + publicKey);
@@ -10,22 +10,30 @@ function generateInfo(httpResponse) {
   const brute = JSON.parse(httpResponse);
   const info = brute.data.results[0];
   if (typeof info.urls !== 'undefined') {
+    console.log(info.urls);
     const urls = info.urls;
     const urlwiki = urls.filter((element) => {
       if (element.type === 'wiki') {
         return element;
       }
     });
-    const wikiu = urlwiki[0].url;
-    let cut = 0;
-    for (let i = 0; i < wikiu.length; i += 1) {
-      if (wikiu.charAt(i) === '?') {
-        cut = i;
+    console.log(urlwiki.lenght);
+    if(urlwiki.lenght === 1) {
+      const wikiu = urlwiki[0].url;
+      let cut = 0;
+      for (let i = 0; i < wikiu.length; i += 1) {
+        if (wikiu.charAt(i) === '?') {
+          cut = i;
+        }
       }
+      info.wiki = wikiu.substring(0, cut);
     }
-    info.wiki = wikiu.substring(0, cut);
   }
 
+  if (typeof info.characters !== 'undefined') {
+    const charact = info.characters.items.name;
+    console.log(charact);
+  }
   return info;
 }
 
@@ -56,15 +64,16 @@ function findHero(heroName) {
 function findSeries(title, extra) {
   const key = Object.keys(extra);
   const value = Object.values(extra);
+  console.log(`https://gateway.marvel.com:443/v1/public/series?title=${title}&${key}=${value}&ts=1&apikey=${publicKey}&hash=${hash}`);
   return get(`https://gateway.marvel.com:443/v1/public/series?title=${title}&${key}=${value}&ts=1&apikey=${publicKey}&hash=${hash}`);
 }
 
 findHero('Spider-man').then(data => {
   console.log('');
 });
-/*
+
 findSeries('Avengers', { startYear: 2016 }).then(data => {
-  console.log
-});*/
+  console.log('');
+});
 
 module.exports = findHero;
