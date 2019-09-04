@@ -5,7 +5,7 @@ module.exports={findHero, findSeries};
 async function findHero(hero){
     try{
         return new Promise(async function(resolve,reject){
-            let link=await url(hero);
+            let link=await urlhero(hero);
             console.log("url = "+link+"-->"+typeof link)
             let http=new XMLHttpRequest();
             http.open("GET",link,true);
@@ -14,10 +14,10 @@ async function findHero(hero){
                 if(http.status<400){
                     console.log("success");
                     //console.log(http.responseText);
-                    console.log("-Wiki URL-\n"+JSON.stringify(
+                    /*console.log("-Wiki URL-\n"+JSON.stringify(
                         JSON.parse(http.responseText).data.results[0].urls.filter((c)=>{
                             return c.type === "wiki";
-                        })[0].url));
+                        })[0].url));*/
                     let obhero = {};
                     let jr = JSON.parse(http.responseText).data.results[0];
                     obhero.id= jr.id;
@@ -41,18 +41,58 @@ async function findHero(hero){
                 }
             }
         })
-        
     }catch(e){
         console.log(e);
     }
 }
-async function findSeries(serie){}
+async function findSeries(serie,attribute){
+    try{
+        return new Promise(async function(resolve,reject){
+            let link=await urlserie(serie,attribute);
+            console.log("url = "+link+"-->"+typeof link)
+            let http=new XMLHttpRequest();
+            http.open("GET",link,true);
+            http.send();
+            http.onload=()=>{
+                if(http.status<400){
+                    console.log("success");
+                    let jr = JSON.parse(http.responseText).data.results[0];
+                    console.log(jr);
+                    console.log("1. "+jr.title);
+                    console.log("2. "+jr.characters.deadpool);
+                    resolve(jr);
+                }else{
+                    console.log("fail");
+                    reject(http.responseText);
+                }
+            }
+        })
+    }catch(e){
+        console.log(e);
+    }
+}
 
-function url(hero){
+function urlhero(hero){
     let p = "3d439829a5351f94e9224b2c8a1f58126278381b";
     let p2 = "3ee825f31bd11f3d60b465f450f6eae6";
     let ts = Date.now();
     let link = "https://gateway.marvel.com:443/v1/public/characters?name="+hero+"&ts="+ts+"&apikey="+p2;
+    let linkp = "&hash="+md5(ts+p+p2);
+    return link+linkp;
+}
+function urlserie(serie, attribute){
+    let attributes = Object.keys(attribute);
+    let values = Object.values(attribute);
+    let extra = "";
+    if(attributes.length>0){
+        for(let i in attributes){
+            extra=extra+"&"+attributes[i]+"="+values[i];
+        }
+    }
+    let p = "3d439829a5351f94e9224b2c8a1f58126278381b";
+    let p2 = "3ee825f31bd11f3d60b465f450f6eae6";
+    let ts = Date.now();
+    let link = "https://gateway.marvel.com:443/v1/public/series?title="+serie+extra+"&ts="+ts+"&apikey="+p2;
     let linkp = "&hash="+md5(ts+p+p2);
     return link+linkp;
 }
@@ -122,10 +162,11 @@ async function thor(){
 
 //marvel.render();
 
-console.log(findHero("Thor").then(thor =>{
+/*console.log(findHero("Thor").then(thor =>{
     //console.log(thor);
     console.log("v-->"+typeof thor);
     console.log("describe = "+thor.description);
-}));
+}));*/
+console.log(findSeries("Avengers",{startYear:2016}));
 
 //find hero retorna un objeto, wiki sin ?... y description 
