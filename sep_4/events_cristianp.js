@@ -75,23 +75,26 @@
         _('p').textContent = `Seleccionaste: ${selection}`;
     });
 
-    document.addEventListener('keydown',()=>{
+    window.addEventListener('keydown',()=>{
         disco.style.background= "fuchsia";
-        img.dispatchEvent(new CustomEvent('mueve1'));
     });
     
-    document.addEventListener('mueve1',()=>{
+    img.addEventListener('mueve1',(event)=>{
         img.setAttribute("src","b2.jpg");
+        console.log(event.target);
     });
-    document.addEventListener('mueve2',()=>{
+    img.addEventListener('mueve2',(event)=>{
         img.setAttribute("src","b1.jpg");
+        console.log(event.target);
     });
-    document.addEventListener('keypress', ()=>{
+    window.addEventListener('keypress', ()=>{
         disco.style.background= "red";
-        img.dispatchEvent(new CustomEvent('mueve2'));
+        img.dispatchEvent(new Event('mueve1'));
     });
-    document.addEventListener('keyup', ()=>{
+    window.addEventListener('keyup', ()=>{
         disco.style.background= "chartreuse";
+        //img.dispatchEvent(new Event('mueve2'));
+        console.log("#");
     });
 
     _('area').addEventListener('cut',()=>{
