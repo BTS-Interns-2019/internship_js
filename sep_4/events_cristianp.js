@@ -93,7 +93,7 @@
     });
     window.addEventListener('keyup', ()=>{
         disco.style.background= "chartreuse";
-        //img.dispatchEvent(new Event('mueve2'));
+        img.dispatchEvent(new Event('mueve2'));
         console.log("#");
     });
 
