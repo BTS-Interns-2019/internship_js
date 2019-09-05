@@ -1,0 +1,129 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px;
+}
+
+/* Thinking */
+.container {
+  width: 350px;
+  height: 450px;
+  background-color: #b1e59f;
+  border: 2px solid #000;
+  position: relative;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 25px;
+}
+
+.thinking-div #thinking-bubble {
+  opacity: 1;
+  width: 85%;
+  height: 150px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: #feff96;
+  border: 2px solid	#cff09e;
+  border-radius: 7px;
+}
+
+.thinking-div #inner-bubble {
+  padding: 20px;
+}
+
+.thinking-div p {
+  font-size: 96px;
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  top: 40%;
+  position: absolute;
+  text-align: center;
+}
+
+.thinking-div label {
+  width: 65%;
+  display: block;
+  margin: 0 auto;
+  top: 38%;
+  position: relative;
+}
+
+.thinking-div input {
+  border: 2px solid #000;
+  border-radius: 7px;
+  width: 65%;
+  height: 25px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  top: 40%;
+  position: relative;
+}
+
+/* Balloon */
+.balloon-div p {
+  font-size: 52px;
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  top: 40%;
+  position: absolute;
+  text-align: center;
+}
+
+/* Hacking girl */
+.hacking-div p {
+  font-size: 52px;
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  top: 40%;
+  position: absolute;
+  text-align: center;
+}
+
+.message {
+  padding: 20px;
+}
+
+.message-container {
+  margin: 0 auto;
+  margin-top: 35px;
+  width: 65%;
+  text-align: center;
+  background-color: black;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 28px;
+  border: 2px solid #fff;
+  border-radius: 7px;
+  opacity: 0;
+}
+
+/* Elements */
+.elements-div p {
+  font-size: 52px;
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  top: 40%;
+  position: absolute;
+  text-align: center;
+}
+
+/* Modes */ 
+.modes-div {
+  width: 350px;
+  height: 450px;
+  position: relative;
+  background-color: initial;
+  border: none;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.mode-message p {
+  font-size: 68px; 
+  text-align: center;
+  font-weight: 700;
+}
