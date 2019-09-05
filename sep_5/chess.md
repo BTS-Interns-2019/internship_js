@@ -19,7 +19,7 @@ Filename `chess_<branchname>.js`
 * List
   * pawn
   * bishop
-  * knight
+  * horse
   * rook
   * queen
   * king
