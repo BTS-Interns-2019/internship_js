@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events</title>
+</head>
+<style>
+  body {
+    padding: 20px;
+  }
+  #myDiv,
+  #newDiv {
+    width: 600px;
+    height: 500px;
+    background: blanchedalmond;
+    margin: 50px 10px;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  #newDiv {
+    float: right;
+  }
+
+  #newTable {
+    margin-top: 10px;
+    display: inline-block;
+    width: 500px;
+  }
+
+  #sendTable {
+    width: 60px;
+    height: 60px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+
+  #div2,
+  #div3,
+  #div4 {
+    padding: 20px;
+    border: solid fuchsia;
+    display: inline-block;
+    width: 90%;
+  }
+
+  .inputTable {
+    width: 96%;
+    align-content: center;
+  }
+
+  #asideDiv {
+    display: inline-block;
+    border: solid black;
+    width: 45%;
+    height: 60%;
+    float: right;
+    margin-top: 20px;
+  }
+
+  #list {
+    display: inline-block;
+    width: 180px;
+  }
+
+</style>
+<body>
+  <input id="myInput"><br>
+  <input id="input2">
+  <button id="myButton">press me</button>
+
+  <div id="div2">
+    <div id="div3">
+      <div id="div4">
+        soy el div mas pequeño
+      </div>
+    </div>
+  </div>
+
+  <div id="myDiv"></div>
+
+  <div id="newDiv">
+    <input id="newInput">
+    <button id="newButton">Picale</button>
+    <table id="newTable" border="1">
+      <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input id="nameInput" class="inputTable"></td>
+          <td><input id="lastNameInput" class="inputTable"></td>
+          <td><input id="ageInput" class="inputTable"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="sendTable" hidden="true">Send Data</button>
+    <ul id="list">
+      <li>Paco el Chato, 6 years</li>
+      <li>El Chavo del Ocho, 8 years.</li>
+      <li>Chabelo Lopez, Infity years.</li>
+    </ul>
+    <div id="asideDiv"></div>
+  </div>
+
+  <script src="./events_marlont.js"></script>
+</body>
+</html>
