@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 50px;
+        }
+        #myDiv{
+            width: 500px;
+            height: 500px;
+            background: blanchedalmond;
+            margin-top: 50px;
+        }
+        #div2, #div3, #div4{
+            border:1px solid fuchsia;
+            padding: 15px;
+        }
+        .nosta{
+            display: none;
+        }
+        .asd{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        .disco{
+            border:2px solid fuchsia;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="audio"
+    controls
+    src="song.mp3">
+    </audio>
+    <p id="songp"></p>
+    <div class="disco" id="disco"></div>
+    <img src="b1.jpg" alt="" id="img"><br>
+
+    <textarea name="" id="area" cols="30" rows="10">copea o corta texto de esta area y pegalo aqui mismo</textarea>
+    <p id="p"></p>
+    <br>
+    <p>Cambiar tamaño de pantalla</p>
+
+    <p id="num"></p>
+    <select id="slc_Num">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select><br>
+    <input id="myInput"><br>
+    <input id="myInput2">
+    <button id="myButton">press me</button>
+    <button id="but2">tamaño</button><p class="nosta" id="nosta">Texto escondido</p>
+    <div id="myDiv"></div>
+    <div id="div2">
+        <div id="div3">
+            <div id="div4">
+                soy el div mas pequeño
+            </div>
+        </div>
+    </div>
+    <button id="btn_Confirm">Confirm</button>
+    <script src="events_cristianp.js"></script>
+</body>
+</html>
