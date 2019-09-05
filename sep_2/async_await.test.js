@@ -109,7 +109,12 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
+<<<<<<< HEAD
     return post(api.postsPost.url, api.postsPost.requestBody)
+=======
+    return // promise
+      // your stuff
+>>>>>>> master
       .then(data => {
         const post = JSON.parse(data);
         expect(post.userId).toBe(api.postsPost.body.userId);
@@ -141,6 +146,7 @@ describe('manipulations with promises', () => {
         .body(JSON.stringify(api.likePut.body));
     });
 
+<<<<<<< HEAD
     return get('/users/self').then(data => {
       const user = JSON.parse(data);
       return post('/posts', {
@@ -256,3 +262,15 @@ describe('manipulations with async await', () => {
     });
   });
 });
+=======
+    return //promise
+      // your stuff
+      .then(data => {
+        const post = JSON.parse(data);
+        expect(post.likes).toBe(1);
+      });
+  });
+
+
+});
+>>>>>>> master
