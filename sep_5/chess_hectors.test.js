@@ -45,5 +45,29 @@ describe('Pieces Tests', () => {
 
       expect(rook.validMove('E4')).toBe(true);
     });
-  })
+  });
+
+  describe('Horse Tests', () => {
+    test('Horse has Piece as prototype', () => {
+      expect(Piece.prototype.isPrototypeOf(Horse.prototype)).toBe(true);
+    });
+
+    test('Horse can move to the target location', () => {
+      const horse = new Horse('D4', 'w');
+
+      expect(horse.validMove('C2')).toBe(true);
+    });
+  });
+
+  describe('Bishop Tests', () => {
+    test('Bishop has Piece as prototype', () => {
+      expect(Piece.prototype.isPrototypeOf(Bishop.prototype)).toBe(true);
+    });
+
+    test('Bishop can move to the target location', () => {
+      const horse = new Bishop('D4', 'w');
+
+      expect(horse.validMove('A1')).toBe(true);
+    });
+  });
 });

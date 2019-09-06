@@ -8,22 +8,27 @@ function Horse(location, color) {
 Horse.prototype = Object.create(Piece.prototype, {
   validMove: {
     value(target) {
+      const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+      // get the numerical value for each column (target and current)
+      let targetColumn = target.substring(0, 1);
+      let currentColumn = this.location.substring(0, 1);
+      targetColumn = columns.indexOf(targetColumn) + 1;
+      currentColumn = columns.indexOf(currentColumn) + 1;
       const targetRow = +target.substring(target.length - 1);
       const currentRow = +this.location.substring(this.location.length - 1);
 
-      // if the target is outside the board
-      if (targetRow > 8 || targetRow < 1) {
+      // the sum of the subtractions between target's and current's rows and columns should be exactly 3
+      if (
+        (
+          Math.abs(targetRow - currentRow)
+          + Math.abs(targetColumn - currentColumn)
+        ) !== 3
+      ) {
         return false;
       }
 
-      // pawns can only move one row (in this implementation of chess)
-      // white pieces can only move up one row at a time
-      if (this.color === 'w' && currentRow + targetRow !== 1) {
-        return false;
-      }
-
-      // black pieces can only move down one row at a time
-      if (this.color === 'b' && currentRow - targetRow !== 1) {
+      // If any of the target values is out of range
+      if (targetRow > 8 || targetRow < 1 || !columns.hasOwnProperty(targetColumn)) {
         return false;
       }
 
