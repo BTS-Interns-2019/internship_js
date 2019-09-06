@@ -131,6 +131,7 @@ document.getElementById('over').addEventListener('mouseover', ()=>{
     over.style.background='teal';
 
 })
+
 document.getElementById('over').addEventListener('mouseout', ()=>{
     over.style.background='#bff';
 })
@@ -141,14 +142,11 @@ document.getElementById('over').addEventListener('wheel', ()=>{
 
 
 
+document.getElementById('over').addEventListener('click',(e) => {
 
-// document.getElementById('over').addEventListener('click',(e) => {
-//     // alert(input.value);
-//     // div.dispatchEvent(new CustomEvent('chingadazo'));
-//     const evento = new CustomEvent('cambio');
-//     div.dispatchEvent(evento);
-// console.log('hola'+ e)
-// });
+    over.dispatchEvent(new CustomEvent('cambio'));
+
+});
 
 
 })();
