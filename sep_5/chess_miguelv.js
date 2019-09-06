@@ -1,14 +1,120 @@
 module.exports = {moveWhite, moveBlack}
+
+var posboard=[];
 /*  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////// FUNCIONES /////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 */
 /* MOVER PIEZA EN EL TABLERO */
 async function moveWhite(starting,target){
-    
+    try{
+        return new Promise(async(resolve, reject)=>{
+            let color="white";
+            let board=await createBoard();
+            let positionBoard;
+            if(posboard.length<1){
+                positionBoard=await startPositions();
+            }else{
+                positionBoard=posboard;
+            }
+            let valp = await validPiece(positionBoard,board,starting);
+            if(valp){
+                let piece=valp;
+                if(validColor(piece,color)){
+                    let type = piece.charAt(1);
+                    let validpiece;
+                    switch(type){
+                        case 'K':
+                            validpiece=new King(starting,color);
+                            break;
+                        case 'Q':
+                            validpiece=new Queen(starting,color);
+                            break;
+                        case 'B':
+                            validpiece=new Bishop(starting,color);
+                            break;
+                        case 'H':
+                            validpiece=new Horse(starting,color);
+                            break;
+                        case 'R':
+                            validpiece=new Rook(starting,color);
+                            break;
+                        case 'P':
+                            validpiece=new Pawn(starting,color);
+                            break;
+                    }
+                    let validmove=validpiece.validMove(target);
+                    if(validmove){
+                        posboard=movePiece(validpiece,positionBoard,board,starting,target);
+                        resolve(validpiece);
+                    }else{
+                        reject(`The piece ${validpiece.key} cannot be moved to ${target}`);
+                    }
+                }else{
+                    reject( `The piece at ${starting} is not ${color}`);
+                }
+            }else{
+                reject(`There is no piece in the selected ${starting} cell`);
+            }
+        })
+    }catch(e){
+        console.log(e);
+    }
 }
 async function moveBlack(starting,target){
-
+    try{
+        return new Promise(async(resolve, reject)=>{
+            let color="black";
+            let board=await createBoard();
+            let positionBoard;
+            if(posboard.length<1){
+                positionBoard=await startPositions();
+            }else{
+                positionBoard=posboard;
+            }
+            let valp = await validPiece(positionBoard,board,starting);
+            if(valp){
+                let piece=valp;
+                if(validColor(piece,color)){
+                    let type = piece.charAt(1);
+                    let validpiece;
+                    switch(type){
+                        case 'K':
+                            validpiece=new King(starting,color);
+                            break;
+                        case 'Q':
+                            validpiece=new Queen(starting,color);
+                            break;
+                        case 'B':
+                            validpiece=new Bishop(starting,color);
+                            break;
+                        case 'H':
+                            validpiece=new Horse(starting,color);
+                            break;
+                        case 'R':
+                            validpiece=new Rook(starting,color);
+                            break;
+                        case 'P':
+                            validpiece=new Pawn(starting,color);
+                            break;
+                    }
+                    let validmove=validpiece.validMove(target);
+                    if(validmove){
+                        posboard=movePiece(validpiece,positionBoard,board,starting,target);
+                        resolve(validpiece);
+                    }else{
+                        reject(`The piece ${validpiece.key} cannot be moved to ${target}`);
+                    }
+                }else{
+                    reject( `The piece at ${starting} is not ${color}`);
+                }
+            }else{
+                reject(`There is no piece in the selected ${starting} cell`);
+            }
+        })
+    }catch(e){
+        console.log(e);
+    }
 }
 /* CREACION DEL TABLERO DE 8X8 */
 function createBoard(){
@@ -70,7 +176,6 @@ function movePiece(piece,pos,board,initial,target){
             }
         }
     }
-    console.log("*"+pos);
     return pos;
 }
 /* REVISAR SI LA PIEZA EXISTE EN LA POSICION */
@@ -226,7 +331,35 @@ function kingPositions(initialLocation){
 }
 /* MOVIMIENTOS DEL CABALLO */
 function horsePosition(initialLocation){
-    /* */
+    if(initialLocation.length!== 2)return [];
+    validOnes=[];
+    let capturePos = initialLocation.split("");
+    let letter = capturePos[0];
+    let number = parseInt(capturePos[1]);
+    let board = createBoard();
+    let long = board.length;
+    if(number>long)return [];
+    if(/[^A-H]/.test(letter))return[];
+    for(let i=0; i<8; i++){
+        for(let j=0; j<8; j++){
+            let cellx = [j + 2, j - 2, j + 1, j - 1].filter(function(cellPosition) {
+                return (cellPosition > 0 && cellPosition < 9);
+            });
+            let celly = [i + 2, i - 2, i + 1, i - 1].filter(function(cellPosition) {
+                return (cellPosition > 0 && cellPosition < 9);
+            });
+            for (let k = 0; k < cellx.length; k++) {
+                for (let l = 0; l < celly.length; l++) {
+                    if (Math.abs(cellX - cellx[k]) + Math.abs(cellY - celly[l]) === 3) {
+                        if (!validOnes.includes([cellx[k], celly[l]])) {
+                            validOnes.push(board[k][l]);
+                        } 
+                    }
+                }
+            }
+        }
+    }
+    return validOnes;
 }
 /*  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////// PROTOTIPOS /////////////////////////////////////////////////////////
@@ -291,73 +424,6 @@ function King(location, color){
     Piece.call(this,"king",location,color);
     this.validPositions=kingPositions(location);
 }
-
-/*  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////// TESTS AREA /////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-*/
-console.log(createBoard());
-console.log(startPositions());
-console.log("\nPeon\n");
-let wP1 = new Pawn("E2","white");
-console.log(wP1.currentLocation);
-console.log(wP1.validPositions);
-console.log(wP1.validMove("E3"));
-console.log(wP1.validMove("E4"));
-console.log(wP1.validMove("E5"));
-/*let wP2 = new Pawn("B7","black");
-console.log(wP2.currentLocation);
-console.log(wP2.validPositions);
-console.log(wP2.validMove("B6"));
-console.log(wP2.validMove("B5"));
-console.log(wP2.validMove("B4"));
-let wP3 = new Pawn("C3","white");
-console.log(wP3.currentLocation);
-console.log(wP3.validPositions);
-console.log(wP3.validMove("C4"));
-console.log(wP3.validMove("C5"));
-console.log(wP3.validMove("C6"));
-let wP4 = new Pawn("B1","black");
-console.log(wP4.currentLocation);
-console.log(wP4.validPositions);
-console.log(wP4.validMove("B0"));
-console.log(wP4.validMove("B2"));
-console.log(wP4.validMove("B3"));*/
-
-/*let board= createBoard();
-let positionBoard = startPositions();
-positionBoard = movePiece(wP1,positionBoard,board,wP1.currentLocation,"E3");
-console.log(wP1.currentLocation);
-console.log(positionBoard);
-console.log(board);*/
-
-let wR1 = new Rook("H5","white");
-console.log(wR1.currentLocation);
-console.log(wR1.validPositions);
-console.log(wR1.validMove("D5"));
-console.log(wR1.validMove("H1"));
-console.log(wR1.validMove("D6"));
-
-let wB1 = new Bishop("D5","white");
-console.log(wB1.currentLocation);
-console.log(wB1.validPositions);
-console.log(wB1.validMove("E6"));
-console.log(wB1.validMove("C6"));
-console.log(wB1.validMove("D6"));
-
-let wK1 = new King("A8","white");
-console.log(wK1.currentLocation);
-console.log(wK1.validPositions);
-console.log(wK1.validMove("C5"));
-console.log(wK1.validMove("D3"));
-console.log(wK1.validMove("D8"));
-
-let wQ1 = new Queen("D5","white");
-console.log(wQ1.currentLocation);
-console.log(wQ1.validPositions);
-console.log(wQ1.validMove("C5"));
-console.log(wQ1.validMove("D3"));
-console.log(wQ1.validMove("D8"));
 
 /* Proceso 
     a   createBoard() - Crea el tablero
