@@ -8,6 +8,7 @@ function Pawn(location, color) {
 Pawn.prototype = Object.create(Piece.prototype, {
   validMove: {
     value(target) {
+      // rows
       const targetRow = +target.substring(target.length - 1);
       const currentRow = +this.location.substring(this.location.length - 1);
 

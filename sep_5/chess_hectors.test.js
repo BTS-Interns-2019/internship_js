@@ -1,8 +1,19 @@
-const { Board, Rook, Horse, Bishop, Queen, King, Pawn } = require('./chess_hectors');
-const { Piece } = require('./piece_hectors');
+const { Board, Piece, Rook, Horse, Bishop, Queen, King, Pawn } = require('./chess_hectors');
 
 describe('Board Tests', () => {
   const board = new Board();
+
+  test('Board can move a piece', async () => {
+    const start = 'C1'; // first white bishop
+    const target = 'G5';
+    const testBishop = {
+      location: 'G5',
+      color: 'w',
+      pieceName: 'Bishop',
+    };
+
+    await expect(board.moveWhite(start, target)).resolves.toEqual(testBishop);
+  });
 
   test('Rejects with error when the specified start has no piece', async () => {
     const start = 'D9';
@@ -65,9 +76,33 @@ describe('Pieces Tests', () => {
     });
 
     test('Bishop can move to the target location', () => {
-      const horse = new Bishop('D4', 'w');
+      const bishop = new Bishop('D4', 'w');
 
-      expect(horse.validMove('A1')).toBe(true);
+      expect(bishop.validMove('A1')).toBe(true);
+    });
+  });
+
+  describe('Queen Tests', () => {
+    test('Queen has Piece as prototype', () => {
+      expect(Piece.prototype.isPrototypeOf(Queen.prototype)).toBe(true);
+    });
+
+    test('Queen can move to the target location', () => {
+      const queen = new Queen('E8', 'w');
+
+      expect(queen.validMove('E1')).toBe(true);
+    });
+  });
+
+  describe('King Tests', () => {
+    test('King has Piece as prototype', () => {
+      expect(Piece.prototype.isPrototypeOf(King.prototype)).toBe(true);
+    });
+
+    test('King can move to the target location', () => {
+      const king = new King('E7', 'w');
+
+      expect(king.validMove('F7')).toBe(true);
     });
   });
 });

@@ -8,11 +8,14 @@ function Rook(location, color) {
 Rook.prototype = Object.create(Piece.prototype, {
   validMove: {
     value(target) {
+      // board columns
       const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+      // letter-based columns
       const targetColumn = target.substring(0, 1);
       const currentColumn = this.location.substring(0, 1);
-      const targetRow = target.substring(target.length - 1);
-      const currentRow = this.location.substring(this.location.length - 1);
+      // rows
+      const targetRow = +target.substring(target.length - 1);
+      const currentRow = +this.location.substring(this.location.length - 1);
 
       // If any of the target values is out of range
       if (targetRow > 8 || targetRow < 1 || !columns.includes(targetColumn)) {

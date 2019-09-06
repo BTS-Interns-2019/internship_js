@@ -1,3 +1,4 @@
+const { Piece } = require('./piece_hectors');
 const { Rook } = require('./pieces/rook_hectors');
 const { Horse } = require('./pieces/horse_hectors');
 const { Bishop } = require('./pieces/bishop_hectors');
@@ -148,6 +149,7 @@ Board.prototype = {
 
 module.exports = {
   Board,
+  Piece,
   Rook,
   Horse,
   Bishop,
@@ -155,7 +157,3 @@ module.exports = {
   King,
   Pawn,
 };
-
-// const board = new Board();
-// console.log(board.getBoard());
-// board.moveWhite('D7').then(result => console.log(result)).catch(error => console.log(error));
