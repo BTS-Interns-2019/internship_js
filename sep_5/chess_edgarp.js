@@ -120,8 +120,8 @@ Bishop.prototype = Object.create(Piece.prototype, {
             const columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
             const targetColumn = target.substring(0,1);
             const currentColumn = this.location.substring(0,1);
-            const targetColorNumber = columns.indexOf(targetColumn) + 1;
-            const curreColumnNumber = columns.indexOf(currentColumn) + 1;
+            const targetColumnNumber = columns.indexOf(targetColumn) + 1;
+            const currentColumnNumber = columns.indexOf(currentColumn) + 1;
             const targetRow = +target.substring(target.length - 1);
             const currentRow = +this.location.substring(target.length - 1);
 
