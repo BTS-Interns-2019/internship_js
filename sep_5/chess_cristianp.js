@@ -1,10 +1,24 @@
-const tablero = new Array(8);
-for (let i = 0; i < tablero.length; i++) {
-    tablero[i] = new Array(8);
-}
-for (let i = 0; i < tablero.length; i++) {
-    for (let a = 0; a < tablero[i].length; a++) {
-        tablero[i][a] = 0;
+function Board(){
+    //Blancas peones
+    const bP1 = new Pawn("A2", "B");
+    const bP2 = new Pawn("B2", "B");
+    const bP3 = new Pawn("C2", "B");
+    const bP4 = new Pawn("D2", "B");
+    const bP5 = new Pawn("E2", "B");
+    const bP6 = new Pawn("F2", "B");
+    const bP7 = new Pawn("G2", "B");
+    const bP8 = new Pawn("H2", "B");
+    //tras
+    const bK = new King("E1", "B");
+    const bQ = new Queen("D2", "B");
+    const board = new Array(8);
+    for (let i = 0; i < tablero.length; i++) {
+        tablero[i] = new Array(8);
+    }
+    for (let i = 0; i < tablero.length; i++) {
+        for (let a = 0; a < tablero[i].length; a++) {
+            tablero[i][a] = 0;
+        }
     }
 }
 
