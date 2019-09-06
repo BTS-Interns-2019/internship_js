@@ -1,8 +1,3 @@
-function Piece(type, side) {
-   this.type = type;
-   this.side = side;
-}
-
 function chessBoard() {
     this.boardColumns = new Array(8);
     // chess board square creation and looping variables
@@ -38,48 +33,42 @@ function chessBoard() {
     // }
 } 
 
-
-function Pawn(color) {
-    this.location 
+function Piece(location, color, pieceName) {
+    this.location = location
     this.color = color;
-    this.pieceName = "Pawn";
-    // this.validMove = validMove(taget)
+    this.pieceName = pieceName;
+}
+
+
+function Pawn(location, color) {
+    this.call(this, location, color, 'Pawn')
+    this.validMove = validMove(taget)
 } 
 
-// function Bishop(color) {
-//     this.location 
-//     this.color = color;
-//     this.pieceName = "Bishop";
-//     this.validMove = validMove(taget)
-// } 
+function Bishop(location, color) {
+    this.call(this, location, color, 'Bishop')
+    this.validMove = validMove(taget)
+} 
 
-// function Horse(color) {
-//     this.location 
-//     this.color = color;
-//     this.pieceName = "Horse";
-//     this.validMove = validMove(taget)
-// } 
+function Horse(location, color) {
+    this.call(this, location, color, 'Horse')
+    this.validMove = validMove(taget)
+} 
 
-// function Rook(color) {
-//     this.location 
-//     this.color = color;
-//     this.pieceName = "Rook";
-//     this.validMove = validMove(taget)
-// } 
+function Rook(location, color) {
+    this.call(this, location, color, 'Rook')
+    this.validMove = validMove(taget)
+} 
 
-// function Queen(color) {
-//     this.location 
-//     this.color = color;
-//     this.pieceName = "Queen";
-//     this.validMove = validMove(taget)
-// }
+function Queen(location, color) {
+    this.call(this, location, color, 'Queen')
+    this.validMove = validMove(taget)
+}
 
-// function King(color) {
-//     this.location 
-//     this.color = color;
-//     this.pieceName = "King";
-//     this.validMove = validMove(taget)
-// } 
+function King(location, color) {
+    this.call(this, location, color, 'King')
+    this.validMove = validMove(taget)
+} 
 
 function startBoard(chessBoard) {
     // empty chess board variable
