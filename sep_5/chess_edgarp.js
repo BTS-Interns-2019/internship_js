@@ -125,7 +125,7 @@ Bishop.prototype = Object.create(Piece.prototype, {
             const targetRow = +target.substring(target.length - 1);
             const currentRow = +this.location.substring(target.length - 1);
 
-            if (target > 8 || target < 1 || !columns.includes(targetColumn)){
+            if (targetRow > 8 || targetRow < 1 || !columns.includes(targetColumn)){
                 return false;
             }
             if (Math.abs(targetRow - currentRow) !== Math.abs(targetColumnNumber - currentColumnNumber)){
@@ -151,7 +151,7 @@ Queen.prototype = Object.create(Piece.prototype, {
             const targetRow = +target.substring(target.length - 1);
             const currentRow = +this.location.substring (target.length - 1);
 
-            if (target > 8 || target < 1 || !columns.includes(targetColumn)) {
+            if (targetRow > 8 || targetRow < 1 || !columns.includes(targetColumn)) {
                 return false;
             }
             if (Math.abs(targetRow - currentRow) === Math.abs(targetColumnNumber - currentColumnNumber)){
@@ -177,7 +177,7 @@ King.prototype = Object.create(Piece.prototype, {
             const targetRow = target.substring(target.length - 1);
             const currentRow = this.location.substring(target.length - 1);
 
-            if (target > 8 || target < 1 || !columns.includes(targetColumn)){
+            if (targetRow > 8 || targetRow < 1 || !columns.includes(targetColumn)){
                 return false;
             }
             if (targetColumn === currentColumn && (Math.abs(targetRow - currentRow) === 1)){
@@ -346,6 +346,6 @@ function Board () {
             return board;
        },
     };
-const board = new Board();
-console.log(board.getBoard())
+//const board = new Board();
+//console.log(board.getBoard())
 
