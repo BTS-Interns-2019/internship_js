@@ -41,32 +41,32 @@ function Piece(location, color, pieceName) {
 
 
 function Pawn(location, color) {
-    this.call(this, location, color, 'Pawn')
+    Piece.call(this, location, color, 'Pawn')
     this.validMove = validMove(taget)
 } 
 
 function Bishop(location, color) {
-    this.call(this, location, color, 'Bishop')
+    Piece.call(this, location, color, 'Bishop')
     this.validMove = validMove(taget)
 } 
 
 function Horse(location, color) {
-    this.call(this, location, color, 'Horse')
+    Piece.call(this, location, color, 'Horse')
     this.validMove = validMove(taget)
 } 
 
 function Rook(location, color) {
-    this.call(this, location, color, 'Rook')
+    Piece.call(this, location, color, 'Rook')
     this.validMove = validMove(taget)
 } 
 
 function Queen(location, color) {
-    this.call(this, location, color, 'Queen')
+    Piece.call(this, location, color, 'Queen')
     this.validMove = validMove(taget)
 }
 
 function King(location, color) {
-    this.call(this, location, color, 'King')
+    Piece.call(this, location, color, 'King')
     this.validMove = validMove(taget)
 } 
 
