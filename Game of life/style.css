@@ -1,6 +1,7 @@
 *{
     border: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 main{
@@ -20,5 +21,7 @@ main{
     border-spacing: 0;
 }
 #map td{
-    background: yellow;
+    background: gray;
+    width: 1px;
+    height: 1px;
 }
