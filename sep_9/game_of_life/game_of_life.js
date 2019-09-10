@@ -31,33 +31,13 @@ Grid.prototype = {
         const y = i * width;
         const x = j * width;
 
-        if (cell.isAlive()) {
+        if (cell) {
           this.context.fillRect(x, y, width, width);
         }
       }
     }
   },
 };
-
-/**
- * Cell Constructor and Prototype
- * @param {*} x 
- * @param {*} y 
- * @param {*} alive 
- */
-function Cell(x, y, alive) {
-  this.x = x;
-  this.y = y;
-  this.alive = alive;
-}
-
-Cell.prototype = Object.defineProperties({}, {
-  isAlive: {
-    value() {
-      return this.alive;
-    },
-  },
-});
 
 /**
  * Game of Life constructor
@@ -85,29 +65,28 @@ GameOfLife.prototype = {
     return arr;
   },
   populateFirstGeneration() {
+    // i => rows
+    // j => columns
     for (let i = 0; i < this.grid.rows; i += 1) {
       for (let j = 0; j < this.grid.columns; j += 1) {
-        let alive = false;
-        if (Math.round(Math.random(2))) {
-          alive = true;
-        }
-        this.currentGeneration[i][j] = new Cell(j, i, alive);
+        // this.currentGeneration[i][j] = Math.round(Math.random(2));
+        this.currentGeneration[i][j] = 0;
       }
     }
   },
   getNeighbours(x, y) {
     let sum = 0;
+    // i => rows
+    // j => columns
     for (let i = -1; i < 2; i += 1) {
-      for (let j = -1; i < 2; j += 1) {
-        if (
-          typeof this.currentGeneration[i + y][j + x] !== 'undefined' // check there is a cell
-          && this.currentGeneration[i + y][j + x].isAlive() // check that cell is alive
-        ) {
-          sum += 1;
-        }
+      for (let j = -1; j < 2; j += 1) {
+        // wrap to the other side of the array if in one of the edges
+        const row = (y + i + this.grid.rows) % this.grid.rows;
+        const column = (x + j + this.grid.columns) % this.grid.columns;
+
+        sum += this.currentGeneration[row][column];
       }
     }
-
     // discard the current cell count
     sum -= 1;
 
@@ -118,27 +97,22 @@ GameOfLife.prototype = {
 
     for (let i = 0; i < this.grid.rows; i += 1) {
       for (let j = 0; j < this.grid.columns; j += 1) {
-        // edges of grid
-        if (i === 0 || i === (this.grid.rows - 1) || j === 0 || j === (this.grid.columns - 1)) {
-          nextGeneration[i][j] = this.currentGeneration[i][j];
+        // Count live neighbours
+        const cell = this.currentGeneration[i][j];
+        const neighbours = this.getNeighbours(j, i);
+
+        // Count live neighbours
+        if (cell === 0 && neighbours === 3) {
+          nextGeneration[i][j] = 1;
+        } else if (
+          // Kill underpopulated or overpopulated cells
+          cell === 1
+          && (neighbours < 2 || neighbours > 3)
+        ) {
+          nextGeneration[i][j] = 0;
         } else {
-          // Count live neighbours
-          const cell = this.currentGeneration[i][j];
-          const neighbours = this.getNeighbours(cell.x, cell.y);
-            
-          // Count live neighbours
-          if (!cell.isAlive() && neighbours === 3) {
-            nextGeneration[i][j] = new Cell(i, j, true);
-          } else if (
-            // Kill underpopulated or overpopulated cells
-            cell.isAlive()
-            && (neighbours < 2 || neighbours > 3)
-          ) {
-            nextGeneration[i][j] = new Cell(i, j, false);
-          } else {
-            // Cell did not revive nor did it die
-            nextGeneration[i][j] = cell;
-          }
+          // Cell did not revive nor did it die
+          nextGeneration[i][j] = cell;
         }
       }
     }
@@ -155,7 +129,7 @@ const rangeSlider = document.querySelector('#speed-meter');
 let speed = 2000 / rangeSlider.value;
 
 const canvasElement = document.querySelector('#canvas');
-const gameOfLife = new GameOfLife(canvasElement, 500, 400);
+const gameOfLife = new GameOfLife(canvasElement, 10, 10);
 
 let interval;
 
@@ -167,7 +141,7 @@ canvasElement.addEventListener('click', (event) => {
   const x = Math.floor(event.offsetX / gameOfLife.grid.cellSize);
   const y = Math.floor(event.offsetY / gameOfLife.grid.cellSize);
 
-  gameOfLife.currentGeneration[y][x] = new Cell(x, y, true);
+  gameOfLife.currentGeneration[y][x] = 1;
   gameOfLife.grid.draw(gameOfLife.currentGeneration);
 });
 
@@ -182,7 +156,7 @@ startButton.addEventListener('click', (event) => {
   nextButton.setAttribute('disabled', true);
   interval = setInterval(() => {
     gameOfLife.step();
-  }, speed);
+  }, 50);
 });
 
 nextButton.addEventListener('click', () => {
