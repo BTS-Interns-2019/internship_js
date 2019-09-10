@@ -1,0 +1,46 @@
+*{
+    margin:0;
+    padding: 0;
+}
+#tablero{
+    width: 100%;
+    height: 100%;
+    margin:0;
+    background-color: #000000;
+    display: grid;
+    grid-column-gap:0;
+    grid-row-gap:0;
+    grid-template-columns: repeat(500,0.2vw);
+    grid-template-rows: repeat(400,0.25vh);
+}
+
+.cel1{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color:#263238;
+}
+.cel2{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background-color: #78909c;
+}
+.live1{
+    background-color: #76ff03;
+}
+.live2{
+    background-color: #ffff00;
+}
+button{
+    border: solid 1px #004d40;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 50px;
+}
+button:hover{
+    border: solid 2px #004d40;
+}
+footer{
+    padding: 5px;
+}
