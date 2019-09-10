@@ -155,7 +155,7 @@ const rangeSlider = document.querySelector('#speed-meter');
 let speed = 2000 / rangeSlider.value;
 
 const canvasElement = document.querySelector('#canvas');
-const gameOfLife = new GameOfLife(canvasElement, 20, 20);
+const gameOfLife = new GameOfLife(canvasElement, 500, 400);
 
 let interval;
 
