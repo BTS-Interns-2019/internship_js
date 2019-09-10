@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="gameOfLife.css">
+    </head>
+    <body>
+        <h1>GAME OF LIFE</h1>
+        <div id="gridContainer" class="container"></div>
+    
+        <div class="controls">
+            <h2>The rules</h2>
+            <p>For a space that is 'populated':</p>
+            <ul>
+                <li>Each cell with one or no neighbors dies, as if by solitude.</li>
+                <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
+                <li>Each cell with two or three neighbors survives.</li>
+            </ul>
+            <p>For a space that is 'empty' or 'unpopulated':</p>
+            <ul>
+                <li>Each cell with three neighbors becomes populated.</li>
+                </ul>
+                <button id="start" class="startButton"><span>Start</span></button>
+                <button id="clear" class="clearButton"><span>Clear</span></button>
+                </div>
+        <script type="text/javascript" src="./gameOfLife.js"></script>
+    </body>
+</html>

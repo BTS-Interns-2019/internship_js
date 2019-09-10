@@ -39,7 +39,6 @@ function Piece(location, color, pieceName) {
     this.pieceName = pieceName;
 }
 
-
 function Pawn(location, color) {
     Piece.call(this, location, color, 'Pawn')
     this.validMove = validMove(taget)
