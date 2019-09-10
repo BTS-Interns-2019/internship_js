@@ -1,0 +1,24 @@
+*{
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main{
+    height: 100vh;
+    border: 1px solid red;
+}
+#game{
+    height: 100%;
+    width: 100%;
+    border: 1px solid blue;
+}
+#control{
+    border: 1px solid blue;
+}
+#map{
+    border: 1px solid green;
+    border-spacing: 0;
+}
+#map td{
+    background: yellow;
+}
