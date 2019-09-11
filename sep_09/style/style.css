@@ -7,7 +7,7 @@ margin: 0px;
 
 #elmaster{
     display: grid;
-    height: 100%;
+    height: 90%;
     width: 100%;
     grid-template-columns: repeat(500, 1fr);
     grid-template-rows: repeat(400,1fr);
@@ -15,8 +15,30 @@ margin: 0px;
 
 #elmaster :nth-child(even){
     background-color: gray;
-    
 }
+
+.ajustes{
+    background-color: teal;
+    height: 10%;
+    width: 100%;
+}
+
+.ajustes button{
+    margin-top:1.5%;
+    margin-left:2%;
+    background-color: #333;
+    color: white;
+    border:none;
+    padding:7px;
+    border-radius: 20px; 
+}
+
+.ajustes button :hover{
+    background-color: #555;
+}
+
+
+
 
 
 
