@@ -54,6 +54,7 @@ function findNeighbors(position){
         //console.log("Sobrevive");
     }else{
         //console.log("Muere y reproduce");
+        move(position,neighbors);
     }
 }
 
