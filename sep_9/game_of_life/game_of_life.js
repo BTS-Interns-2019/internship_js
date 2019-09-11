@@ -1,4 +1,10 @@
 /**
+ * TODO:
+ * 1. Fix speed selection
+ * 2. Fix canvas display
+ */
+
+/**
  * Grid Constructor and Prototype
  * @param {*} canvasElement 
  * @param {*} columns 
@@ -9,14 +15,14 @@ function Grid(canvasElement, columns, rows) {
   this.canvasWidth = canvasElement.offsetWidth;
   this.canvasHeight = canvasElement.offsetHeight;
 
-  this.canvas.setAttribute('width', this.canvasWidth);
-  this.canvas.setAttribute('height', this.canvasHeight);
-
   this.columns = columns;
   this.rows = rows;
 
   this.context = canvasElement.getContext('2d');
   this.cellSize = this.canvasWidth / columns; // we want 500 cells in a row
+
+  this.canvas.setAttribute('width', this.canvasWidth);
+  this.canvas.setAttribute('height', this.canvasHeight);
 }
 
 Grid.prototype = {
@@ -44,12 +50,10 @@ Grid.prototype = {
  * @param {*} canvasElement 
  * @param {*} columns 
  * @param {*} rows 
- * @param {*} aliveCells 
  */
 function GameOfLife(canvasElement, columns, rows) {
   this.grid = new Grid(canvasElement, columns, rows);
   this.currentGeneration = this.makeCellsArray();
-  this.populateFirstGeneration();
 
   this.grid.draw(this.currentGeneration);
 }
@@ -59,7 +63,8 @@ GameOfLife.prototype = {
     const arr = new Array(this.grid.rows);
 
     for (let i = 0; i < arr.length; i += 1) {
-      arr[i] = new Array(this.grid.columns);
+      // automatically fill the array with 0's (dead cells)
+      arr[i] = new Array(this.grid.columns).fill(0);
     }
 
     return arr;
@@ -69,12 +74,11 @@ GameOfLife.prototype = {
     // j => columns
     for (let i = 0; i < this.grid.rows; i += 1) {
       for (let j = 0; j < this.grid.columns; j += 1) {
-        // this.currentGeneration[i][j] = Math.round(Math.random(2));
-        this.currentGeneration[i][j] = 0;
+        this.currentGeneration[i][j] = Math.round(Math.random(2));
       }
     }
   },
-  getNeighbours(x, y) {
+  getNeighbours(y, x) {
     let sum = 0;
     // i => rows
     // j => columns
@@ -87,8 +91,8 @@ GameOfLife.prototype = {
         sum += this.currentGeneration[row][column];
       }
     }
-    // discard the current cell count
-    sum -= 1;
+    // discard the current cell count (will decrease the count if the cell is alive)
+    sum -= this.currentGeneration[y][x];
 
     return sum;
   },
@@ -99,8 +103,9 @@ GameOfLife.prototype = {
       for (let j = 0; j < this.grid.columns; j += 1) {
         // Count live neighbours
         const cell = this.currentGeneration[i][j];
-        const neighbours = this.getNeighbours(j, i);
+        const neighbours = this.getNeighbours(i, j);
 
+        
         // Count live neighbours
         if (cell === 0 && neighbours === 3) {
           nextGeneration[i][j] = 1;
@@ -125,48 +130,105 @@ GameOfLife.prototype = {
 const startButton = document.querySelector('#start-button');
 const nextButton = document.querySelector('#next-button');
 const stopButton = document.querySelector('#stop-button');
+const populateButton = document.querySelector('#populate-button');
+const clearButton = document.querySelector('#clear-button');
 const rangeSlider = document.querySelector('#speed-meter');
-let speed = 2000 / rangeSlider.value;
-
 const canvasElement = document.querySelector('#canvas');
-const gameOfLife = new GameOfLife(canvasElement, 10, 10);
+const gameOfLife = new GameOfLife(canvasElement, 500, 400);
 
 let interval;
 
-window.addEventListener('resize', () => {
+function startGame(speed) {
+  // if the speed is not set
+  if (!speed) {
+    // set it to 1500 / 1 (default value of speed range)
+    speed = 500 / rangeSlider.value;
+  }
+
+  if (interval) {
+    clearInterval(interval);
+  }
+
+  // set the speed according to the input provided by the user
+  interval = setInterval(() => {
+    gameOfLife.step();
+  }, speed);
+}
+
+function stopGame() {
+  // if there is an interval, it means the game is on, so clear the interval
+  if (interval) {
+    // remove the disabled attribute to start and next step buttons
+    startButton.removeAttribute('disabled');
+    nextButton.removeAttribute('disabled');
+    populateButton.removeAttribute('disabled');
+    clearInterval(interval);
+  }
+}
+
+function drawGrid() {
   gameOfLife.grid.draw(gameOfLife.currentGeneration);
+}
+
+// Window listens to resizing
+window.addEventListener('resize', () => {
+  drawGrid();
 });
 
+// Canvas listens for any click over it
 canvasElement.addEventListener('click', (event) => {
   const x = Math.floor(event.offsetX / gameOfLife.grid.cellSize);
   const y = Math.floor(event.offsetY / gameOfLife.grid.cellSize);
 
   gameOfLife.currentGeneration[y][x] = 1;
-  gameOfLife.grid.draw(gameOfLife.currentGeneration);
+  drawGrid();
 });
 
 // TODO: FIX THE SPEED METER
+// Range listens to any change in speed
 rangeSlider.addEventListener('input', (event) => {
-  const speedEquivalent = event.target.value;
-  speed = Math.floor(speed / speedEquivalent);
+  const speedRatio = event.target.value;
+  // stop the game a bit
+  stopGame();
+  // resume it with the new speed
+  startGame(Math.floor(500 / speedRatio));
 });
 
-startButton.addEventListener('click', (event) => {
-  event.target.setAttribute('disabled', true);
+// Start button listens to any click to start the game
+startButton.addEventListener('click', () => {
+  // disable start and next step and populate buttons
+  startButton.setAttribute('disabled', true);
   nextButton.setAttribute('disabled', true);
-  interval = setInterval(() => {
-    gameOfLife.step();
-  }, 50);
+  populateButton.setAttribute('disabled', true);
+
+  startGame();
 });
 
+// Next step button listens to any click to proceed to the next step
 nextButton.addEventListener('click', () => {
   gameOfLife.step();
 });
 
-stopButton.addEventListener('click', () => {
-  if (interval) {
-    startButton.removeAttribute('disabled');
-    nextButton.removeAttribute('disabled');
-    clearInterval(interval);
-  }
+// Stop button listens to any click to stop the game
+stopButton.addEventListener('click', stopGame);
+
+// Populate button listens to any click to populate the grid with cells
+populateButton.addEventListener('click', () => {
+  // generate the first generation of cells at random
+  gameOfLife.populateFirstGeneration();
+
+  // redraw the grid with the new cells
+  drawGrid();
+});
+
+// Clear button listens to any click to kill all the cells
+clearButton.addEventListener('click', () => {
+  // set the current generation as empty
+  gameOfLife.currentGeneration = gameOfLife.makeCellsArray();
+
+  // draw the grid empty
+  drawGrid();
+
+  // if there was a game currently on, shut it down
+  stopGame();
 });

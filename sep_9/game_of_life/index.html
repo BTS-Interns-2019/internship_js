@@ -11,7 +11,7 @@
 <body>
   <main class="main-container">
     <div class="canvas-container">
-      <canvas id="canvas" class="canvas"></canvas>
+      <canvas id="canvas" width="100" height="100"></canvas>
     </div>
     <div class="controls-container">
       <div class="header-container">
@@ -20,13 +20,16 @@
 
       <div class="button-container">
         <button class="button-control" id="start-button">Start</button>
-        <button class="button-control" id="next-button">Next</button>
+        <button class="button-control" id="next-button">Next Step</button>
         <button class="button-control" id="stop-button">Stop</button>
 
         <div class="speed-container">
-          <input type="range" name="speed" id="speed-meter" min="1" max="10" step="1" value="10">
-          <label for="speed-meter">Speed</label>
+          <input type="range" name="speed" id="speed-meter" min="1" max="10" step="1" value="1">
+          <label for="speed-meter">Speed (1 - 10)</label>
         </div>
+
+        <button class="button-control" id="populate-button">Populate randomly</button>
+        <button class="button-control" id="clear-button">KILL THEM ALL</button>
       </div>
     </div>
   </main>
