@@ -11,17 +11,36 @@
 </head>
 
 <body>
-    <div class="gridContainer"></div>
-    <div class="controls">
-        <button class="start"><span>Start</span></button>
-        <button class="clear"><span>Clear</span></button>
-        <button class="random"><span>Random</span></button>
-        <label>
-            Speed:
-        </label>
+    <div id="gridContainer"></div>
+    <div id="controls">
+        <button id="start"><span>Start</span></button>
+        <button id="next"><span>Next</span></button>
+        <label>Speed:</label>
         <input class="speedControl" type="range" name="speed" min="1" max="100" value="50" />
     </div>
+    <div class="rules">
+    <div>
+        <h1>The Rules</h1>
+        <ul>
+            <h2>For space that is populated</h2>
+            <li>Each cell with one or no neighbors dies, as if by solitude.</li>
+            <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
+            <li>Each cell with two or three neighbors survives.</li>
+        </ul>
+    </div>
+    <div>
+        <h2>For a space that is 'empty' or 'unpopulated'</h2>
+        <p>Each cell with three neighbors becomes populated.</p>
+    </div>
 
+    <div>
+        <h2>The Controls</h2>
+        <p>Choose a figure from the pull-down menu or make one yourself by clicking on the cells with a mouse. A new
+            generation of cells (corresponding to one iteration of the rules) is initiated by the 'Next' button. The
+            'Start' button advances the game by several generations. Game speed is regulated by the speed dial and the
+            size of the cells with the size dial.</p>
+    </div>
+</div>
     <script src="JuegoDeLaVida.js"></script>
 </body>
 

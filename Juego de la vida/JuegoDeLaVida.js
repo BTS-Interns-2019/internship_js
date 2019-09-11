@@ -34,7 +34,6 @@ function copyAndResetGrid() {
     }
 }
 
-// Initialize
 function initialize() {
     createTable();
     initializeGrids();
@@ -42,19 +41,16 @@ function initialize() {
     setupControlButtons();
 }
 
-
-// Lay out the board
 function createTable() {
     var gridContainer = document.getElementById('gridContainer');
     if (!gridContainer) {
-        // Throw error
-        console.error("Problem: No div for the drid table!");
+        console.error("No se creo la tabla");
     }
     var table = document.createElement("table");
     
     for (var i = 0; i < rows; i++) {
         var tr = document.createElement("tr");
-        for (var j = 0; j < columns; j++) {//
+        for (var j = 0; j < columns; j++) {
             var cell = document.createElement("td");
             cell.setAttribute("id", i + "_" + j);
             cell.setAttribute("class", "dead");
@@ -96,73 +92,35 @@ function createTable() {
     }
 
 function setupControlButtons() {
-    // button to start
     var startButton = document.getElementById('start');
     startButton.onclick = startButtonHandler;
-    
-    // button to clear
-    var clearButton = document.getElementById('clear');
-    clearButton.onclick = clearButtonHandler;
-    
-    // button to set random initial state
-    var randomButton = document.getElementById("random");
-    randomButton.onclick = randomButtonHandler;
+    var startButton = document.getElementById('next');
+    startButton.onclick = nextButtonHandler;
 }
 
-function randomButtonHandler() {
-    if (playing) return;
-    clearButtonHandler();
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < columns; j++) {
-            var isLive = Math.round(Math.random());
-            if (isLive == 1) {
-                var cell = document.getElementById(i + "_" + j);
-                cell.setAttribute("class", "live");
-                grid[i][j] = 1;
-            }
-        }
-    }
-}
 
-// clear the grid
-function clearButtonHandler() {
-    console.log("Clear the game: stop playing, clear the grid");
-    
-    playing = false;
-    var startButton = document.getElementById('start');
-    startButton.innerHTML = "Start";    
-    clearTimeout(timer);
-    
-    var cellsList = document.getElementsByClassName("live");
-    // convert to array first, otherwise, you're working on a live node list
-    // and the update doesn't work!
-    var cells = [];
-    for (var i = 0; i < cellsList.length; i++) {
-        cells.push(cellsList[i]);
-    }
-    
-    for (var i = 0; i < cells.length; i++) {
-        cells[i].setAttribute("class", "dead");
-    }
-    resetGrids;
-}
+function nextButtonHandler() {
+    if (playing) {
+        console.log("Pause the game");
+        playing = false;
+        this.innerHTML = "next";
+        clearTimeout(timer);
+    }}
 
-// start/pause/continue the game
+
 function startButtonHandler() {
     if (playing) {
         console.log("Pause the game");
         playing = false;
-        this.innerHTML = "Continue";
+        this.innerHTML = "start";
         clearTimeout(timer);
     } else {
         console.log("Continue the game");
         playing = true;
-        this.innerHTML = "Pause";
+        this.innerHTML = "Stop";
         play();
     }
 }
-
-// run the life game
 function play() {
     computeNextGen();
     
@@ -178,12 +136,9 @@ function computeNextGen() {
         }
     }
     
-    // copy NextGrid to grid, and reset nextGrid
     copyAndResetGrid();
-    // copy all 1 values to "live" in the table
     updateView();
 }
-
 function applyRules(row, col) {
     var numNeighbors = countNeighbors(row, col);
     if (grid[row][col] == 1) {
@@ -230,5 +185,4 @@ function countNeighbors(row, col) {
     return count;
 }
 
-// Start everything
 window.onload = initialize;
