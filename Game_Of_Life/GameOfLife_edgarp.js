@@ -16,8 +16,14 @@ window.onload = function (){
 
 canvas.onclick = function(e){
     canvasposit = canvas.getBoundingClientRect();
+    if (paint[Math.floor((e.clientX-canvasposit.left)/10)][Math.floor((e.clientY-canvasposit.top)/10)] === 1){
+          paint[Math.floor((e.clientX-canvasposit.left)/10)][Math.floor((e.clientY-canvasposit.top)/10)] = 0;
+          paintuniverseblank(paint);
+        } else {
         paint[Math.floor((e.clientX-canvasposit.left)/10)][Math.floor((e.clientY-canvasposit.top)/10)] = 1;
         paintuniverse(paint);
+        }
+        
 }
 
 function buildGrid() {
@@ -109,6 +115,18 @@ function render(grid) {
     }
   }
 } ;
+
+function paintuniverseblank (paint) {
+    ctx.fillStyle ="#fff"
+    paint.forEach( (row, rowIndex) =>
+        row.forEach( (cell, colIndex) => {
+            if(cell == 0) {
+                ctx.fillRect(rowIndex*10,colIndex*10,10,10);
+            }
+        })
+    ) 
+    return paint;
+};
 
 function paintuniverse (paint) {
     ctx.fillStyle ="#000"
