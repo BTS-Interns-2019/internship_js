@@ -138,9 +138,8 @@ grid.addEventListener('mousedown', (ev) => {
   printGrid(elementX, elementY);
 });
 
-const run = document.getElementById('run');
-
-run.addEventListener('click', () => {
+const next = document.getElementById('next');
+next.addEventListener('click', () => {
   let cellsDefined = document.getElementsByClassName('cells');
   cellsDefined = Array.from(cellsDefined);
   for (let i = 0; i < cellsDefined.length; i += 1) {
@@ -150,6 +149,7 @@ run.addEventListener('click', () => {
     cellPos.posCell();
   }
   runBoard();
+  board2HTML();
 });
 
 const sel = document.getElementById('pat');
