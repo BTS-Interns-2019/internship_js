@@ -142,7 +142,7 @@ function startGame(speed) {
   // if the speed is not set
   if (!speed) {
     // set it to 1500 / 1 (default value of speed range)
-    speed = 500 / rangeSlider.value;
+    speed = 600 / rangeSlider.value;
   }
 
   if (interval) {
@@ -191,7 +191,7 @@ rangeSlider.addEventListener('input', (event) => {
   // stop the game a bit
   stopGame();
   // resume it with the new speed
-  startGame(Math.floor(500 / speedRatio));
+  startGame(Math.floor(600 / speedRatio));
 });
 
 // Start button listens to any click to start the game
