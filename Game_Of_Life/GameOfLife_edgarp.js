@@ -1,15 +1,23 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-const resolution = 10;
-canvas.width = 500;
-canvas.height = 400;
+let resolution = 10;
+canvas.width = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
+canvas.setAttribute('width', canvas.width);
+canvas.setAttribute('height', canvas.height);
 
-const COLS = canvas.width / resolution;
-const ROWS = canvas.height / resolution;
+let COLS = canvas.width / resolution;
+let ROWS = canvas.height / resolution;
 
 window.onload = function (){
-    draw ();
+  paint = draw ();
+};
+
+canvas.onclick = function(e){
+    canvasposit = canvas.getBoundingClientRect();
+        paint[Math.floor((e.clientX-canvasposit.left)/10)][Math.floor((e.clientY-canvasposit.top)/10)] = 1;
+        paintuniverse(paint);
 }
 
 function buildGrid() {
@@ -21,9 +29,20 @@ function buildGrid() {
 
 
 function update() {
+  paint = nextGen(paint);
+  render(paint);
+  interval = setTimeout(update, speeds);
+}
+
+function randoms(){
   grid = nextGen(grid);
   render(grid);
-  requestAnimationFrame(update);
+  interval = setTimeout(randoms, speeds);
+}
+
+function next () {
+  paint = nextGen(paint);
+  render(paint);
 }
 
 function nextGen(grid) {
@@ -49,12 +68,12 @@ function nextGen(grid) {
       }
 
       // rules
-      if (cell === 1 && numNeighbours < 2) {
+      if (cell === 1 && numNeighbours < 2 || numNeighbours > 3) {
         nextGen[col][row] = 0;
-      } else if (cell === 1 && numNeighbours > 3) {
-        nextGen[col][row] = 0;
-      } else if (cell === 0 && numNeighbours === 3) {
+      } else if (cell === 1 && numNeighbours === 2 || numNeighbours === 3) {
         nextGen[col][row] = 1;
+      } else {
+        nextGen[col][row] = cell;
       }
     }
   }
@@ -72,6 +91,9 @@ function draw () {
     }
     ctx.strokeStyle = "black";
     ctx.stroke();
+
+    return new Array(COLS).fill(null)
+    .map(() => new Array(ROWS).fill(null));
 }
 
 function render(grid) {
@@ -88,19 +110,63 @@ function render(grid) {
   }
 } ;
 
+function paintuniverse (paint) {
+    ctx.fillStyle ="#000"
+    paint.forEach( (row, rowIndex) =>
+        row.forEach( (cell, colIndex) => {
+            if(cell == 1) {
+                ctx.fillRect(rowIndex*10,colIndex*10,10,10);
+            }
+        })
+    ) 
+    return paint;
+};
+
+function clean () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);   
+    paint = draw ();
+   ctx.fillStyle ="#fff"
+    paint.forEach( (row, rowIndex) =>
+        row.forEach( (cell, colIndex) => {
+          if (cell === null){
+                ctx.fillRect(rowIndex*10,colIndex*10,10,10);
+          }
+        })
+    ) 
+    draw ();
+}
+
 let grid = [];
+let interval;
+let speed;
+let speeds;
 
 document.getElementById('start').addEventListener('click', ()=> {
-    grid = buildGrid();
-    requestAnimationFrame(update);
+   setTimeout(update, speeds)
 });
 
-document.getElementById('warning').addEventListener('click', ()=> {
-    requestAnimationFrame(update);
+document.getElementById('random').addEventListener('click', ()=> {
+    grid = buildGrid();
+    setTimeout(randoms, speeds);
+});
+
+document.getElementById('next').addEventListener('click', ()=> {
+     next ();
+});
+
+document.getElementById('clear').addEventListener('click', ()=> {
+  clean ();
 });
 
 document.getElementById('stop').addEventListener('click', ()=> {
-    requestAnimationFrame(update);
-}); 
+  clearTimeout(interval);
+});
+
+document.getElementById('speeder').addEventListener('input', (ev) => {
+    speed = ev.target.value;
+    speeds = Math.floor(speed * 100);
+    document.getElementById('value').innerHTML=document.getElementById('speeder').value;
+});
+
 
 

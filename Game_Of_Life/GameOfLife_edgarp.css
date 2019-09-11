@@ -28,8 +28,8 @@ canvas {
     border: 2px solid #3f51B5;
     background-color: #fff;
     border-radius: 2px;
-    width: 100%;
-    height: 600px;
+    width: 1280px;
+    height: 580px;
 }
 
 .btn {
@@ -38,12 +38,30 @@ canvas {
      padding: 0px, 5px;
      color: white;
      width: 13%;
-     margin-left: 220px;
+     margin-left: 20px;
+     align-items: center;
      cursor: pointer;
      border-radius: 3px;
      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), rgba(0 1px 0, 0, 0, 0.24);    
 }
 
-.btn-warning {
+.speed {
+    display: inline;
+    border: 1 solid grey;
+     background-color: #3f51b5;
+     padding: 0px, 5px;
+     color: white;
+     margin-left: 20px;
+     cursor: pointer;
+     border-radius: 3px;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), rgba(0 1px 0, 0, 0, 0.24);    
+}
+
+.controls {
+    margin-left: 100px;
+    align-content: center;
+}
+
+.btn-stop {
     background-color: #f44336;
 }
