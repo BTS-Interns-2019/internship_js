@@ -8,14 +8,15 @@
     *{
         border: 0;
         margin: 0;
+        font-family: sans-serif;
     }
     .grid {
         width: 100vw;
         height: 90vh;
         background-color: gray;
         display: grid;
-        grid-template-columns: repeat(500, 1fr);
-        grid-template-rows: repeat(400, 1fr);
+        grid-template-columns: repeat(50, 1fr);
+        grid-template-rows: repeat(40, 1fr);
     }
     div {
         background-color: black;
@@ -30,18 +31,39 @@
         height: 10vh;
         align-content: center;
     }
-    
 </style>
 <body>
     <section class="grid" id="grid">
     </section>    
     <section class="settings">
-        Velocity<input type="range">
-        <button>Catrina</button>
-        <button>Start</button>
-    </section>
-   
+        <label for="velocity">Velocity</label>
+        <input type="range" id="btn-range" name="velocity" min="1" max="100" value="50">
+        <button id="btn-catrina">Catrina</button>
+        <button id="btn-start">Start</button>
+    </section>   
 </body>
 <script src="./game-of-life_emmanuelr.js"></script>
 <script src="./front-game_emmanuelr.js"></script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

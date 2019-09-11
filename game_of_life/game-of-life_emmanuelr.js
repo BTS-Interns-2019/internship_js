@@ -67,6 +67,7 @@ Board.prototype = {
     }
     toKill.forEach(cell => this.kill(+cell.split(',')[0], +cell.split(',')[1]));
     toGiveLife.forEach(cell => this.giveLife(+cell.split(',')[0], +cell.split(',')[1]));
+    return { toKill, toGiveLife };
     // toRemove.forEach(cell => (delete this.cells[cell]));
   },
   isAlive(x,y){
