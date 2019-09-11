@@ -20,17 +20,20 @@ body {
 #canvas {
   width: 100%;
   height: 100%;
+  background-color: #cae7c9;
 }
 
 .controls-container {
   height: 8vh;
-  background-color: #999;
+  background-color: #a8c798;
   margin: 0;
   display: flex;
 }
 
 .header-container {
   width: 35%;
+  display: flex;
+  align-items: center;
 }
 
 .header-container h1 {
@@ -38,19 +41,35 @@ body {
   font-size: 20px;
   font-weight: bold;
   padding-left: 35px;
+  margin: 0;
 }
 
 .button-container {
   width: 65%;
+  height: 100%;
   display: flex;
+  font-size: 14px;
 }
 
 .button-control {
+  background-image: linear-gradient(#7fa568, #5e7a58);
+  color: #fff;
   padding: 5px;
   width: 15%;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
   font-weight: bold;
+  border: none;
+  border-radius: 100px;
+  margin: 5px 0;
+}
+
+.button-control:disabled {
+  background-image: linear-gradient(#cae7c9, #a8c798);
+  color: #8e8e8e;
+}
+
+.button-control + .button-control {
+  margin-left: 5px;
 }
 
 .speed-container {

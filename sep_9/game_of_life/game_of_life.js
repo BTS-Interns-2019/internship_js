@@ -38,6 +38,8 @@ Grid.prototype = {
         const x = j * width;
 
         if (cell) {
+          // set the fill color
+          this.context.fillStyle = '#334f38';
           this.context.fillRect(x, y, width, width);
         }
       }
