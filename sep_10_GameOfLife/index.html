@@ -8,23 +8,34 @@
     <style>
         body, html{
             height: 100%;
-            overflow: hidden;
-        }
-        #GOL{
-            
+            width: 100%;
+            margin: 0;
+            overflow-x: hidden;
         }
         ul{
             list-style: none;
             display: flex;
         }
+        ul li{
+            margin-right: 15px;
+        }
+        ul li button{
+            border-radius: 15px;
+            padding: 10px;
+        }
     </style>
 </head>
-<body>
-    <canvas id="GOL" width="500px" height="400px"></canvas>
+<body id="body">
+    <div id="div">
+        <canvas id="GOL" width="" height=""></canvas>
+    </div>
     <ul>
         <li><button id="play">Play</button></li>
         <li><button id="stop">Stop</button></li>
-        <li><input type="range" id="velocidad"></li>
+        <li><button id="step">Step</button></li>
+        <li>Veloci + / -<input type="range" id="velocidad"></li>
+        <li>Reload page to update canvas size</li>
+        <li><button id="clean">clean</button></li>
     </ul>
     
     

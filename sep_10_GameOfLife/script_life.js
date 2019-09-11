@@ -1,8 +1,9 @@
 class Universe {
-    constructor(size) {
-        this.size = size
-        this.existence = Array.from({length: this.size}, () =>
-            Array.from({length: this.size}, () =>{} /*Math.random() > 0.5 ? 1 : 0*/)
+    constructor(size1, size2) {
+        this.size1 = size1;
+        this.size2 = size2;
+        this.existence = Array.from({length: this.size1}, () =>
+            Array.from({length: this.size2}, () =>{} /*Math.random() > 0.5 ? 1 : 0*/)
     )
 }
     copiar(otherExistence) {
@@ -12,7 +13,7 @@ class Universe {
     }
 
     evolucion() {
-        var tempUniverse = new Universe(this.size);
+        var tempUniverse = new Universe(this.size1 ,this.size2);
         this.existence.forEach( (row, rowIndex) =>{
             row.forEach( (cell, colIndex) => {
                 var numerDestino = this.numeroDestion(rowIndex,colIndex);
@@ -23,21 +24,21 @@ class Universe {
     }
 
     numeroDestion(x, y) {
-        var vecinos = 0
+        var vecinos = 0;
         for(var i = x-1 ; i <= x+1; i++){
             for(var j = y-1; j <= y+1; j++){
-                if( i >= 0 && i < this.size && j >= 0 && j < this.size && !(i == x && j == y) && this.existence[i][j] == 1) {
+                if( i >= 0 && i < this.size2 && j >= 0 && j < this.size1 && !(i == x && j == y) && this.existence[i][j] == 1) {
                     vecinos++;
                 }
             }
         }
-        return vecinos
+        return vecinos;
     }
 
-    Destino(numberOfDestiny, cell) {
-        if(numberOfDestiny < 2 || numberOfDestiny > 3) {
+    Destino(alrededor, cell) {
+        if(alrededor < 2 || alrededor > 3) {
             return 0;
-        } else if(numberOfDestiny == 3) {
+        } else if(alrededor == 3) {
             return 1;
         } else {
             return cell;
@@ -46,23 +47,37 @@ class Universe {
 }
 
 var canvas = document.getElementById("GOL");
-var universe = new Universe(canvas.width);
+var universe = new Universe(500, 400);
 var canvasCtx = document.querySelector("#GOL").getContext("2d");
+var vel = document.getElementById("velocidad");
+var play = document.getElementById("play");
+var stop = document.getElementById("stop");
+var step = document.getElementById("step");
+var div = document.getElementById("div");
+var clean = document.getElementById("clean");
+var parar = false;
 var cuadritos = [];
-cuadricula()
+
+
+cuadricula();
+var xs = window.innerWidth/500;
+var ys = window.innerHeight/400;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight - 80;
+
 function cuadricula(){
     var columnas = [];
     var filas = [];
     canvasCtx.strokeStile = "black";
     canvasCtx.lineWidth = 1;
-    for(i = 10; i<canvas.width; i+=10){
+    for(i = xs; i<canvas.width; i+=xs){
         canvasCtx.beginPath();
         canvasCtx.moveTo(i,0);
         canvasCtx.lineTo(i, canvas.height);
         canvasCtx.stroke();
         columnas.push(i);
     }
-    for(i = 10; i<canvas.height; i+=10){
+    for(i = ys; i<canvas.height; i+=ys){
         canvasCtx.beginPath();
         canvasCtx.moveTo(0,i);
         canvasCtx.lineTo(canvas.width,i);
@@ -73,21 +88,32 @@ function cuadricula(){
     filas.push(0);
     for(x = 0; x< columnas.length; x++){
         for(y = 0; y< filas.length;y++){
-            cuadritos.push([columnas[x],filas[y], 10,10]);
+            cuadritos.push([columnas[x],filas[y], xs,ys]);
         }
     }
 }
+
+clean.addEventListener('click', ()=>{
+    universe.existence.forEach( (row, rowIndex) =>
+        row.forEach( (cell, colIndex) => {
+            universe.existence[rowIndex][colIndex] = 0;
+        })
+    )
+    pintarUniverse();
+    solocanvas();
+})
+
 canvas.onclick = function(e){
     var canvaspos = canvas.getBoundingClientRect();
-        // alert(canvaspos.left +" " + canvaspos.top);
-        // alert(Math.floor((e.clientX-canvaspos.left)/10) +  " " + Math.floor((e.clientY-canvaspos.top)/10));
-        universe.existence[Math.floor((e.clientX-canvaspos.left)/10)][Math.floor((e.clientY-canvaspos.top)/10)] = 1;
-        pintarUniverse();
+    // alert(e.clientX +" " + canvaspos.top);
+    // alert(Math.floor((e.clientX-canvaspos.left)/10) +  " " + Math.floor((e.clientY-canvaspos.top)/10));
+    universe.existence[Math.floor((e.clientX-canvaspos.left)/xs)][Math.floor((e.clientY-canvaspos.top)/ys)] = 1;
+    pintarUniverse();
 }
 
 var solocanvas = () => {
     canvasCtx.fillStyle ="#FFFFFF";
-    canvasCtx.fillRect(0,0,1000,1000);
+    canvasCtx.fillRect(0,0,canvas.width,canvas.height);
     cuadricula();
 }
 
@@ -96,29 +122,33 @@ var pintarUniverse = () => {
     universe.existence.forEach( (row, rowIndex) =>
         row.forEach( (cell, colIndex) => {
             if(cell == 1) {
-                canvasCtx.fillRect(rowIndex*10,colIndex*10,10,10);
+                canvasCtx.fillRect(rowIndex*xs,colIndex*ys,xs,ys);
             }
         })
     )
 }
 
-var vel = document.getElementById("velocidad");
-var play = document.getElementById("play");
-var stop = document.getElementById("stop");
-var parar = false;
 stop.addEventListener("click",()=>{
     parar = true;
 })
+
 play.addEventListener("click",()=>{
     parar = false;
     update();
 })
+solocanvas();
+step.addEventListener("click",()=>{
+    universe.evolucion();
+    solocanvas();
+    pintarUniverse();
+})
+
 function update() {
-    if(parar){
-        return 0;
-    }
     solocanvas();
     pintarUniverse();
     universe.evolucion();
+    if(parar){
+        return 0;
+    }
     setTimeout(update,vel.value);
 }
