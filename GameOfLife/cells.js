@@ -1,3 +1,4 @@
+// Funciones para la logica
 function Board(width, height) {
   const board = new Array(width);
   for (let i = 0; i < width; i += 1) {
@@ -8,8 +9,10 @@ function Board(width, height) {
   }
   return board;
 }
+const width = 500;
+const height = 400;
 
-const board = Board(500, 400);
+const board = Board(width, height);
 const arrCells = [];
 
 class Cell {
@@ -30,22 +33,22 @@ class Cell {
 
 function getNeighbors(i, j) {
   let neighborsCount = 0;
-  if (i < 19) { if (board[i + 1][j] === 1) { neighborsCount += 1; } }
+  if (i < width - 1) { if (board[i + 1][j] === 1) { neighborsCount += 1; } }
 
   if (i > 0) {
     if (board[i - 1][j] === 1) { neighborsCount += 1; }
-    if (j < 15) { if (board[i - 1][j + 1] === 1) { neighborsCount += 1; } }
+    if (j < height - 1) { if (board[i - 1][j + 1] === 1) { neighborsCount += 1; } }
   }
 
-  if (j < 15) { if (board[i][j + 1] === 1) { neighborsCount += 1; } }
+  if (j < height - 1) { if (board[i][j + 1] === 1) { neighborsCount += 1; } }
 
   if (j > 0) {
     if (board[i][j - 1] === 1) { neighborsCount += 1; }
-    if (i < 19) { if (board[i + 1][j - 1] === 1) { neighborsCount += 1; } }
+    if (i < width - 1) { if (board[i + 1][j - 1] === 1) { neighborsCount += 1; } }
   }
 
   if (i > 0 && j > 0) { if (board[i - 1][j - 1] === 1) { neighborsCount += 1; } }
-  if (i < 19 && j < 15) { if (board[i + 1][j + 1] === 1) { neighborsCount += 1; } }
+  if (i < width - 1 && j < height - 1) { if (board[i + 1][j + 1] === 1) { neighborsCount += 1; } }
 
   return neighborsCount;
 }
@@ -54,8 +57,8 @@ function runBoard() {
   const arrDie = [];
   const arrBorn = [];
 
-  for (let i = 0; i < 20; i += 1) {
-    for (let j = 0; j < 16; j += 1) {
+  for (let i = 0; i < width; i += 1) {
+    for (let j = 0; j < height; j += 1) {
       if (board[i][j] === 1) {
         const neighborsCount = getNeighbors(i, j);
         if (neighborsCount <= 1 || neighborsCount > 3) {
@@ -82,15 +85,15 @@ function runBoard() {
 
   for (let i = 0; i < arrBorn.length; i += 1) {
     const xy = arrBorn[i].split(',');
-    const cellNew = new Cell(xy[0], xy[1]);
+    const cellNew = new Cell(parseInt(xy[0], 10), parseInt(xy[1], 10));
     cellNew.posCell();
   }
 }
 
 function printBoard() {
-  for (let i = 0; i < 20; i += 1) {
+  for (let i = 0; i < height; i += 1) {
     let currentRow = '';
-    for (let j = 0; j < 30; j += 1) {
+    for (let j = 0; j < width; j += 1) {
       if (board[i][j] === 1) {
         currentRow += '■ ';
       } else {
@@ -100,64 +103,73 @@ function printBoard() {
     console.log(currentRow);
   }
 }
+
+// Funciones para el grid
+
 const grid = document.getElementById('grid');
 
-function printHTML() {
+function printGrid(x, y) {
+  const cellsActual = grid.outerHTML;
+  const inGrid = cellsActual.substring(15, cellsActual.length - 6);
+  const newCell = `<div class="cells" id="cellX${x}Y${y}"></div>`;
+  grid.innerHTML = inGrid + newCell;
+  const cellCreated = document.getElementById(`cellX${x}Y${y}`);
+  cellCreated.style.gridArea = `${x} / ${y} / ${x + 1} / ${y + 1}`;
+  cellCreated.style.background = 'white';
+}
+
+function clearGrid() {
   grid.innerHTML = '';
-  for (let i = 0; i < 500; i += 1) {
-    for (let j = 0; j < 400; j += 1) {
-      if (board[i][j] === 1) {
-        const newElement = `<div id="cellX${i}Y${j}" class="cells"></div>`;
-        grid.innerHTML += newElement;
-        const actualCell = document.getElementById(`cellX${i}Y${j}`);
-        actualCell.style.gridArea = `${i + 1} / ${j + 1} / ${i + 2} / ${j + 2}`;
-      }
-    }
+}
+
+function board2HTML() {
+  clearGrid();
+  for (let i = 0; i < arrCells.length; i += 1) {
+    console.log(arrCells[i]);
+    printGrid(arrCells[i].posX, arrCells[i].posY);
   }
 }
 
-/* 
-
 grid.addEventListener('mousedown', (ev) => {
-  const posX = ev.pageX; const posY = ev.pageY;
-  alert(posX + ', ' + posY);
-  const totalX = grid.style.width; const totalY = grid.style.height;
-  alert(totalX + ', ' + totalY);
+  const posX = ev.pageY; const posY = ev.pageX;
+  const totalX = grid.scrollWidth; const totalY = grid.scrollHeight;
   const unitX = parseInt(totalX / 500, 10); const unitY = parseInt(totalY / 400, 10);
-  const elementX = parseInt(posX / unitX, 10); const elementY = parseInt(posY / unitY, 10);
-  // alert(`newCell in: ${elementX},${elementY}`);
-});*/
+  const elementX = parseInt(posX / unitX, 10) + 1; const elementY = parseInt(posY / unitY, 10) + 1;
+  printGrid(elementX, elementY);
+});
 
-/* let insertion = '';
-for (let i = 0; i < 200000; i += 1) {
-  insertion += `<div id = "cell${i}" class = "cells"></div>`;
-}
-grid.innerHTML = insertion; 
+const run = document.getElementById('run');
 
-function who(evt) {
-  const touch = document.getElementById(this.id);
-  touch.style.background = white;
-}*/
-
-let cell = new Cell(106, 106);
-cell.posCell();
-cell = new Cell(107, 105);
-cell.posCell();
-cell = new Cell(107, 106);
-cell.posCell();
-cell = new Cell(107, 107);
-cell.posCell();
-cell = new Cell(108, 105);
-cell.posCell();
-cell = new Cell(108, 107);
-cell.posCell();
-cell = new Cell(109, 106);
-cell.posCell();
-
-for (let i = 0; i < 20; i += 1) {
-  console.log(`Iteration ${i}`);
-  printHTML();
+run.addEventListener('click', () => {
+  let cellsDefined = document.getElementsByClassName('cells');
+  cellsDefined = Array.from(cellsDefined);
+  for (let i = 0; i < cellsDefined.length; i += 1) {
+    const cell = document.getElementById(cellsDefined[i].id);
+    const coord = cell.style.gridArea.split(' / ');
+    const cellPos = new Cell(parseInt(coord[0], 10), parseInt(coord[1], 10));
+    cellPos.posCell();
+  }
   runBoard();
-}
+});
 
-console.log(grid.childElementCount);
+const sel = document.getElementById('pat');
+
+sel.addEventListener('change', () => {
+  const selected = sel.options[sel.selectedIndex];
+  switch (selected.value) {
+    case 'sp': {
+      printGrid(106, 106);
+      printGrid(107, 105);
+      printGrid(107, 106);
+      printGrid(107, 107);
+      printGrid(108, 105);
+      printGrid(108, 107);
+      printGrid(109, 106);
+      break;
+    }
+
+    default: {
+      break;
+    }
+  }
+});
